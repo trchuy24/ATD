@@ -326,10 +326,10 @@ b. $70\text{ lần/phút}$
 d. $0\text{ lần/phút}$  
 
 **Câu 55:** Chẩn đoán một bệnh nhân bị ngất khi?  
-**a. Mất ý thức trong thời gian ngắn, hồi phục ý thức ngay và hoàn toàn**  
+a. Mất ý thức trong thời gian ngắn, hồi phục ý thức ngay và hoàn toàn  
 b. Xuất hiện tương đối đột ngột, mất hoàn toàn ý thức  
 c. Mất trương lực cơ  
-d. Mất ý thức trong thời gian ngắn, hồi phục ý thức ngay hoặc hoàn toàn, xuất hiện tương đối đột ngột, mất trương lực cơ  
+**d. Mất ý thức trong thời gian ngắn, hồi phục ý thức ngay hoặc hoàn toàn, xuất hiện tương đối đột ngột, mất trương lực cơ**  
 
 **Câu 56:** Mục đích của băng vết thương?  
 a. Che kín vết thương, bất động trong gãy xương  

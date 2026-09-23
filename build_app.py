@@ -143,6 +143,54 @@ html_content = """<!DOCTYPE html>
       color: #1d4ed8;
     }
 
+    /* Search Box */
+    .search-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-light);
+    }
+
+    .btn-clear-search {
+      background: #e2e8f0;
+      border: none;
+      color: var(--text-muted);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-results-info {
+      font-size: 0.78rem;
+      color: var(--primary);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
     /* Stats Bar */
     .stats-bar {
       display: grid;
@@ -697,6 +745,14 @@ html_content = """<!DOCTYPE html>
       color: var(--success-text);
     }
 
+    .highlight-match {
+      background-color: #fef08a;
+      color: #854d0e;
+      padding: 1px 3px;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+
     .empty-state {
       text-align: center;
       padding: 36px 16px;
@@ -795,6 +851,19 @@ html_content = """<!DOCTYPE html>
       </div>
     </header>
 
+    <!-- Search Bar -->
+    <div class="search-wrap">
+      <input 
+        type="text" 
+        id="searchInput" 
+        class="search-input" 
+        placeholder="Tìm kiếm câu hỏi (nhập từ khóa, nội dung hoặc số câu)..."
+        autocomplete="off"
+      >
+      <span id="searchResultsInfo" class="search-results-info"></span>
+      <button id="btnClearSearch" class="btn-clear-search" title="Xóa tìm kiếm">✕</button>
+    </div>
+
     <!-- Stats Bar -->
     <div class="stats-bar">
       <div class="stat-card stat-total">
@@ -874,7 +943,8 @@ html_content = """<!DOCTYPE html>
     <!-- Study Sheet View -->
     <section id="studyView" class="quiz-card" style="display: none;">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 8px;">
-        <h2 style="font-size: 1rem; font-weight: 700;">Bảng tra cứu đáp án 109 câu</h2>
+        <h2 style="font-size: 1rem; font-weight: 700;">Bảng tra cứu đáp án</h2>
+        <span id="studyTotalCount" style="font-size: 0.8rem; color: var(--text-muted);"></span>
       </div>
       <div id="studyList" class="study-list">
         <!-- Rendered dynamically -->
@@ -910,12 +980,53 @@ html_content = """<!DOCTYPE html>
     // App State
     let currentMode = 'all'; // all | wrong | starred | quiz20 | study
     let isShuffled = true;
+    let searchQuery = '';
     let activeQuestions = [];
     let currentIndex = 0;
     
     // User progress state (keyed by question original ID)
     let userAnswers = {};
     let starredQuestions = new Set();
+
+    // Vietnamese diacritics removal for smart matching
+    function removeVietnameseTones(str) {
+      if (!str) return '';
+      str = str.toLowerCase();
+      str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+      str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+      str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+      str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+      str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+      str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+      str = str.replace(/đ/g, "d");
+      str = str.replace(/\\u0300|\\u0301|\\u0303|\\u0309|\\u0323/g, "");
+      str = str.replace(/\\u02C6|\\u0306|\\u031B/g, "");
+      return str.trim();
+    }
+
+    // Check if question matches search query (by ID, question text, or options)
+    function matchesSearch(q, query) {
+      if (!query) return true;
+      const cleanQ = removeVietnameseTones(query);
+      
+      // Match question number like "55" or "cau 55"
+      if (q.id.toString() === cleanQ || cleanQ === 'cau ' + q.id || cleanQ === 'c' + q.id) {
+        return true;
+      }
+
+      // Match question text
+      const cleanText = removeVietnameseTones(q.question);
+      if (cleanText.includes(cleanQ)) return true;
+
+      // Match option text
+      for (const opt of q.options) {
+        if (removeVietnameseTones(opt.text).includes(cleanQ)) {
+          return true;
+        }
+      }
+
+      return false;
+    }
 
     // LocalStorage helper
     function loadSavedState() {
@@ -947,7 +1058,7 @@ html_content = """<!DOCTYPE html>
       return a;
     }
 
-    // Build question list for current mode
+    // Build question list for current mode and search
     function buildActiveQuestions() {
       let list = [...RAW_QUESTIONS];
       
@@ -959,7 +1070,12 @@ html_content = """<!DOCTYPE html>
         list = shuffleArray(list).slice(0, 20);
       }
 
-      if (isShuffled && currentMode !== 'quiz20' && currentMode !== 'study') {
+      // Filter by search query if any
+      if (searchQuery.trim()) {
+        list = list.filter(q => matchesSearch(q, searchQuery));
+      }
+
+      if (isShuffled && currentMode !== 'quiz20' && currentMode !== 'study' && !searchQuery.trim()) {
         list = shuffleArray(list);
       }
 
@@ -967,7 +1083,7 @@ html_content = """<!DOCTYPE html>
       currentIndex = 0;
     }
 
-    // Update Statistics
+    // Update Statistics & Search Bar UI
     function updateStats() {
       const totalRaw = RAW_QUESTIONS.length;
       let answeredCount = 0;
@@ -1000,11 +1116,25 @@ html_content = """<!DOCTYPE html>
         btnShuffle.classList.remove('active');
         btnShuffle.textContent = 'Xáo trộn: TẮT';
       }
+
+      // Search results badge & clear button
+      const searchInfo = document.getElementById('searchResultsInfo');
+      const btnClear = document.getElementById('btnClearSearch');
+      if (searchQuery.trim()) {
+        searchInfo.textContent = `Tìm thấy ${activeQuestions.length} câu`;
+        btnClear.style.display = 'flex';
+      } else {
+        searchInfo.textContent = '';
+        btnClear.style.display = 'none';
+      }
     }
 
     // Render Current Question
     function renderQuestion() {
-      if (currentMode === 'study') return;
+      if (currentMode === 'study') {
+        renderStudyView();
+        return;
+      }
 
       const quizView = document.getElementById('quizView');
       const studyView = document.getElementById('studyView');
@@ -1013,14 +1143,15 @@ html_content = """<!DOCTYPE html>
 
       if (activeQuestions.length === 0) {
         let emptyMsg = 'Hãy chọn mục khác để luyện tập.';
-        if (currentMode === 'wrong') emptyMsg = 'Bạn chưa có câu nào làm sai hoặc đã sửa hết.';
+        if (searchQuery.trim()) emptyMsg = `Không tìm thấy câu hỏi nào phù hợp với từ khóa "${searchQuery}".`;
+        else if (currentMode === 'wrong') emptyMsg = 'Bạn chưa có câu nào làm sai hoặc đã sửa hết.';
         else if (currentMode === 'starred') emptyMsg = 'Bạn chưa lưu câu hỏi nào.';
         
         quizView.innerHTML = `
           <div class="empty-state">
-            <h4>Không có câu hỏi trong mục này</h4>
+            <h4>Không có câu hỏi phù hợp</h4>
             <p style="margin-top: 6px; font-size: 0.85rem;">${emptyMsg}</p>
-            <button class="btn-nav btn-nav-primary" style="margin: 16px auto 0; max-width: 200px;" onclick="switchMode('all')">Về tất cả câu hỏi</button>
+            <button class="btn-nav btn-nav-primary" style="margin: 16px auto 0; max-width: 220px;" onclick="resetSearchAndMode()">Xem tất cả 109 câu</button>
           </div>
         `;
         return;
@@ -1142,7 +1273,24 @@ html_content = """<!DOCTYPE html>
       const listContainer = document.getElementById('studyList');
       listContainer.innerHTML = '';
 
-      RAW_QUESTIONS.forEach(q => {
+      let list = RAW_QUESTIONS;
+      if (searchQuery.trim()) {
+        list = list.filter(q => matchesSearch(q, searchQuery));
+      }
+
+      document.getElementById('studyTotalCount').textContent = `Hiển thị ${list.length} / ${RAW_QUESTIONS.length} câu`;
+
+      if (list.length === 0) {
+        listContainer.innerHTML = `
+          <div class="empty-state">
+            <h4>Không tìm thấy câu hỏi phù hợp</h4>
+            <p style="font-size: 0.85rem; margin-top: 4px;">Thử nhập từ khóa khác hoặc xóa ô tìm kiếm.</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach(q => {
         const item = document.createElement('div');
         item.className = 'study-item';
 
@@ -1164,6 +1312,12 @@ html_content = """<!DOCTYPE html>
       });
     }
 
+    function resetSearchAndMode() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      switchMode('all');
+    }
+
     // Switch Practice Mode
     function switchMode(mode) {
       currentMode = mode;
@@ -1178,6 +1332,7 @@ html_content = """<!DOCTYPE html>
         buildActiveQuestions();
         renderQuestion();
       }
+      updateStats();
     }
 
     // Question Grid Modal
@@ -1188,7 +1343,7 @@ html_content = """<!DOCTYPE html>
       activeQuestions.forEach((q, idx) => {
         const btn = document.createElement('button');
         btn.className = 'grid-btn';
-        btn.textContent = idx + 1;
+        btn.textContent = q.id;
 
         if (idx === currentIndex) btn.classList.add('current');
         if (starredQuestions.has(q.id)) btn.classList.add('starred');
@@ -1216,6 +1371,26 @@ html_content = """<!DOCTYPE html>
 
     // Setup Event Listeners
     function setupEvents() {
+      // Live Search Input
+      const searchInput = document.getElementById('searchInput');
+      const btnClearSearch = document.getElementById('btnClearSearch');
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        buildActiveQuestions();
+        updateStats();
+        renderQuestion();
+      });
+
+      btnClearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        buildActiveQuestions();
+        updateStats();
+        renderQuestion();
+        searchInput.focus();
+      });
+
       // Shuffle toggle
       document.getElementById('btnShuffle').addEventListener('click', () => {
         isShuffled = !isShuffled;
@@ -1281,6 +1456,14 @@ html_content = """<!DOCTYPE html>
 
       // Keyboard shortcuts
       window.addEventListener('keydown', (e) => {
+        // If user is typing in search input, don't trigger shortcuts
+        if (document.activeElement === searchInput) {
+          if (e.key === 'Escape') {
+            searchInput.blur();
+          }
+          return;
+        }
+
         if (document.getElementById('gridOverlay').classList.contains('open')) {
           if (e.key === 'Escape') closeGrid();
           return;
@@ -1336,4 +1519,4 @@ html_content = """<!DOCTYPE html>
 with open("/Users/trchuy24/Projects/ATD/index.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("Updated /Users/trchuy24/Projects/ATD/index.html with light theme, no icons, and mobile optimization!")
+print("Updated /Users/trchuy24/Projects/ATD/index.html with Smart Search Feature!")
