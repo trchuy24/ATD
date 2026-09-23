@@ -745,14 +745,6 @@ html_content = """<!DOCTYPE html>
       color: var(--success-text);
     }
 
-    .highlight-match {
-      background-color: #fef08a;
-      color: #854d0e;
-      padding: 1px 3px;
-      border-radius: 2px;
-      font-weight: 700;
-    }
-
     .empty-state {
       text-align: center;
       padding: 36px 16px;
@@ -889,7 +881,7 @@ html_content = """<!DOCTYPE html>
       <button class="tab-btn active" data-mode="all">Tất cả (109)</button>
       <button class="tab-btn" data-mode="wrong">Câu sai (<span id="countWrong">0</span>)</button>
       <button class="tab-btn" data-mode="starred">Đã lưu (<span id="countStarred">0</span>)</button>
-      <button class="tab-btn" data-mode="quiz20">Đề 20 câu</button>
+      <button class="tab-btn" data-mode="quiz40">Đề 40 câu</button>
       <button class="tab-btn" data-mode="study">Tra cứu</button>
     </div>
 
@@ -978,7 +970,7 @@ html_content = """<!DOCTYPE html>
 
   <script>
     // App State
-    let currentMode = 'all'; // all | wrong | starred | quiz20 | study
+    let currentMode = 'all'; // all | wrong | starred | quiz40 | study
     let isShuffled = true;
     let searchQuery = '';
     let activeQuestions = [];
@@ -1066,8 +1058,8 @@ html_content = """<!DOCTYPE html>
         list = list.filter(q => userAnswers[q.id] && !userAnswers[q.id].isCorrect);
       } else if (currentMode === 'starred') {
         list = list.filter(q => starredQuestions.has(q.id));
-      } else if (currentMode === 'quiz20') {
-        list = shuffleArray(list).slice(0, 20);
+      } else if (currentMode === 'quiz40') {
+        list = shuffleArray(list).slice(0, 40);
       }
 
       // Filter by search query if any
@@ -1075,7 +1067,7 @@ html_content = """<!DOCTYPE html>
         list = list.filter(q => matchesSearch(q, searchQuery));
       }
 
-      if (isShuffled && currentMode !== 'quiz20' && currentMode !== 'study' && !searchQuery.trim()) {
+      if (isShuffled && currentMode !== 'quiz40' && currentMode !== 'study' && !searchQuery.trim()) {
         list = shuffleArray(list);
       }
 
@@ -1456,7 +1448,6 @@ html_content = """<!DOCTYPE html>
 
       // Keyboard shortcuts
       window.addEventListener('keydown', (e) => {
-        // If user is typing in search input, don't trigger shortcuts
         if (document.activeElement === searchInput) {
           if (e.key === 'Escape') {
             searchInput.blur();
@@ -1519,4 +1510,4 @@ html_content = """<!DOCTYPE html>
 with open("/Users/trchuy24/Projects/ATD/index.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("Updated /Users/trchuy24/Projects/ATD/index.html with Smart Search Feature!")
+print("Updated to 40 questions quiz successfully!")
