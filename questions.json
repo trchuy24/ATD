@@ -78,7 +78,7 @@
       },
       {
         "label": "b",
-        "text": "Là người có trình độ an toàn bậc 5/5 của đơn vị trực tiếp quản lý vận hành các thiết bị điện và được giao nhiệm vụ cấp PCT theo quy định."
+        "text": "Là người có trình độ an toàn bậc $5/5$ của đơn vị trực tiếp quản lý vận hành các thiết bị điện và được giao nhiệm vụ cấp PCT theo quy định."
       },
       {
         "label": "c",
@@ -120,19 +120,19 @@
     "options": [
       {
         "label": "a",
-        "text": "5 mA"
+        "text": "$5\\text{ mA}$"
       },
       {
         "label": "b",
-        "text": "10 mA"
+        "text": "$10\\text{ mA}$"
       },
       {
         "label": "c",
-        "text": "15 mA"
+        "text": "$15\\text{ mA}$"
       },
       {
         "label": "d",
-        "text": "30 mA"
+        "text": "$30\\text{ mA}$"
       }
     ],
     "correctIndex": 1
@@ -185,46 +185,46 @@
   },
   {
     "id": 9,
-    "question": "Khoảng cách để bảo đảm an toàn cho con người khi làm việc gần các vật mang điện có cấp điện áp lên đến 35 kV?",
+    "question": "Khoảng cách để bảo đảm an toàn cho con người khi làm việc gần các vật mang điện có cấp điện áp lên đến $35\\text{ kV}$?",
     "options": [
       {
         "label": "a",
-        "text": "0,7 mét"
+        "text": "$0{,}7\\text{ mét}$"
       },
       {
         "label": "b",
-        "text": "1,0 mét"
+        "text": "$1{,}0\\text{ mét}$"
       },
       {
         "label": "c",
-        "text": "1,5 mét"
+        "text": "$1{,}5\\text{ mét}$"
       },
       {
         "label": "d",
-        "text": "2,0 mét"
+        "text": "$2{,}0\\text{ mét}$"
       }
     ],
     "correctIndex": 1
   },
   {
     "id": 10,
-    "question": "Khoảng cách từ rào chắn đến vật mang điện có điện áp lên đến 35 kV không nhỏ hơn bao nhiêu?",
+    "question": "Khoảng cách từ rào chắn đến vật mang điện có điện áp lên đến $35\\text{ kV}$ không nhỏ hơn bao nhiêu?",
     "options": [
       {
         "label": "a",
-        "text": "0,35 mét"
+        "text": "$0{,}35\\text{ mét}$"
       },
       {
         "label": "b",
-        "text": "0,6 mét"
+        "text": "$0{,}6\\text{ mét}$"
       },
       {
         "label": "c",
-        "text": "1,0 mét"
+        "text": "$1{,}0\\text{ mét}$"
       },
       {
         "label": "d",
-        "text": "1,5 mét"
+        "text": "$1{,}5\\text{ mét}$"
       }
     ],
     "correctIndex": 1
@@ -281,19 +281,19 @@
     "options": [
       {
         "label": "a",
-        "text": "500 - 800 Ω"
+        "text": "$500 - 800\\ \\Omega$"
       },
       {
         "label": "b",
-        "text": "500 - 1000 Ω"
+        "text": "$500 - 1000\\ \\Omega$"
       },
       {
         "label": "c",
-        "text": "1500 - 2000 Ω"
+        "text": "$1500 - 2000\\ \\Omega$"
       },
       {
         "label": "d",
-        "text": "3000 - 4000 Ω"
+        "text": "$3000 - 4000\\ \\Omega$"
       }
     ],
     "correctIndex": 3
@@ -304,19 +304,19 @@
     "options": [
       {
         "label": "a",
-        "text": "500 - 800 Ω"
+        "text": "$500 - 800\\ \\Omega$"
       },
       {
         "label": "b",
-        "text": "500 - 1000 Ω"
+        "text": "$500 - 1000\\ \\Omega$"
       },
       {
         "label": "c",
-        "text": "1500 - 2000 Ω"
+        "text": "$1500 - 2000\\ \\Omega$"
       },
       {
         "label": "d",
-        "text": "3000 - 4000 Ω"
+        "text": "$3000 - 4000\\ \\Omega$"
       }
     ],
     "correctIndex": 2
@@ -327,19 +327,19 @@
     "options": [
       {
         "label": "a",
-        "text": "500 - 800 Ω"
+        "text": "$500 - 800\\ \\Omega$"
       },
       {
         "label": "b",
-        "text": "500 - 1000 Ω"
+        "text": "$500 - 1000\\ \\Omega$"
       },
       {
         "label": "c",
-        "text": "1500 - 2000 Ω"
+        "text": "$1500 - 2000\\ \\Omega$"
       },
       {
         "label": "d",
-        "text": "3000 - 4000 Ω"
+        "text": "$3000 - 4000\\ \\Omega$"
       }
     ],
     "correctIndex": 0
@@ -350,19 +350,19 @@
     "options": [
       {
         "label": "a",
-        "text": "8 mA"
+        "text": "$8\\text{ mA}$"
       },
       {
         "label": "b",
-        "text": "10 mA"
+        "text": "$10\\text{ mA}$"
       },
       {
         "label": "c",
-        "text": "20 mA"
+        "text": "$20\\text{ mA}$"
       },
       {
         "label": "d",
-        "text": "15 mA"
+        "text": "$15\\text{ mA}$"
       }
     ],
     "correctIndex": 1
@@ -373,19 +373,19 @@
     "options": [
       {
         "label": "a",
-        "text": "≤ 12 V"
+        "text": "$\\le 12\\text{ V}$"
       },
       {
         "label": "b",
-        "text": "≤ 36 V"
+        "text": "$\\le 36\\text{ V}$"
       },
       {
         "label": "c",
-        "text": "≤ 65 V"
+        "text": "$\\le 65\\text{ V}$"
       },
       {
         "label": "d",
-        "text": "≤ 48 V"
+        "text": "$\\le 48\\text{ V}$"
       }
     ],
     "correctIndex": 0
@@ -396,19 +396,19 @@
     "options": [
       {
         "label": "a",
-        "text": "≤ 12 V"
+        "text": "$\\le 12\\text{ V}$"
       },
       {
         "label": "b",
-        "text": "≤ 36 V"
+        "text": "$\\le 36\\text{ V}$"
       },
       {
         "label": "c",
-        "text": "≤ 65 V"
+        "text": "$\\le 65\\text{ V}$"
       },
       {
         "label": "d",
-        "text": "≤ 48 V"
+        "text": "$\\le 48\\text{ V}$"
       }
     ],
     "correctIndex": 1
@@ -419,26 +419,26 @@
     "options": [
       {
         "label": "a",
-        "text": "≤ 12 V"
+        "text": "$\\le 12\\text{ V}$"
       },
       {
         "label": "b",
-        "text": "≤ 36 V"
+        "text": "$\\le 36\\text{ V}$"
       },
       {
         "label": "c",
-        "text": "≤ 65 V"
+        "text": "$\\le 65\\text{ V}$"
       },
       {
         "label": "d",
-        "text": "≤ 48 V"
+        "text": "$\\le 48\\text{ V}$"
       }
     ],
     "correctIndex": 2
   },
   {
     "id": 20,
-    "question": "Biện pháp nào tách nạn nhân ra khỏi nguồn điện trong trường hợp không cắt được nguồn điện 230 - 400 V?",
+    "question": "Biện pháp nào tách nạn nhân ra khỏi nguồn điện trong trường hợp không cắt được nguồn điện $230 - 400\\text{ V}$?",
     "options": [
       {
         "label": "a",
@@ -461,7 +461,7 @@
   },
   {
     "id": 21,
-    "question": "Biện pháp nào tách nạn nhân ra khỏi nguồn điện trong trường hợp không cắt được nguồn điện 22 kV?",
+    "question": "Biện pháp nào tách nạn nhân ra khỏi nguồn điện trong trường hợp không cắt được nguồn điện $22\\text{ kV}$?",
     "options": [
       {
         "label": "a",
@@ -553,7 +553,7 @@
   },
   {
     "id": 25,
-    "question": "Khi tiến hành chặt, cắt, tỉa cây có độ cao trên 3 m, người lao động cần đảm bảo:",
+    "question": "Khi tiến hành chặt, cắt, tỉa cây có độ cao trên $3\\text{ m}$, người lao động cần đảm bảo:",
     "options": [
       {
         "label": "a",
@@ -580,7 +580,7 @@
     "options": [
       {
         "label": "a",
-        "text": "Nhân viên có bậc an toàn điện 4/5 trở lên."
+        "text": "Nhân viên có bậc an toàn điện $4/5$ trở lên."
       },
       {
         "label": "b",
@@ -592,7 +592,7 @@
       },
       {
         "label": "d",
-        "text": "Nhân viên có bậc an toàn điện 5/5"
+        "text": "Nhân viên có bậc an toàn điện $5/5$"
       }
     ],
     "correctIndex": 3
@@ -718,19 +718,19 @@
     "options": [
       {
         "label": "a",
-        "text": "500 Hz"
+        "text": "$500\\text{ Hz}$"
       },
       {
         "label": "b",
-        "text": "50 Hz"
+        "text": "$50\\text{ Hz}$"
       },
       {
         "label": "c",
-        "text": "5 Hz"
+        "text": "$5\\text{ Hz}$"
       },
       {
         "label": "d",
-        "text": "1000 Hz"
+        "text": "$1000\\text{ Hz}$"
       }
     ],
     "correctIndex": 1
@@ -810,19 +810,19 @@
     "options": [
       {
         "label": "a",
-        "text": "10 m"
+        "text": "$10\\text{ m}$"
       },
       {
         "label": "b",
-        "text": "15 m"
+        "text": "$15\\text{ m}$"
       },
       {
         "label": "c",
-        "text": "20 m"
+        "text": "$20\\text{ m}$"
       },
       {
         "label": "d",
-        "text": "5 m"
+        "text": "$5\\text{ m}$"
       }
     ],
     "correctIndex": 2
@@ -856,19 +856,19 @@
     "options": [
       {
         "label": "a",
-        "text": "Lớn hơn 20 Ω"
+        "text": "Lớn hơn $20\\ \\Omega$"
       },
       {
         "label": "b",
-        "text": "Lớn hơn 15 Ω"
+        "text": "Lớn hơn $15\\ \\Omega$"
       },
       {
         "label": "c",
-        "text": "Nhỏ hơn hoặc bằng 4 Ω"
+        "text": "Nhỏ hơn hoặc bằng $4\\ \\Omega$"
       },
       {
         "label": "d",
-        "text": "Lớn hơn 30 Ω"
+        "text": "Lớn hơn $30\\ \\Omega$"
       }
     ],
     "correctIndex": 2
@@ -1197,19 +1197,19 @@
     "options": [
       {
         "label": "a",
-        "text": "8 - 10 lần/phút"
+        "text": "$8 - 10\\text{ lần/phút}$"
       },
       {
         "label": "b",
-        "text": "12 - 14 lần/phút"
+        "text": "$12 - 14\\text{ lần/phút}$"
       },
       {
         "label": "c",
-        "text": "14 - 16 lần/phút"
+        "text": "$14 - 16\\text{ lần/phút}$"
       },
       {
         "label": "d",
-        "text": "15 - 20 lần/phút"
+        "text": "$15 - 20\\text{ lần/phút}$"
       }
     ],
     "correctIndex": 1
@@ -1220,19 +1220,19 @@
     "options": [
       {
         "label": "a",
-        "text": "40 lần/phút"
+        "text": "$40\\text{ lần/phút}$"
       },
       {
         "label": "b",
-        "text": "70 lần/phút"
+        "text": "$70\\text{ lần/phút}$"
       },
       {
         "label": "c",
-        "text": "100 đến 120 lần/phút"
+        "text": "$100\\text{ đến } 120\\text{ lần/phút}$"
       },
       {
         "label": "d",
-        "text": "0 lần/phút"
+        "text": "$0\\text{ lần/phút}$"
       }
     ],
     "correctIndex": 2
@@ -1377,19 +1377,19 @@
     "options": [
       {
         "label": "a",
-        "text": "Một người bậc 2/5, một người bậc 1/5."
+        "text": "Một người bậc $2/5$, một người bậc $1/5$."
       },
       {
         "label": "b",
-        "text": "Một người bậc 3/5, một người bậc 2/5."
+        "text": "Một người bậc $3/5$, một người bậc $2/5$."
       },
       {
         "label": "c",
-        "text": "Một người bậc 4/5, người còn lại ít nhất bậc 3/5."
+        "text": "Một người bậc $4/5$, người còn lại ít nhất bậc $3/5$."
       },
       {
         "label": "d",
-        "text": "Cả hai người đều phải bậc 5/5."
+        "text": "Cả hai người đều phải bậc $5/5$."
       }
     ],
     "correctIndex": 2
@@ -1423,19 +1423,19 @@
     "options": [
       {
         "label": "a",
-        "text": "20 mA"
+        "text": "$20\\text{ mA}$"
       },
       {
         "label": "b",
-        "text": "50 mA"
+        "text": "$50\\text{ mA}$"
       },
       {
         "label": "c",
-        "text": "10 mA"
+        "text": "$10\\text{ mA}$"
       },
       {
         "label": "d",
-        "text": "5 mA"
+        "text": "$5\\text{ mA}$"
       }
     ],
     "correctIndex": 2
@@ -1446,19 +1446,19 @@
     "options": [
       {
         "label": "a",
-        "text": "20 mA"
+        "text": "$20\\text{ mA}$"
       },
       {
         "label": "b",
-        "text": "50 mA"
+        "text": "$50\\text{ mA}$"
       },
       {
         "label": "c",
-        "text": "10 mA"
+        "text": "$10\\text{ mA}$"
       },
       {
         "label": "d",
-        "text": "5 mA"
+        "text": "$5\\text{ mA}$"
       }
     ],
     "correctIndex": 1
@@ -1630,19 +1630,19 @@
     "options": [
       {
         "label": "a",
-        "text": "Bậc 2/5."
+        "text": "Bậc $2/5$."
       },
       {
         "label": "b",
-        "text": "Bậc 3/5."
+        "text": "Bậc $3/5$."
       },
       {
         "label": "c",
-        "text": "Bậc 4/5."
+        "text": "Bậc $4/5$."
       },
       {
         "label": "d",
-        "text": "Bậc 5/5."
+        "text": "Bậc $5/5$."
       }
     ],
     "correctIndex": 2
@@ -1676,19 +1676,19 @@
     "options": [
       {
         "label": "a",
-        "text": "Bậc 2/5."
+        "text": "Bậc $2/5$."
       },
       {
         "label": "b",
-        "text": "Bậc 3/5."
+        "text": "Bậc $3/5$."
       },
       {
         "label": "c",
-        "text": "Bậc 4/5."
+        "text": "Bậc $4/5$."
       },
       {
         "label": "d",
-        "text": "Bậc 5/5."
+        "text": "Bậc $5/5$."
       }
     ],
     "correctIndex": 3
@@ -2155,7 +2155,7 @@
   },
   {
     "id": 95,
-    "question": "Người có thẻ an toàn điện bậc 3/5 được phép thực hiện những công việc nào sau đây?",
+    "question": "Người có thẻ an toàn điện bậc $3/5$ được phép thực hiện những công việc nào sau đây?",
     "options": [
       {
         "label": "a",
@@ -2477,7 +2477,7 @@
   },
   {
     "id": 109,
-    "question": "Để đạt được thẻ an toàn điện bậc 1/5, người lao động cần có những yêu cầu nào?",
+    "question": "Để đạt được thẻ an toàn điện bậc $1/5$, người lao động cần có những yêu cầu nào?",
     "options": [
       {
         "label": "a",
