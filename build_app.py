@@ -180,6 +180,48 @@ def build_all():
             json.dump(questions, jf, ensure_ascii=False, indent=2)
         print(f"-> {title} ({len(questions)} câu) => {json_filename}")
 
+    # Process extra JSON files
+    extra_json_files = ["questions_cns_thongtin.json"]
+    for jf_name in extra_json_files:
+        jf_path = os.path.join(BASE_DIR, jf_name)
+        if os.path.exists(jf_path):
+            with open(jf_path, "r", encoding="utf-8") as jf:
+                raw_data = json.load(jf)
+            
+            slug = jf_name.replace("questions_", "").replace(".json", "")
+            title = "CNS - Thông tin"
+            
+            questions = []
+            for item in raw_data:
+                options = []
+                c_idx = -1
+                idx = 0
+                for lbl, txt in item.get("cac_lua_chon", {}).items():
+                    options.append({"label": lbl, "text": txt})
+                    if lbl == item.get("dap_an"):
+                        c_idx = idx
+                    idx += 1
+                
+                questions.append({
+                    "id": item.get("cau_so", 0),
+                    "question": item.get("cau_hoi", ""),
+                    "options": options,
+                    "correctIndex": c_idx,
+                    "explanation": item.get("giai_thich", "")
+                })
+
+            icon = pick_icon(title)
+            subtitle = f"Ngân hàng {len(questions)} câu hỏi"
+            
+            subjects_data[slug] = {
+                "id": slug,
+                "title": title,
+                "subtitle": subtitle,
+                "icon": icon,
+                "questions": questions
+            }
+            print(f"-> {title} ({len(questions)} câu) => từ {jf_name}")
+
     subjects_json_str = json.dumps(subjects_data, ensure_ascii=False)
 
     html_template = """<!DOCTYPE html>
@@ -557,10 +599,26 @@ def build_all():
       border: none;
       color: var(--text-light);
       font-size: 0.78rem;
+      text-decoration: underline;
       cursor: pointer;
-      padding: 2px 6px;
-      border-radius: 4px;
       display: none;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
+    .q-explanation {
+      margin-top: 12px;
+      padding: 12px;
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      border-radius: 4px;
+      font-size: 0.92rem;
+      color: #166534;
+      display: none;
+      line-height: 1.5;
+    }
+    .q-explanation.show {
+      display: block;
     }
 
     .btn-reset-single-q:hover {
@@ -1538,6 +1596,18 @@ def build_all():
         });
 
         card.appendChild(optsContainer);
+
+        if (q.explanation) {
+          const expDiv = document.createElement('div');
+          expDiv.className = 'q-explanation';
+          expDiv.id = 'exp_' + q.id;
+          expDiv.innerHTML = `<strong>Giải thích:</strong> ${q.explanation}`;
+          if (isAnswered) {
+            expDiv.classList.add('show');
+          }
+          card.appendChild(expDiv);
+        }
+
         container.appendChild(card);
       });
     }
@@ -1573,6 +1643,11 @@ def build_all():
             optDiv.classList.add('reveal-correct');
           }
         });
+
+        const expDiv = qCard.querySelector('#exp_' + q.id);
+        if (expDiv) {
+          expDiv.classList.add('show');
+        }
       }
 
       if (isExamMode) {
@@ -1599,6 +1674,11 @@ def build_all():
         optElements.forEach((optDiv) => {
           optDiv.className = 'option-item';
         });
+
+        const expDiv = qCard.querySelector('#exp_' + questionId);
+        if (expDiv) {
+          expDiv.classList.remove('show');
+        }
       }
     }
 
