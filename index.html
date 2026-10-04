@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Ôn Thi Trắc Nghiệm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1299,7 +1301,7 @@
       <div class="form-group" style="margin-top: 12px;">
         <label class="form-label" for="adminPinInput">Mã PIN bí mật:</label>
         <input type="password" id="adminPinInput" class="form-input" placeholder="" inputmode="numeric"
-          style="font-size: 1.1rem; text-align: center; letter-spacing: 4px;">
+          style="font-size: 1.1rem; text-align: center; letter-spacing: 4px;" onkeydown="if(event.key==='Enter') submitAdminPin()">
       </div>
       <div
         style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 0.85rem; color: var(--text-muted);">
@@ -1307,11 +1309,11 @@
         <label for="rememberPinCheckbox" style="cursor: pointer;">Ghi nhớ trên thiết bị này</label>
       </div>
       <div id="pinErrorMsg"
-        style="color: var(--danger-text); font-size: 0.82rem; margin-bottom: 10px; display: none; font-weight: 600;">
+        style="color: var(--danger-text); font-size: 0.82rem; margin-bottom: 10px; display: none; font-weight: 600; line-height: 1.4;">
       </div>
       <div class="modal-actions">
         <button class="modal-btn modal-btn-cancel" onclick="closeAdminPinModal()">Hủy</button>
-        <button class="modal-btn modal-btn-primary" onclick="submitAdminPin()">Xác nhận</button>
+        <button class="modal-btn modal-btn-primary" id="btnAdminPinSubmit" onclick="submitAdminPin()">Xác nhận</button>
       </div>
     </div>
   </div>
@@ -1341,22 +1343,6 @@
           <input type="text" id="newSubTitle" class="form-input" oninput="validateUploadForm()">
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Biểu tượng (Icon):</label>
-          <div style="display: flex; gap: 8px; align-items: center;">
-            <input type="text" id="newSubIcon" class="form-input" value="📚"
-              style="width: 60px; text-align: center; font-size: 1.2rem;">
-            <div class="emoji-row" style="margin-top: 0;">
-              <button type="button" class="emoji-pick-btn" onclick="setSubEmoji('⚡')">⚡</button>
-              <button type="button" class="emoji-pick-btn" onclick="setSubEmoji('✈️')">✈️</button>
-              <button type="button" class="emoji-pick-btn" onclick="setSubEmoji('📚')">📚</button>
-              <button type="button" class="emoji-pick-btn" onclick="setSubEmoji('💻')">💻</button>
-              <button type="button" class="emoji-pick-btn" onclick="setSubEmoji('📡')">📡</button>
-              <button type="button" class="emoji-pick-btn" onclick="setSubEmoji('🔬')">🔬</button>
-              <button type="button" class="emoji-pick-btn" onclick="setSubEmoji('🛡️')">🛡️</button>
-            </div>
-          </div>
-        </div>
 
         <div class="form-group">
           <label class="form-label">Chọn File dữ liệu câu hỏi (.JSON): <span style="color:red">*</span></label>
@@ -1495,27 +1481,6 @@
         <input type="text" id="editSubjectTitleInput" class="form-input" placeholder="Ví dụ: An Toàn Điện Nâng Cao">
       </div>
 
-      <div class="form-group">
-        <label class="form-label" for="editSubjectIconInput">Biểu tượng (Icon / Emoji):</label>
-        <div style="display: flex; gap: 8px; align-items: center;">
-          <input type="text" id="editSubjectIconInput" class="form-input"
-            style="max-width: 70px; text-align: center; font-size: 1.3rem;">
-          <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-            <button type="button" class="btn-mini-action"
-              onclick="document.getElementById('editSubjectIconInput').value='⚡'">⚡</button>
-            <button type="button" class="btn-mini-action"
-              onclick="document.getElementById('editSubjectIconInput').value='💻'">💻</button>
-            <button type="button" class="btn-mini-action"
-              onclick="document.getElementById('editSubjectIconInput').value='📚'">📚</button>
-            <button type="button" class="btn-mini-action"
-              onclick="document.getElementById('editSubjectIconInput').value='⚖️'">⚖️</button>
-            <button type="button" class="btn-mini-action"
-              onclick="document.getElementById('editSubjectIconInput').value='🛠️'">🛠️</button>
-            <button type="button" class="btn-mini-action"
-              onclick="document.getElementById('editSubjectIconInput').value='🎯'">🎯</button>
-          </div>
-        </div>
-      </div>
 
       <div class="modal-actions" style="margin-top: 14px;">
         <button class="modal-btn modal-btn-cancel" onclick="closeEditSubjectModal()">Hủy</button>
@@ -1585,6 +1550,7 @@
       container.innerHTML = '';
 
       const visibleList = Object.values(ALL_SUBJECTS).filter(sub => !sub.hidden);
+      visibleList.sort((a, b) => (Number(a.order ?? 999)) - (Number(b.order ?? 999)));
 
       if (visibleList.length === 0) {
         container.innerHTML = `
@@ -1604,7 +1570,6 @@
 
         card.innerHTML = `
           <div class="subject-info">
-            <div class="subject-icon">${sub.icon || '📚'}</div>
             <div class="subject-text">
               <h2>${escapeHtml(sub.title)}</h2>
               <p>${escapeHtml(sub.subtitle || ((sub.questions ? sub.questions.length : 0) + ' câu hỏi'))}</p>
@@ -2278,31 +2243,146 @@
       return !!getAdminPin();
     }
 
+    let indexLockoutTimer = null;
+
+    function getIndexLockoutUntil() {
+      const stored = localStorage.getItem('admin_pin_lockout_until');
+      if (!stored) return 0;
+      const num = parseInt(stored, 10);
+      return isNaN(num) ? 0 : num;
+    }
+
+    function setIndexLockout(durationSeconds) {
+      const until = Date.now() + (durationSeconds || 120) * 1000;
+      localStorage.setItem('admin_pin_lockout_until', until.toString());
+      checkIndexLockoutState();
+    }
+
+    function clearIndexLockout() {
+      localStorage.removeItem('admin_pin_lockout_until');
+      localStorage.removeItem('admin_pin_fail_count');
+      if (indexLockoutTimer) {
+        clearInterval(indexLockoutTimer);
+        indexLockoutTimer = null;
+      }
+      const pinInput = document.getElementById('adminPinInput');
+      const btnSubmit = document.getElementById('btnAdminPinSubmit');
+      const errBox = document.getElementById('pinErrorMsg');
+      if (pinInput) {
+        pinInput.disabled = false;
+        pinInput.placeholder = '';
+      }
+      if (btnSubmit) {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Xác nhận';
+      }
+      if (errBox) {
+        errBox.style.display = 'none';
+      }
+    }
+
+    function checkIndexLockoutState() {
+      const until = getIndexLockoutUntil();
+      const now = Date.now();
+      const pinInput = document.getElementById('adminPinInput');
+      const btnSubmit = document.getElementById('btnAdminPinSubmit');
+      const errBox = document.getElementById('pinErrorMsg');
+
+      if (until > now) {
+        if (pinInput) {
+          pinInput.disabled = true;
+          pinInput.value = '';
+          pinInput.placeholder = 'Đang tạm khóa...';
+        }
+        if (btnSubmit) {
+          btnSubmit.disabled = true;
+        }
+
+        const updateTimer = () => {
+          const rem = Math.max(0, Math.ceil((until - Date.now()) / 1000));
+          if (rem <= 0) {
+            clearIndexLockout();
+            if (errBox) {
+              errBox.textContent = 'Đã hết thời gian khóa. Bạn có thể nhập lại mã PIN.';
+              errBox.style.color = 'var(--success)';
+              errBox.style.display = 'block';
+            }
+            if (pinInput) pinInput.focus();
+            return;
+          }
+          const m = Math.floor(rem / 60);
+          const s = rem % 60;
+          const timeText = `${m}:${s < 10 ? '0' : ''}${s}`;
+          if (errBox) {
+            errBox.innerHTML = `🔒 <strong>Đã nhập sai 3 lần liên tiếp!</strong><br>Hệ thống tạm khóa 2 phút.<br>Thử lại sau: <span style="font-size: 1.15rem; font-weight: 700; color: #dc2626;">${timeText}</span>`;
+            errBox.style.color = 'var(--danger-text)';
+            errBox.style.display = 'block';
+          }
+          if (btnSubmit) {
+            btnSubmit.textContent = `Tạm khóa (${timeText})`;
+          }
+        };
+
+        updateTimer();
+        if (!indexLockoutTimer) {
+          indexLockoutTimer = setInterval(updateTimer, 1000);
+        }
+        return true;
+      } else {
+        if (indexLockoutTimer) {
+          clearInterval(indexLockoutTimer);
+          indexLockoutTimer = null;
+        }
+        if (pinInput && pinInput.disabled) {
+          pinInput.disabled = false;
+          pinInput.placeholder = '';
+        }
+        if (btnSubmit && btnSubmit.disabled) {
+          btnSubmit.disabled = false;
+          btnSubmit.textContent = 'Xác nhận';
+        }
+        return false;
+      }
+    }
+
     function openAdminModal() {
       if (isAdminLoggedIn()) {
         openBankManageModal();
       } else {
         document.getElementById('adminPinInput').value = '';
-        document.getElementById('pinErrorMsg').style.display = 'none';
         const modal = document.getElementById('adminPinModal');
         modal.classList.add('open', 'active');
-        setTimeout(() => document.getElementById('adminPinInput').focus(), 150);
+        const isLocked = checkIndexLockoutState();
+        if (!isLocked) {
+          setTimeout(() => document.getElementById('adminPinInput').focus(), 150);
+        }
       }
     }
 
     function closeAdminPinModal() {
       const modal = document.getElementById('adminPinModal');
       modal.classList.remove('open', 'active');
+      if (indexLockoutTimer) {
+        clearInterval(indexLockoutTimer);
+        indexLockoutTimer = null;
+      }
     }
 
     async function submitAdminPin() {
-      const pin = document.getElementById('adminPinInput').value.trim();
+      if (checkIndexLockoutState()) return;
+
+      const pinInput = document.getElementById('adminPinInput');
+      const pin = pinInput.value.trim();
       const errBox = document.getElementById('pinErrorMsg');
       if (!pin) {
         errBox.textContent = 'Vui lòng nhập mã PIN';
+        errBox.style.color = 'var(--danger-text)';
         errBox.style.display = 'block';
         return;
       }
+
+      const btnSubmit = document.getElementById('btnAdminPinSubmit');
+      if (btnSubmit) btnSubmit.disabled = true;
 
       try {
         const res = await fetch(API_BASE + '/api/manage?action=verify-pin', {
@@ -2311,26 +2391,58 @@
           body: JSON.stringify({ adminPin: pin })
         });
         const data = await res.json();
+
+        // 429: Locked out
+        if (res.status === 429 || data.locked) {
+          const remSec = data.remainingSeconds || 120;
+          setIndexLockout(remSec);
+          return;
+        }
+
         if (res.ok && data.success) {
+          clearIndexLockout();
           const remember = document.getElementById('rememberPinCheckbox').checked;
           setAdminPin(pin, remember);
           closeAdminPinModal();
           renderQuestionsList();
           openBankManageModal();
         } else {
-          errBox.textContent = data.error || 'Mã PIN không đúng!';
-          errBox.style.display = 'block';
+          let currentFails = parseInt(localStorage.getItem('admin_pin_fail_count') || '0', 10) + 1;
+          localStorage.setItem('admin_pin_fail_count', currentFails.toString());
+
+          if (currentFails >= 3) {
+            setIndexLockout(120);
+          } else {
+            const left = 3 - currentFails;
+            errBox.innerHTML = `Mã PIN không chính xác. Bạn còn <strong>${left}</strong> lần thử trước khi bị khóa 2 phút.`;
+            errBox.style.color = 'var(--danger-text)';
+            errBox.style.display = 'block';
+            if (btnSubmit) btnSubmit.disabled = false;
+            pinInput.focus();
+            pinInput.select();
+          }
         }
       } catch (err) {
         if (pin === '241199') {
+          clearIndexLockout();
           const remember = document.getElementById('rememberPinCheckbox').checked;
           setAdminPin(pin, remember);
           closeAdminPinModal();
           renderQuestionsList();
           openBankManageModal();
         } else {
-          errBox.textContent = 'Lỗi kết nối API: ' + err.message;
-          errBox.style.display = 'block';
+          let currentFails = parseInt(localStorage.getItem('admin_pin_fail_count') || '0', 10) + 1;
+          localStorage.setItem('admin_pin_fail_count', currentFails.toString());
+
+          if (currentFails >= 3) {
+            setIndexLockout(120);
+          } else {
+            const left = 3 - currentFails;
+            errBox.innerHTML = `Mã PIN không chính xác. Bạn còn <strong>${left}</strong> lần thử trước khi bị khóa 2 phút.`;
+            errBox.style.color = 'var(--danger-text)';
+            errBox.style.display = 'block';
+            if (btnSubmit) btnSubmit.disabled = false;
+          }
         }
       }
     }
@@ -2790,11 +2902,14 @@
       const prevVal = select.value;
       select.innerHTML = '';
 
-      Object.values(ALL_SUBJECTS).forEach(sub => {
+      const list = Object.values(ALL_SUBJECTS);
+      list.sort((a, b) => (Number(a.order ?? 999)) - (Number(b.order ?? 999)));
+
+      list.forEach(sub => {
         const opt = document.createElement('option');
         opt.value = sub.id;
-        const hiddenTag = sub.hidden ? ' 🙈 [Đang ẩn]' : '';
-        opt.textContent = `${sub.icon || '📚'} ${sub.title}${hiddenTag} (${sub.questions ? sub.questions.length : 0} câu)`;
+        const hiddenTag = sub.hidden ? ' [Đang ẩn]' : '';
+        opt.textContent = `${sub.title}${hiddenTag} (${sub.questions ? sub.questions.length : 0} câu)`;
         if (prevVal ? sub.id === prevVal : (currentSubjectKey && sub.id === currentSubjectKey)) {
           opt.selected = true;
         }
@@ -2836,10 +2951,13 @@
 
       document.getElementById('editSubjectTargetId').value = sub.id;
       document.getElementById('editSubjectTitleInput').value = sub.title;
-      document.getElementById('editSubjectIconInput').value = sub.icon || '📚';
 
       const modal = document.getElementById('editSubjectModal');
       modal.classList.add('open', 'active');
+      setTimeout(() => {
+        const inp = document.getElementById('editSubjectTitleInput');
+        if (inp) { inp.focus(); inp.select(); }
+      }, 150);
     }
 
     function closeEditSubjectModal() {
@@ -2850,7 +2968,6 @@
     async function submitEditSubjectInfo() {
       const subId = document.getElementById('editSubjectTargetId').value;
       const newTitle = document.getElementById('editSubjectTitleInput').value.trim();
-      const newIcon = document.getElementById('editSubjectIconInput').value.trim() || '📚';
       const pin = getAdminPin();
 
       if (!newTitle) {
@@ -2866,7 +2983,7 @@
         const res = await fetch(`${API_BASE}/api/manage?action=update-subject`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
-          body: JSON.stringify({ subjectId: subId, title: newTitle, icon: newIcon })
+          body: JSON.stringify({ subjectId: subId, title: newTitle })
         });
         const data = await res.json();
         if (res.ok && data.success) {
@@ -2882,7 +2999,6 @@
       // Update local state
       if (ALL_SUBJECTS[subId]) {
         ALL_SUBJECTS[subId].title = newTitle;
-        ALL_SUBJECTS[subId].icon = newIcon;
       }
       let customMap = {};
       try {
@@ -2891,13 +3007,13 @@
       } catch (e) { }
       if (customMap[subId]) {
         customMap[subId].title = newTitle;
-        customMap[subId].icon = newIcon;
         saveCustomSubjects(customMap);
       }
 
+      closeEditSubjectModal();
       renderMenuScreen();
       populateManageSubjectSelect();
-      closeEditSubjectModal();
+      syncSubjectsFromApi();
     }
 
     async function toggleHideCurrentSubject() {
@@ -3266,18 +3382,61 @@
     // Synchronize subjects from MongoDB API
     async function syncSubjectsFromApi() {
       try {
-        const res = await fetch(API_BASE + '/api/subjects');
+        const res = await fetch(API_BASE + '/api/subjects?t=' + Date.now(), {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache'
+          }
+        });
         if (res.ok) {
           const apiSubs = await res.json();
-          if (apiSubs && typeof apiSubs === 'object' && Object.keys(apiSubs).length > 0) {
+          if (apiSubs && typeof apiSubs === 'object') {
             ALL_SUBJECTS = { ...BUILTIN_SUBJECTS, ...apiSubs };
+            try {
+              localStorage.setItem('custom_subjects', JSON.stringify(apiSubs));
+            } catch (e) {
+              try {
+                const slim = {};
+                for (const k in apiSubs) {
+                  slim[k] = { ...apiSubs[k], questions: [] };
+                }
+                localStorage.setItem('custom_subjects', JSON.stringify(slim));
+              } catch (e2) {}
+            }
             renderMenuScreen();
+            populateManageSubjectSelect();
           }
         }
       } catch (e) {
-        console.log('Chưa kết nối API, sử dụng dữ liệu offline.');
+        console.log('Chưa kết nối API, sử dữ liệu offline.');
       }
     }
+
+    // Lifecycle handlers to eliminate cache and stale state
+    window.addEventListener('pageshow', (event) => {
+      loadCustomSubjects();
+      renderMenuScreen();
+      syncSubjectsFromApi();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        syncSubjectsFromApi();
+      }
+    });
+
+    window.addEventListener('focus', () => {
+      syncSubjectsFromApi();
+    });
+
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'custom_subjects' || e.key === 'subjects_sync_signal') {
+        loadCustomSubjects();
+        renderMenuScreen();
+        syncSubjectsFromApi();
+      }
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
       loadCustomSubjects();

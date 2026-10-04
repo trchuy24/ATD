@@ -16,10 +16,15 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Security: Security headers
+  // Security & Cache headers
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Surrogate-Control', 'no-store');
+  res.setHeader('CDN-Cache-Control', 'no-store');
+  res.setHeader('Vercel-CDN-Cache-Control', 'no-store');
 
   try {
     const db = await getDb();
@@ -38,10 +43,10 @@ module.exports = async function handler(req, res) {
       return res.status(200).json(subject);
     }
 
-    // Retrieve all subjects sorted by order
+    // Retrieve all subjects sorted by order (default fallback to 999)
     const list = await subjectsColl
       .find({}, { projection: { _id: 0 } })
-      .sort({ order: 1 })
+      .sort({ order: 1, _id: 1 })
       .toArray();
 
     // Map into dictionary indexed by subject id

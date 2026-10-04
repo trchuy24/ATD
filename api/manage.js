@@ -1,29 +1,62 @@
 const { getDb } = require('../lib/mongodb');
 
-// Simple in-memory rate limiting for brute-force protection
+// In-memory rate limiting for brute-force protection: max 3 failed attempts, 2-minute lockout
+const MAX_FAILED_ATTEMPTS = 3;
+const LOCKOUT_MS = 2 * 60 * 1000; // 2 minutes (120,000 ms)
 const failedAttempts = new Map();
 
-function checkRateLimit(ip) {
+function getRateLimitStatus(ip) {
   const now = Date.now();
   const record = failedAttempts.get(ip);
-  if (!record) return true;
-  if (now > record.resetTime) {
-    failedAttempts.delete(ip);
-    return true;
+  if (!record) {
+    return { locked: false, attemptsLeft: MAX_FAILED_ATTEMPTS, remainingSeconds: 0 };
   }
-  return record.count < 10; // max 10 failed attempts per 15 mins
+
+  // Active lockout check
+  if (record.lockoutUntil && now < record.lockoutUntil) {
+    const remainingSeconds = Math.ceil((record.lockoutUntil - now) / 1000);
+    return { locked: true, attemptsLeft: 0, remainingSeconds };
+  }
+
+  // If lockout has elapsed, reset counter
+  if (record.lockoutUntil && now >= record.lockoutUntil) {
+    failedAttempts.delete(ip);
+    return { locked: false, attemptsLeft: MAX_FAILED_ATTEMPTS, remainingSeconds: 0 };
+  }
+
+  // Auto-expire attempts after 10 minutes of inactivity
+  if (now - record.lastAttempt > 10 * 60 * 1000) {
+    failedAttempts.delete(ip);
+    return { locked: false, attemptsLeft: MAX_FAILED_ATTEMPTS, remainingSeconds: 0 };
+  }
+
+  const attemptsLeft = Math.max(0, MAX_FAILED_ATTEMPTS - record.count);
+  return { locked: false, attemptsLeft, remainingSeconds: 0 };
 }
 
 function recordFailedAttempt(ip) {
   const now = Date.now();
-  const record = failedAttempts.get(ip) || { count: 0, resetTime: now + 15 * 60 * 1000 };
-  record.count += 1;
+  let record = failedAttempts.get(ip);
+  if (!record || (record.lockoutUntil && now >= record.lockoutUntil)) {
+    record = { count: 0, lockoutUntil: 0, lastAttempt: now };
+  }
+  record.count = (record.count || 0) + 1;
+  record.lastAttempt = now;
+
+  if (record.count >= MAX_FAILED_ATTEMPTS) {
+    record.lockoutUntil = now + LOCKOUT_MS;
+    failedAttempts.set(ip, record);
+    return { locked: true, remainingSeconds: 120, attemptsLeft: 0 };
+  }
+
   failedAttempts.set(ip, record);
+  return { locked: false, remainingSeconds: 0, attemptsLeft: MAX_FAILED_ATTEMPTS - record.count };
 }
 
 function clearFailedAttempts(ip) {
   failedAttempts.delete(ip);
 }
+
 
 function normalizeQuestions(rawList) {
   if (!Array.isArray(rawList)) return [];
@@ -120,6 +153,12 @@ module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-admin-pin, Authorization');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Surrogate-Control', 'no-store');
+  res.setHeader('CDN-Cache-Control', 'no-store');
+  res.setHeader('Vercel-CDN-Cache-Control', 'no-store');
 
   if (req.method === 'OPTIONS') {
     res.statusCode = 204;
@@ -132,20 +171,45 @@ module.exports = async function handler(req, res) {
   }
 
   const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'local';
-  if (!checkRateLimit(clientIp)) {
-    return res.status(429).json({ error: 'Quá nhiều lần nhập sai mã PIN. Vui lòng thử lại sau 15 phút.' });
+  const limitStatus = getRateLimitStatus(clientIp);
+
+  if (limitStatus.locked) {
+    const mins = Math.floor(limitStatus.remainingSeconds / 60);
+    const secs = limitStatus.remainingSeconds % 60;
+    const timeStr = mins > 0 ? `${mins} phút ${secs < 10 ? '0' : ''}${secs} giây` : `${secs} giây`;
+    return res.status(429).json({
+      error: `Bạn đã nhập sai mã PIN quá 3 lần. Hệ thống tạm khóa trong ${timeStr}. Vui lòng thử lại sau.`,
+      locked: true,
+      remainingSeconds: limitStatus.remainingSeconds
+    });
   }
 
   const body = await parseBody(req);
   const action = req.query?.action || body.action;
+
+  // Endpoint to check lock status
+  if (action === 'check-lock') {
+    return res.status(200).json(limitStatus);
+  }
 
   // Verify PIN
   const adminPinEnv = process.env.ADMIN_PIN || '241199';
   const providedPin = req.headers['x-admin-pin'] || body.adminPin;
 
   if (!providedPin || String(providedPin).trim() !== String(adminPinEnv).trim()) {
-    recordFailedAttempt(clientIp);
-    return res.status(401).json({ error: 'Mã PIN quản trị không chính xác' });
+    const failInfo = recordFailedAttempt(clientIp);
+    if (failInfo.locked) {
+      return res.status(429).json({
+        error: 'Bạn đã nhập sai mã PIN 3 lần liên tiếp. Hệ thống đã tạm khóa 2 phút.',
+        locked: true,
+        remainingSeconds: failInfo.remainingSeconds
+      });
+    }
+    return res.status(401).json({
+      error: `Mã PIN không chính xác. Bạn còn ${failInfo.attemptsLeft} lần thử trước khi bị khóa 2 phút.`,
+      locked: false,
+      attemptsLeft: failInfo.attemptsLeft
+    });
   }
 
   clearFailedAttempts(clientIp);
@@ -384,6 +448,28 @@ module.exports = async function handler(req, res) {
         success: true,
         hidden: !!hidden,
         message: hidden ? 'Đã ẩn môn học khỏi màn hình chính' : 'Đã hiện môn học trên màn hình chính'
+      });
+    }
+
+    // ACTION 8: REORDER SUBJECTS
+    if (action === 'reorder-subjects') {
+      const { orders } = body;
+      if (!Array.isArray(orders)) {
+        return res.status(400).json({ error: 'Dữ liệu orders phải là một danh sách' });
+      }
+
+      for (const item of orders) {
+        if (item.id && typeof item.order === 'number') {
+          await subjectsColl.updateOne(
+            { id: item.id },
+            { $set: { order: item.order, updatedAt: new Date() } }
+          );
+        }
+      }
+
+      return res.status(200).json({
+        success: true,
+        message: 'Đã cập nhật thứ tự hiển thị môn học'
       });
     }
 

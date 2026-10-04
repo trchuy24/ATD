@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Quản Lý Ngân Hàng Đề</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -460,6 +463,102 @@
       text-align: center;
     }
 
+    /* REORDER LIST STYLES */
+    .reorder-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+      max-height: 52vh;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .reorder-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .reorder-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .reorder-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .reorder-num {
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: #e2e8f0;
+      color: var(--text-muted);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .reorder-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reorder-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .btn-move {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text-main);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .btn-move:active:not(:disabled) {
+      transform: scale(0.92);
+    }
+
+    .btn-move:hover:not(:disabled) {
+      background: #f8fafc;
+      border-color: var(--primary);
+    }
+
+    .btn-move:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
     /* MODAL OVERLAYS */
     .modal-overlay {
       position: fixed;
@@ -599,7 +698,7 @@
     <!-- TOP HEADER -->
     <header class="top-header">
       <div class="header-left">
-        <a href="index.html" class="btn-back">← Trang chủ</a>
+        <a href="index.html" class="btn-back" onclick="window.location.replace('index.html?t=' + Date.now()); return false;">← Trang chủ</a>
         <h1 class="header-title">Quản Lý Ngân Hàng Đề</h1>
       </div>
       <button id="btnLogout" class="btn-logout" onclick="logoutAdmin()" style="display: none;">Đăng xuất</button>
@@ -612,7 +711,7 @@
         <p>Nhập mã PIN để truy cập hệ thống quản lý câu hỏi</p>
         
         <div class="form-group">
-          <input type="password" id="pinInput" class="form-input" placeholder="Nhập mã PIN" inputmode="numeric" style="text-align: center; font-size: 1.2rem; letter-spacing: 4px;" autofocus>
+          <input type="password" id="pinInput" class="form-input" placeholder="Nhập mã PIN" inputmode="numeric" style="text-align: center; font-size: 1.2rem; letter-spacing: 4px;" autofocus onkeydown="if(event.key==='Enter') handlePinSubmit()">
         </div>
 
         <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; font-size: 0.84rem; color: var(--text-muted);">
@@ -620,9 +719,9 @@
           <label for="rememberPinCheckbox" style="cursor: pointer;">Ghi nhớ thiết bị này</label>
         </div>
 
-        <div id="pinError" style="display: none; color: var(--danger); font-size: 0.84rem; margin-bottom: 12px; font-weight: 600;"></div>
+        <div id="pinError" style="display: none; color: var(--danger); font-size: 0.84rem; margin-bottom: 12px; font-weight: 600; line-height: 1.4;"></div>
 
-        <button class="btn-primary" onclick="handlePinSubmit()">Xác Nhận</button>
+        <button id="btnPinSubmit" class="btn-primary" onclick="handlePinSubmit()">Xác Nhận</button>
       </div>
     </div>
 
@@ -645,6 +744,7 @@
           <!-- Subject Toolbars -->
           <div class="subject-toolbar">
             <button class="btn-secondary" onclick="openRenameModal()">Đổi tên</button>
+            <button class="btn-secondary" onclick="openReorderModal()">↕️ Sắp xếp</button>
             <button id="btnToggleHide" class="btn-secondary" onclick="toggleSubjectHide()">Ẩn môn</button>
             <button class="btn-danger" onclick="deleteSelectedSubject()">Xóa môn</button>
           </div>
@@ -752,12 +852,34 @@
       <div class="modal-sheet-body">
         <div class="form-group">
           <label class="form-label" for="renameInput">Tên môn học mới: <span style="color:red">*</span></label>
-          <input type="text" id="renameInput" class="form-input" placeholder="Nhập tên môn học mới...">
+          <input type="text" id="renameInput" class="form-input" placeholder="Nhập tên môn học mới..." onkeydown="if(event.key==='Enter') submitRenameSubject()">
         </div>
       </div>
       <div class="modal-sheet-footer">
         <button class="btn-secondary" style="flex:1;" onclick="closeRenameModal()">Hủy</button>
         <button id="btnSaveRename" class="btn-primary" style="flex:2;" onclick="submitRenameSubject()">Lưu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: REORDER SUBJECTS -->
+  <div id="reorderModal" class="modal-overlay">
+    <div class="modal-sheet" style="max-width: 480px;">
+      <div class="modal-sheet-header">
+        <h3 class="modal-sheet-title">↕️ Sắp xếp thứ tự môn học</h3>
+        <button style="background:none; border:none; font-size:1.2rem; cursor:pointer;" onclick="closeReorderModal()">✕</button>
+      </div>
+      <div class="modal-sheet-body">
+        <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 8px;">
+          Bấm nút <strong>⬆️</strong> hoặc <strong>⬇️</strong> để di chuyển vị trí hiển thị môn học:
+        </p>
+        <div id="reorderListContainer" class="reorder-list">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+      <div class="modal-sheet-footer">
+        <button class="btn-secondary" style="flex:1;" onclick="closeReorderModal()">Hủy</button>
+        <button id="btnSaveReorder" class="btn-primary" style="flex:2;" onclick="saveReorderSubjects()">Lưu thứ tự</button>
       </div>
     </div>
   </div>
@@ -772,7 +894,109 @@
     let pendingQuestions = [];
     let currentOptions = [];
 
-    // --- AUTHENTICATION ---
+    // --- AUTHENTICATION & BRUTE-FORCE LOCKOUT ---
+    let lockoutTimerInterval = null;
+
+    function getLockoutUntil() {
+      const stored = localStorage.getItem('admin_pin_lockout_until');
+      if (!stored) return 0;
+      const num = parseInt(stored, 10);
+      return isNaN(num) ? 0 : num;
+    }
+
+    function setLockout(durationSeconds) {
+      const until = Date.now() + (durationSeconds || 120) * 1000;
+      localStorage.setItem('admin_pin_lockout_until', until.toString());
+      checkLockoutState();
+    }
+
+    function clearLockout() {
+      localStorage.removeItem('admin_pin_lockout_until');
+      localStorage.removeItem('admin_pin_fail_count');
+      if (lockoutTimerInterval) {
+        clearInterval(lockoutTimerInterval);
+        lockoutTimerInterval = null;
+      }
+      const pinInput = document.getElementById('pinInput');
+      const btnSubmit = document.getElementById('btnPinSubmit');
+      const errBox = document.getElementById('pinError');
+      if (pinInput) {
+        pinInput.disabled = false;
+        pinInput.placeholder = 'Nhập mã PIN';
+      }
+      if (btnSubmit) {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Xác Nhận';
+      }
+      if (errBox) {
+        errBox.style.display = 'none';
+      }
+    }
+
+    function checkLockoutState() {
+      const until = getLockoutUntil();
+      const now = Date.now();
+      const pinInput = document.getElementById('pinInput');
+      const btnSubmit = document.getElementById('btnPinSubmit');
+      const errBox = document.getElementById('pinError');
+
+      if (until > now) {
+        if (pinInput) {
+          pinInput.disabled = true;
+          pinInput.value = '';
+          pinInput.placeholder = 'Đang tạm khóa...';
+        }
+        if (btnSubmit) {
+          btnSubmit.disabled = true;
+        }
+
+        const updateTimer = () => {
+          const rem = Math.max(0, Math.ceil((until - Date.now()) / 1000));
+          if (rem <= 0) {
+            clearLockout();
+            if (errBox) {
+              errBox.textContent = 'Đã hết thời gian khóa. Bạn có thể nhập lại mã PIN.';
+              errBox.style.color = 'var(--success)';
+              errBox.style.display = 'block';
+            }
+            if (pinInput) pinInput.focus();
+            return;
+          }
+          const m = Math.floor(rem / 60);
+          const s = rem % 60;
+          const timeText = `${m}:${s < 10 ? '0' : ''}${s}`;
+          if (errBox) {
+            errBox.innerHTML = `🔒 <strong>Đã nhập sai 3 lần liên tiếp!</strong><br>Hệ thống tạm khóa 2 phút để bảo mật.<br>Vui lòng thử lại sau: <span style="font-size: 1.15rem; font-weight: 700; color: #dc2626;">${timeText}</span>`;
+            errBox.style.color = 'var(--danger)';
+            errBox.style.display = 'block';
+          }
+          if (btnSubmit) {
+            btnSubmit.textContent = `Tạm khóa (${timeText})`;
+          }
+        };
+
+        updateTimer();
+        if (!lockoutTimerInterval) {
+          lockoutTimerInterval = setInterval(updateTimer, 1000);
+        }
+        return true;
+      } else {
+        if (lockoutTimerInterval) {
+          clearInterval(lockoutTimerInterval);
+          lockoutTimerInterval = null;
+        }
+        if (pinInput && pinInput.disabled) {
+          pinInput.disabled = false;
+          pinInput.placeholder = 'Nhập mã PIN';
+        }
+        if (btnSubmit && btnSubmit.disabled) {
+          btnSubmit.disabled = false;
+          btnSubmit.textContent = 'Xác Nhận';
+        }
+        return false;
+      }
+    }
+
     function getStoredPin() {
       const pin = sessionStorage.getItem('admin_pin') || localStorage.getItem('admin_pin') || '';
       if (pin === '123456') {
@@ -799,18 +1023,25 @@
         adminDashboard.style.display = 'none';
         btnLogout.style.display = 'none';
         document.getElementById('pinInput').value = '';
-        document.getElementById('pinError').style.display = 'none';
+        checkLockoutState();
       }
     }
 
     async function handlePinSubmit() {
-      const pin = document.getElementById('pinInput').value.trim();
+      if (checkLockoutState()) return;
+
+      const pinInput = document.getElementById('pinInput');
+      const pin = pinInput.value.trim();
       const errBox = document.getElementById('pinError');
       if (!pin) {
         errBox.textContent = 'Vui lòng nhập mã PIN';
+        errBox.style.color = 'var(--danger)';
         errBox.style.display = 'block';
         return;
       }
+
+      const btnSubmit = document.getElementById('btnPinSubmit');
+      if (btnSubmit) btnSubmit.disabled = true;
 
       try {
         const res = await fetch(API_BASE + '/api/manage?action=verify-pin', {
@@ -819,20 +1050,53 @@
           body: JSON.stringify({ adminPin: pin })
         });
         const data = await res.json();
+
+        // 429: Locked out
+        if (res.status === 429 || data.locked) {
+          const remSec = data.remainingSeconds || 120;
+          setLockout(remSec);
+          return;
+        }
+
         if (res.ok && data.success) {
+          clearLockout();
           savePinSession(pin);
           checkAuth();
         } else {
-          errBox.textContent = data.error || 'Mã PIN không chính xác';
-          errBox.style.display = 'block';
+          // Increment local fail count
+          let currentFails = parseInt(localStorage.getItem('admin_pin_fail_count') || '0', 10) + 1;
+          localStorage.setItem('admin_pin_fail_count', currentFails.toString());
+
+          if (currentFails >= 3) {
+            setLockout(120);
+          } else {
+            const left = 3 - currentFails;
+            errBox.innerHTML = `Mã PIN không chính xác. Bạn còn <strong>${left}</strong> lần thử trước khi bị khóa 2 phút.`;
+            errBox.style.color = 'var(--danger)';
+            errBox.style.display = 'block';
+            if (btnSubmit) btnSubmit.disabled = false;
+            pinInput.focus();
+            pinInput.select();
+          }
         }
       } catch (e) {
         if (pin === '241199') {
+          clearLockout();
           savePinSession(pin);
           checkAuth();
         } else {
-          errBox.textContent = 'Lỗi kết nối máy chủ: ' + e.message;
-          errBox.style.display = 'block';
+          let currentFails = parseInt(localStorage.getItem('admin_pin_fail_count') || '0', 10) + 1;
+          localStorage.setItem('admin_pin_fail_count', currentFails.toString());
+
+          if (currentFails >= 3) {
+            setLockout(120);
+          } else {
+            const left = 3 - currentFails;
+            errBox.innerHTML = `Mã PIN không chính xác. Bạn còn <strong>${left}</strong> lần thử trước khi bị khóa 2 phút.`;
+            errBox.style.color = 'var(--danger)';
+            errBox.style.display = 'block';
+            if (btnSubmit) btnSubmit.disabled = false;
+          }
         }
       }
     }
@@ -870,21 +1134,39 @@
     // --- LOAD SUBJECTS ---
     async function loadSubjects() {
       try {
-        const res = await fetch(API_BASE + '/api/subjects');
+        const res = await fetch(API_BASE + '/api/subjects?t=' + Date.now(), {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache'
+          }
+        });
         if (res.ok) {
-          ALL_SUBJECTS = await res.json();
+          const apiSubs = await res.json();
+          if (apiSubs && typeof apiSubs === 'object' && Object.keys(apiSubs).length > 0) {
+            ALL_SUBJECTS = apiSubs;
+            try {
+              localStorage.setItem('custom_subjects', JSON.stringify(ALL_SUBJECTS));
+            } catch (e) {
+              try {
+                const slim = {};
+                for (const k in ALL_SUBJECTS) {
+                  slim[k] = { ...ALL_SUBJECTS[k], questions: [] };
+                }
+                localStorage.setItem('custom_subjects', JSON.stringify(slim));
+              } catch (e2) {}
+            }
+          }
         }
       } catch (e) {
         console.warn('Lỗi kết nối API, lấy dữ liệu offline:', e.message);
+        try {
+          const saved = localStorage.getItem('custom_subjects');
+          if (saved) {
+            ALL_SUBJECTS = JSON.parse(saved);
+          }
+        } catch (e2) {}
       }
-
-      // Check localStorage for offline/cached subjects
-      try {
-        const saved = localStorage.getItem('custom_subjects');
-        if (saved) {
-          ALL_SUBJECTS = { ...ALL_SUBJECTS, ...JSON.parse(saved) };
-        }
-      } catch (e) {}
 
       populateSubjectSelect();
     }
@@ -894,16 +1176,18 @@
       const prevVal = select.value || currentSubjectKey;
       select.innerHTML = '';
 
-      const keys = Object.keys(ALL_SUBJECTS);
-      if (keys.length === 0) {
+      const list = Object.values(ALL_SUBJECTS);
+      // Sort subjects by custom order
+      list.sort((a, b) => (Number(a.order ?? 999)) - (Number(b.order ?? 999)));
+
+      if (list.length === 0) {
         select.innerHTML = '<option value="">Chưa có môn học nào</option>';
         updateToolbarState(null);
         renderQuestionsList();
         return;
       }
 
-      keys.forEach(k => {
-        const sub = ALL_SUBJECTS[k];
+      list.forEach(sub => {
         const opt = document.createElement('option');
         opt.value = sub.id;
         const hiddenTag = sub.hidden ? ' [Đang ẩn]' : '';
@@ -913,7 +1197,7 @@
         select.appendChild(opt);
       });
 
-      currentSubjectKey = select.value || keys[0];
+      currentSubjectKey = select.value || (list[0] ? list[0].id : null);
       updateToolbarState(ALL_SUBJECTS[currentSubjectKey]);
       renderQuestionsList();
     }
@@ -1185,6 +1469,10 @@
       if (!sub) return;
       document.getElementById('renameInput').value = sub.title;
       document.getElementById('renameModal').classList.add('open');
+      setTimeout(() => {
+        const inp = document.getElementById('renameInput');
+        if (inp) { inp.focus(); inp.select(); }
+      }, 150);
     }
 
     function closeRenameModal() {
@@ -1199,24 +1487,135 @@
       const btn = document.getElementById('btnSaveRename');
       btn.disabled = true;
 
+      const subId = currentSubjectKey;
       try {
-        await fetch(`${API_BASE}/api/manage?action=update-subject`, {
+        const res = await fetch(`${API_BASE}/api/manage?action=update-subject`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
-          body: JSON.stringify({ subjectId: currentSubjectKey, title: newTitle })
+          body: JSON.stringify({ subjectId: subId, title: newTitle })
         });
-      } catch (e) {} finally {
+        const data = await res.json();
+        if (!res.ok) {
+          alert('Không thể đổi tên: ' + (data.error || 'Lỗi'));
+          btn.disabled = false;
+          return;
+        }
+      } catch (e) {
+        console.warn('Lỗi kết nối khi đổi tên:', e);
+      } finally {
         btn.disabled = false;
       }
 
-      const sub = ALL_SUBJECTS[currentSubjectKey];
-      if (sub) {
-        sub.title = newTitle;
-        saveLocalCopy(sub);
+      if (ALL_SUBJECTS[subId]) {
+        ALL_SUBJECTS[subId].title = newTitle;
+        saveLocalCopy(ALL_SUBJECTS[subId]);
       }
 
       closeRenameModal();
       populateSubjectSelect();
+      loadSubjects();
+    }
+
+    // --- REORDER SUBJECTS ---
+    let reorderItems = [];
+
+    function openReorderModal() {
+      reorderItems = Object.values(ALL_SUBJECTS).map(s => ({ ...s }));
+      reorderItems.sort((a, b) => (Number(a.order ?? 999)) - (Number(b.order ?? 999)));
+
+      if (reorderItems.length === 0) {
+        alert('Chưa có môn học nào để sắp xếp.');
+        return;
+      }
+
+      renderReorderList();
+      document.getElementById('reorderModal').classList.add('open');
+    }
+
+    function closeReorderModal() {
+      document.getElementById('reorderModal').classList.remove('open');
+    }
+
+    function renderReorderList() {
+      const container = document.getElementById('reorderListContainer');
+      container.innerHTML = '';
+
+      reorderItems.forEach((item, idx) => {
+        const row = document.createElement('div');
+        row.className = 'reorder-item';
+
+        const qCount = item.questions ? item.questions.length : 0;
+        const hiddenTag = item.hidden ? ' <span style="color:#d97706; font-size:0.75rem; font-weight:600;">[Ẩn]</span>' : '';
+
+        row.innerHTML = `
+          <div class="reorder-left">
+            <span class="reorder-num">${idx + 1}</span>
+            <div style="min-width:0; flex:1;">
+              <div class="reorder-title">${escapeHtml(item.title)}${hiddenTag}</div>
+              <div style="font-size:0.76rem; color:var(--text-muted);">${qCount} câu hỏi</div>
+            </div>
+          </div>
+          <div class="reorder-actions">
+            <button type="button" class="btn-move" title="Di chuyển lên" ${idx === 0 ? 'disabled' : ''} onclick="moveSubjectItem(${idx}, -1)">⬆️</button>
+            <button type="button" class="btn-move" title="Di chuyển xuống" ${idx === reorderItems.length - 1 ? 'disabled' : ''} onclick="moveSubjectItem(${idx}, 1)">⬇️</button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function moveSubjectItem(index, offset) {
+      const targetIndex = index + offset;
+      if (targetIndex < 0 || targetIndex >= reorderItems.length) return;
+
+      const temp = reorderItems[index];
+      reorderItems[index] = reorderItems[targetIndex];
+      reorderItems[targetIndex] = temp;
+
+      renderReorderList();
+    }
+
+    async function saveReorderSubjects() {
+      const btn = document.getElementById('btnSaveReorder');
+      btn.disabled = true;
+      btn.textContent = 'Đang lưu...';
+
+      const orders = reorderItems.map((item, idx) => ({
+        id: item.id,
+        order: idx + 1
+      }));
+
+      const pin = getStoredPin();
+      try {
+        const res = await fetch(`${API_BASE}/api/manage?action=reorder-subjects`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
+          body: JSON.stringify({ orders })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          alert(data.error || 'Lỗi khi lưu thứ tự');
+          btn.disabled = false;
+          btn.textContent = 'Lưu thứ tự';
+          return;
+        }
+      } catch (e) {
+        console.warn('Lỗi gọi API lưu thứ tự:', e);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Lưu thứ tự';
+      }
+
+      orders.forEach(o => {
+        if (ALL_SUBJECTS[o.id]) {
+          ALL_SUBJECTS[o.id].order = o.order;
+          saveLocalCopy(ALL_SUBJECTS[o.id]);
+        }
+      });
+
+      closeReorderModal();
+      populateSubjectSelect();
+      await loadSubjects();
     }
 
     async function toggleSubjectHide() {
@@ -1268,7 +1667,10 @@
         if (saved) customMap = JSON.parse(saved);
       } catch (e) {}
       delete customMap[currentSubjectKey];
-      localStorage.setItem('custom_subjects', JSON.stringify(customMap));
+      try {
+        localStorage.setItem('custom_subjects', JSON.stringify(customMap));
+        localStorage.setItem('subjects_sync_signal', Date.now().toString());
+      } catch (e) {}
 
       currentSubjectKey = null;
       populateSubjectSelect();
@@ -1567,7 +1969,7 @@
           headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
           body: JSON.stringify({
             title,
-            icon: '📚',
+            icon: '',
             questions: pendingQuestions
           })
         });
@@ -1581,6 +1983,7 @@
           currentSubjectKey = savedSub.id;
           resetUploadForm();
           switchTab('manage');
+          await loadSubjects();
         } else {
           fallbackSaveSubject(title, pendingQuestions);
         }
@@ -1598,7 +2001,7 @@
         id: slug,
         title,
         subtitle: `${questions.length} câu hỏi`,
-        icon: '📚',
+        icon: '',
         questions
       };
       ALL_SUBJECTS[slug] = newSub;
@@ -1616,7 +2019,17 @@
         if (saved) customMap = JSON.parse(saved);
         customMap[sub.id] = sub;
         localStorage.setItem('custom_subjects', JSON.stringify(customMap));
-      } catch (e) {}
+        localStorage.setItem('subjects_sync_signal', Date.now().toString());
+      } catch (e) {
+        try {
+          let customMap = {};
+          const saved = localStorage.getItem('custom_subjects');
+          if (saved) customMap = JSON.parse(saved);
+          customMap[sub.id] = { ...sub, questions: [] };
+          localStorage.setItem('custom_subjects', JSON.stringify(customMap));
+          localStorage.setItem('subjects_sync_signal', Date.now().toString());
+        } catch (e2) {}
+      }
     }
 
     function escapeHtml(str) {
