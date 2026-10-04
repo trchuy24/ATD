@@ -798,6 +798,7 @@
       border: 1px solid #bfdbfe;
       border-radius: 9999px;
       cursor: pointer;
+      text-decoration: none;
       transition: all 0.2s ease;
       box-shadow: 0 1px 2px rgba(37, 99, 235, 0.08);
     }
@@ -1149,11 +1150,9 @@
     <div id="menuScreen">
       <!-- Nút nhỏ quản lý ngân hàng câu hỏi ở góc phải trên cùng -->
       <div class="menu-top-bar">
-        <button class="btn-manage-bank-mini" onclick="openAdminModal()" title="Quản lý Ngân hàng câu hỏi (Admin)">
-          <span>⚙️</span>
-          <span>Quản lý câu hỏi</span>
-          <span class="btn-admin-badge">Admin</span>
-        </button>
+        <a href="manage.html" class="btn-manage-bank-mini" title="Quản lý Ngân hàng câu hỏi">
+          <span>Quản lý đề</span>
+        </a>
       </div>
 
       <div class="menu-header">
@@ -2393,8 +2392,97 @@
       }
     }
 
+    function robustParseJson(raw) {
+      if (!raw || typeof raw !== 'string') return null;
+      let s = raw.trim();
+
+      // 1. Strip markdown code fences (```json ... ``` or ``` ...)
+      if (s.startsWith('```')) {
+        s = s.replace(/^```[a-zA-Z0-9_-]*\s*\n?/, '').replace(/\n?\s*```\s*$/, '').trim();
+      }
+
+      // 2. Direct JSON.parse
+      try {
+        return JSON.parse(s);
+      } catch (e1) {}
+
+      // 3. Remove trailing commas before } or ]
+      const fixed = s.replace(/,\s*([\]}])/g, '$1');
+      try {
+        return JSON.parse(fixed);
+      } catch (e2) {}
+
+      // 4. Escape unescaped backslashes inside string literals (e.g. LaTeX formulas: \frac, \Delta, \cdot, etc.)
+      function escapeBackslashesInStrings(input, aggressive) {
+        let out = '';
+        let inStr = false;
+        let i = 0;
+        while (i < input.length) {
+          const ch = input[i];
+          if (ch === '"' && (i === 0 || input[i - 1] !== '\\')) {
+            inStr = !inStr;
+            out += ch;
+            i++;
+            continue;
+          }
+          if (inStr && ch === '\\') {
+            const next = input[i + 1];
+            if (!aggressive) {
+              let isStandard = false;
+              if (next === '"' || next === '\\' || next === '/') {
+                isStandard = true;
+              } else if (next === 'n' || next === 'r') {
+                isStandard = true;
+              } else if (next === 't') {
+                isStandard = !/^[a-zA-Z]/.test(input[i + 2] || '');
+              } else if (next === 'b' || next === 'f') {
+                isStandard = false; // LaTeX \frac, \begin
+              } else if (next === 'u' && /^[0-9a-fA-F]{4}$/.test(input.slice(i + 2, i + 6))) {
+                isStandard = true;
+              }
+              if (isStandard) {
+                out += ch + next;
+                i += 2;
+                continue;
+              } else {
+                out += '\\\\';
+                i++;
+                continue;
+              }
+            } else {
+              if (next === '"') { out += '\\"'; i += 2; continue; }
+              else if (next === '\\') { out += '\\\\'; i += 2; continue; }
+              else if (next === 'n') { out += '\\n'; i += 2; continue; }
+              else if (next === 'r') { out += '\\r'; i += 2; continue; }
+              else { out += '\\\\'; i++; continue; }
+            }
+          }
+          out += ch;
+          i++;
+        }
+        return out;
+      }
+
+      try { return JSON.parse(escapeBackslashesInStrings(fixed, false)); } catch (e3) {}
+      try { return JSON.parse(escapeBackslashesInStrings(fixed, true)); } catch (e4) {}
+
+      // 5. Loose JS Object / single quotes / unquoted keys
+      try {
+        if (/^\s*[[{]/.test(fixed)) {
+          const sanitizedForEval = escapeBackslashesInStrings(fixed, true);
+          return (new Function('return ' + sanitizedForEval))();
+        }
+      } catch (e5) {}
+
+      return null;
+    }
+
     function parseStandardJsonQuestions(jsonStr, defaultFileName) {
-      const parsed = JSON.parse(jsonStr);
+      const parsed = robustParseJson(jsonStr);
+      if (!parsed) {
+        throw new Error('Không thể phân tích định dạng JSON');
+      }
+
       let title = '';
       let icon = '📚';
       let rawList = [];
@@ -2405,50 +2493,82 @@
           title = defaultFileName.replace(/\.json$/i, '');
         }
       } else if (parsed && typeof parsed === 'object') {
-        title = parsed.title || parsed.name || (defaultFileName ? defaultFileName.replace(/\.json$/i, '') : '');
+        title = parsed.title || parsed.name || parsed.subject || parsed.ten_mon || (defaultFileName ? defaultFileName.replace(/\.json$/i, '') : '');
         icon = parsed.icon || '📚';
-        rawList = parsed.questions || parsed.data || [];
+        rawList = parsed.questions || parsed.data || parsed.cau_hoi || parsed.items || parsed.list || [];
+        if (rawList.length === 0 && (parsed.question || parsed.cau_hoi || parsed.text)) {
+          rawList = [parsed];
+        }
       }
 
       const questions = [];
       rawList.forEach((item, idx) => {
-        let qText = item.question || item.cau_hoi || '';
-        let qId = item.id || item.cau_so || (idx + 1);
-        let explanation = item.explanation || item.giai_thich || '';
-        let options = [];
-        let correctIdx = typeof item.correctIndex === 'number' ? item.correctIndex : -1;
+        if (!item || typeof item !== 'object') return;
+        let qText = item.question || item.cau_hoi || item.cauHoi || item.content || item.text || item.prompt || item.q || '';
+        let qId = item.id || item.cau_so || item.cauSo || item.number || item.index || (idx + 1);
+        let explanation = item.explanation || item.giai_thich || item.giaiThich || item.explain || item.note || item.ghi_chu || item.details || '';
 
-        if (Array.isArray(item.options)) {
-          options = item.options.map((opt, oIdx) => {
+        let options = [];
+        let correctIdx = (typeof item.correctIndex === 'number') ? item.correctIndex
+                       : (typeof item.correct_index === 'number') ? item.correct_index
+                       : (typeof item.correctIdx === 'number') ? item.correctIdx : -1;
+
+        const rawOpts = item.options || item.cac_lua_chon || item.choices || item.answers || item.lua_chon || item.list_answers;
+
+        if (Array.isArray(rawOpts)) {
+          rawOpts.forEach((opt, oIdx) => {
+            const defaultLabel = String.fromCharCode(97 + oIdx);
             if (typeof opt === 'string') {
-              return { label: String.fromCharCode(97 + oIdx), text: opt };
+              const m = opt.match(/^([a-dA-D])[.)]\s*(.*)$/);
+              if (m) {
+                options.push({ label: m[1].toLowerCase(), text: m[2].trim() });
+              } else {
+                options.push({ label: defaultLabel, text: opt.trim() });
+              }
+            } else if (opt && typeof opt === 'object') {
+              const lbl = (opt.label || opt.key || opt.id || defaultLabel).toString().toLowerCase().trim();
+              const txt = (opt.text !== undefined ? opt.text : (opt.content !== undefined ? opt.content : (opt.value !== undefined ? opt.value : opt.val !== undefined ? opt.val : ''))).toString().trim();
+              if (opt.isCorrect === true || opt.correct === true || opt.is_correct === true) {
+                correctIdx = oIdx;
+              }
+              options.push({ label: lbl, text: txt });
             }
-            return {
-              label: (opt.label || String.fromCharCode(97 + oIdx)).toLowerCase(),
-              text: opt.text || ''
-            };
           });
-        } else if (item.cac_lua_chon && typeof item.cac_lua_chon === 'object') {
-          const target = (item.dap_an || '').toLowerCase().trim();
+        } else if (rawOpts && typeof rawOpts === 'object') {
           let optIdx = 0;
-          for (const [lbl, txt] of Object.entries(item.cac_lua_chon)) {
-            options.push({ label: lbl.toLowerCase(), text: String(txt) });
-            if (lbl.toLowerCase().trim() === target) {
-              correctIdx = optIdx;
-            }
+          for (const [lbl, txt] of Object.entries(rawOpts)) {
+            options.push({ label: lbl.toLowerCase().trim(), text: String(txt).trim() });
             optIdx++;
           }
         }
 
-        if (correctIdx === -1 && (item.dap_an || item.answer)) {
-          const ans = String(item.dap_an || item.answer).toLowerCase().trim();
-          const found = options.findIndex(o => o.label === ans || o.text.trim().toLowerCase() === ans);
-          if (found !== -1) correctIdx = found;
+        const rawAns = item.dap_an !== undefined ? item.dap_an : (item.answer !== undefined ? item.answer : (item.dap_an_dung !== undefined ? item.dap_an_dung : (item.correctAnswer !== undefined ? item.correctAnswer : item.correct_answer !== undefined ? item.correct_answer : item.key !== undefined ? item.key : item.solution)));
+        if (correctIdx === -1 && rawAns !== undefined && rawAns !== null && rawAns !== '') {
+          if (typeof rawAns === 'number') {
+            if (rawAns >= 0 && rawAns < options.length) {
+              correctIdx = rawAns;
+            } else if (rawAns >= 1 && rawAns <= options.length) {
+              correctIdx = rawAns - 1;
+            }
+          } else {
+            const ansStr = String(rawAns).toLowerCase().trim();
+            let found = options.findIndex(o => o.label === ansStr || o.label === ansStr.replace(/^[a-z]\s*[.):]\s*/, ''));
+            if (found === -1) {
+              const singleLetter = ansStr.match(/\b([a-d])\b/);
+              if (singleLetter) {
+                found = options.findIndex(o => o.label === singleLetter[1]);
+              }
+            }
+            if (found === -1) {
+              found = options.findIndex(o => o.text.toLowerCase() === ansStr);
+            }
+            if (found !== -1) correctIdx = found;
+          }
         }
 
         if (qText && options.length > 0) {
           questions.push({
-            id: Number(qId),
+            id: Number(qId) || (idx + 1),
             question: qText.trim(),
             options: options,
             correctIndex: correctIdx >= 0 ? correctIdx : 0,
@@ -2488,9 +2608,16 @@
       }
       try {
         const result = parseStandardJsonQuestions(val, '');
-        applyParsedQuestions(result);
+        if (result && result.questions && result.questions.length > 0) {
+          applyParsedQuestions(result);
+        } else {
+          pendingLoadedQuestions = [];
+          updatePreviewBadge(0, 'Chưa tìm thấy câu hỏi hợp lệ trong nội dung JSON');
+          validateUploadForm();
+        }
       } catch (e) {
-        updatePreviewBadge(0);
+        pendingLoadedQuestions = [];
+        updatePreviewBadge(0, 'Cú pháp JSON chưa đúng: ' + (e.message || 'Lỗi'));
         validateUploadForm();
       }
     }
@@ -2507,11 +2634,11 @@
       validateUploadForm();
     }
 
-    function updatePreviewBadge(count) {
+    function updatePreviewBadge(count, errorMsg) {
       const badge = document.getElementById('jsonPreviewBadge');
       const countEl = document.getElementById('previewQCount');
       if (count > 0) {
-        countEl.textContent = count;
+        if (countEl) countEl.textContent = count;
         badge.style.display = 'block';
       } else {
         badge.style.display = 'none';

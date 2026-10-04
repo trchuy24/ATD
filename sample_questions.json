@@ -3,10 +3,22 @@
     "id": 1,
     "question": "Quy trình an toàn điện quy định về các biện pháp đảm bảo an toàn điện khi nào?",
     "options": [
-      { "label": "a", "text": "Khi thực hiện các hoạt động điện lực." },
-      { "label": "b", "text": "Khi thực hiện công việc quản lý vận hành, thí nghiệm, sửa chữa, xây dựng đường dây dẫn điện, thiết bị điện và các công việc khác theo quy định của pháp luật." },
-      { "label": "c", "text": "Khi thực hiện công việc quản lý vận hành, thí nghiệm, sửa chữa, xây dựng đường dây dẫn điện, thiết bị điện ở các doanh nghiệp trên lãnh thổ Việt Nam." },
-      { "label": "d", "text": "Cả a và c đều đúng" }
+      {
+        "label": "a",
+        "text": "Khi thực hiện các hoạt động điện lực."
+      },
+      {
+        "label": "b",
+        "text": "Khi thực hiện công việc quản lý vận hành, thí nghiệm, sửa chữa, xây dựng đường dây dẫn điện, thiết bị điện và các công việc khác theo quy định của pháp luật."
+      },
+      {
+        "label": "c",
+        "text": "Khi thực hiện công việc quản lý vận hành, thí nghiệm, sửa chữa, xây dựng đường dây dẫn điện, thiết bị điện ở các doanh nghiệp trên lãnh thổ Việt Nam."
+      },
+      {
+        "label": "d",
+        "text": "Cả a và c đều đúng"
+      }
     ],
     "correctIndex": 1,
     "explanation": "Theo Điều 1 Thông tư số 05/2021/TT-BCT quy định chi tiết về an toàn điện."
@@ -15,10 +27,22 @@
     "id": 2,
     "question": "Những ai cần phải được huấn luyện kỹ thuật an toàn điện và kiểm tra kiến thức an toàn điện?",
     "options": [
-      { "label": "a", "text": "Nhân viên mới tuyển, nhân viên có liên quan trực tiếp đến quá trình quản lý vận hành, sửa chữa." },
-      { "label": "b", "text": "Nhân viên thực hiện chức năng phụ trách công tác, cho phép làm việc, giám sát an toàn điện." },
-      { "label": "c", "text": "Tất cả thợ điện, kỹ thuật điện, kỹ sư điện phải được huấn luyện an toàn điện." },
-      { "label": "d", "text": "Cả a và b đều đúng" }
+      {
+        "label": "a",
+        "text": "Nhân viên mới tuyển, nhân viên có liên quan trực tiếp đến quá trình quản lý vận hành, sửa chữa."
+      },
+      {
+        "label": "b",
+        "text": "Nhân viên thực hiện chức năng phụ trách công tác, cho phép làm việc, giám sát an toàn điện."
+      },
+      {
+        "label": "c",
+        "text": "Tất cả thợ điện, kỹ thuật điện, kỹ sư điện phải được huấn luyện an toàn điện."
+      },
+      {
+        "label": "d",
+        "text": "Cả a và b đều đúng"
+      }
     ],
     "correctIndex": 3,
     "explanation": "Quy định đối tượng tại Điều 4 Quy trình an toàn điện."

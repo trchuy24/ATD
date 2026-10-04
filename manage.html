@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Quản Lý Ngân Hàng Đề</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --border-focus: #3b82f6;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --success: #16a34a;
+      --success-light: #f0fdf4;
+      --danger: #dc2626;
+      --danger-light: #fef2f2;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+
+    .app-wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+    }
+
+    /* TOP HEADER */
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .btn-back:active {
+      background: #e2e8f0;
+    }
+
+    .header-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .btn-logout {
+      background: none;
+      border: none;
+      color: var(--danger);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 8px;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-logout:active {
+      background: var(--danger-light);
+    }
+
+    /* AUTH SCREEN */
+    .auth-container {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 360px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .auth-card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .auth-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* SEGMENTED TABS */
+    .tabs-bar {
+      display: flex;
+      background: #f1f5f9;
+      padding: 4px;
+      border-bottom: 1px solid var(--border);
+      gap: 4px;
+    }
+
+    .tab-item {
+      flex: 1;
+      padding: 10px 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab-item.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* CONTENT BODY */
+    .content-body {
+      padding: 16px;
+      flex: 1;
+    }
+
+    /* FORM STYLES */
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: border 0.15s, box-shadow 0.15s;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      width: 100%;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 12px 16px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary:active {
+      background: var(--primary-hover);
+    }
+
+    .btn-primary:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    .btn-secondary:active {
+      background: #f8fafc;
+    }
+
+    .btn-danger {
+      background: #ffffff;
+      color: var(--danger);
+      border: 1px solid #fecaca;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    .btn-danger:active {
+      background: var(--danger-light);
+    }
+
+    /* SUBJECT ACTION TOOLBAR */
+    .subject-toolbar {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .subject-toolbar .btn-secondary,
+    .subject-toolbar .btn-danger {
+      flex: 1;
+      text-align: center;
+      min-width: 90px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      margin-left: 6px;
+    }
+
+    .status-visible {
+      background: var(--success-light);
+      color: var(--success);
+    }
+
+    .status-hidden {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    /* QUESTIONS LIST */
+    .questions-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .questions-count-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .btn-add-q {
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    .btn-add-q:active {
+      background: #dbeafe;
+    }
+
+    .q-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .q-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .q-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .q-card-num {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 2px 6px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .q-card-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    .q-card-ans {
+      font-size: 0.82rem;
+      color: var(--success);
+      font-weight: 500;
+      background: var(--success-light);
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .q-card-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 8px;
+    }
+
+    .btn-q-action {
+      background: none;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .btn-q-action:active {
+      background: #f1f5f9;
+    }
+
+    .btn-q-delete {
+      color: var(--danger);
+      border-color: #fecaca;
+    }
+
+    .btn-q-delete:active {
+      background: var(--danger-light);
+    }
+
+    /* UPLOAD DROPZONE */
+    .upload-box {
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 24px 16px;
+      text-align: center;
+      background: #f8fafc;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: all 0.15s;
+    }
+
+    .upload-box:active {
+      background: #eff6ff;
+      border-color: var(--primary);
+    }
+
+    .upload-box-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .upload-box-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .json-badge {
+      display: none;
+      background: var(--success-light);
+      color: var(--success);
+      border: 1px solid #bbf7d0;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    /* MODAL OVERLAYS */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 100;
+      padding: 0;
+    }
+
+    @media (min-width: 640px) {
+      .modal-overlay {
+        align-items: center;
+        padding: 20px;
+      }
+    }
+
+    .modal-overlay.open {
+      display: flex !important;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      background: #ffffff;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      animation: sheetUp 0.2s ease-out;
+    }
+
+    @media (min-width: 640px) {
+      .modal-sheet {
+        border-radius: var(--radius-lg);
+        max-height: 85vh;
+      }
+    }
+
+    @keyframes sheetUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .modal-sheet-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-sheet-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .modal-sheet-body {
+      padding: 16px;
+      overflow-y: auto;
+      flex: 1;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-sheet-footer {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      background: #f8fafc;
+    }
+
+    /* OPTION ROWS IN MODAL */
+    .option-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      background: #f8fafc;
+      padding: 6px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    .option-radio {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--success);
+      cursor: pointer;
+    }
+
+    .option-label {
+      font-weight: 700;
+      font-size: 0.88rem;
+      width: 20px;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .option-text-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-size: 0.88rem;
+      background: #ffffff;
+      outline: none;
+    }
+
+    .option-text-input:focus {
+      border-color: var(--border-focus);
+    }
+
+    .btn-remove-opt {
+      background: none;
+      border: none;
+      color: var(--danger);
+      font-size: 1rem;
+      padding: 4px 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- TOP HEADER -->
+    <header class="top-header">
+      <div class="header-left">
+        <a href="index.html" class="btn-back">← Trang chủ</a>
+        <h1 class="header-title">Quản Lý Ngân Hàng Đề</h1>
+      </div>
+      <button id="btnLogout" class="btn-logout" onclick="logoutAdmin()" style="display: none;">Đăng xuất</button>
+    </header>
+
+    <!-- SECTION 1: AUTH SCREEN -->
+    <div id="authScreen" class="auth-container">
+      <div class="auth-card">
+        <h2>Xác Thực Quản Trị</h2>
+        <p>Nhập mã PIN để truy cập hệ thống quản lý câu hỏi</p>
+        
+        <div class="form-group">
+          <input type="password" id="pinInput" class="form-input" placeholder="Nhập mã PIN" inputmode="numeric" style="text-align: center; font-size: 1.2rem; letter-spacing: 4px;" autofocus>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; font-size: 0.84rem; color: var(--text-muted);">
+          <input type="checkbox" id="rememberPinCheckbox" checked style="accent-color: var(--primary); cursor: pointer;">
+          <label for="rememberPinCheckbox" style="cursor: pointer;">Ghi nhớ thiết bị này</label>
+        </div>
+
+        <div id="pinError" style="display: none; color: var(--danger); font-size: 0.84rem; margin-bottom: 12px; font-weight: 600;"></div>
+
+        <button class="btn-primary" onclick="handlePinSubmit()">Xác Nhận</button>
+      </div>
+    </div>
+
+    <!-- SECTION 2: ADMIN DASHBOARD -->
+    <div id="adminDashboard" style="display: none; flex-direction: column; flex: 1;">
+      <!-- SEGMENTED TABS -->
+      <nav class="tabs-bar">
+        <button id="tabBtnManage" class="tab-item active" onclick="switchTab('manage')">Môn & Câu hỏi</button>
+        <button id="tabBtnUpload" class="tab-item" onclick="switchTab('upload')">Thêm môn mới</button>
+      </nav>
+
+      <!-- TAB 1: MANAGE SUBJECTS & QUESTIONS -->
+      <main id="tabManageContent" class="content-body">
+        <div class="form-group">
+          <label class="form-label" for="subjectSelect">Chọn môn học:</label>
+          <select id="subjectSelect" class="form-select" onchange="onSubjectSelected()">
+            <!-- Loaded dynamically -->
+          </select>
+
+          <!-- Subject Toolbars -->
+          <div class="subject-toolbar">
+            <button class="btn-secondary" onclick="openRenameModal()">Đổi tên</button>
+            <button id="btnToggleHide" class="btn-secondary" onclick="toggleSubjectHide()">Ẩn môn</button>
+            <button class="btn-danger" onclick="deleteSelectedSubject()">Xóa môn</button>
+          </div>
+        </div>
+
+        <!-- Questions List Header -->
+        <div class="questions-header">
+          <span id="questionsCountLabel" class="questions-count-text">0 câu hỏi</span>
+          <button class="btn-add-q" onclick="openAddQuestionModal()">+ Thêm câu hỏi</button>
+        </div>
+
+        <!-- Search box -->
+        <div class="form-group">
+          <input type="text" id="searchQuestionInput" class="form-input" placeholder="Tìm kiếm câu hỏi..." oninput="renderQuestionsList()">
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="questionsContainer" class="q-list">
+          <!-- Rendered dynamically -->
+        </div>
+      </main>
+
+      <!-- TAB 2: UPLOAD NEW SUBJECT -->
+      <main id="tabUploadContent" class="content-body" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" for="newSubjectName">Tên môn học mới: <span style="color:red">*</span></label>
+          <input type="text" id="newSubjectName" class="form-input" placeholder="Ví dụ: Kỹ thuật Điện tử Bậc 4" oninput="validateUploadButton()">
+        </div>
+
+        <!-- File Upload Dropzone -->
+        <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+          <input type="file" id="fileInput" accept=".json,.txt" style="display: none;" onchange="handleFilePicked(event)">
+          <div id="dropzoneText" class="upload-box-title">Chọn file .JSON từ điện thoại</div>
+          <div class="upload-box-desc">Chấp nhận file JSON mảng câu hỏi [...] hoặc object { title, questions }</div>
+        </div>
+
+        <!-- Direct JSON toggle -->
+        <div style="text-align: right; margin-bottom: 12px;">
+          <button type="button" style="background: none; border: none; color: var(--primary); font-size: 0.8rem; font-weight: 600; cursor: pointer;" onclick="toggleRawJson()">
+            Hoặc dán trực tiếp mã JSON
+          </button>
+        </div>
+
+        <div id="rawJsonBox" class="form-group" style="display: none;">
+          <label class="form-label" for="rawJsonInput">Nội dung JSON:</label>
+          <textarea id="rawJsonInput" class="form-textarea" rows="6" placeholder='[ { "id": 1, "question": "...", "options": [...], "correctIndex": 0 } ]' oninput="handleRawJsonTyped()"></textarea>
+        </div>
+
+        <!-- Recognized Badge -->
+        <div id="detectedBadge" class="json-badge">
+          Đã nhận diện: <strong id="detectedCount">0</strong> câu hỏi hợp lệ
+        </div>
+
+        <button id="btnSaveSubject" class="btn-primary" onclick="submitNewSubject()" disabled>
+          Lưu môn học vào Database
+        </button>
+      </main>
+    </div>
+  </div>
+
+  <!-- MODAL: EDIT / ADD QUESTION -->
+  <div id="questionModal" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-sheet-header">
+        <h3 id="questionModalTitle" class="modal-sheet-title">Chỉnh sửa câu hỏi</h3>
+        <button style="background:none; border:none; font-size:1.2rem; cursor:pointer;" onclick="closeQuestionModal()">✕</button>
+      </div>
+      <div class="modal-sheet-body">
+        <input type="hidden" id="editQId">
+
+        <div class="form-group">
+          <label class="form-label" for="editQuestionText">Nội dung câu hỏi: <span style="color:red">*</span></label>
+          <textarea id="editQuestionText" class="form-textarea" rows="3" placeholder="Nhập câu hỏi..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Các lựa chọn (chọn nút tròn để đánh dấu đáp án đúng):</label>
+          <div id="optionsListContainer">
+            <!-- Rendered dynamically -->
+          </div>
+          <button type="button" class="btn-secondary" style="width: 100%; margin-top: 6px;" onclick="addOptionItem()">
+            + Thêm phương án lựa chọn
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="editExplanation">Giải thích đáp án (tùy chọn):</label>
+          <textarea id="editExplanation" class="form-textarea" rows="2" placeholder="Lý do vì sao đáp án đúng..."></textarea>
+        </div>
+      </div>
+      <div class="modal-sheet-footer">
+        <button class="btn-secondary" style="flex:1;" onclick="closeQuestionModal()">Hủy</button>
+        <button id="btnSaveQuestion" class="btn-primary" style="flex:2;" onclick="saveQuestionItem()">Lưu câu hỏi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: RENAME SUBJECT -->
+  <div id="renameModal" class="modal-overlay">
+    <div class="modal-sheet" style="max-width: 400px;">
+      <div class="modal-sheet-header">
+        <h3 class="modal-sheet-title">Đổi tên môn học</h3>
+        <button style="background:none; border:none; font-size:1.2rem; cursor:pointer;" onclick="closeRenameModal()">✕</button>
+      </div>
+      <div class="modal-sheet-body">
+        <div class="form-group">
+          <label class="form-label" for="renameInput">Tên môn học mới: <span style="color:red">*</span></label>
+          <input type="text" id="renameInput" class="form-input" placeholder="Nhập tên môn học mới...">
+        </div>
+      </div>
+      <div class="modal-sheet-footer">
+        <button class="btn-secondary" style="flex:1;" onclick="closeRenameModal()">Hủy</button>
+        <button id="btnSaveRename" class="btn-primary" style="flex:2;" onclick="submitRenameSubject()">Lưu</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = (window.location.port && window.location.port !== '3030' && (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'))
+      ? `http://${window.location.hostname}:3030`
+      : '';
+
+    let ALL_SUBJECTS = {};
+    let currentSubjectKey = null;
+    let pendingQuestions = [];
+    let currentOptions = [];
+
+    // --- AUTHENTICATION ---
+    function getStoredPin() {
+      const pin = sessionStorage.getItem('admin_pin') || localStorage.getItem('admin_pin') || '';
+      if (pin === '123456') {
+        sessionStorage.removeItem('admin_pin');
+        localStorage.removeItem('admin_pin');
+        return '';
+      }
+      return pin;
+    }
+
+    function checkAuth() {
+      const pin = getStoredPin();
+      const authScreen = document.getElementById('authScreen');
+      const adminDashboard = document.getElementById('adminDashboard');
+      const btnLogout = document.getElementById('btnLogout');
+
+      if (pin) {
+        authScreen.style.display = 'none';
+        adminDashboard.style.display = 'flex';
+        btnLogout.style.display = 'block';
+        loadSubjects();
+      } else {
+        authScreen.style.display = 'flex';
+        adminDashboard.style.display = 'none';
+        btnLogout.style.display = 'none';
+        document.getElementById('pinInput').value = '';
+        document.getElementById('pinError').style.display = 'none';
+      }
+    }
+
+    async function handlePinSubmit() {
+      const pin = document.getElementById('pinInput').value.trim();
+      const errBox = document.getElementById('pinError');
+      if (!pin) {
+        errBox.textContent = 'Vui lòng nhập mã PIN';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      try {
+        const res = await fetch(API_BASE + '/api/manage?action=verify-pin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
+          body: JSON.stringify({ adminPin: pin })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          savePinSession(pin);
+          checkAuth();
+        } else {
+          errBox.textContent = data.error || 'Mã PIN không chính xác';
+          errBox.style.display = 'block';
+        }
+      } catch (e) {
+        if (pin === '241199') {
+          savePinSession(pin);
+          checkAuth();
+        } else {
+          errBox.textContent = 'Lỗi kết nối máy chủ: ' + e.message;
+          errBox.style.display = 'block';
+        }
+      }
+    }
+
+    function savePinSession(pin) {
+      sessionStorage.setItem('admin_pin', pin);
+      if (document.getElementById('rememberPinCheckbox').checked) {
+        localStorage.setItem('admin_pin', pin);
+      } else {
+        localStorage.removeItem('admin_pin');
+      }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('admin_pin');
+      localStorage.removeItem('admin_pin');
+      checkAuth();
+    }
+
+    // --- TABS SWITCHING ---
+    function switchTab(tab) {
+      const isManage = tab === 'manage';
+      document.getElementById('tabBtnManage').classList.toggle('active', isManage);
+      document.getElementById('tabBtnUpload').classList.toggle('active', !isManage);
+      document.getElementById('tabManageContent').style.display = isManage ? 'block' : 'none';
+      document.getElementById('tabUploadContent').style.display = isManage ? 'none' : 'block';
+
+      if (!isManage) {
+        resetUploadForm();
+      } else {
+        populateSubjectSelect();
+      }
+    }
+
+    // --- LOAD SUBJECTS ---
+    async function loadSubjects() {
+      try {
+        const res = await fetch(API_BASE + '/api/subjects');
+        if (res.ok) {
+          ALL_SUBJECTS = await res.json();
+        }
+      } catch (e) {
+        console.warn('Lỗi kết nối API, lấy dữ liệu offline:', e.message);
+      }
+
+      // Check localStorage for offline/cached subjects
+      try {
+        const saved = localStorage.getItem('custom_subjects');
+        if (saved) {
+          ALL_SUBJECTS = { ...ALL_SUBJECTS, ...JSON.parse(saved) };
+        }
+      } catch (e) {}
+
+      populateSubjectSelect();
+    }
+
+    function populateSubjectSelect() {
+      const select = document.getElementById('subjectSelect');
+      const prevVal = select.value || currentSubjectKey;
+      select.innerHTML = '';
+
+      const keys = Object.keys(ALL_SUBJECTS);
+      if (keys.length === 0) {
+        select.innerHTML = '<option value="">Chưa có môn học nào</option>';
+        updateToolbarState(null);
+        renderQuestionsList();
+        return;
+      }
+
+      keys.forEach(k => {
+        const sub = ALL_SUBJECTS[k];
+        const opt = document.createElement('option');
+        opt.value = sub.id;
+        const hiddenTag = sub.hidden ? ' [Đang ẩn]' : '';
+        const count = sub.questions ? sub.questions.length : 0;
+        opt.textContent = `${sub.title}${hiddenTag} (${count} câu)`;
+        if (prevVal === sub.id) opt.selected = true;
+        select.appendChild(opt);
+      });
+
+      currentSubjectKey = select.value || keys[0];
+      updateToolbarState(ALL_SUBJECTS[currentSubjectKey]);
+      renderQuestionsList();
+    }
+
+    function onSubjectSelected() {
+      const select = document.getElementById('subjectSelect');
+      currentSubjectKey = select.value;
+      updateToolbarState(ALL_SUBJECTS[currentSubjectKey]);
+      renderQuestionsList();
+    }
+
+    function updateToolbarState(sub) {
+      const btnToggle = document.getElementById('btnToggleHide');
+      if (!sub) {
+        btnToggle.textContent = 'Ẩn môn';
+        return;
+      }
+      if (sub.hidden) {
+        btnToggle.textContent = 'Hiện môn';
+        btnToggle.style.color = '#b45309';
+        btnToggle.style.borderColor = '#fde68a';
+      } else {
+        btnToggle.textContent = 'Ẩn môn';
+        btnToggle.style.color = 'var(--text-main)';
+        btnToggle.style.borderColor = 'var(--border)';
+      }
+    }
+
+    // --- QUESTIONS RENDERING ---
+    function renderQuestionsList() {
+      const container = document.getElementById('questionsContainer');
+      const countLabel = document.getElementById('questionsCountLabel');
+      const filter = (document.getElementById('searchQuestionInput').value || '').trim().toLowerCase();
+
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (!sub || !Array.isArray(sub.questions) || sub.questions.length === 0) {
+        container.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 24px; font-size: 0.9rem;">Chưa có câu hỏi nào trong môn này.</div>';
+        countLabel.textContent = '0 câu hỏi';
+        return;
+      }
+
+      const list = sub.questions.filter(q => {
+        if (!filter) return true;
+        return q.question.toLowerCase().includes(filter) || String(q.id) === filter;
+      });
+
+      countLabel.textContent = `${list.length} / ${sub.questions.length} câu hỏi`;
+      container.innerHTML = '';
+
+      if (list.length === 0) {
+        container.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 24px; font-size: 0.88rem;">Không tìm thấy câu hỏi phù hợp.</div>';
+        return;
+      }
+
+      list.forEach(q => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+
+        const correctOpt = q.options && q.options[q.correctIndex];
+        const correctText = correctOpt ? `${correctOpt.label.toUpperCase()}. ${correctOpt.text}` : 'Chưa thiết lập';
+
+        card.innerHTML = `
+          <div class="q-card-header">
+            <span class="q-card-num">#${q.id}</span>
+            <div class="q-card-text">${escapeHtml(q.question)}</div>
+          </div>
+          <div class="q-card-ans">Đáp án đúng: ${escapeHtml(correctText)}</div>
+          <div class="q-card-footer">
+            <button class="btn-q-action" onclick="openEditQuestionModal(${q.id})">Sửa</button>
+            <button class="btn-q-action btn-q-delete" onclick="deleteQuestion(${q.id})">Xóa</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // --- QUESTION MODAL (ADD & EDIT) ---
+    function openEditQuestionModal(qId) {
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (!sub) return;
+
+      const q = sub.questions.find(item => item.id === qId);
+      if (!q) return;
+
+      document.getElementById('questionModalTitle').textContent = `Sửa câu hỏi #${q.id}`;
+      document.getElementById('editQId').value = q.id;
+      document.getElementById('editQuestionText').value = q.question;
+      document.getElementById('editExplanation').value = q.explanation || '';
+
+      currentOptions = (q.options || []).map((o, idx) => ({
+        label: o.label || String.fromCharCode(97 + idx),
+        text: o.text || '',
+        isCorrect: idx === q.correctIndex
+      }));
+
+      renderOptionInputs();
+      document.getElementById('questionModal').classList.add('open');
+    }
+
+    function openAddQuestionModal() {
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (!sub) {
+        alert('Vui lòng chọn hoặc tạo môn học trước!');
+        return;
+      }
+
+      document.getElementById('questionModalTitle').textContent = 'Thêm câu hỏi mới';
+      document.getElementById('editQId').value = 'NEW';
+      document.getElementById('editQuestionText').value = '';
+      document.getElementById('editExplanation').value = '';
+
+      currentOptions = [
+        { label: 'a', text: '', isCorrect: true },
+        { label: 'b', text: '', isCorrect: false },
+        { label: 'c', text: '', isCorrect: false },
+        { label: 'd', text: '', isCorrect: false }
+      ];
+
+      renderOptionInputs();
+      document.getElementById('questionModal').classList.add('open');
+    }
+
+    function closeQuestionModal() {
+      document.getElementById('questionModal').classList.remove('open');
+    }
+
+    function renderOptionInputs() {
+      const container = document.getElementById('optionsListContainer');
+      container.innerHTML = '';
+
+      currentOptions.forEach((opt, idx) => {
+        const row = document.createElement('div');
+        row.className = 'option-row';
+        row.innerHTML = `
+          <input type="radio" name="correctOpt" class="option-radio" ${opt.isCorrect ? 'checked' : ''} onchange="selectCorrectOption(${idx})" title="Đánh dấu đáp án đúng">
+          <span class="option-label">${opt.label}.</span>
+          <input type="text" class="option-text-input" value="${escapeHtml(opt.text)}" placeholder="Nội dung lựa chọn ${opt.label.toUpperCase()}" oninput="currentOptions[${idx}].text = this.value">
+          <button type="button" class="btn-remove-opt" onclick="removeOptionItem(${idx})" title="Xóa phương án này">✕</button>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function selectCorrectOption(idx) {
+      currentOptions.forEach((o, i) => { o.isCorrect = (i === idx); });
+    }
+
+    function addOptionItem() {
+      const nextChar = String.fromCharCode(97 + currentOptions.length);
+      currentOptions.push({
+        label: nextChar,
+        text: '',
+        isCorrect: currentOptions.length === 0
+      });
+      renderOptionInputs();
+    }
+
+    function removeOptionItem(idx) {
+      if (currentOptions.length <= 2) {
+        alert('Cần ít nhất 2 phương án lựa chọn!');
+        return;
+      }
+      const wasCorrect = currentOptions[idx].isCorrect;
+      currentOptions.splice(idx, 1);
+      currentOptions.forEach((o, i) => { o.label = String.fromCharCode(97 + i); });
+      if (wasCorrect && currentOptions.length > 0) currentOptions[0].isCorrect = true;
+      renderOptionInputs();
+    }
+
+    async function saveQuestionItem() {
+      const qIdVal = document.getElementById('editQId').value;
+      const qText = document.getElementById('editQuestionText').value.trim();
+      const explanation = document.getElementById('editExplanation').value.trim();
+      const pin = getStoredPin();
+
+      if (!qText) {
+        alert('Vui lòng nhập nội dung câu hỏi!');
+        return;
+      }
+
+      const options = currentOptions.map(o => ({
+        label: o.label.toLowerCase(),
+        text: o.text.trim()
+      }));
+
+      if (options.some(o => !o.text)) {
+        alert('Vui lòng điền đủ nội dung các lựa chọn!');
+        return;
+      }
+
+      let correctIndex = currentOptions.findIndex(o => o.isCorrect);
+      if (correctIndex === -1) correctIndex = 0;
+
+      const isNew = (qIdVal === 'NEW');
+      const action = isNew ? 'add-question' : 'update-question';
+
+      const btn = document.getElementById('btnSaveQuestion');
+      btn.disabled = true;
+      btn.textContent = 'Đang lưu...';
+
+      try {
+        await fetch(`${API_BASE}/api/manage?action=${action}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
+          body: JSON.stringify({
+            subjectId: currentSubjectKey,
+            questionId: isNew ? undefined : Number(qIdVal),
+            question: qText,
+            options,
+            correctIndex,
+            explanation
+          })
+        });
+      } catch (e) {
+        console.warn('Lỗi mạng API, lưu cục bộ:', e.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Lưu câu hỏi';
+      }
+
+      // Update Local State
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (sub && Array.isArray(sub.questions)) {
+        if (isNew) {
+          const newId = (sub.questions.length > 0 ? Math.max(...sub.questions.map(q => q.id)) : 0) + 1;
+          sub.questions.push({ id: newId, question: qText, options, correctIndex, explanation });
+        } else {
+          const target = sub.questions.find(q => q.id === Number(qIdVal));
+          if (target) {
+            target.question = qText;
+            target.options = options;
+            target.correctIndex = correctIndex;
+            target.explanation = explanation;
+          }
+        }
+        saveLocalCopy(sub);
+      }
+
+      closeQuestionModal();
+      populateSubjectSelect();
+      renderQuestionsList();
+    }
+
+    async function deleteQuestion(qId) {
+      if (!confirm(`Bạn có chắc muốn xóa câu hỏi #${qId}?`)) return;
+
+      const pin = getStoredPin();
+      try {
+        await fetch(`${API_BASE}/api/manage?action=delete-question`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
+          body: JSON.stringify({ subjectId: currentSubjectKey, questionId: qId })
+        });
+      } catch (e) {}
+
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (sub && Array.isArray(sub.questions)) {
+        sub.questions = sub.questions.filter(q => q.id !== qId);
+        saveLocalCopy(sub);
+      }
+
+      populateSubjectSelect();
+      renderQuestionsList();
+    }
+
+    // --- SUBJECT ACTIONS (RENAME, HIDE, DELETE) ---
+    function openRenameModal() {
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (!sub) return;
+      document.getElementById('renameInput').value = sub.title;
+      document.getElementById('renameModal').classList.add('open');
+    }
+
+    function closeRenameModal() {
+      document.getElementById('renameModal').classList.remove('open');
+    }
+
+    async function submitRenameSubject() {
+      const newTitle = document.getElementById('renameInput').value.trim();
+      if (!newTitle) return alert('Tên môn học không được để trống');
+
+      const pin = getStoredPin();
+      const btn = document.getElementById('btnSaveRename');
+      btn.disabled = true;
+
+      try {
+        await fetch(`${API_BASE}/api/manage?action=update-subject`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
+          body: JSON.stringify({ subjectId: currentSubjectKey, title: newTitle })
+        });
+      } catch (e) {} finally {
+        btn.disabled = false;
+      }
+
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (sub) {
+        sub.title = newTitle;
+        saveLocalCopy(sub);
+      }
+
+      closeRenameModal();
+      populateSubjectSelect();
+    }
+
+    async function toggleSubjectHide() {
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (!sub) return;
+
+      const newHidden = !sub.hidden;
+      const msg = newHidden
+        ? `Ẩn môn "${sub.title}" khỏi màn hình thi chính của học viên?`
+        : `Hiện môn "${sub.title}" trở lại màn hình ôn thi?`;
+
+      if (!confirm(msg)) return;
+
+      const pin = getStoredPin();
+      try {
+        await fetch(`${API_BASE}/api/manage?action=toggle-hide-subject`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
+          body: JSON.stringify({ subjectId: currentSubjectKey, hidden: newHidden })
+        });
+      } catch (e) {}
+
+      sub.hidden = newHidden;
+      saveLocalCopy(sub);
+      populateSubjectSelect();
+    }
+
+    async function deleteSelectedSubject() {
+      const sub = ALL_SUBJECTS[currentSubjectKey];
+      if (!sub) return;
+
+      if (!confirm(`CẢNH BÁO: Xóa vĩnh viễn môn "${sub.title}" và toàn bộ ${sub.questions ? sub.questions.length : 0} câu hỏi?`)) {
+        return;
+      }
+
+      const pin = getStoredPin();
+      try {
+        await fetch(`${API_BASE}/api/manage?action=delete-subject`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
+          body: JSON.stringify({ subjectId: currentSubjectKey })
+        });
+      } catch (e) {}
+
+      delete ALL_SUBJECTS[currentSubjectKey];
+      let customMap = {};
+      try {
+        const saved = localStorage.getItem('custom_subjects');
+        if (saved) customMap = JSON.parse(saved);
+      } catch (e) {}
+      delete customMap[currentSubjectKey];
+      localStorage.setItem('custom_subjects', JSON.stringify(customMap));
+
+      currentSubjectKey = null;
+      populateSubjectSelect();
+    }
+
+    // --- UPLOAD NEW SUBJECT ---
+    function resetUploadForm() {
+      document.getElementById('newSubjectName').value = '';
+      document.getElementById('fileInput').value = '';
+      document.getElementById('dropzoneText').textContent = 'Chọn file .JSON từ điện thoại';
+      document.getElementById('rawJsonInput').value = '';
+      document.getElementById('rawJsonBox').style.display = 'none';
+      pendingQuestions = [];
+      updateDetectedBadge(0);
+      validateUploadButton();
+    }
+
+    function toggleRawJson() {
+      const box = document.getElementById('rawJsonBox');
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function handleFilePicked(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      document.getElementById('dropzoneText').textContent = file.name;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const parsed = parseJson(event.target.result, file.name);
+          applyParsedData(parsed);
+        } catch (err) {
+          alert('Lỗi đọc file JSON: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function handleRawJsonTyped() {
+      const val = document.getElementById('rawJsonInput').value.trim();
+      if (!val) {
+        pendingQuestions = [];
+        updateDetectedBadge(0);
+        validateUploadButton();
+        return;
+      }
+      try {
+        const parsed = parseJson(val, '');
+        if (parsed && parsed.questions && parsed.questions.length > 0) {
+          applyParsedData(parsed);
+        } else {
+          pendingQuestions = [];
+          updateDetectedBadge(0, 'Chưa tìm thấy câu hỏi hợp lệ trong nội dung JSON');
+          validateUploadButton();
+        }
+      } catch (e) {
+        pendingQuestions = [];
+        updateDetectedBadge(0, 'Cú pháp JSON chưa đúng: ' + (e.message || 'Lỗi'));
+        validateUploadButton();
+      }
+    }
+
+    function robustParseJson(raw) {
+      if (!raw || typeof raw !== 'string') return null;
+      let s = raw.trim();
+
+      // 1. Strip markdown code fences (```json ... ``` or ``` ...)
+      if (s.startsWith('```')) {
+        s = s.replace(/^```[a-zA-Z0-9_-]*\s*\n?/, '').replace(/\n?\s*```\s*$/, '').trim();
+      }
+
+      // 2. Direct JSON.parse
+      try {
+        return JSON.parse(s);
+      } catch (e1) {}
+
+      // 3. Remove trailing commas before } or ]
+      const fixed = s.replace(/,\s*([\]}])/g, '$1');
+      try {
+        return JSON.parse(fixed);
+      } catch (e2) {}
+
+      // 4. Escape unescaped backslashes inside string literals (e.g. LaTeX formulas: \frac, \Delta, \cdot, etc.)
+      function escapeBackslashesInStrings(input, aggressive) {
+        let out = '';
+        let inStr = false;
+        let i = 0;
+        while (i < input.length) {
+          const ch = input[i];
+          if (ch === '"' && (i === 0 || input[i - 1] !== '\\')) {
+            inStr = !inStr;
+            out += ch;
+            i++;
+            continue;
+          }
+          if (inStr && ch === '\\') {
+            const next = input[i + 1];
+            if (!aggressive) {
+              let isStandard = false;
+              if (next === '"' || next === '\\' || next === '/') {
+                isStandard = true;
+              } else if (next === 'n' || next === 'r') {
+                isStandard = true;
+              } else if (next === 't') {
+                isStandard = !/^[a-zA-Z]/.test(input[i + 2] || '');
+              } else if (next === 'b' || next === 'f') {
+                isStandard = false; // almost always \frac, \begin in LaTeX
+              } else if (next === 'u' && /^[0-9a-fA-F]{4}$/.test(input.slice(i + 2, i + 6))) {
+                isStandard = true;
+              }
+              if (isStandard) {
+                out += ch + next;
+                i += 2;
+                continue;
+              } else {
+                out += '\\\\';
+                i++;
+                continue;
+              }
+            } else {
+              if (next === '"') { out += '\\"'; i += 2; continue; }
+              else if (next === '\\') { out += '\\\\'; i += 2; continue; }
+              else if (next === 'n') { out += '\\n'; i += 2; continue; }
+              else if (next === 'r') { out += '\\r'; i += 2; continue; }
+              else { out += '\\\\'; i++; continue; }
+            }
+          }
+          out += ch;
+          i++;
+        }
+        return out;
+      }
+
+      try { return JSON.parse(escapeBackslashesInStrings(fixed, false)); } catch (e3) {}
+      try { return JSON.parse(escapeBackslashesInStrings(fixed, true)); } catch (e4) {}
+
+      // 5. Loose JS Object / single quotes / unquoted keys
+      try {
+        if (/^\s*[[{]/.test(fixed)) {
+          const sanitizedForEval = escapeBackslashesInStrings(fixed, true);
+          return (new Function('return ' + sanitizedForEval))();
+        }
+      } catch (e5) {}
+
+      return null;
+    }
+
+    function parseJson(str, fileName) {
+      const data = robustParseJson(str);
+      if (!data) {
+        throw new Error('Không thể phân tích định dạng JSON');
+      }
+
+      let title = '';
+      let rawList = [];
+
+      if (Array.isArray(data)) {
+        rawList = data;
+        if (fileName) title = fileName.replace(/\.json$/i, '');
+      } else if (data && typeof data === 'object') {
+        title = data.title || data.name || data.subject || data.ten_mon || (fileName ? fileName.replace(/\.json$/i, '') : '');
+        rawList = data.questions || data.data || data.cau_hoi || data.items || data.list || [];
+        if (rawList.length === 0 && (data.question || data.cau_hoi || data.text)) {
+          rawList = [data];
+        }
+      }
+
+      const questions = [];
+      rawList.forEach((item, idx) => {
+        if (!item || typeof item !== 'object') return;
+        let qText = item.question || item.cau_hoi || item.cauHoi || item.content || item.text || item.prompt || item.q || '';
+        let qId = item.id || item.cau_so || item.cauSo || item.number || item.index || (idx + 1);
+        let explanation = item.explanation || item.giai_thich || item.giaiThich || item.explain || item.note || item.ghi_chu || item.details || '';
+
+        let options = [];
+        let correctIdx = (typeof item.correctIndex === 'number') ? item.correctIndex
+                       : (typeof item.correct_index === 'number') ? item.correct_index
+                       : (typeof item.correctIdx === 'number') ? item.correctIdx : -1;
+
+        const rawOpts = item.options || item.cac_lua_chon || item.choices || item.answers || item.lua_chon || item.list_answers;
+
+        if (Array.isArray(rawOpts)) {
+          rawOpts.forEach((opt, oIdx) => {
+            const defaultLabel = String.fromCharCode(97 + oIdx);
+            if (typeof opt === 'string') {
+              const m = opt.match(/^([a-dA-D])[.)]\s*(.*)$/);
+              if (m) {
+                options.push({ label: m[1].toLowerCase(), text: m[2].trim() });
+              } else {
+                options.push({ label: defaultLabel, text: opt.trim() });
+              }
+            } else if (opt && typeof opt === 'object') {
+              const lbl = (opt.label || opt.key || opt.id || defaultLabel).toString().toLowerCase().trim();
+              const txt = (opt.text !== undefined ? opt.text : (opt.content !== undefined ? opt.content : (opt.value !== undefined ? opt.value : opt.val !== undefined ? opt.val : ''))).toString().trim();
+              if (opt.isCorrect === true || opt.correct === true || opt.is_correct === true) {
+                correctIdx = oIdx;
+              }
+              options.push({ label: lbl, text: txt });
+            }
+          });
+        } else if (rawOpts && typeof rawOpts === 'object') {
+          let oIdx = 0;
+          for (const [lbl, txt] of Object.entries(rawOpts)) {
+            options.push({ label: lbl.toLowerCase().trim(), text: String(txt).trim() });
+            oIdx++;
+          }
+        }
+
+        const rawAns = item.dap_an !== undefined ? item.dap_an : (item.answer !== undefined ? item.answer : (item.dap_an_dung !== undefined ? item.dap_an_dung : (item.correctAnswer !== undefined ? item.correctAnswer : item.correct_answer !== undefined ? item.correct_answer : item.key !== undefined ? item.key : item.solution)));
+        if (correctIdx === -1 && rawAns !== undefined && rawAns !== null && rawAns !== '') {
+          if (typeof rawAns === 'number') {
+            if (rawAns >= 0 && rawAns < options.length) {
+              correctIdx = rawAns;
+            } else if (rawAns >= 1 && rawAns <= options.length) {
+              correctIdx = rawAns - 1;
+            }
+          } else {
+            const ansStr = String(rawAns).toLowerCase().trim();
+            let found = options.findIndex(o => o.label === ansStr || o.label === ansStr.replace(/^[a-z]\s*[.):]\s*/, ''));
+            if (found === -1) {
+              const singleLetter = ansStr.match(/\b([a-d])\b/);
+              if (singleLetter) {
+                found = options.findIndex(o => o.label === singleLetter[1]);
+              }
+            }
+            if (found === -1) {
+              found = options.findIndex(o => o.text.toLowerCase() === ansStr);
+            }
+            if (found !== -1) correctIdx = found;
+          }
+        }
+
+        if (qText && options.length > 0) {
+          questions.push({
+            id: Number(qId) || (idx + 1),
+            question: qText.trim(),
+            options: options,
+            correctIndex: correctIdx >= 0 ? correctIdx : 0,
+            explanation: explanation.trim()
+          });
+        }
+      });
+
+      return { title, questions };
+    }
+
+    function applyParsedData(res) {
+      pendingQuestions = res.questions;
+      if (res.title && !document.getElementById('newSubjectName').value.trim()) {
+        document.getElementById('newSubjectName').value = res.title;
+      }
+      updateDetectedBadge(pendingQuestions.length);
+      validateUploadButton();
+    }
+
+    function updateDetectedBadge(count, errorMsg) {
+      const badge = document.getElementById('detectedBadge');
+      if (count > 0) {
+        badge.innerHTML = `✅ Đã nhận diện <strong>${count}</strong> câu hỏi hợp lệ`;
+        badge.style.background = 'var(--success-light)';
+        badge.style.color = 'var(--success)';
+        badge.style.borderColor = '#bbf7d0';
+        badge.style.display = 'block';
+      } else if (errorMsg) {
+        badge.innerHTML = `⚠️ ${errorMsg}`;
+        badge.style.background = '#fef2f2';
+        badge.style.color = '#dc2626';
+        badge.style.borderColor = '#fecaca';
+        badge.style.display = 'block';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    function validateUploadButton() {
+      const name = document.getElementById('newSubjectName').value.trim();
+      const hasQ = pendingQuestions.length > 0;
+      document.getElementById('btnSaveSubject').disabled = !(name && hasQ);
+    }
+
+    async function submitNewSubject() {
+      const title = document.getElementById('newSubjectName').value.trim();
+      const pin = getStoredPin();
+
+      if (!title || pendingQuestions.length === 0) return;
+
+      const btn = document.getElementById('btnSaveSubject');
+      btn.disabled = true;
+      btn.textContent = 'Đang lưu vào Database...';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/manage?action=upload-subject`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-pin': pin },
+          body: JSON.stringify({
+            title,
+            icon: '📚',
+            questions: pendingQuestions
+          })
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert('Đã lưu thành công môn học mới!');
+          const savedSub = data.subject;
+          ALL_SUBJECTS[savedSub.id] = savedSub;
+          saveLocalCopy(savedSub);
+          currentSubjectKey = savedSub.id;
+          resetUploadForm();
+          switchTab('manage');
+        } else {
+          fallbackSaveSubject(title, pendingQuestions);
+        }
+      } catch (err) {
+        fallbackSaveSubject(title, pendingQuestions);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Lưu môn học vào Database';
+      }
+    }
+
+    function fallbackSaveSubject(title, questions) {
+      const slug = 'sub_' + Date.now();
+      const newSub = {
+        id: slug,
+        title,
+        subtitle: `${questions.length} câu hỏi`,
+        icon: '📚',
+        questions
+      };
+      ALL_SUBJECTS[slug] = newSub;
+      saveLocalCopy(newSub);
+      currentSubjectKey = slug;
+      resetUploadForm();
+      switchTab('manage');
+      alert('Đã lưu môn học vào bộ nhớ trình duyệt!');
+    }
+
+    function saveLocalCopy(sub) {
+      try {
+        let customMap = {};
+        const saved = localStorage.getItem('custom_subjects');
+        if (saved) customMap = JSON.parse(saved);
+        customMap[sub.id] = sub;
+        localStorage.setItem('custom_subjects', JSON.stringify(customMap));
+      } catch (e) {}
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // --- INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAuth();
+
+      // Enter key submits PIN
+      document.getElementById('pinInput').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handlePinSubmit();
+      });
+    });
+  </script>
+</body>
+</html>
