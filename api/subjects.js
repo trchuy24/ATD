@@ -45,7 +45,7 @@ module.exports = async function handler(req, res) {
 
     // Retrieve all subjects sorted by order (default fallback to 999)
     const list = await subjectsColl
-      .find({}, { projection: { _id: 0 } })
+      .find({}, { projection: { _id: 0, questions: 0, icon: 0, group: 0 } })
       .sort({ order: 1, _id: 1 })
       .toArray();
 

@@ -119,8 +119,24 @@ const server = http.createServer(async (req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Server đang chạy tại http://localhost:${PORT}`);
-  console.log(`- API Subjects: http://localhost:${PORT}/api/subjects`);
-  console.log(`- API Questions: http://localhost:${PORT}/api/questions?subject=atd`);
+const os = require('os');
+
+function getLocalIp() {
+  const interfaces = os.networkInterfaces();
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      if (iface.family === 'IPv4' && !iface.internal) {
+        return iface.address;
+      }
+    }
+  }
+  return 'localhost';
+}
+
+server.listen(PORT, '0.0.0.0', () => {
+  const localIp = getLocalIp();
+  console.log(`\n🚀 Server đang chạy:`);
+  console.log(`- Trên máy tính:              http://localhost:${PORT}`);
+  console.log(`- Trên điện thoại (cùng WiFi): http://${localIp}:${PORT}`);
+  console.log(`- Quản lý đề:                 http://${localIp}:${PORT}/manage.html\n`);
 });

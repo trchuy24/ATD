@@ -99,7 +99,10 @@ async function migrate() {
   for (const sub of subjectsToMigrate) {
     console.log(`Đang lưu môn: "${sub.title}" (${sub.id}) - ${sub.questions.length} câu hỏi...`);
 
-    // Upsert into subjects collection
+    // Upsert into subjects collection (omitting questions, icon, group)
+    const isCns = sub.id.startsWith('cns') && sub.id !== 'cns';
+    const parentId = isCns ? 'cns' : null;
+
     await subjectsColl.updateOne(
       { id: sub.id },
       {
@@ -107,23 +110,29 @@ async function migrate() {
           id: sub.id,
           title: sub.title,
           subtitle: sub.subtitle,
-          icon: sub.icon,
           order: sub.order,
+          parentId: parentId,
+          isFolder: false,
           totalQuestions: sub.questions.length,
-          questions: sub.questions,
           updatedAt: new Date()
+        },
+        $unset: {
+          questions: "",
+          icon: "",
+          group: ""
         }
       },
       { upsert: true }
     );
 
-    // Upsert each question into questions collection
+    // Upsert each question into questions collection with parentSubjectID
     for (const q of sub.questions) {
       await questionsColl.updateOne(
         { subjectId: sub.id, id: q.id },
         {
           $set: {
             subjectId: sub.id,
+            parentSubjectID: parentId,
             id: q.id,
             question: q.question,
             options: q.options,

@@ -235,7 +235,7 @@ module.exports = async function handler(req, res) {
   try {
     // ACTION 1: UPLOAD SUBJECT
     if (action === 'upload-subject') {
-      const { title, icon, questions: rawQuestions, subjectId: customSubjectId } = body;
+      const { title, questions: rawQuestions, subjectId: customSubjectId } = body;
 
       if (!title || !title.trim()) {
         return res.status(400).json({ error: 'Tên môn học không được để trống' });
@@ -249,26 +249,42 @@ module.exports = async function handler(req, res) {
       const baseSlug = customSubjectId ? slugify(customSubjectId) : slugify(title);
       const subjectId = baseSlug || 'mon_' + Date.now();
 
+      const isCns = subjectId.toLowerCase().startsWith('cns') || title.toUpperCase().includes('CNS');
+      const parentId = body.parentId !== undefined ? (body.parentId || null) : (isCns ? 'cns' : null);
+
+      const existingSub = await subjectsColl.findOne({ id: subjectId });
+      let subjectOrder = existingSub?.order;
+      if (typeof subjectOrder !== 'number') {
+        const query = parentId ? { parentId } : {};
+        const maxOrderSub = await subjectsColl.find(query).sort({ order: -1 }).limit(1).toArray();
+        subjectOrder = (maxOrderSub[0]?.order || 0) + 1;
+      }
+
       const subjectData = {
         id: subjectId,
         title: title.trim(),
         subtitle: `Ngân hàng ${questions.length} câu hỏi`,
-        icon: icon || '📚',
+        isFolder: false,
+        parentId: parentId,
+        order: subjectOrder,
         totalQuestions: questions.length,
-        questions: questions,
         updatedAt: new Date()
       };
 
       await subjectsColl.updateOne(
         { id: subjectId },
-        { $set: subjectData },
+        {
+          $set: subjectData,
+          $unset: { questions: "", icon: "", group: "" }
+        },
         { upsert: true }
       );
 
-      // Refresh questions collection
+      // Refresh questions collection with parentSubjectID
       await questionsColl.deleteMany({ subjectId });
       const questionDocs = questions.map(q => ({
         subjectId,
+        parentSubjectID: parentId || null,
         id: q.id,
         question: q.question,
         options: q.options,
@@ -310,28 +326,6 @@ module.exports = async function handler(req, res) {
         { $set: updateFields }
       );
 
-      // Also sync inside subjects collection embedded questions
-      const subject = await subjectsColl.findOne({ id: subjectId });
-      if (subject && Array.isArray(subject.questions)) {
-        const updatedList = subject.questions.map(q => {
-          if (q.id === qId) {
-            return {
-              ...q,
-              question: updateFields.question,
-              options: updateFields.options,
-              correctIndex: updateFields.correctIndex,
-              explanation: updateFields.explanation
-            };
-          }
-          return q;
-        });
-
-        await subjectsColl.updateOne(
-          { id: subjectId },
-          { $set: { questions: updatedList, updatedAt: new Date() } }
-        );
-      }
-
       return res.status(200).json({
         success: true,
         message: `Đã cập nhật câu hỏi số ${qId} thành công!`
@@ -343,12 +337,17 @@ module.exports = async function handler(req, res) {
       const { subjectId, question, options, correctIndex, explanation } = body;
       if (!subjectId) return res.status(400).json({ error: 'Thiếu subjectId' });
 
+      // Look up parentId of subject to set parentSubjectID
+      const subject = await subjectsColl.findOne({ id: subjectId });
+      const parentSubjectID = subject?.parentId || null;
+
       // Determine new question id
       const lastQ = await questionsColl.find({ subjectId }).sort({ id: -1 }).limit(1).toArray();
       const newId = (lastQ.length > 0 ? Number(lastQ[0].id) : 0) + 1;
 
       const newQ = {
         subjectId,
+        parentSubjectID,
         id: newId,
         question: String(question || '').trim(),
         options: options || [],
@@ -359,19 +358,10 @@ module.exports = async function handler(req, res) {
 
       await questionsColl.insertOne(newQ);
 
-      // Append to subjects collection
+      // Increment totalQuestions in subjects collection
       await subjectsColl.updateOne(
         { id: subjectId },
         {
-          $push: {
-            questions: {
-              id: newId,
-              question: newQ.question,
-              options: newQ.options,
-              correctIndex: newQ.correctIndex,
-              explanation: newQ.explanation
-            }
-          },
           $inc: { totalQuestions: 1 },
           $set: { updatedAt: new Date() }
         }
@@ -393,7 +383,6 @@ module.exports = async function handler(req, res) {
       await subjectsColl.updateOne(
         { id: subjectId },
         {
-          $pull: { questions: { id: qId } },
           $inc: { totalQuestions: -1 },
           $set: { updatedAt: new Date() }
         }
@@ -413,9 +402,9 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({ success: true, message: 'Đã xóa môn học khỏi cơ sở dữ liệu' });
     }
 
-    // ACTION 6: UPDATE SUBJECT NAME & ICON
+    // ACTION 6: UPDATE SUBJECT
     if (action === 'update-subject') {
-      const { subjectId, title, icon } = body;
+      const { subjectId, title } = body;
       if (!subjectId || !title) {
         return res.status(400).json({ error: 'Thiếu subjectId hoặc tên môn học' });
       }
@@ -424,14 +413,25 @@ module.exports = async function handler(req, res) {
         title: title.trim(),
         updatedAt: new Date()
       };
-      if (icon) updateData.icon = icon.trim();
+      if (body.parentId !== undefined) updateData.parentId = body.parentId || null;
 
       await subjectsColl.updateOne(
         { id: subjectId },
-        { $set: updateData }
+        {
+          $set: updateData,
+          $unset: { icon: "", group: "", questions: "" }
+        }
       );
 
-      return res.status(200).json({ success: true, message: 'Đã cập nhật tên môn học thành công' });
+      // If parentId is updated, also update parentSubjectID on all questions of this subject
+      if (body.parentId !== undefined) {
+        await questionsColl.updateMany(
+          { subjectId },
+          { $set: { parentSubjectID: body.parentId || null } }
+        );
+      }
+
+      return res.status(200).json({ success: true, message: 'Đã cập nhật môn học thành công' });
     }
 
     // ACTION 7: TOGGLE HIDE/SHOW SUBJECT
@@ -470,6 +470,108 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({
         success: true,
         message: 'Đã cập nhật thứ tự hiển thị môn học'
+      });
+    }
+
+    // ACTION 9: CREATE FOLDER (TẠO THƯ MỤC CHA)
+    if (action === 'create-folder') {
+      const { title } = body;
+      if (!title || !title.trim()) {
+        return res.status(400).json({ error: 'Tên thư mục cha không được để trống' });
+      }
+
+      const folderId = slugify(title) || 'folder_' + Date.now();
+      const existing = await subjectsColl.findOne({ id: folderId });
+      if (existing) {
+        return res.status(400).json({ error: `Thư mục hoặc môn có mã "${folderId}" đã tồn tại` });
+      }
+
+      const maxOrderSub = await subjectsColl.find().sort({ order: -1 }).limit(1).toArray();
+      const nextOrder = (maxOrderSub[0]?.order || 0) + 1;
+
+      const folderData = {
+        id: folderId,
+        title: title.trim(),
+        isFolder: true,
+        parentId: null,
+        order: nextOrder,
+        totalQuestions: 0,
+        updatedAt: new Date()
+      };
+
+      await subjectsColl.insertOne(folderData);
+      return res.status(200).json({
+        success: true,
+        folder: folderData,
+        message: `Đã tạo thư mục cha "${title.trim()}"`
+      });
+    }
+
+    // ACTION 10: UPDATE FOLDER (CẬP NHẬT THƯ MỤC CHA)
+    if (action === 'update-folder') {
+      const { folderId, title } = body;
+      if (!folderId || !title) {
+        return res.status(400).json({ error: 'Thiếu folderId hoặc tên thư mục' });
+      }
+
+      const updateData = { title: title.trim(), updatedAt: new Date() };
+
+      await subjectsColl.updateOne(
+        { id: folderId },
+        {
+          $set: updateData,
+          $unset: { icon: "", group: "", questions: "" }
+        }
+      );
+      return res.status(200).json({ success: true, message: 'Đã cập nhật thư mục cha thành công' });
+    }
+
+    // ACTION 11: DELETE FOLDER (XÓA THƯ MỤC CHA)
+    if (action === 'delete-folder') {
+      const { folderId } = body;
+      if (!folderId) return res.status(400).json({ error: 'Thiếu folderId' });
+
+      // Move child subjects out to root so they aren't lost
+      await subjectsColl.updateMany(
+        { parentId: folderId },
+        { $set: { parentId: null, updatedAt: new Date() } }
+      );
+
+      // Update questions parentSubjectID to null
+      await questionsColl.updateMany(
+        { parentSubjectID: folderId },
+        { $set: { parentSubjectID: null } }
+      );
+
+      await subjectsColl.deleteOne({ id: folderId });
+      return res.status(200).json({
+        success: true,
+        message: 'Đã xóa thư mục cha (các môn học con đã được chuyển ra ngoài làm môn độc lập)'
+      });
+    }
+
+    // ACTION 12: SET SUBJECT PARENT (CHUYỂN MÔN VÀO/RA THƯ MỤC CHA)
+    if (action === 'set-subject-parent') {
+      const { subjectId, parentId } = body;
+      if (!subjectId) return res.status(400).json({ error: 'Thiếu subjectId' });
+
+      await subjectsColl.updateOne(
+        { id: subjectId },
+        {
+          $set: { parentId: parentId || null, updatedAt: new Date() },
+          $unset: { group: "" }
+        }
+      );
+
+      // Also update parentSubjectID on all questions for this subject
+      await questionsColl.updateMany(
+        { subjectId },
+        { $set: { parentSubjectID: parentId || null } }
+      );
+
+      return res.status(200).json({
+        success: true,
+        message: parentId ? `Đã chuyển môn vào thư mục "${parentId}"` : 'Đã chuyển môn thành môn độc lập'
       });
     }
 

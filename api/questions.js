@@ -25,21 +25,26 @@ module.exports = async function handler(req, res) {
   res.setHeader('Vercel-CDN-Cache-Control', 'no-store');
 
   const subjectId = req.query?.subject || req.query?.id;
-  if (!subjectId) {
-    return res.status(400).json({ error: 'Vui lòng cung cấp tham số subject (ví dụ: ?subject=atd)' });
+  const parentSubjectID = req.query?.parentSubjectID || req.query?.parentId;
+
+  if (!subjectId && !parentSubjectID) {
+    return res.status(400).json({ error: 'Vui lòng cung cấp tham số subject (ví dụ: ?subject=atd) hoặc parentSubjectID' });
   }
 
   try {
     const db = await getDb();
     const questionsColl = db.collection('questions');
 
+    const filter = parentSubjectID ? { parentSubjectID } : { subjectId };
+
     const questions = await questionsColl
-      .find({ subjectId }, { projection: { _id: 0, subjectId: 0 } })
+      .find(filter, { projection: { _id: 0 } })
       .sort({ id: 1 })
       .toArray();
 
     return res.status(200).json({
-      subjectId,
+      subjectId: subjectId || null,
+      parentSubjectID: parentSubjectID || null,
       total: questions.length,
       questions
     });
