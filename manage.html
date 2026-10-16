@@ -2780,29 +2780,29 @@
       s = s.replace(/\\\\([a-zA-Z])/g, '\\$1');
 
       // 2. Fractions: \frac{a}{b} -> a/b
-      s = s.replace(/\\?frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
+      s = s.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
 
       // 3. Square root: \sqrt{x} -> √(x)
-      s = s.replace(/\\?sqrt\{([^}]+)\}/g, '√($1)');
+      s = s.replace(/\\sqrt\{([^}]+)\}/g, '√($1)');
 
       // 4. Dot product: \cdot -> ·
-      s = s.replace(/\\?cdot\b/g, '·');
+      s = s.replace(/\\cdot\b/g, '·');
 
       // 5. Replace \text{ ... } while preserving spacing
-      s = s.replace(/\\?text\{([^}]+)\}/g, (m, content) => ' ' + content.trim() + ' ');
+      s = s.replace(/\\text\{([^}]+)\}/g, (m, content) => ' ' + content.trim() + ' ');
 
-      // 6. Greek & math operators
-      s = s.replace(/\\?le\b/g, ' ≤ ');
-      s = s.replace(/\\?ge\b/g, ' ≥ ');
-      s = s.replace(/\\?neq?\b/g, ' ≠ ');
-      s = s.replace(/\\?Omega\b/g, ' Ω');
-      s = s.replace(/\\?Delta\b/g, ' Δ');
-      s = s.replace(/\\?mu\b/g, ' µ');
-      s = s.replace(/\\?pi\b/g, ' π');
-      s = s.replace(/\\?times\b/g, ' × ');
-      s = s.replace(/\\?pm\b/g, ' ± ');
-      s = s.replace(/\\?approx\b/g, ' ≈ ');
-      s = s.replace(/\\?degree\b/g, '°');
+      // 6. Greek & math operators (require leading backslash so regular words are never corrupted)
+      s = s.replace(/\\le\b/g, ' ≤ ');
+      s = s.replace(/\\ge\b/g, ' ≥ ');
+      s = s.replace(/\\neq?\b/g, ' ≠ ');
+      s = s.replace(/\\Omega\b/g, ' Ω');
+      s = s.replace(/\\Delta\b/g, ' Δ');
+      s = s.replace(/\\mu\b/g, ' µ');
+      s = s.replace(/\\pi\b/g, ' π');
+      s = s.replace(/\\times\b/g, ' × ');
+      s = s.replace(/\\pm\b/g, ' ± ');
+      s = s.replace(/\\approx\b/g, ' ≈ ');
+      s = s.replace(/\\degree\b/g, '°');
       s = s.replace(/\^\\?circ\b/g, '°');
       s = s.replace(/\^2\b/g, '²');
       s = s.replace(/\^3\b/g, '³');
