@@ -35,7 +35,28 @@ module.exports = async function handler(req, res) {
     const db = await getDb();
     const questionsColl = db.collection('questions');
 
-    const filter = parentSubjectID ? { parentSubjectID } : { subjectId };
+    let filter;
+    if (parentSubjectID) {
+      filter = { parentSubjectID };
+
+      // Thu thập các môn cần loại trừ khỏi danh sách tổng hợp
+      const exclude = [];
+      if (req.query?.exclude) {
+        const rawExclude = Array.isArray(req.query.exclude) ? req.query.exclude : req.query.exclude.split(',');
+        exclude.push(...rawExclude.map(s => s.trim()).filter(Boolean));
+      }
+
+      // Đối với môn Dẫn đường hàng không (id 'cns'), không tổng hợp các câu hỏi của môn CNS - Môn3: Dịch vụ thông báo tin tức HK (cns_mon3_dich_vu_thong_bao_tin_tuc_hk)
+      if (parentSubjectID === 'cns' && !exclude.includes('cns_mon3_dich_vu_thong_bao_tin_tuc_hk')) {
+        exclude.push('cns_mon3_dich_vu_thong_bao_tin_tuc_hk');
+      }
+
+      if (exclude.length > 0) {
+        filter.subjectId = { $nin: exclude };
+      }
+    } else {
+      filter = { subjectId };
+    }
 
     const questions = await questionsColl
       .find(filter, { projection: { _id: 0 } })

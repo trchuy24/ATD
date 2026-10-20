@@ -1812,7 +1812,18 @@
           }
         } catch (e) { }
 
-        const summaryProgressText = summaryAnsCount > 0 ? `Đã làm ${summaryAnsCount}/${totalQ} câu` : `Toàn bộ ${totalQ} câu hỏi trong tất cả phân môn`;
+        // Tính tổng số câu hỏi riêng cho phần Tổng hợp (loại trừ các môn không tham gia tổng hợp)
+        const summaryChildren = children.filter(c => {
+          if (folderId === 'cns' && c.id === 'cns_mon3_dich_vu_thong_bao_tin_tuc_hk') return false;
+          return true;
+        });
+        const summaryTotalQ = summaryChildren.reduce((sum, c) => sum + (c.questions ? c.questions.length : (c.totalQuestions || 0)), 0);
+
+        const summaryProgressText = summaryAnsCount > 0 ? `Đã làm ${summaryAnsCount}/${summaryTotalQ} câu` : `Toàn bộ ${summaryTotalQ} câu hỏi trong tất cả phân môn`;
+
+        const summaryTitle = folderId === 'cns'
+          ? 'Tổng hợp câu hỏi <span style="font-size: 0.85em; font-weight: 600; color: #dc2626; margin-left: 4px;">(Bỏ M3-P1)</span>'
+          : 'Tổng hợp câu hỏi';
 
         summaryCard.innerHTML = `
           <div class="subject-info">
@@ -1825,7 +1836,7 @@
                   <span class="material-symbols-rounded" style="font-size: 13px; vertical-align: -2px; margin-right: 2px;">auto_awesome</span> Gộp tất cả
                 </span>
               </div>
-              <h2 style="font-weight: 700; color: #1e3a8a;">Tổng hợp câu hỏi</h2>
+              <h2 style="font-weight: 700; color: #1e3a8a;">${summaryTitle}</h2>
               <p>${summaryProgressText}</p>
             </div>
           </div>
@@ -1992,11 +2003,12 @@
       if (searchBox) searchBox.value = '';
 
       const folderTitle = ALL_SUBJECTS[folderId].title || 'Tổng hợp môn';
+      const summaryHeaderTitle = 'Tổng hợp • ' + folderTitle + (folderId === 'cns' ? ' (Bỏ M3-P1)' : '');
       document.getElementById('menuScreen').style.display = 'none';
       document.getElementById('folderScreen').style.display = 'none';
       document.getElementById('questionsScreen').style.display = 'flex';
-      document.getElementById('currentSubjectName').textContent = 'Tổng hợp • ' + folderTitle;
-      document.title = 'Tổng hợp - ' + folderTitle;
+      document.getElementById('currentSubjectName').textContent = summaryHeaderTitle;
+      document.title = 'Tổng hợp - ' + folderTitle + (folderId === 'cns' ? ' (Bỏ M3-P1)' : '');
 
       const questionsListEl = document.getElementById('questionsList');
       questionsListEl.innerHTML = '<div style="text-align: center; padding: 48px; color: var(--text-muted);"><div class="spinner" style="margin: 0 auto 12px;"></div>Đang tải tổng hợp câu hỏi từ cơ sở dữ liệu...</div>';
@@ -2019,6 +2031,7 @@
       if (rawQuestions.length === 0) {
         const children = getChildSubjectsOf(folderId);
         for (const ch of children) {
+          if (folderId === 'cns' && ch.id === 'cns_mon3_dich_vu_thong_bao_tin_tuc_hk') continue;
           const chQs = await ensureSubjectQuestions(ch.id);
           if (chQs && chQs.length > 0) {
             chQs.forEach(q => {
@@ -2026,6 +2039,11 @@
             });
           }
         }
+      }
+
+      // 2.1. Đảm bảo loại trừ câu hỏi của cns_mon3_dich_vu_thong_bao_tin_tuc_hk khi tổng hợp môn Dẫn đường hàng không (cns)
+      if (folderId === 'cns') {
+        rawQuestions = rawQuestions.filter(q => q.subjectId !== 'cns_mon3_dich_vu_thong_bao_tin_tuc_hk');
       }
 
       // 3. Chuẩn hóa ID tuần tự để tránh xung đột câu hỏi giữa các phân môn
@@ -2274,7 +2292,7 @@
     function clearAllAnswers() {
       if (isExamMode) return;
       const subTitle = isFolderSummary
-        ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || ''))
+        ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || '') + (currentFolderId === 'cns' ? ' (Bỏ M3-P1)' : ''))
         : (ALL_SUBJECTS[currentSubjectKey]?.title || '');
       const confirmMsg = `Bạn có chắc muốn xóa tất cả câu trả lời của "${subTitle}" để làm lại không?`;
 
@@ -2308,7 +2326,7 @@
       }
 
       const displayTitle = isFolderSummary
-        ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || ''))
+        ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || '') + (currentFolderId === 'cns' ? ' (Bỏ M3-P1)' : ''))
         : (ALL_SUBJECTS[currentSubjectKey]?.title || '');
 
       document.getElementById('examSetupDesc').textContent =
