@@ -1612,6 +1612,7 @@
     let currentSubjectKey = null;
     let currentQuestions = [];
     let userAnswers = {};
+    let wrongPracticeIds = new Set();
     let filterQuery = '';
     let isFolderSummary = false;
     let showWrongOnly = false;
@@ -1918,8 +1919,13 @@
         const storageKey = isFolderSummary ? ('answers_summary_' + currentFolderId) : ('answers_' + subKey);
         const saved = localStorage.getItem(storageKey);
         userAnswers = saved ? JSON.parse(saved) : {};
+
+        const wrongKey = isFolderSummary ? ('wrong_practice_summary_' + currentFolderId) : ('wrong_practice_' + subKey);
+        const savedWrong = localStorage.getItem(wrongKey);
+        wrongPracticeIds = new Set(savedWrong ? JSON.parse(savedWrong) : []);
       } catch (e) {
         userAnswers = {};
+        wrongPracticeIds = new Set();
       }
     }
 
@@ -1927,6 +1933,9 @@
       try {
         const storageKey = isFolderSummary ? ('answers_summary_' + currentFolderId) : ('answers_' + subKey);
         localStorage.setItem(storageKey, JSON.stringify(userAnswers));
+
+        const wrongKey = isFolderSummary ? ('wrong_practice_summary_' + currentFolderId) : ('wrong_practice_' + subKey);
+        localStorage.setItem(wrongKey, JSON.stringify([...wrongPracticeIds]));
       } catch (e) { }
     }
 
@@ -2069,7 +2078,22 @@
         rawQuestions = rawQuestions.filter(q => !cnsExcluded.includes(q.subjectId));
       }
 
-      // 3. Chuẩn hóa ID tuần tự để tránh xung đột câu hỏi giữa các phân môn
+      // 2.2. Sắp xếp rawQuestions xác định 100%: theo thứ tự môn con (order), rồi đến id câu hỏi
+      const childSubs = getChildSubjectsOf(folderId);
+      const subOrderMap = {};
+      childSubs.forEach((s, idx) => {
+        subOrderMap[s.id] = (s.order !== undefined && s.order !== null) ? Number(s.order) : (idx + 1);
+      });
+
+      rawQuestions.sort((a, b) => {
+        const orderA = subOrderMap[a.subjectId] ?? 999;
+        const orderB = subOrderMap[b.subjectId] ?? 999;
+        if (orderA !== orderB) return orderA - orderB;
+        if (a.subjectId !== b.subjectId) return String(a.subjectId).localeCompare(String(b.subjectId));
+        return (Number(a.id) || 0) - (Number(b.id) || 0);
+      });
+
+      // 3. Chuẩn hóa ID tuần tự để đảm bảo 1..N ổn định tuyệt đối
       summaryQuestionsCache = rawQuestions.map((q, idx) => {
         const origSub = ALL_SUBJECTS[q.subjectId];
         return {
@@ -2083,10 +2107,6 @@
 
       loadAnswers(folderId);
 
-      // Sắp xếp các câu đã làm lên trước, các câu chưa làm ở sau
-      const answeredList = summaryQuestionsCache.filter(q => userAnswers[q.id] !== undefined && userAnswers[q.id] !== null);
-      const unansweredList = summaryQuestionsCache.filter(q => userAnswers[q.id] === undefined || userAnswers[q.id] === null);
-      summaryQuestionsCache = [...answeredList, ...unansweredList];
       currentQuestions = [...summaryQuestionsCache];
 
       const statsEl = document.getElementById('currentSubjectStats');
@@ -2108,10 +2128,10 @@
       renderQuestionsList();
 
       // Tự động cuộn xuống câu đầu tiên chưa làm để người dùng tiếp tục ôn tập
-      if (answeredList.length > 0 && unansweredList.length > 0) {
-        const firstUnansweredId = unansweredList[0].id;
+      const firstUnanswered = currentQuestions.find(q => userAnswers[q.id] === undefined || userAnswers[q.id] === null);
+      if (firstUnanswered && firstUnanswered.id > 1) {
         setTimeout(() => {
-          const targetEl = document.getElementById('q_' + firstUnansweredId);
+          const targetEl = document.getElementById('q_' + firstUnanswered.id);
           if (targetEl) {
             targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
@@ -2306,7 +2326,20 @@
         : ((currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions && ALL_SUBJECTS[currentSubjectKey].questions.length > 0)
           ? ALL_SUBJECTS[currentSubjectKey].questions
           : currentQuestions);
-      return pool.filter(q => userAnswers[q.id] !== undefined && userAnswers[q.id] !== q.correctIndex);
+      return pool.filter(q => {
+        const ans = userAnswers[q.id];
+        // Câu đã làm và đáp án sai
+        if (ans !== undefined && ans !== null && ans !== q.correctIndex) return true;
+        // Câu trong danh sách đang luyện tập lại (chưa làm đúng)
+        if (wrongPracticeIds.has(q.id)) {
+          if (ans !== undefined && ans !== null && ans === q.correctIndex) {
+            wrongPracticeIds.delete(q.id);
+            return false;
+          }
+          return true;
+        }
+        return false;
+      });
     }
 
     function toggleWrongOnlyFilter() {
@@ -2324,7 +2357,7 @@
 
       const confirmed = await showConfirmModal({
         title: 'Làm lại các câu sai',
-        message: `Bạn có muốn xóa đáp án của ${wrongQs.length} câu làm sai để làm lại không?`,
+        message: `Bạn có muốn xóa đáp án của ${wrongQs.length} câu làm sai để luyện tập lại không?\n\n(Lưu ý: Các câu bạn đã làm đúng vẫn được giữ nguyên đầy đủ).`,
         confirmText: 'Làm lại câu sai',
         cancelText: 'Hủy',
         icon: 'restart_alt',
@@ -2333,11 +2366,13 @@
 
       if (confirmed) {
         wrongQs.forEach(q => {
+          wrongPracticeIds.add(q.id);
           delete userAnswers[q.id];
         });
         saveAnswers(currentSubjectKey);
         updateToolbarUI();
         renderQuestionsList();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
@@ -2350,8 +2385,9 @@
       const wrongInExam = examQuestions.filter(q => userAnswers[q.id] !== undefined && userAnswers[q.id] !== q.correctIndex);
       if (wrongInExam.length === 0) return;
 
-      // Xóa đáp án của những câu sai để người dùng làm lại ngay
+      // Đưa các câu sai vào wrongPracticeIds và xóa đáp án để người dùng làm lại ngay
       wrongInExam.forEach(q => {
+        wrongPracticeIds.add(q.id);
         delete userAnswers[q.id];
       });
       saveAnswers(currentSubjectKey);
@@ -2389,7 +2425,16 @@
         if (examBottomActions) examBottomActions.style.display = 'flex';
         updateExamProgressBadge();
       } else {
-        if (btnClearAnswers) btnClearAnswers.style.display = 'inline-flex';
+        if (btnClearAnswers) {
+          btnClearAnswers.style.display = 'inline-flex';
+          if (showWrongOnly) {
+            btnClearAnswers.title = 'Xóa đáp án của các câu làm sai để luyện tập lại';
+            btnClearAnswers.innerHTML = '<span class="material-symbols-rounded">restart_alt</span> Xóa câu sai';
+          } else {
+            btnClearAnswers.title = 'Xóa toàn bộ câu trả lời để làm lại từ đầu';
+            btnClearAnswers.innerHTML = '<span class="material-symbols-rounded">delete_sweep</span> Xóa đáp án';
+          }
+        }
         if (btnWrongOnly) {
           btnWrongOnly.style.display = 'inline-flex';
           const wrongCount = getWrongQuestions().length;
@@ -2417,7 +2462,20 @@
           }
         }
 
-        if (btnShuffle) btnShuffle.style.display = 'inline-flex';
+        if (btnShuffle) {
+          btnShuffle.style.display = 'inline-flex';
+          if (isShuffled) {
+            btnShuffle.classList.add('active');
+            btnShuffle.title = 'Bấm để quay về thứ tự gốc 1, 2, 3...';
+            btnShuffle.innerHTML = '<span class="material-symbols-rounded">sort</span> Thứ tự gốc';
+            btnShuffle.onclick = resetQuestionOrder;
+          } else {
+            btnShuffle.classList.remove('active');
+            btnShuffle.title = 'Xáo trộn ngẫu nhiên thứ tự câu hỏi';
+            btnShuffle.innerHTML = '<span class="material-symbols-rounded">shuffle</span> Xáo trộn';
+            btnShuffle.onclick = shuffleCurrentQuestions;
+          }
+        }
         if (btnStartExam) btnStartExam.style.display = 'inline-flex';
         if (btnTopResult) btnTopResult.style.display = 'none';
         const searchWrap = document.querySelector('.questions-search-wrap');
@@ -2430,6 +2488,13 @@
     // Xóa hết toàn bộ câu trả lời (chỉ khả dụng trong chế độ ôn tập)
     async function clearAllAnswers() {
       if (isExamMode) return;
+
+      // Nếu đang trong chế độ lọc "Câu làm sai", thực hiện làm lại chỉ các câu sai
+      if (showWrongOnly) {
+        resetAllWrongAnswers();
+        return;
+      }
+
       const subTitle = isFolderSummary
         ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || '') + (currentFolderId === 'cns' ? ' (Bỏ M2, M3-P1)' : ''))
         : (ALL_SUBJECTS[currentSubjectKey]?.title || '');
@@ -2438,7 +2503,7 @@
       const confirmed = await showConfirmModal({
         title: 'Xóa đáp án đã làm',
         message: confirmMsg,
-        confirmText: 'Xóa làm lại',
+        confirmText: 'Xóa làm lại tất cả',
         cancelText: 'Giữ lại',
         icon: 'delete_sweep',
         isDanger: true
@@ -2446,6 +2511,7 @@
 
       if (confirmed) {
         userAnswers = {};
+        wrongPracticeIds.clear();
         saveAnswers(currentSubjectKey);
         if (isFolderSummary) {
           summaryQuestionsCache.sort((a, b) => a.id - b.id);
@@ -2463,6 +2529,20 @@
       currentQuestions = shuffleArray(currentQuestions);
       renderQuestionsList();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      updateToolbarUI();
+    }
+
+    // Khôi phục thứ tự tự nhiên ban đầu
+    function resetQuestionOrder() {
+      isShuffled = false;
+      if (isFolderSummary) {
+        currentQuestions = [...summaryQuestionsCache];
+      } else if (currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions) {
+        currentQuestions = [...ALL_SUBJECTS[currentSubjectKey].questions];
+      }
+      renderQuestionsList();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      updateToolbarUI();
     }
 
     // =========================================
@@ -2723,7 +2803,7 @@
       let questions = currentQuestions;
 
       if (!isExamMode && showWrongOnly) {
-        questions = questions.filter(q => userAnswers[q.id] !== undefined && userAnswers[q.id] !== q.correctIndex);
+        questions = getWrongQuestions();
       }
 
       if (!isExamMode && filterQuery.trim()) {
@@ -2742,20 +2822,27 @@
 
       // Nếu đang bật chế độ lọc "Câu làm sai", hiển thị banner hướng dẫn và thao tác nhanh
       if (!isExamMode && showWrongOnly) {
+        const wrongQs = getWrongQuestions();
         const bannerDiv = document.createElement('div');
         bannerDiv.className = 'wrong-filter-banner';
+
+        const hasUnansweredPractice = wrongQs.some(q => userAnswers[q.id] === undefined && wrongPracticeIds.has(q.id));
+        const subtitleText = hasUnansweredPractice
+          ? 'Đang mở lại các câu làm sai để luyện tập. Hãy chọn đáp án chính xác cho từng câu!'
+          : 'Bấm "Làm lại câu sai" để xóa đáp án các câu này và luyện tập lại cho đến khi sửa đúng.';
+
         bannerDiv.innerHTML = `
           <div class="wrong-banner-content">
             <span class="material-symbols-rounded" style="color: #dc2626; font-size: 26px;">error</span>
             <div>
-              <div style="font-weight: 700; color: #991b1b; font-size: 0.95rem;">Đang lọc ${questions.length} câu làm sai</div>
-              <div style="font-size: 0.82rem; color: #b91c1c; margin-top: 2px;">Bấm "Làm lại" ở từng câu hoặc bấm nút bên phải để xóa đáp án và làm lại tất cả câu sai.</div>
+              <div style="font-weight: 700; color: #991b1b; font-size: 0.95rem;">Đang lọc ${wrongQs.length} câu làm sai</div>
+              <div style="font-size: 0.82rem; color: #b91c1c; margin-top: 2px;">${subtitleText}</div>
             </div>
           </div>
           <div class="wrong-banner-actions">
-            ${questions.length > 0 ? `
+            ${wrongQs.length > 0 ? `
             <button class="btn-pill btn-pill-danger" onclick="resetAllWrongAnswers()">
-              <span class="material-symbols-rounded">replay</span> Làm lại tất cả (${questions.length})
+              <span class="material-symbols-rounded">replay</span> Làm lại câu sai (${wrongQs.length})
             </button>
             ` : ''}
             <button class="btn-pill btn-pill-outline" onclick="toggleWrongOnlyFilter()">
@@ -2765,13 +2852,13 @@
         `;
         container.appendChild(bannerDiv);
 
-        if (questions.length === 0) {
+        if (wrongQs.length === 0) {
           const emptyDiv = document.createElement('div');
           emptyDiv.style.cssText = 'text-align: center; padding: 40px 20px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-md); margin-top: 12px;';
           emptyDiv.innerHTML = `
             <span class="material-symbols-rounded filled" style="font-size: 48px; color: #16a34a;">check_circle</span>
             <div style="font-size: 1.1rem; font-weight: 700; color: #166534; margin-top: 10px;">Bạn không còn câu nào làm sai!</div>
-            <div style="font-size: 0.88rem; color: #15803d; margin-top: 4px;">Tất cả các câu bạn đã trả lời đều chính xác hoặc bạn đã làm lại đúng.</div>
+            <div style="font-size: 0.88rem; color: #15803d; margin-top: 4px;">Tất cả các câu bạn đã trả lời đều chính xác hoặc bạn đã luyện tập sửa đúng.</div>
             <button class="btn-pill btn-pill-primary" style="margin-top: 16px;" onclick="toggleWrongOnlyFilter()">
               <span class="material-symbols-rounded">list</span> Xem lại toàn bộ câu hỏi
             </button>
@@ -2797,6 +2884,7 @@
 
         const answeredIdx = userAnswers[q.id];
         const isAnswered = (answeredIdx !== undefined && answeredIdx !== null);
+        const isPracticing = !isAnswered && wrongPracticeIds.has(q.id);
 
         // Header
         const cardHeader = document.createElement('div');
@@ -2806,12 +2894,14 @@
         const isShuffledOrExam = isExamMode || isShuffled || (q.id !== index + 1);
         const origTag = (isShuffledOrExam && q._origId) ? `<span class="q-orig-tag" title="Câu gốc #${q._origId}">#${q._origId}</span>` : (isShuffledOrExam ? `<span class="q-orig-tag" title="Câu gốc #${q.id}">#${q.id}</span>` : '');
         const subTag = q._subTitle ? `<span class="q-orig-tag" style="background: #e0e7ff; color: #3730a3; border-color: #c7d2fe;" title="Phân môn">${escapeHtml(q._subTitle)}</span>` : '';
+        const practiceTag = isPracticing ? `<span class="q-orig-tag" style="background: #fef2f2; color: #b91c1c; border-color: #fecaca; font-weight: 600;" title="Đang làm lại">Luyện tập lại</span>` : '';
 
         cardHeader.innerHTML = `
           <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
             <span class="q-number-badge">${qNumberText}</span>
             ${subTag}
             ${origTag}
+            ${practiceTag}
           </div>
           ${!isExamMode ? `
           <div style="display: flex; align-items: center; gap: 6px;">
@@ -2899,19 +2989,31 @@
     function chooseOption(questionId, selectedIdx) {
       if (userAnswers[questionId] !== undefined) return;
 
+      const questionsPool = isExamMode
+        ? examQuestions
+        : (isFolderSummary ? summaryQuestionsCache : (ALL_SUBJECTS[currentSubjectKey]?.questions || currentQuestions));
+      const q = questionsPool.find(item => item.id === questionId);
+      if (!q) return;
+
       userAnswers[questionId] = selectedIdx;
+
+      // Nếu câu này đang được luyện tập lại từ danh sách câu sai
+      if (wrongPracticeIds.has(questionId)) {
+        if (selectedIdx === q.correctIndex) {
+          // Làm lại đúng -> xóa khỏi danh sách câu sai
+          wrongPracticeIds.delete(questionId);
+        } else {
+          // Vẫn làm sai -> userAnswers đã lưu đáp án sai
+          wrongPracticeIds.delete(questionId);
+        }
+      }
+
       if (!isExamMode) {
         saveAnswers(currentSubjectKey);
       }
 
       const qCard = document.getElementById('q_' + questionId);
       if (qCard) {
-        const questionsPool = isExamMode
-          ? examQuestions
-          : (isFolderSummary ? summaryQuestionsCache : (ALL_SUBJECTS[currentSubjectKey]?.questions || currentQuestions));
-        const q = questionsPool.find(item => item.id === questionId);
-        if (!q) return;
-
         if (!isExamMode) {
           const resetBtn = qCard.querySelector('#reset_btn_' + q.id);
           if (resetBtn) resetBtn.style.display = 'inline-flex';
@@ -2931,6 +3033,10 @@
             if (selectedIdx === q.correctIndex) {
               optDiv.classList.add('correct');
               optDiv.insertAdjacentHTML('beforeend', '<div class="opt-trailing-icon"><span class="material-symbols-rounded filled" style="color: #16a34a; font-size: 22px;">check_circle</span></div>');
+              const pTag = qCard.querySelector('.q-card-header .q-orig-tag[title="Đang làm lại"]');
+              if (pTag) {
+                pTag.outerHTML = '<span class="q-orig-tag q-corrected-tag" style="background: #dcfce7; color: #15803d; border-color: #86efac; font-weight: 700;">Đã sửa đúng ✓</span>';
+              }
             } else {
               optDiv.classList.add('wrong');
               optDiv.insertAdjacentHTML('beforeend', '<div class="opt-trailing-icon"><span class="material-symbols-rounded filled" style="color: #dc2626; font-size: 22px;">cancel</span></div>');
@@ -2959,6 +3065,10 @@
     function resetQuestion(questionId) {
       if (isExamMode) return; // Không cho phép làm lại trong thi thử
 
+      if (showWrongOnly) {
+        wrongPracticeIds.add(questionId);
+      }
+
       delete userAnswers[questionId];
       saveAnswers(currentSubjectKey);
       updateToolbarUI();
@@ -2982,6 +3092,9 @@
         if (expDiv) {
           expDiv.classList.remove('show');
         }
+
+        const correctedTag = qCard.querySelector('.q-corrected-tag');
+        if (correctedTag) correctedTag.remove();
       }
     }
 

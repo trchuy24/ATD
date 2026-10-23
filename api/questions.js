@@ -66,10 +66,36 @@ module.exports = async function handler(req, res) {
       filter = { subjectId };
     }
 
-    const questions = await questionsColl
-      .find(filter, { projection: { _id: 0 } })
-      .sort({ id: 1 })
-      .toArray();
+    let questions;
+
+    if (parentSubjectID) {
+      // Lấy danh sách thứ tự môn con theo trường order trong collection subjects
+      const childSubs = await db.collection('subjects')
+        .find({ parentId: parentSubjectID })
+        .sort({ order: 1 })
+        .toArray();
+      const subOrderMap = {};
+      childSubs.forEach((s, idx) => {
+        subOrderMap[s.id] = (s.order !== undefined && s.order !== null) ? Number(s.order) : (idx + 1);
+      });
+
+      questions = await questionsColl
+        .find(filter, { projection: { _id: 0 } })
+        .toArray();
+
+      questions.sort((a, b) => {
+        const orderA = subOrderMap[a.subjectId] ?? 999;
+        const orderB = subOrderMap[b.subjectId] ?? 999;
+        if (orderA !== orderB) return orderA - orderB;
+        if (a.subjectId !== b.subjectId) return String(a.subjectId).localeCompare(String(b.subjectId));
+        return (Number(a.id) || 0) - (Number(b.id) || 0);
+      });
+    } else {
+      questions = await questionsColl
+        .find(filter, { projection: { _id: 0 } })
+        .sort({ id: 1 })
+        .toArray();
+    }
 
     return res.status(200).json({
       subjectId: subjectId || null,
