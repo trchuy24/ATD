@@ -2634,16 +2634,37 @@
       }
     }
 
-    // Shuffle questions in study mode
+    // Shuffle questions in study mode (câu đã làm vẫn ở trên, câu chưa làm ở dưới, tự động trượt xuống câu chưa làm)
     function shuffleCurrentQuestions() {
       isShuffled = true;
-      currentQuestions = shuffleArray(currentQuestions);
+      const pool = isFolderSummary
+        ? summaryQuestionsCache
+        : (currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions ? ALL_SUBJECTS[currentSubjectKey].questions : currentQuestions);
+
+      const answeredList = pool.filter(q => getQuestionAnswer(q) !== undefined);
+      const unansweredList = pool.filter(q => getQuestionAnswer(q) === undefined);
+
+      const shuffledAnswered = shuffleArray(answeredList);
+      const shuffledUnanswered = shuffleArray(unansweredList);
+
+      currentQuestions = [...shuffledAnswered, ...shuffledUnanswered];
       renderQuestionsList();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
       updateToolbarUI();
+
+      if (shuffledAnswered.length > 0 && shuffledUnanswered.length > 0) {
+        const firstUnansweredId = shuffledUnanswered[0].id;
+        setTimeout(() => {
+          const targetEl = document.getElementById('q_' + firstUnansweredId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 200);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
-    // Khôi phục thứ tự tự nhiên ban đầu
+    // Khôi phục thứ tự tự nhiên ban đầu (câu đã làm xếp lên trên, câu chưa làm ở dưới)
     function resetQuestionOrder() {
       isShuffled = false;
       const pool = isFolderSummary
@@ -2655,9 +2676,20 @@
       unansweredList.sort((a, b) => (Number(a.seqId) || 0) - (Number(b.seqId) || 0));
       currentQuestions = [...answeredList, ...unansweredList];
       renderQuestionsList();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
       updateProgressStats();
       updateToolbarUI();
+
+      if (answeredList.length > 0 && unansweredList.length > 0) {
+        const firstUnansweredId = unansweredList[0].id;
+        setTimeout(() => {
+          const targetEl = document.getElementById('q_' + firstUnansweredId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 200);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     // =========================================
