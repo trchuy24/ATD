@@ -46,9 +46,17 @@ module.exports = async function handler(req, res) {
         exclude.push(...rawExclude.map(s => s.trim()).filter(Boolean));
       }
 
-      // Đối với môn Dẫn đường hàng không (id 'cns'), không tổng hợp các câu hỏi của môn CNS - Môn3: Dịch vụ thông báo tin tức HK (cns_mon3_dich_vu_thong_bao_tin_tuc_hk)
-      if (parentSubjectID === 'cns' && !exclude.includes('cns_mon3_dich_vu_thong_bao_tin_tuc_hk')) {
-        exclude.push('cns_mon3_dich_vu_thong_bao_tin_tuc_hk');
+      // Đối với môn Dẫn đường hàng không (id 'cns'), không tổng hợp các câu hỏi của:
+      // - P1 - Môn 2: Làm quen với dịch vụ không lưu (cns_mon_2_lam_quen_voi_dich_vu_khong_luu)
+      // - CNS - Môn3: Dịch vụ thông báo tin tức HK (cns_mon3_dich_vu_thong_bao_tin_tuc_hk)
+      if (parentSubjectID === 'cns') {
+        const cnsExcluded = [
+          'cns_mon_2_lam_quen_voi_dich_vu_khong_luu',
+          'cns_mon3_dich_vu_thong_bao_tin_tuc_hk'
+        ];
+        cnsExcluded.forEach(id => {
+          if (!exclude.includes(id)) exclude.push(id);
+        });
       }
 
       if (exclude.length > 0) {
