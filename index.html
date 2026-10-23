@@ -279,6 +279,20 @@
       margin: 0;
     }
 
+    .questions-progress-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      color: #1d4ed8;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
     /* SEARCH WRAP DIRECTLY UNDER TITLE */
     .questions-search-wrap {
       width: 100%;
@@ -1458,9 +1472,9 @@
     <!-- SCREEN 2: DANH SÁCH CÂU HỎI CUỘN -->
     <div id="questionsScreen">
       <!-- Header: Tiêu đề nhỏ, ngắn gọn, bỏ số lượng câu hỏi -->
-      <div class="questions-screen-header">
-        <h1 id="currentSubjectName" class="questions-screen-title">Môn học</h1>
-        <div id="currentSubjectStats" style="display: none;"></div>
+      <div class="questions-screen-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+        <h1 id="currentSubjectName" class="questions-screen-title" style="margin: 0;">Môn học</h1>
+        <div id="currentSubjectStats" class="questions-progress-badge" style="display: none;"></div>
       </div>
 
       <!-- Ô tìm kiếm câu hỏi đưa lên sát ngay sau tên môn -->
@@ -1939,6 +1953,62 @@
       } catch (e) { }
     }
 
+    function getQuestionKey(q) {
+      if (!q) return '';
+      if (q.qKey) return q.qKey;
+      const sub = q._origSubjectId || q.subjectId || currentSubjectKey || '';
+      const origId = q._origId || q.id || '';
+      return sub ? `${sub}_${origId}` : String(origId);
+    }
+
+    function getQuestionAnswer(q) {
+      if (!q) return undefined;
+      if (userAnswers[q.id] !== undefined && userAnswers[q.id] !== null) return userAnswers[q.id];
+      const key = getQuestionKey(q);
+      if (key && userAnswers[key] !== undefined && userAnswers[key] !== null) return userAnswers[key];
+      return undefined;
+    }
+
+    function setQuestionAnswer(q, val) {
+      if (!q) return;
+      userAnswers[q.id] = val;
+      const key = getQuestionKey(q);
+      if (key) userAnswers[key] = val;
+    }
+
+    function deleteQuestionAnswer(q) {
+      if (!q) return;
+      delete userAnswers[q.id];
+      const key = getQuestionKey(q);
+      if (key) delete userAnswers[key];
+    }
+
+    function updateProgressStats() {
+      const statsEl = document.getElementById('currentSubjectStats');
+      if (!statsEl) return;
+
+      const pool = isFolderSummary
+        ? summaryQuestionsCache
+        : ((currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions && ALL_SUBJECTS[currentSubjectKey].questions.length > 0)
+          ? ALL_SUBJECTS[currentSubjectKey].questions
+          : currentQuestions);
+
+      const total = pool.length;
+      if (total === 0 || isExamMode) {
+        statsEl.style.display = 'none';
+        return;
+      }
+
+      const answeredCount = pool.filter(q => getQuestionAnswer(q) !== undefined).length;
+      const percent = Math.round((answeredCount / total) * 100);
+
+      statsEl.style.display = 'inline-flex';
+      statsEl.innerHTML = `
+        <span class="material-symbols-rounded" style="font-size: 16px; color: #2563eb;">fact_check</span>
+        <span>Đã làm: <strong>${answeredCount}/${total}</strong> câu (${percent}%)</span>
+      `;
+    }
+
     async function ensureSubjectQuestions(subKey) {
       if (ALL_SUBJECTS[subKey]?.questions && ALL_SUBJECTS[subKey].questions.length > 0) {
         return ALL_SUBJECTS[subKey].questions;
@@ -1994,12 +2064,28 @@
       }
 
       const qs = await ensureSubjectQuestions(subKey);
-      currentQuestions = [...qs];
+      const mapped = qs.map((q, idx) => {
+        const seq = Number(q.id) || (idx + 1);
+        return {
+          ...q,
+          seqId: seq,
+          id: seq,
+          qKey: `${subKey}_${seq}`
+        };
+      });
+      ALL_SUBJECTS[subKey].questions = mapped;
+
       loadAnswers(subKey);
 
-      const statsEl = document.getElementById('currentSubjectStats');
-      if (statsEl) statsEl.textContent = `${currentQuestions.length} câu hỏi`;
+      // Sắp xếp các câu đã làm lên trên, các câu chưa làm ở dưới
+      const answeredList = mapped.filter(q => getQuestionAnswer(q) !== undefined);
+      const unansweredList = mapped.filter(q => getQuestionAnswer(q) === undefined);
+      answeredList.sort((a, b) => a.seqId - b.seqId);
+      unansweredList.sort((a, b) => a.seqId - b.seqId);
 
+      currentQuestions = [...answeredList, ...unansweredList];
+
+      updateProgressStats();
       updateToolbarUI();
       updateGlobalNavUI();
 
@@ -2017,6 +2103,17 @@
 
       window.scrollTo(0, 0);
       renderQuestionsList();
+
+      // Tự động cuộn xuống câu đầu tiên chưa làm
+      if (answeredList.length > 0 && unansweredList.length > 0) {
+        const firstUnansweredId = unansweredList[0].id;
+        setTimeout(() => {
+          const targetEl = document.getElementById('q_' + firstUnansweredId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 300);
+      }
     }
 
     // Tổng hợp toàn bộ câu hỏi trong tất cả phân môn của thư mục cha
@@ -2096,22 +2193,29 @@
       // 3. Chuẩn hóa ID tuần tự để đảm bảo 1..N ổn định tuyệt đối
       summaryQuestionsCache = rawQuestions.map((q, idx) => {
         const origSub = ALL_SUBJECTS[q.subjectId];
+        const seq = idx + 1;
         return {
           ...q,
           _origId: q.id,
           _origSubjectId: q.subjectId,
           _subTitle: origSub ? origSub.title : '',
-          id: idx + 1
+          seqId: seq,
+          id: seq,
+          qKey: `${q.subjectId}_${q.id}`
         };
       });
 
       loadAnswers(folderId);
 
-      currentQuestions = [...summaryQuestionsCache];
+      // Sắp xếp các câu đã làm lên trên, các câu chưa làm ở dưới
+      const answeredList = summaryQuestionsCache.filter(q => getQuestionAnswer(q) !== undefined);
+      const unansweredList = summaryQuestionsCache.filter(q => getQuestionAnswer(q) === undefined);
+      answeredList.sort((a, b) => a.seqId - b.seqId);
+      unansweredList.sort((a, b) => a.seqId - b.seqId);
 
-      const statsEl = document.getElementById('currentSubjectStats');
-      if (statsEl) statsEl.textContent = `Tổng hợp ${currentQuestions.length} câu hỏi`;
+      currentQuestions = [...answeredList, ...unansweredList];
 
+      updateProgressStats();
       updateToolbarUI();
       updateGlobalNavUI();
 
@@ -2128,14 +2232,14 @@
       renderQuestionsList();
 
       // Tự động cuộn xuống câu đầu tiên chưa làm để người dùng tiếp tục ôn tập
-      const firstUnanswered = currentQuestions.find(q => userAnswers[q.id] === undefined || userAnswers[q.id] === null);
-      if (firstUnanswered && firstUnanswered.id > 1) {
+      if (answeredList.length > 0 && unansweredList.length > 0) {
+        const firstUnansweredId = unansweredList[0].id;
         setTimeout(() => {
-          const targetEl = document.getElementById('q_' + firstUnanswered.id);
+          const targetEl = document.getElementById('q_' + firstUnansweredId);
           if (targetEl) {
             targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
-        }, 150);
+        }, 300);
       }
     }
 
@@ -2327,13 +2431,14 @@
           ? ALL_SUBJECTS[currentSubjectKey].questions
           : currentQuestions);
       return pool.filter(q => {
-        const ans = userAnswers[q.id];
+        const ans = getQuestionAnswer(q);
         // Câu đã làm và đáp án sai
         if (ans !== undefined && ans !== null && ans !== q.correctIndex) return true;
         // Câu trong danh sách đang luyện tập lại (chưa làm đúng)
-        if (wrongPracticeIds.has(q.id)) {
+        if (wrongPracticeIds.has(q.id) || (q.qKey && wrongPracticeIds.has(q.qKey))) {
           if (ans !== undefined && ans !== null && ans === q.correctIndex) {
             wrongPracticeIds.delete(q.id);
+            if (q.qKey) wrongPracticeIds.delete(q.qKey);
             return false;
           }
           return true;
@@ -2367,9 +2472,11 @@
       if (confirmed) {
         wrongQs.forEach(q => {
           wrongPracticeIds.add(q.id);
-          delete userAnswers[q.id];
+          if (q.qKey) wrongPracticeIds.add(q.qKey);
+          deleteQuestionAnswer(q);
         });
         saveAnswers(currentSubjectKey);
+        updateProgressStats();
         updateToolbarUI();
         renderQuestionsList();
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2514,9 +2621,13 @@
         wrongPracticeIds.clear();
         saveAnswers(currentSubjectKey);
         if (isFolderSummary) {
-          summaryQuestionsCache.sort((a, b) => a.id - b.id);
+          summaryQuestionsCache.sort((a, b) => a.seqId - b.seqId);
           currentQuestions = [...summaryQuestionsCache];
+        } else if (currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions) {
+          ALL_SUBJECTS[currentSubjectKey].questions.sort((a, b) => a.seqId - b.seqId);
+          currentQuestions = [...ALL_SUBJECTS[currentSubjectKey].questions];
         }
+        updateProgressStats();
         updateToolbarUI();
         renderQuestionsList();
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2535,13 +2646,17 @@
     // Khôi phục thứ tự tự nhiên ban đầu
     function resetQuestionOrder() {
       isShuffled = false;
-      if (isFolderSummary) {
-        currentQuestions = [...summaryQuestionsCache];
-      } else if (currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions) {
-        currentQuestions = [...ALL_SUBJECTS[currentSubjectKey].questions];
-      }
+      const pool = isFolderSummary
+        ? summaryQuestionsCache
+        : (currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions ? ALL_SUBJECTS[currentSubjectKey].questions : currentQuestions);
+      const answeredList = pool.filter(q => getQuestionAnswer(q) !== undefined);
+      const unansweredList = pool.filter(q => getQuestionAnswer(q) === undefined);
+      answeredList.sort((a, b) => (Number(a.seqId) || 0) - (Number(b.seqId) || 0));
+      unansweredList.sort((a, b) => (Number(a.seqId) || 0) - (Number(b.seqId) || 0));
+      currentQuestions = [...answeredList, ...unansweredList];
       renderQuestionsList();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      updateProgressStats();
       updateToolbarUI();
     }
 
@@ -2882,17 +2997,17 @@
         card.className = 'question-card';
         card.id = 'q_' + q.id;
 
-        const answeredIdx = userAnswers[q.id];
+        const answeredIdx = getQuestionAnswer(q);
         const isAnswered = (answeredIdx !== undefined && answeredIdx !== null);
-        const isPracticing = !isAnswered && wrongPracticeIds.has(q.id);
+        const isPracticing = !isAnswered && (wrongPracticeIds.has(q.id) || (q.qKey && wrongPracticeIds.has(q.qKey)));
 
         // Header
         const cardHeader = document.createElement('div');
         cardHeader.className = 'q-card-header';
 
         const qNumberText = `Câu ${index + 1}`;
-        const isShuffledOrExam = isExamMode || isShuffled || (q.id !== index + 1);
-        const origTag = (isShuffledOrExam && q._origId) ? `<span class="q-orig-tag" title="Câu gốc #${q._origId}">#${q._origId}</span>` : (isShuffledOrExam ? `<span class="q-orig-tag" title="Câu gốc #${q.id}">#${q.id}</span>` : '');
+        const origSeq = q.seqId || q._origId || q.id;
+        const origTag = origSeq ? `<span class="q-orig-tag" title="Số thứ tự câu gốc #${origSeq}">#${origSeq}</span>` : '';
         const subTag = q._subTitle ? `<span class="q-orig-tag" style="background: #e0e7ff; color: #3730a3; border-color: #c7d2fe;" title="Phân môn">${escapeHtml(q._subTitle)}</span>` : '';
         const practiceTag = isPracticing ? `<span class="q-orig-tag" style="background: #fef2f2; color: #b91c1c; border-color: #fecaca; font-weight: 600;" title="Đang làm lại">Luyện tập lại</span>` : '';
 
@@ -2987,25 +3102,20 @@
 
     // Chọn đáp án (áp dụng cho cả Ôn tập và Thi thử: hiển thị ngay kết quả)
     function chooseOption(questionId, selectedIdx) {
-      if (userAnswers[questionId] !== undefined) return;
-
       const questionsPool = isExamMode
         ? examQuestions
         : (isFolderSummary ? summaryQuestionsCache : (ALL_SUBJECTS[currentSubjectKey]?.questions || currentQuestions));
       const q = questionsPool.find(item => item.id === questionId);
       if (!q) return;
 
-      userAnswers[questionId] = selectedIdx;
+      if (getQuestionAnswer(q) !== undefined) return;
+
+      setQuestionAnswer(q, selectedIdx);
 
       // Nếu câu này đang được luyện tập lại từ danh sách câu sai
-      if (wrongPracticeIds.has(questionId)) {
-        if (selectedIdx === q.correctIndex) {
-          // Làm lại đúng -> xóa khỏi danh sách câu sai
-          wrongPracticeIds.delete(questionId);
-        } else {
-          // Vẫn làm sai -> userAnswers đã lưu đáp án sai
-          wrongPracticeIds.delete(questionId);
-        }
+      if (wrongPracticeIds.has(questionId) || (q.qKey && wrongPracticeIds.has(q.qKey))) {
+        wrongPracticeIds.delete(questionId);
+        if (q.qKey) wrongPracticeIds.delete(q.qKey);
       }
 
       if (!isExamMode) {
@@ -3058,6 +3168,7 @@
         checkExamAutoFinish();
       } else {
         updateToolbarUI();
+        updateProgressStats();
       }
     }
 
@@ -3065,13 +3176,23 @@
     function resetQuestion(questionId) {
       if (isExamMode) return; // Không cho phép làm lại trong thi thử
 
-      if (showWrongOnly) {
+      const questionsPool = isFolderSummary ? summaryQuestionsCache : (ALL_SUBJECTS[currentSubjectKey]?.questions || currentQuestions);
+      const q = questionsPool.find(item => item.id === questionId);
+
+      if (showWrongOnly && q) {
         wrongPracticeIds.add(questionId);
+        if (q.qKey) wrongPracticeIds.add(q.qKey);
       }
 
-      delete userAnswers[questionId];
+      if (q) {
+        deleteQuestionAnswer(q);
+      } else {
+        delete userAnswers[questionId];
+      }
+
       saveAnswers(currentSubjectKey);
       updateToolbarUI();
+      updateProgressStats();
 
       const qCard = document.getElementById('q_' + questionId);
       if (qCard) {
