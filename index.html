@@ -7,8 +7,25 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>Ôn Thi Trắc Nghiệm</title>
+  <title>Ôn tập</title>
+
+  <!-- App Identity & Add to Home Screen (iOS / Android / PWA) -->
+  <meta name="application-name" content="Ôn tập">
+  <meta name="apple-mobile-web-app-title" content="Ôn tập">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- App Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -149,15 +166,23 @@
     }
 
     .nav-brand-icon {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
-      background: var(--primary-container);
-      color: var(--primary);
+      background: #eef9f6;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 2px;
     }
 
     .nav-brand-title {
@@ -1412,9 +1437,9 @@
       <div class="nav-left">
         <a href="index.html" class="nav-brand-link" onclick="handleNavBrandClick(event)">
           <div class="nav-brand-icon">
-            <span class="material-symbols-rounded">menu_book</span>
+            <img src="logo-app.png" alt="Logo Ôn tập">
           </div>
-          <span class="nav-brand-title">Ôn tập trắc nghiệm</span>
+          <span class="nav-brand-title">Ôn tập</span>
         </a>
         <div class="nav-crumb-box">
           <span class="nav-crumb-separator">|</span>
@@ -1684,22 +1709,14 @@
     function getChildSubjectsOf(folderId) {
       return Object.values(ALL_SUBJECTS).filter(s => {
         if (!s || s.isFolder || s.hidden) return false;
-        if (s.parentId === folderId) return true;
-        if (folderId === 'cns' && !s.parentId && (s.id.toLowerCase().startsWith('cns') || s.title.toUpperCase().includes('CNS'))) {
-          return true;
-        }
-        return false;
+        return s.parentId === folderId;
       });
     }
 
     function getStandaloneSubjects() {
       return Object.values(ALL_SUBJECTS).filter(s => {
         if (!s || s.isFolder || s.hidden) return false;
-        if (s.parentId) return false;
-        if (ALL_SUBJECTS['cns'] && (s.id.toLowerCase().startsWith('cns') || s.title.toUpperCase().includes('CNS'))) {
-          return false;
-        }
-        return true;
+        return !s.parentId;
       });
     }
 
@@ -1847,19 +1864,9 @@
           }
         } catch (e) { }
 
-        // Tính tổng số câu hỏi riêng cho phần Tổng hợp (loại trừ các môn không tham gia tổng hợp)
-        const summaryExcluded = ['cns_mon_2_lam_quen_voi_dich_vu_khong_luu', 'cns_mon3_dich_vu_thong_bao_tin_tuc_hk'];
-        const summaryChildren = children.filter(c => {
-          if (folderId === 'cns' && summaryExcluded.includes(c.id)) return false;
-          return true;
-        });
-        const summaryTotalQ = summaryChildren.reduce((sum, c) => sum + (c.questions ? c.questions.length : (c.totalQuestions || 0)), 0);
-
+        const summaryTotalQ = children.reduce((sum, c) => sum + (c.questions ? c.questions.length : (c.totalQuestions || 0)), 0);
         const summaryProgressText = summaryAnsCount > 0 ? `Đã làm ${summaryAnsCount}/${summaryTotalQ} câu` : `Toàn bộ ${summaryTotalQ} câu hỏi trong tất cả phân môn`;
-
-        const summaryTitle = folderId === 'cns'
-          ? 'Tổng hợp câu hỏi <span style="font-size: 0.85em; font-weight: 600; color: #dc2626; margin-left: 4px;">(Bỏ M2, M3-P1)</span>'
-          : 'Tổng hợp câu hỏi';
+        const summaryTitle = 'Tổng hợp câu hỏi';
 
         summaryCard.innerHTML = `
           <div class="subject-info">
@@ -2130,12 +2137,12 @@
       if (searchBox) searchBox.value = '';
 
       const folderTitle = ALL_SUBJECTS[folderId].title || 'Tổng hợp môn';
-      const summaryHeaderTitle = 'Tổng hợp • ' + folderTitle + (folderId === 'cns' ? ' (Bỏ M2, M3-P1)' : '');
+      const summaryHeaderTitle = 'Tổng hợp • ' + folderTitle;
       document.getElementById('menuScreen').style.display = 'none';
       document.getElementById('folderScreen').style.display = 'none';
       document.getElementById('questionsScreen').style.display = 'flex';
       document.getElementById('currentSubjectName').textContent = summaryHeaderTitle;
-      document.title = 'Tổng hợp - ' + folderTitle + (folderId === 'cns' ? ' (Bỏ M2, M3-P1)' : '');
+      document.title = 'Tổng hợp - ' + folderTitle;
 
       const questionsListEl = document.getElementById('questionsList');
       questionsListEl.innerHTML = '<div style="text-align: center; padding: 48px; color: var(--text-muted);"><div class="spinner" style="margin: 0 auto 12px;"></div>Đang tải tổng hợp câu hỏi từ cơ sở dữ liệu...</div>';
@@ -2154,13 +2161,10 @@
         console.warn('Lỗi tải tổng hợp câu hỏi theo parentId:', e.message);
       }
 
-      const cnsExcluded = ['cns_mon_2_lam_quen_voi_dich_vu_khong_luu', 'cns_mon3_dich_vu_thong_bao_tin_tuc_hk'];
-
       // 2. Fallback dự phòng nếu API parentId chưa có hoặc đang offline
       if (rawQuestions.length === 0) {
         const children = getChildSubjectsOf(folderId);
         for (const ch of children) {
-          if (folderId === 'cns' && cnsExcluded.includes(ch.id)) continue;
           const chQs = await ensureSubjectQuestions(ch.id);
           if (chQs && chQs.length > 0) {
             chQs.forEach(q => {
@@ -2168,11 +2172,6 @@
             });
           }
         }
-      }
-
-      // 2.1. Đảm bảo loại trừ câu hỏi của các môn không tham gia tổng hợp khi tổng hợp môn Dẫn đường hàng không (cns)
-      if (folderId === 'cns') {
-        rawQuestions = rawQuestions.filter(q => !cnsExcluded.includes(q.subjectId));
       }
 
       // 2.2. Sắp xếp rawQuestions xác định 100%: theo thứ tự môn con (order), rồi đến id câu hỏi
@@ -2251,7 +2250,7 @@
       document.getElementById('questionsScreen').style.display = 'none';
       document.getElementById('folderScreen').style.display = 'none';
       document.getElementById('menuScreen').style.display = 'block';
-      document.title = 'Ôn Thi Trắc Nghiệm';
+      document.title = 'Ôn tập';
 
       updateGlobalNavUI();
 
@@ -2603,7 +2602,7 @@
       }
 
       const subTitle = isFolderSummary
-        ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || '') + (currentFolderId === 'cns' ? ' (Bỏ M2, M3-P1)' : ''))
+        ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || ''))
         : (ALL_SUBJECTS[currentSubjectKey]?.title || '');
       const confirmMsg = `Bạn có chắc muốn xóa tất cả câu trả lời của "${subTitle}" để làm lại từ đầu không?`;
 
@@ -2706,7 +2705,7 @@
       }
 
       const displayTitle = isFolderSummary
-        ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || '') + (currentFolderId === 'cns' ? ' (Bỏ M2, M3-P1)' : ''))
+        ? ('Tổng hợp • ' + (ALL_SUBJECTS[currentFolderId]?.title || ''))
         : (ALL_SUBJECTS[currentSubjectKey]?.title || '');
 
       document.getElementById('examSetupDesc').textContent =

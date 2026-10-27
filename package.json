@@ -1,7 +1,7 @@
 {
   "name": "app-trac-nghiem",
   "version": "1.0.0",
-  "description": "Ứng dụng ôn thi trắc nghiệm",
+  "description": "Ứng dụng Ôn tập",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

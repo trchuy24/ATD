@@ -229,7 +229,13 @@ def build_all():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Ôn Thi Trắc Nghiệm</title>
+  <title>Ôn tập</title>
+  <meta name="application-name" content="Ôn tập">
+  <meta name="apple-mobile-web-app-title" content="Ôn tập">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1267,7 +1273,7 @@ def build_all():
 
       document.getElementById('questionsScreen').style.display = 'none';
       document.getElementById('menuScreen').style.display = 'flex';
-      document.title = 'Ôn Thi Trắc Nghiệm';
+      document.title = 'Ôn tập';
 
       const url = new URL(window.location);
       url.searchParams.delete('subject');

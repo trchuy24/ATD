@@ -5,8 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>Quản Lý Ngân Hàng Đề</title>
+  <title>Ôn tập - Quản Lý Ngân Hàng Đề</title>
+
+  <!-- App Identity & Add to Home Screen (iOS / Android / PWA) -->
+  <meta name="application-name" content="Ôn tập">
+  <meta name="apple-mobile-web-app-title" content="Ôn tập">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- App Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -140,15 +157,23 @@
     }
 
     .nav-brand-icon {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
-      background: var(--primary-container);
-      color: var(--primary);
+      background: #eef9f6;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 2px;
     }
 
     .nav-brand-title {
@@ -1598,9 +1623,9 @@
       <div class="nav-left">
         <a href="index.html" class="nav-brand-link">
           <div class="nav-brand-icon">
-            <span class="material-symbols-rounded">menu_book</span>
+            <img src="logo-app.png" alt="Logo Ôn tập">
           </div>
-          <span class="nav-brand-title">Ôn tập trắc nghiệm</span>
+          <span class="nav-brand-title">Ôn tập</span>
         </a>
         <div class="nav-crumb-box">
           <span class="nav-crumb-separator">|</span>
@@ -2347,22 +2372,14 @@
     function getChildSubjectsOf(folderId) {
       return Object.values(ALL_SUBJECTS).filter(s => {
         if (!s || s.isFolder) return false;
-        if (s.parentId === folderId) return true;
-        if (folderId === 'cns' && !s.parentId && (s.id.toLowerCase().startsWith('cns') || s.title.toUpperCase().includes('CNS'))) {
-          return true;
-        }
-        return false;
+        return s.parentId === folderId;
       });
     }
 
     function getStandaloneSubjects() {
       return Object.values(ALL_SUBJECTS).filter(s => {
         if (!s || s.isFolder) return false;
-        if (s.parentId) return false;
-        if (ALL_SUBJECTS['cns'] && (s.id.toLowerCase().startsWith('cns') || s.title.toUpperCase().includes('CNS'))) {
-          return false;
-        }
-        return true;
+        return !s.parentId;
       });
     }
 
@@ -2682,8 +2699,6 @@
       let currentParentName = 'Môn độc lập (không thuộc thư mục nào)';
       if (sub.parentId && ALL_SUBJECTS[sub.parentId]) {
         currentParentName = `Thư mục "${ALL_SUBJECTS[sub.parentId].title}"`;
-      } else if (sub.id.startsWith('cns') || sub.title.toUpperCase().includes('CNS')) {
-        currentParentName = 'Thư mục "Chuyên Ngành CNS"';
       }
       desc.innerHTML = `Môn: <strong>${escapeHtml(sub.title)}</strong><br>Hiện tại: <em>${currentParentName}</em>`;
 
@@ -2695,7 +2710,7 @@
         const opt = document.createElement('option');
         opt.value = f.id;
         opt.textContent = `📁 ${f.title}`;
-        if (sub.parentId === f.id || (!sub.parentId && f.id === 'cns' && (sub.id.startsWith('cns') || sub.title.toUpperCase().includes('CNS')))) {
+        if (sub.parentId === f.id) {
           opt.selected = true;
         }
         select.appendChild(opt);
