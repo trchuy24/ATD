@@ -330,47 +330,353 @@
       font-size: 0.88rem;
     }
 
-    /* STICKY ACTION BAR FOR QUESTIONS (THI THỬ, XÁO TRỘN, CÂU LÀM SAI, XÓA ĐÁP ÁN) */
-    .questions-toolbar-sticky {
-      position: -webkit-sticky;
-      position: sticky;
-      top: var(--nav-height, 64px);
-      z-index: 85;
-      background: var(--bg-body, #f8fafc);
-      padding: 6px 0 8px 0;
-      margin-bottom: 10px;
-      border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+    /* BOTTOM BAR ACTION BAR FOR QUESTIONS (THI THỬ, XÁO TRỘN, LƯU Ý, CÂU SAI, LÀM LẠI) */
+    .questions-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border-color, #e2e8f0);
+      box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.08);
+      padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 0px));
+      display: flex;
+      justify-content: center;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
-    .sticky-actions-group {
+    .bbar-actions-group {
       display: flex;
       align-items: center;
-      gap: 6px;
-      overflow-x: auto;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding: 2px 0;
+      justify-content: space-around;
+      width: 100%;
+      max-width: 680px;
+      gap: 4px;
     }
 
-    .sticky-actions-group::-webkit-scrollbar {
-      display: none;
+    .bbar-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      min-width: 0;
+      padding: 5px 2px;
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-md, 8px);
+      color: var(--text-muted, #64748b);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
-    .btn-action-sm {
-      height: 32px;
-      padding: 0 12px;
-      font-size: 0.8rem;
+    .bbar-btn:hover {
+      background: #f1f5f9;
+      color: var(--text-main, #0f172a);
+    }
+
+    .bbar-btn:active {
+      transform: scale(0.94);
+      background: #e2e8f0;
+    }
+
+    .bbar-btn .material-symbols-rounded {
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 2px;
+      transition: color 0.15s ease;
+    }
+
+    .bbar-btn .bbar-label {
+      font-size: 0.72rem;
       font-weight: 600;
-      gap: 5px;
-      flex-shrink: 0;
-      border-radius: var(--radius-pill);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
-    .btn-action-sm .material-symbols-rounded {
+    .bbar-icon-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bbar-badge {
+      position: absolute;
+      top: -4px;
+      right: -8px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      background: #ef4444;
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    }
+
+    .bbar-btn.active-blue {
+      color: var(--primary, #2563eb);
+    }
+
+    .bbar-btn.active-amber {
+      color: #d97706;
+    }
+
+    .bbar-btn.active-red {
+      color: #dc2626;
+    }
+
+    /* TRANG CÂU SAI: SINGLE BUTTON GROUP */
+    .bbar-single-group {
+      width: 100%;
+      max-width: 560px;
+      display: flex;
+      justify-content: center;
+      padding: 2px 4px;
+    }
+
+    .bbar-single-btn {
+      width: 100%;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--primary, #2563eb);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill, 999px);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.28);
+      transition: all 0.2s ease;
+    }
+
+    .bbar-single-btn:hover {
+      background: var(--primary-hover, #1d4ed8);
+      transform: translateY(-1px);
+    }
+
+    .bbar-single-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* TRANG CÂU CẦN CHÚ Ý: BUTTON GROUP (TẤT CẢ CÂU HỎI, LÀM LẠI, XÁO TRỘN) */
+    .bbar-bookmark-group {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 2px 4px;
+    }
+
+    .bbar-dual-btn {
+      flex: 1;
+      min-width: 0;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 12px;
+      border-radius: var(--radius-pill, 999px);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .bbar-dual-btn.btn-all-q {
+      background: #f1f5f9;
+      color: var(--text-main, #0f172a);
+      border: 1px solid var(--border-color, #cbd5e1);
+    }
+
+    .bbar-dual-btn.btn-all-q:hover {
+      background: #e2e8f0;
+      border-color: #94a3b8;
+    }
+
+    .bbar-dual-btn.btn-all-q:active {
+      transform: scale(0.97);
+    }
+
+    .bbar-dual-btn.btn-reset-bm {
+      background: #dc2626;
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
+    }
+
+    .bbar-dual-btn.btn-reset-bm:hover {
+      background: #b91c1c;
+      transform: translateY(-1px);
+    }
+
+    .bbar-dual-btn.btn-reset-bm:active {
+      transform: scale(0.97);
+    }
+
+    .bbar-dual-btn.btn-shuffle-bm {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .bbar-dual-btn.btn-shuffle-bm:hover {
+      background: #dbeafe;
+      border-color: #93c5fd;
+      transform: translateY(-1px);
+    }
+
+    .bbar-dual-btn.btn-shuffle-bm:active {
+      transform: scale(0.97);
+    }
+
+    @media (max-width: 480px) {
+      .bbar-bookmark-group {
+        gap: 6px;
+      }
+      .bbar-dual-btn {
+        height: 38px;
+        padding: 0 6px;
+        font-size: 0.78rem;
+        gap: 4px;
+      }
+      .bbar-dual-btn .material-symbols-rounded {
+        font-size: 18px;
+      }
+    }
+
+    /* Padding for question screen so content isn't covered by bottom bar */
+    #questionsScreen {
+      padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* BOOKMARK STAR BUTTON IN QUESTION CARD */
+    .btn-bookmark-q {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill, 999px);
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #64748b;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-bookmark-q:hover {
+      border-color: #f59e0b;
+      color: #d97706;
+      background: #fffbeb;
+    }
+
+    .btn-bookmark-q.marked {
+      border-color: #f59e0b;
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .btn-bookmark-q .material-symbols-rounded {
       font-size: 16px;
+    }
+
+    .btn-bookmark-q.marked .material-symbols-rounded {
+      font-variation-settings: 'FILL' 1;
+      color: #f59e0b;
+    }
+
+    /* BOOKMARK & WRONG BANNER IN QUESTIONS LIST */
+    .bookmark-filter-banner,
+    .wrong-filter-banner {
+      background: #ffffff;
+      border-radius: var(--radius-lg, 12px);
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bookmark-filter-banner {
+      border: 1px solid #fde68a;
+      background: #fffdf5;
+    }
+
+    .wrong-filter-banner {
+      border: 1px solid #fecaca;
+      background: #fff5f5;
+    }
+
+    .bookmark-banner-content,
+    .wrong-banner-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bookmark-banner-actions,
+    .wrong-banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* APP TOAST NOTIFICATION */
+    .app-toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-30px);
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .app-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
 
     /* MANAGE PORTAL SECTION SEPARATED */
@@ -1508,26 +1814,7 @@
         <input type="text" id="searchBox" class="search-pill-input" placeholder="Tìm kiếm câu hỏi..." autocomplete="off">
       </div>
 
-      <!-- Sticky Toolbar: Các nút thi thử, xáo trộn, câu làm sai, xóa đáp án nhỏ gọn và ghim cố định phía trên -->
-      <div id="questionsStickyToolbar" class="questions-toolbar-sticky">
-        <div class="sticky-actions-group">
-          <button id="btnStartExam" class="btn-pill btn-pill-primary btn-action-sm" onclick="openExamSetupModal()" title="Thi thử">
-            <span class="material-symbols-rounded">quiz</span> <span>Thi thử</span>
-          </button>
-          <button id="btnShuffle" class="btn-pill btn-pill-outline btn-action-sm" onclick="shuffleCurrentQuestions()" title="Xáo trộn câu hỏi">
-            <span class="material-symbols-rounded">shuffle</span> <span>Xáo trộn</span>
-          </button>
-          <button id="btnWrongOnly" class="btn-pill btn-pill-outline btn-action-sm" onclick="toggleWrongOnlyFilter()" title="Lọc và làm lại câu làm sai">
-            <span class="material-symbols-rounded">cancel</span> <span id="wrongOnlyBtnLabel">Câu làm sai (0)</span>
-          </button>
-          <button id="btnClearAnswers" class="btn-pill btn-pill-outline btn-action-sm" onclick="clearAllAnswers()" title="Xóa đáp án">
-            <span class="material-symbols-rounded">delete_sweep</span> <span>Xóa đáp án</span>
-          </button>
-          <button id="btnTopResultExam" class="btn-pill btn-pill-success btn-action-sm" onclick="showExamResultModal()" style="display: none;" title="Xem kết quả thi">
-            <span class="material-symbols-rounded">analytics</span> <span>Kết quả</span>
-          </button>
-        </div>
-      </div>
+
 
       <!-- Exam Mode Status Banner -->
       <div id="examBanner" class="exam-banner" style="display: none;">
@@ -1551,6 +1838,71 @@
         </button>
       </div>
     </div>
+
+    <!-- BOTTOM BAR THAO TÁC CÂU HỎI (THI THỬ, XÁO TRỘN, LƯU Ý, CÂU SAI, LÀM LẠI) -->
+    <nav id="questionsBottomBar" class="questions-bottom-bar" style="display: none;" aria-label="Thao tác câu hỏi">
+      <!-- Chế độ ôn tập thông thường: 5 nút icon + text ngắn gọn (Nút Thi thử ở bên phải cùng) -->
+      <div id="bbarNormalGroup" class="bbar-actions-group">
+        <button id="bbarBtnShuffle" class="bbar-btn" onclick="shuffleCurrentQuestions()" title="Xáo trộn câu hỏi">
+          <span class="material-symbols-rounded">shuffle</span>
+          <span class="bbar-label">Xáo trộn</span>
+        </button>
+        <button id="bbarBtnBookmark" class="bbar-btn" onclick="toggleBookmarkOnlyFilter()" title="Câu cần lưu ý">
+          <div class="bbar-icon-wrap">
+            <span class="material-symbols-rounded">star</span>
+            <span id="bbarBookmarkBadge" class="bbar-badge" style="display: none;">0</span>
+          </div>
+          <span class="bbar-label">Lưu ý</span>
+        </button>
+        <button id="bbarBtnWrong" class="bbar-btn" onclick="toggleWrongOnlyFilter()" title="Câu làm sai">
+          <div class="bbar-icon-wrap">
+            <span class="material-symbols-rounded">cancel</span>
+            <span id="bbarWrongBadge" class="bbar-badge" style="display: none;">0</span>
+          </div>
+          <span class="bbar-label">Câu sai</span>
+        </button>
+        <button id="bbarBtnReset" class="bbar-btn" onclick="clearAllAnswers()" title="Làm lại môn học">
+          <span class="material-symbols-rounded">restart_alt</span>
+          <span class="bbar-label">Làm lại</span>
+        </button>
+        <button id="bbarBtnExam" class="bbar-btn" onclick="openExamSetupModal()" title="Thi thử">
+          <span class="material-symbols-rounded">quiz</span>
+          <span class="bbar-label">Thi thử</span>
+        </button>
+      </div>
+
+      <!-- Trong trang câu sai: CHỈ CÒN NÚT ĐỂ HIỆN TẤT CẢ CÁC CÂU, BỎ NÚT LÀM LẠI -->
+      <div id="bbarWrongGroup" class="bbar-single-group" style="display: none;">
+        <button id="bbarBtnShowAll" class="bbar-single-btn" onclick="toggleWrongOnlyFilter()" title="Hiện tất cả các câu">
+          <span class="material-symbols-rounded">format_list_bulleted</span>
+          <span>Hiện tất cả các câu</span>
+        </button>
+      </div>
+
+      <!-- Trong trang câu cần chú ý: CÁC THẺ: TẤT CẢ CÂU HỎI, LÀM LẠI, XÁO TRỘN -->
+      <div id="bbarBookmarkGroup" class="bbar-bookmark-group" style="display: none;">
+        <button id="bbarBtnBookmarkShowAll" class="bbar-dual-btn btn-all-q" onclick="exitBookmarkMode()" title="Xem tất cả câu hỏi">
+          <span class="material-symbols-rounded">format_list_bulleted</span>
+          <span>Tất cả câu hỏi</span>
+        </button>
+        <button id="bbarBtnBookmarkReset" class="bbar-dual-btn btn-reset-bm" onclick="resetAllBookmarkAnswers()" title="Làm lại các câu cần chú ý">
+          <span class="material-symbols-rounded">restart_alt</span>
+          <span>Làm lại</span>
+        </button>
+        <button id="bbarBtnBookmarkShuffle" class="bbar-dual-btn btn-shuffle-bm" onclick="shuffleBookmarkQuestions()" title="Xáo trộn câu cần chú ý">
+          <span class="material-symbols-rounded">shuffle</span>
+          <span>Xáo trộn</span>
+        </button>
+      </div>
+
+      <!-- Trong chế độ thi thử: Nút nộp / xem kết quả thi -->
+      <div id="bbarExamGroup" class="bbar-single-group" style="display: none;">
+        <button class="bbar-single-btn" style="background: #16a34a;" onclick="showExamResultModal()" title="Xem kết quả thi thử">
+          <span class="material-symbols-rounded">fact_check</span>
+          <span>Xem kết quả thi thử</span>
+        </button>
+      </div>
+    </nav>
   </div>
 
   <!-- MODAL 1: CẤU HÌNH THI THỬ -->
@@ -1649,6 +2001,7 @@
 
     // App state
     let currentSubjectKey = null;
+    let currentFolderId = null;
     let currentQuestions = [];
     let userAnswers = {};
     let wrongPracticeIds = new Set();
@@ -1657,10 +2010,296 @@
     let showWrongOnly = false;
     let summaryQuestionsCache = [];
 
+    // Bookmark state (Lưu theo từng môn và tương thích ngược)
+    const BOOKMARKS_STORAGE_KEY = 'bookmarked_questions';
+    let bookmarkedQuestions = {};
+    let isBookmarkPracticeMode = false;
+    let showBookmarkOnly = false;
+    let bookmarkPracticeAnswers = {};
+    let isBookmarkShuffled = false;
+    let shuffledBookmarkQuestions = null;
+
     // Exam state
     let isExamMode = false;
     let isShuffled = false;
     let examQuestions = [];
+
+    // =========================================
+    // BOOKMARKS LOGIC (LƯU THEO TỪNG MÔN)
+    // =========================================
+    function getSubjectBookmarksKey(subKey) {
+      return 'bookmarks_' + subKey;
+    }
+
+    function loadBookmarks() {
+      bookmarkedQuestions = {};
+      try {
+        // 1. Tải tất cả các mục lưu theo môn: bookmarks_*
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('bookmarks_')) {
+            try {
+              const subItems = JSON.parse(localStorage.getItem(key));
+              if (subItems && typeof subItems === 'object') {
+                Object.assign(bookmarkedQuestions, subItems);
+              }
+            } catch (err) {}
+          }
+        }
+        // 2. Tương thích ngược: Nếu có dữ liệu cũ trong bookmarked_questions
+        const legacySaved = localStorage.getItem(BOOKMARKS_STORAGE_KEY);
+        if (legacySaved) {
+          try {
+            const legacyData = JSON.parse(legacySaved);
+            for (const qKey in legacyData) {
+              if (!bookmarkedQuestions[qKey]) {
+                const item = legacyData[qKey];
+                const subId = item._origSubjectId || item.subjectId || 'general';
+                bookmarkedQuestions[qKey] = item;
+                saveSubjectBookmarks(subId);
+              }
+            }
+          } catch (err) {}
+        }
+      } catch (e) {
+        bookmarkedQuestions = {};
+      }
+    }
+
+    function saveSubjectBookmarks(subKey) {
+      if (!subKey) return;
+      try {
+        const subBookmarks = {};
+        for (const qKey in bookmarkedQuestions) {
+          const item = bookmarkedQuestions[qKey];
+          const itemSub = item._origSubjectId || item.subjectId;
+          if (itemSub === subKey) {
+            subBookmarks[qKey] = item;
+          }
+        }
+        localStorage.setItem(getSubjectBookmarksKey(subKey), JSON.stringify(subBookmarks));
+      } catch (e) {}
+    }
+
+    function saveBookmarks() {
+      try {
+        localStorage.setItem(BOOKMARKS_STORAGE_KEY, JSON.stringify(bookmarkedQuestions));
+        const subs = new Set();
+        for (const k in bookmarkedQuestions) {
+          const s = bookmarkedQuestions[k]._origSubjectId || bookmarkedQuestions[k].subjectId;
+          if (s) subs.add(s);
+        }
+        subs.forEach(s => saveSubjectBookmarks(s));
+      } catch (e) { }
+    }
+
+    function isInBookmarkView() {
+      return !isExamMode && (showBookmarkOnly || isBookmarkPracticeMode);
+    }
+
+    function loadBookmarkPracticeAnswers(subKey = currentSubjectKey) {
+      try {
+        const key = isFolderSummary ? ('bookmark_practice_summary_' + currentFolderId) : ('bookmark_practice_' + subKey);
+        const saved = localStorage.getItem(key);
+        bookmarkPracticeAnswers = saved ? JSON.parse(saved) : {};
+      } catch (e) {
+        bookmarkPracticeAnswers = {};
+      }
+    }
+
+    function saveBookmarkPracticeAnswers(subKey = currentSubjectKey) {
+      try {
+        const key = isFolderSummary ? ('bookmark_practice_summary_' + currentFolderId) : ('bookmark_practice_' + subKey);
+        localStorage.setItem(key, JSON.stringify(bookmarkPracticeAnswers));
+      } catch (e) {}
+    }
+
+    function isQuestionBookmarked(q) {
+      if (!q) return false;
+      const key = getQuestionKey(q);
+      return !!(key && bookmarkedQuestions[key]);
+    }
+
+    function getBookmarkedQuestions(subKey = currentSubjectKey) {
+      const pool = isBookmarkPracticeMode
+        ? currentQuestions
+        : (isFolderSummary
+            ? summaryQuestionsCache
+            : ((subKey && ALL_SUBJECTS[subKey]?.questions && ALL_SUBJECTS[subKey].questions.length > 0)
+              ? ALL_SUBJECTS[subKey].questions
+              : currentQuestions));
+      const markedList = pool.filter(q => isQuestionBookmarked(q));
+
+      if (isBookmarkShuffled && shuffledBookmarkQuestions && shuffledBookmarkQuestions.length > 0) {
+        const validKeys = new Set(markedList.map(q => getQuestionKey(q)));
+        const ordered = shuffledBookmarkQuestions.filter(q => validKeys.has(getQuestionKey(q)));
+        const orderedKeys = new Set(ordered.map(q => getQuestionKey(q)));
+        markedList.forEach(q => {
+          if (!orderedKeys.has(getQuestionKey(q))) ordered.push(q);
+        });
+        return ordered;
+      }
+
+      return markedList;
+    }
+
+    function showToast(message, icon = 'info') {
+      let toast = document.getElementById('appToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'appToast';
+        toast.className = 'app-toast';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `<span class="material-symbols-rounded filled" style="color: #f59e0b;">${icon}</span><span>${message}</span>`;
+      toast.classList.add('show');
+      if (window._toastTimer) clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    function toggleBookmarkQuestion(qKey, event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      let pool = currentQuestions ? [...currentQuestions] : [];
+      if (isExamMode) {
+        pool = examQuestions || [];
+      } else {
+        if (currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions) {
+          pool = pool.concat(ALL_SUBJECTS[currentSubjectKey].questions);
+        }
+        if (isFolderSummary && summaryQuestionsCache) {
+          pool = pool.concat(summaryQuestionsCache);
+        }
+        if (showWrongOnly) {
+          pool = pool.concat(getWrongQuestions());
+        }
+        if (bookmarkedQuestions[qKey]) {
+          pool.push(bookmarkedQuestions[qKey]);
+        }
+      }
+      const q = pool.find(item => item && (getQuestionKey(item) === qKey || String(item.id) === qKey || item.qKey === qKey));
+
+      const subKey = q ? (q._origSubjectId || q.subjectId || currentSubjectKey || 'general') : (currentSubjectKey || 'general');
+
+      if (bookmarkedQuestions[qKey]) {
+        delete bookmarkedQuestions[qKey];
+        saveSubjectBookmarks(subKey);
+        saveBookmarks();
+        showToast('Đã bỏ lưu ý câu hỏi', 'bookmark_remove');
+      } else if (q) {
+        const subTitle = q._subTitle || (currentSubjectKey && ALL_SUBJECTS[currentSubjectKey] ? ALL_SUBJECTS[currentSubjectKey].title : '') || '';
+        bookmarkedQuestions[qKey] = {
+          id: q.id,
+          seqId: q.seqId || q.id,
+          _origId: q._origId || q.id,
+          _origSubjectId: subKey,
+          _subTitle: subTitle,
+          question: q.question,
+          options: q.options,
+          correctIndex: q.correctIndex,
+          explanation: q.explanation || '',
+          qKey: qKey,
+          markedAt: Date.now()
+        };
+        saveSubjectBookmarks(subKey);
+        saveBookmarks();
+        showToast('Đã lưu vào câu hỏi cần chú ý ⭐', 'star');
+      }
+
+      updateQuestionBookmarkUI(qKey);
+      updateToolbarUI();
+      updateMenuBookmarkBadge();
+    }
+
+    function updateQuestionBookmarkUI(qKey) {
+      const btns = document.querySelectorAll(`.btn-bookmark-q[data-qkey="${qKey}"]`);
+      const isMarked = !!bookmarkedQuestions[qKey];
+      btns.forEach(btn => {
+        btn.classList.toggle('marked', isMarked);
+        btn.title = isMarked ? 'Bỏ đánh dấu câu này' : 'Đánh dấu câu cần chú ý';
+        btn.innerHTML = isMarked
+          ? '<span class="material-symbols-rounded filled" style="color: #f59e0b;">star</span><span class="bookmark-btn-label">Đã lưu</span>'
+          : '<span class="material-symbols-rounded">star</span><span class="bookmark-btn-label">Lưu ý</span>';
+      });
+    }
+
+    function updateMenuBookmarkBadge() {
+      const count = Object.keys(bookmarkedQuestions).length;
+      const subtitleEl = document.getElementById('menuBookmarkCountText');
+      if (subtitleEl) {
+        subtitleEl.textContent = count > 0
+          ? `${count} câu hỏi đã lưu ý • Bấm để luyện tập riêng`
+          : 'Chưa có câu hỏi lưu ý • Bấm sao (⭐) khi làm bài để lưu';
+      }
+    }
+
+    function toggleBookmarkOnlyFilter() {
+      if (isExamMode) return;
+      if (showWrongOnly) showWrongOnly = false;
+      showBookmarkOnly = !showBookmarkOnly;
+      updateToolbarUI();
+      updateProgressStats();
+      renderQuestionsList();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function exitBookmarkMode() {
+      isBookmarkShuffled = false;
+      shuffledBookmarkQuestions = null;
+      if (isBookmarkPracticeMode) {
+        if (currentFolderId && ALL_SUBJECTS[currentFolderId]) {
+          openFolderScreen(currentFolderId);
+        } else {
+          goToMenu();
+        }
+      } else {
+        if (showBookmarkOnly) {
+          showBookmarkOnly = false;
+          updateToolbarUI();
+          updateProgressStats();
+          renderQuestionsList();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          goToMenu();
+        }
+      }
+    }
+
+    async function resetAllBookmarkAnswers() {
+      if (isExamMode) return;
+      const bookmarkQs = isBookmarkPracticeMode ? currentQuestions : getBookmarkedQuestions();
+      if (bookmarkQs.length === 0) return;
+
+      const confirmed = await showConfirmModal({
+        title: 'Làm lại các câu cần chú ý',
+        message: `Bạn có muốn xóa đáp án của ${bookmarkQs.length} câu hỏi cần chú ý này để luyện tập lại không? (Đáp án ở trang Tất cả câu hỏi sẽ được giữ nguyên)`,
+        confirmText: 'Làm lại câu lưu ý',
+        cancelText: 'Hủy',
+        icon: 'restart_alt',
+        isDanger: true
+      });
+
+      if (confirmed) {
+        // Chỉ xóa đáp án trong chế độ lưu ý, KHÔNG ảnh hưởng các câu hỏi ở trang tất cả câu hỏi
+        bookmarkQs.forEach(q => {
+          const qKey = getQuestionKey(q);
+          const origId = q._origId || q.id;
+          bookmarkPracticeAnswers[q.id] = null;
+          if (qKey) bookmarkPracticeAnswers[qKey] = null;
+          if (origId) bookmarkPracticeAnswers[origId] = null;
+        });
+        saveBookmarkPracticeAnswers();
+        updateToolbarUI();
+        updateProgressStats();
+        renderQuestionsList();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        showToast('Đã xóa đáp án các câu lưu ý để luyện tập lại', 'restart_alt');
+      }
+    }
 
     function removeTones(str) {
       if (!str) return '';
@@ -1700,8 +2339,6 @@
       } catch (e) { }
     }
 
-    let currentFolderId = null;
-
     function getFolders() {
       return Object.values(ALL_SUBJECTS).filter(s => s && s.isFolder);
     }
@@ -1720,6 +2357,61 @@
       });
     }
 
+    async function openBookmarksPracticeScreen(folderId = null, pushHistory = true) {
+      currentFolderId = folderId;
+      currentSubjectKey = '__bookmarks__';
+      isFolderSummary = false;
+      isBookmarkPracticeMode = true;
+      showWrongOnly = false;
+      showBookmarkOnly = false;
+      isExamMode = false;
+      isShuffled = false;
+      filterQuery = '';
+      const searchBox = document.getElementById('searchBox');
+      if (searchBox) searchBox.value = '';
+
+      document.getElementById('menuScreen').style.display = 'none';
+      document.getElementById('folderScreen').style.display = 'none';
+      document.getElementById('questionsScreen').style.display = 'flex';
+      document.getElementById('currentSubjectName').textContent = '⭐ Câu hỏi cần chú ý';
+      document.title = '⭐ Câu hỏi cần chú ý';
+
+      let qs = Object.values(bookmarkedQuestions);
+      if (folderId && ALL_SUBJECTS[folderId]) {
+        const childIds = new Set(getChildSubjectsOf(folderId).map(c => c.id));
+        childIds.add(folderId);
+        qs = qs.filter(q => childIds.has(q._origSubjectId || q.subjectId));
+      }
+      qs.sort((a, b) => (b.markedAt || 0) - (a.markedAt || 0));
+
+      currentQuestions = qs.map((q, idx) => ({
+        ...q,
+        seqId: idx + 1,
+        id: q.id,
+        _origId: q._origId || q.id,
+        _origSubjectId: q._origSubjectId || q.subjectId,
+        _subTitle: q._subTitle || (ALL_SUBJECTS[q._origSubjectId || q.subjectId]?.title || '')
+      }));
+
+      loadAnswers(currentSubjectKey);
+
+      if (pushHistory) {
+        const url = new URL(window.location);
+        url.searchParams.delete('subject');
+        url.searchParams.delete('mon');
+        url.searchParams.delete('summary');
+        url.searchParams.set('bookmarks', '1');
+        if (folderId) url.searchParams.set('folder', folderId);
+        else url.searchParams.delete('folder');
+        window.history.pushState({}, '', url.toString());
+      }
+
+      updateProgressStats();
+      updateToolbarUI();
+      renderQuestionsList();
+      window.scrollTo(0, 0);
+    }
+
     function renderMenuScreen() {
       const container = document.getElementById('subjectCardsList');
       container.innerHTML = '';
@@ -1731,13 +2423,6 @@
       standalones.sort((a, b) => (Number(a.order ?? 999)) - (Number(b.order ?? 999)));
 
       if (folders.length === 0 && standalones.length === 0) {
-        container.innerHTML = `
-          <div style="text-align: center; color: var(--text-muted); padding: 32px 16px; background: #fff; border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
-            <div style="margin-bottom: 8px;"><span class="material-symbols-rounded" style="font-size: 3rem; color: var(--text-muted);">visibility_off</span></div>
-            <div style="font-weight: 600; color: var(--text-main);">Tất cả môn học đang tạm ẩn</div>
-            <div style="font-size: 0.85rem; margin-top: 4px;">Vui lòng vào <strong>Quản lý Ngân hàng</strong> để mở hiển thị lại môn học.</div>
-          </div>
-        `;
         return;
       }
 
@@ -1826,6 +2511,8 @@
 
       document.getElementById('menuScreen').style.display = 'none';
       document.getElementById('questionsScreen').style.display = 'none';
+      const bbar = document.getElementById('questionsBottomBar');
+      if (bbar) bbar.style.display = 'none';
       const folderScreen = document.getElementById('folderScreen');
       folderScreen.style.display = 'flex';
 
@@ -1943,10 +2630,13 @@
 
         const wrongKey = isFolderSummary ? ('wrong_practice_summary_' + currentFolderId) : ('wrong_practice_' + subKey);
         const savedWrong = localStorage.getItem(wrongKey);
-        wrongPracticeIds = new Set(savedWrong ? JSON.parse(savedWrong) : []);
+        wrongPracticeIds = new Set(savedWrong ? JSON.parse(savedWrong).flatMap(id => [id, Number(id), String(id)]) : []);
+
+        loadBookmarkPracticeAnswers(subKey);
       } catch (e) {
         userAnswers = {};
         wrongPracticeIds = new Set();
+        bookmarkPracticeAnswers = {};
       }
     }
 
@@ -1970,9 +2660,29 @@
 
     function getQuestionAnswer(q) {
       if (!q) return undefined;
+
+      // Trong trang câu hỏi lưu ý: Ưu tiên trạng thái trả lời / làm lại của chế độ lưu ý
+      if (isInBookmarkView()) {
+        const qKey = getQuestionKey(q);
+        const idKey = q.id;
+        const origKey = q._origId;
+        if (qKey && bookmarkPracticeAnswers[qKey] !== undefined) {
+          return bookmarkPracticeAnswers[qKey] === null ? undefined : bookmarkPracticeAnswers[qKey];
+        }
+        if (idKey !== undefined && bookmarkPracticeAnswers[idKey] !== undefined) {
+          return bookmarkPracticeAnswers[idKey] === null ? undefined : bookmarkPracticeAnswers[idKey];
+        }
+        if (origKey !== undefined && bookmarkPracticeAnswers[origKey] !== undefined) {
+          return bookmarkPracticeAnswers[origKey] === null ? undefined : bookmarkPracticeAnswers[origKey];
+        }
+      }
+
+      // Trang tất cả câu hỏi / Ôn tập thông thường
       if (userAnswers[q.id] !== undefined && userAnswers[q.id] !== null) return userAnswers[q.id];
       const key = getQuestionKey(q);
       if (key && userAnswers[key] !== undefined && userAnswers[key] !== null) return userAnswers[key];
+      const origId = q._origId;
+      if (origId && userAnswers[origId] !== undefined && userAnswers[origId] !== null) return userAnswers[origId];
       return undefined;
     }
 
@@ -1981,6 +2691,7 @@
       userAnswers[q.id] = val;
       const key = getQuestionKey(q);
       if (key) userAnswers[key] = val;
+      if (q._origId) userAnswers[q._origId] = val;
     }
 
     function deleteQuestionAnswer(q) {
@@ -1988,6 +2699,159 @@
       delete userAnswers[q.id];
       const key = getQuestionKey(q);
       if (key) delete userAnswers[key];
+      if (q._origId) delete userAnswers[q._origId];
+    }
+
+    function syncQuestionAnswerEverywhere(q, selectedIdx) {
+      if (!q) return;
+      setQuestionAnswer(q, selectedIdx);
+
+      const qKey = getQuestionKey(q);
+      const origId = q._origId || q.id;
+      const origSubId = q._origSubjectId || q.subjectId || (currentSubjectKey !== '__bookmarks__' ? currentSubjectKey : '');
+
+      const targetSubs = new Set([origSubId, (currentSubjectKey !== '__bookmarks__' ? currentSubjectKey : '')].filter(Boolean));
+      targetSubs.forEach(sub => {
+        try {
+          const key = 'answers_' + sub;
+          const str = localStorage.getItem(key);
+          const ansMap = str ? JSON.parse(str) : {};
+          ansMap[origId] = selectedIdx;
+          ansMap[Number(origId)] = selectedIdx;
+          ansMap[String(origId)] = selectedIdx;
+          if (qKey) ansMap[qKey] = selectedIdx;
+          localStorage.setItem(key, JSON.stringify(ansMap));
+        } catch (e) {}
+      });
+
+      if (isFolderSummary && currentFolderId) {
+        try {
+          const sumKey = 'answers_summary_' + currentFolderId;
+          const sumStr = localStorage.getItem(sumKey);
+          const sumMap = sumStr ? JSON.parse(sumStr) : {};
+          sumMap[origId] = selectedIdx;
+          if (qKey) sumMap[qKey] = selectedIdx;
+          localStorage.setItem(sumKey, JSON.stringify(sumMap));
+        } catch (e) {}
+      }
+    }
+
+    function deleteQuestionAnswerEverywhere(q, keepWrongPractice = false) {
+      if (!q) return;
+      deleteQuestionAnswer(q);
+
+      const qKey = getQuestionKey(q);
+      const origId = q._origId || q.id;
+      const origSubId = q._origSubjectId || q.subjectId || (currentSubjectKey !== '__bookmarks__' ? currentSubjectKey : '');
+
+      if (!keepWrongPractice) {
+        wrongPracticeIds.delete(q.id);
+        if (qKey) wrongPracticeIds.delete(qKey);
+        if (origId) wrongPracticeIds.delete(origId);
+      }
+
+      const targetSubs = new Set([origSubId, (currentSubjectKey !== '__bookmarks__' ? currentSubjectKey : '')].filter(Boolean));
+      targetSubs.forEach(sub => {
+        try {
+          const key = 'answers_' + sub;
+          const str = localStorage.getItem(key);
+          if (str) {
+            const ansMap = JSON.parse(str);
+            delete ansMap[origId];
+            delete ansMap[Number(origId)];
+            delete ansMap[String(origId)];
+            if (qKey) delete ansMap[qKey];
+            delete ansMap[q.id];
+            localStorage.setItem(key, JSON.stringify(ansMap));
+          }
+        } catch (e) {}
+      });
+
+      if (isFolderSummary && currentFolderId) {
+        try {
+          const sumKey = 'answers_summary_' + currentFolderId;
+          const sumStr = localStorage.getItem(sumKey);
+          if (sumStr) {
+            const sumMap = JSON.parse(sumStr);
+            delete sumMap[origId];
+            if (qKey) delete sumMap[qKey];
+            delete sumMap[q.id];
+            localStorage.setItem(sumKey, JSON.stringify(sumMap));
+          }
+        } catch (e) {}
+      }
+    }
+
+    function removeQuestionFromWrongEverywhere(q) {
+      if (!q) return;
+      const qKey = getQuestionKey(q);
+      const origId = q._origId || q.id;
+      const origSubId = q._origSubjectId || q.subjectId || (currentSubjectKey !== '__bookmarks__' ? currentSubjectKey : '');
+
+      wrongPracticeIds.delete(q.id);
+      if (qKey) wrongPracticeIds.delete(qKey);
+      if (origId) wrongPracticeIds.delete(origId);
+
+      const targetSubs = new Set([origSubId, (currentSubjectKey !== '__bookmarks__' ? currentSubjectKey : '')].filter(Boolean));
+      targetSubs.forEach(sub => {
+        try {
+          const key = 'wrong_practice_' + sub;
+          const str = localStorage.getItem(key);
+          if (str) {
+            let list = JSON.parse(str);
+            list = list.filter(id => id != origId && id != q.id && id !== qKey);
+            localStorage.setItem(key, JSON.stringify(list));
+          }
+        } catch (e) {}
+      });
+
+      if (isFolderSummary && currentFolderId) {
+        try {
+          const sumKey = 'wrong_practice_summary_' + currentFolderId;
+          const sumStr = localStorage.getItem(sumKey);
+          if (sumStr) {
+            let sumList = JSON.parse(sumStr);
+            sumList = sumList.filter(id => id != origId && id != q.id && id !== qKey);
+            localStorage.setItem(sumKey, JSON.stringify(sumList));
+          }
+        } catch (e) {}
+      }
+    }
+
+    function addQuestionToWrongEverywhere(q) {
+      if (!q) return;
+      const qKey = getQuestionKey(q);
+      const origId = q._origId || q.id;
+      const origSubId = q._origSubjectId || q.subjectId || (currentSubjectKey !== '__bookmarks__' ? currentSubjectKey : '');
+
+      wrongPracticeIds.add(q.id);
+      if (qKey) wrongPracticeIds.add(qKey);
+      if (origId) wrongPracticeIds.add(origId);
+
+      const targetSubs = new Set([origSubId, (currentSubjectKey !== '__bookmarks__' ? currentSubjectKey : '')].filter(Boolean));
+      targetSubs.forEach(sub => {
+        try {
+          const key = 'wrong_practice_' + sub;
+          const str = localStorage.getItem(key);
+          let list = str ? JSON.parse(str) : [];
+          [origId, Number(origId), String(origId)].forEach(v => {
+            if (v !== undefined && !list.includes(v)) list.push(v);
+          });
+          localStorage.setItem(key, JSON.stringify(list));
+        } catch (e) {}
+      });
+
+      if (isFolderSummary && currentFolderId) {
+        try {
+          const sumKey = 'wrong_practice_summary_' + currentFolderId;
+          const sumStr = localStorage.getItem(sumKey);
+          let sumList = sumStr ? JSON.parse(sumStr) : [];
+          [origId, Number(origId), String(origId)].forEach(v => {
+            if (v !== undefined && !sumList.includes(v)) sumList.push(v);
+          });
+          localStorage.setItem(sumKey, JSON.stringify(sumList));
+        } catch (e) {}
+      }
     }
 
     function updateProgressStats() {
@@ -2003,6 +2867,19 @@
       const total = pool.length;
       if (total === 0 || isExamMode) {
         statsEl.style.display = 'none';
+        return;
+      }
+
+      if (showBookmarkOnly) {
+        const bmQs = getBookmarkedQuestions();
+        const bmTotal = bmQs.length;
+        const bmAnswered = bmQs.filter(q => getQuestionAnswer(q) !== undefined).length;
+        const bmPercent = bmTotal > 0 ? Math.round((bmAnswered / bmTotal) * 100) : 0;
+        statsEl.style.display = 'inline-flex';
+        statsEl.innerHTML = `
+          <span class="material-symbols-rounded" style="font-size: 16px; color: #f59e0b;">star</span>
+          <span>Lưu ý: <strong>${bmAnswered}/${bmTotal}</strong> câu (${bmPercent}%)</span>
+        `;
         return;
       }
 
@@ -2050,11 +2927,7 @@
       if (searchBox) searchBox.value = '';
 
       if (!folderId) {
-        if (ALL_SUBJECTS[subKey].parentId) {
-          folderId = ALL_SUBJECTS[subKey].parentId;
-        } else if (ALL_SUBJECTS['cns'] && (subKey.startsWith('cns') || ALL_SUBJECTS[subKey].title.toUpperCase().includes('CNS'))) {
-          folderId = 'cns';
-        }
+        folderId = ALL_SUBJECTS[subKey].parentId || null;
       }
       currentFolderId = folderId;
 
@@ -2245,9 +3118,13 @@
     function goToMenu(pushHistory = true) {
       currentSubjectKey = null;
       currentFolderId = null;
+      isBookmarkPracticeMode = false;
+      showBookmarkOnly = false;
       isExamMode = false;
 
       document.getElementById('questionsScreen').style.display = 'none';
+      const bbar = document.getElementById('questionsBottomBar');
+      if (bbar) bbar.style.display = 'none';
       document.getElementById('folderScreen').style.display = 'none';
       document.getElementById('menuScreen').style.display = 'block';
       document.title = 'Ôn tập';
@@ -2259,6 +3136,8 @@
         url.searchParams.delete('subject');
         url.searchParams.delete('mon');
         url.searchParams.delete('folder');
+        url.searchParams.delete('bookmarks');
+        url.searchParams.delete('summary');
         window.history.pushState({}, '', url.pathname);
       }
 
@@ -2424,11 +3303,13 @@
     }
 
     function getWrongQuestions() {
-      const pool = isFolderSummary
-        ? summaryQuestionsCache
-        : ((currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions && ALL_SUBJECTS[currentSubjectKey].questions.length > 0)
-          ? ALL_SUBJECTS[currentSubjectKey].questions
-          : currentQuestions);
+      const pool = isBookmarkPracticeMode
+        ? currentQuestions
+        : (isFolderSummary
+          ? summaryQuestionsCache
+          : ((currentSubjectKey && ALL_SUBJECTS[currentSubjectKey]?.questions && ALL_SUBJECTS[currentSubjectKey].questions.length > 0)
+            ? ALL_SUBJECTS[currentSubjectKey].questions
+            : currentQuestions));
       return pool.filter(q => {
         const ans = getQuestionAnswer(q);
         // Câu đã làm và đáp án sai
@@ -2448,7 +3329,24 @@
 
     function toggleWrongOnlyFilter() {
       if (isExamMode) return;
+      if (showBookmarkOnly) showBookmarkOnly = false;
       showWrongOnly = !showWrongOnly;
+
+      if (showWrongOnly) {
+        // Tự động xoá đáp án các câu làm sai để người dùng luyện tập lại ngay
+        const wrongQs = getWrongQuestions();
+        if (wrongQs.length > 0) {
+          wrongQs.forEach(q => {
+            wrongPracticeIds.add(q.id);
+            const qKey = getQuestionKey(q);
+            if (qKey) wrongPracticeIds.add(qKey);
+            deleteQuestionAnswerEverywhere(q, true);
+          });
+          saveAnswers(currentSubjectKey);
+          updateProgressStats();
+        }
+      }
+
       updateToolbarUI();
       renderQuestionsList();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2472,7 +3370,7 @@
         wrongQs.forEach(q => {
           wrongPracticeIds.add(q.id);
           if (q.qKey) wrongPracticeIds.add(q.qKey);
-          deleteQuestionAnswer(q);
+          deleteQuestionAnswerEverywhere(q, true);
         });
         saveAnswers(currentSubjectKey);
         updateProgressStats();
@@ -2494,7 +3392,9 @@
       // Đưa các câu sai vào wrongPracticeIds và xóa đáp án để người dùng làm lại ngay
       wrongInExam.forEach(q => {
         wrongPracticeIds.add(q.id);
-        delete userAnswers[q.id];
+        const qKey = getQuestionKey(q);
+        if (qKey) wrongPracticeIds.add(qKey);
+        deleteQuestionAnswerEverywhere(q, true);
       });
       saveAnswers(currentSubjectKey);
 
@@ -2507,59 +3407,51 @@
     }
 
     function updateToolbarUI() {
-      const btnShuffle = document.getElementById('btnShuffle');
-      const btnStartExam = document.getElementById('btnStartExam');
-      const btnTopResult = document.getElementById('btnTopResultExam');
-      const searchBox = document.getElementById('searchBox');
+      const questionsScreen = document.getElementById('questionsScreen');
+      const bbar = document.getElementById('questionsBottomBar');
+      if (bbar) {
+        bbar.style.display = (questionsScreen && questionsScreen.style.display !== 'none') ? 'flex' : 'none';
+      }
+
+      const bbarNormalGroup = document.getElementById('bbarNormalGroup');
+      const bbarWrongGroup = document.getElementById('bbarWrongGroup');
+      const bbarBookmarkGroup = document.getElementById('bbarBookmarkGroup');
+      const bbarExamGroup = document.getElementById('bbarExamGroup');
+      const bbarBtnShuffle = document.getElementById('bbarBtnShuffle');
+      const bbarBtnBookmark = document.getElementById('bbarBtnBookmark');
+      const bbarBookmarkBadge = document.getElementById('bbarBookmarkBadge');
+      const bbarBtnWrong = document.getElementById('bbarBtnWrong');
+      const bbarWrongBadge = document.getElementById('bbarWrongBadge');
+
       const backLabel = document.getElementById('navBackBtnLabel');
       const examBanner = document.getElementById('examBanner');
       const examBottomActions = document.getElementById('examBottomActions');
-      const btnClearAnswers = document.getElementById('btnClearAnswers');
-      const btnWrongOnly = document.getElementById('btnWrongOnly');
-      const wrongOnlyBtnLabel = document.getElementById('wrongOnlyBtnLabel');
+      const searchWrap = document.querySelector('.questions-search-wrap');
 
       if (isExamMode) {
         if (backLabel) backLabel.textContent = 'Thoát thi';
-        if (btnClearAnswers) btnClearAnswers.style.display = 'none'; // Trong thi thử không có làm lại
-        if (btnWrongOnly) btnWrongOnly.style.display = 'none';
-        if (btnShuffle) btnShuffle.style.display = 'none';
-        if (btnStartExam) btnStartExam.style.display = 'none';
-        if (btnTopResult) btnTopResult.style.display = 'inline-flex';
-        const searchWrap = document.querySelector('.questions-search-wrap');
         if (searchWrap) searchWrap.style.display = 'none';
         if (examBanner) examBanner.style.display = 'flex';
         if (examBottomActions) examBottomActions.style.display = 'flex';
+        if (bbarNormalGroup) bbarNormalGroup.style.display = 'none';
+        if (bbarWrongGroup) bbarWrongGroup.style.display = 'none';
+        if (bbarBookmarkGroup) bbarBookmarkGroup.style.display = 'none';
+        if (bbarExamGroup) bbarExamGroup.style.display = 'flex';
         updateExamProgressBadge();
-      } else {
-        if (btnClearAnswers) {
-          btnClearAnswers.style.display = 'inline-flex';
-          if (showWrongOnly) {
-            btnClearAnswers.title = 'Xóa đáp án của các câu làm sai để luyện tập lại';
-            btnClearAnswers.innerHTML = '<span class="material-symbols-rounded">restart_alt</span> Xóa câu sai';
-          } else {
-            btnClearAnswers.title = 'Xóa toàn bộ câu trả lời để làm lại từ đầu';
-            btnClearAnswers.innerHTML = '<span class="material-symbols-rounded">delete_sweep</span> Xóa đáp án';
-          }
-        }
-        if (btnWrongOnly) {
-          btnWrongOnly.style.display = 'inline-flex';
-          const wrongCount = getWrongQuestions().length;
-          if (wrongOnlyBtnLabel) wrongOnlyBtnLabel.textContent = `Câu làm sai (${wrongCount})`;
-          if (showWrongOnly) {
-            btnWrongOnly.classList.add('active');
-            btnWrongOnly.style.background = '#fee2e2';
-            btnWrongOnly.style.borderColor = '#ef4444';
-            btnWrongOnly.style.color = '#b91c1c';
-          } else {
-            btnWrongOnly.classList.remove('active');
-            btnWrongOnly.style.background = '';
-            btnWrongOnly.style.borderColor = '';
-            btnWrongOnly.style.color = '';
-          }
-        }
+      } else if (showWrongOnly) {
+        if (searchWrap) searchWrap.style.display = 'block';
+        if (examBanner) examBanner.style.display = 'none';
+        if (examBottomActions) examBottomActions.style.display = 'none';
+        if (bbarNormalGroup) bbarNormalGroup.style.display = 'none';
+        if (bbarExamGroup) bbarExamGroup.style.display = 'none';
+        if (bbarBookmarkGroup) bbarBookmarkGroup.style.display = 'none';
+        if (bbarWrongGroup) bbarWrongGroup.style.display = 'block';
 
         if (backLabel) {
-          if (isFolderSummary) {
+          if (isBookmarkPracticeMode) {
+            const label = currentFolderId ? (ALL_SUBJECTS[currentFolderId]?.title || 'Thư mục') : 'Tất cả môn';
+            backLabel.textContent = label;
+          } else if (isFolderSummary) {
             backLabel.textContent = ALL_SUBJECTS[currentFolderId]?.title || 'Thư mục';
           } else if (currentFolderId && ALL_SUBJECTS[currentFolderId]) {
             backLabel.textContent = ALL_SUBJECTS[currentFolderId]?.title || 'Trở về';
@@ -2567,27 +3459,110 @@
             backLabel.textContent = 'Tất cả môn';
           }
         }
-
-        if (btnShuffle) {
-          btnShuffle.style.display = 'inline-flex';
-          if (isShuffled) {
-            btnShuffle.classList.add('active');
-            btnShuffle.title = 'Bấm để quay về thứ tự gốc 1, 2, 3...';
-            btnShuffle.innerHTML = '<span class="material-symbols-rounded">sort</span> Thứ tự gốc';
-            btnShuffle.onclick = resetQuestionOrder;
-          } else {
-            btnShuffle.classList.remove('active');
-            btnShuffle.title = 'Xáo trộn ngẫu nhiên thứ tự câu hỏi';
-            btnShuffle.innerHTML = '<span class="material-symbols-rounded">shuffle</span> Xáo trộn';
-            btnShuffle.onclick = shuffleCurrentQuestions;
-          }
-        }
-        if (btnStartExam) btnStartExam.style.display = 'inline-flex';
-        if (btnTopResult) btnTopResult.style.display = 'none';
-        const searchWrap = document.querySelector('.questions-search-wrap');
+      } else if (showBookmarkOnly || isBookmarkPracticeMode) {
         if (searchWrap) searchWrap.style.display = 'block';
         if (examBanner) examBanner.style.display = 'none';
         if (examBottomActions) examBottomActions.style.display = 'none';
+        if (bbarNormalGroup) bbarNormalGroup.style.display = 'none';
+        if (bbarExamGroup) bbarExamGroup.style.display = 'none';
+        if (bbarWrongGroup) bbarWrongGroup.style.display = 'none';
+        if (bbarBookmarkGroup) bbarBookmarkGroup.style.display = 'flex';
+
+        const bbarBtnBookmarkShuffle = document.getElementById('bbarBtnBookmarkShuffle');
+        if (bbarBtnBookmarkShuffle) {
+          if (isBookmarkShuffled) {
+            bbarBtnBookmarkShuffle.innerHTML = '<span class="material-symbols-rounded">sort</span><span>Gốc</span>';
+            bbarBtnBookmarkShuffle.title = 'Khôi phục thứ tự ban đầu';
+            bbarBtnBookmarkShuffle.onclick = resetBookmarkQuestionOrder;
+          } else {
+            bbarBtnBookmarkShuffle.innerHTML = '<span class="material-symbols-rounded">shuffle</span><span>Xáo trộn</span>';
+            bbarBtnBookmarkShuffle.title = 'Xáo trộn câu cần chú ý';
+            bbarBtnBookmarkShuffle.onclick = shuffleBookmarkQuestions;
+          }
+        }
+
+        if (backLabel) {
+          if (isBookmarkPracticeMode) {
+            const label = currentFolderId ? (ALL_SUBJECTS[currentFolderId]?.title || 'Thư mục') : 'Tất cả môn';
+            backLabel.textContent = label;
+          } else if (isFolderSummary) {
+            backLabel.textContent = ALL_SUBJECTS[currentFolderId]?.title || 'Thư mục';
+          } else if (currentFolderId && ALL_SUBJECTS[currentFolderId]) {
+            backLabel.textContent = ALL_SUBJECTS[currentFolderId]?.title || 'Trở về';
+          } else {
+            backLabel.textContent = 'Tất cả môn';
+          }
+        }
+      } else {
+        if (searchWrap) searchWrap.style.display = 'block';
+        if (examBanner) examBanner.style.display = 'none';
+        if (examBottomActions) examBottomActions.style.display = 'none';
+        if (bbarWrongGroup) bbarWrongGroup.style.display = 'none';
+        if (bbarBookmarkGroup) bbarBookmarkGroup.style.display = 'none';
+        if (bbarExamGroup) bbarExamGroup.style.display = 'none';
+        if (bbarNormalGroup) bbarNormalGroup.style.display = 'flex';
+
+        if (bbarBtnShuffle) {
+          if (isShuffled) {
+            bbarBtnShuffle.classList.add('active-blue');
+            bbarBtnShuffle.title = 'Bấm để quay về thứ tự gốc 1, 2, 3...';
+            bbarBtnShuffle.innerHTML = '<span class="material-symbols-rounded">sort</span><span class="bbar-label">Gốc</span>';
+            bbarBtnShuffle.onclick = resetQuestionOrder;
+          } else {
+            bbarBtnShuffle.classList.remove('active-blue');
+            bbarBtnShuffle.title = 'Xáo trộn ngẫu nhiên thứ tự câu hỏi';
+            bbarBtnShuffle.innerHTML = '<span class="material-symbols-rounded">shuffle</span><span class="bbar-label">Xáo trộn</span>';
+            bbarBtnShuffle.onclick = shuffleCurrentQuestions;
+          }
+        }
+
+        if (bbarBtnBookmark) {
+          if (isBookmarkPracticeMode) {
+            bbarBtnBookmark.style.display = 'none';
+          } else {
+            bbarBtnBookmark.style.display = 'inline-flex';
+            const bmCount = getBookmarkedQuestions().length;
+            if (bbarBookmarkBadge) {
+              if (bmCount > 0) {
+                bbarBookmarkBadge.style.display = 'inline-flex';
+                bbarBookmarkBadge.textContent = bmCount;
+              } else {
+                bbarBookmarkBadge.style.display = 'none';
+              }
+            }
+            if (showBookmarkOnly) {
+              bbarBtnBookmark.classList.add('active-amber');
+            } else {
+              bbarBtnBookmark.classList.remove('active-amber');
+            }
+          }
+        }
+
+        if (bbarBtnWrong) {
+          const wrongCount = getWrongQuestions().length;
+          if (bbarWrongBadge) {
+            if (wrongCount > 0) {
+              bbarWrongBadge.style.display = 'inline-flex';
+              bbarWrongBadge.textContent = wrongCount;
+            } else {
+              bbarWrongBadge.style.display = 'none';
+            }
+          }
+          bbarBtnWrong.classList.remove('active-red');
+        }
+
+        if (backLabel) {
+          if (isBookmarkPracticeMode) {
+            const label = currentFolderId ? (ALL_SUBJECTS[currentFolderId]?.title || 'Thư mục') : 'Tất cả môn';
+            backLabel.textContent = label;
+          } else if (isFolderSummary) {
+            backLabel.textContent = ALL_SUBJECTS[currentFolderId]?.title || 'Thư mục';
+          } else if (currentFolderId && ALL_SUBJECTS[currentFolderId]) {
+            backLabel.textContent = ALL_SUBJECTS[currentFolderId]?.title || 'Trở về';
+          } else {
+            backLabel.textContent = 'Tất cả môn';
+          }
+        }
       }
     }
 
@@ -2619,6 +3594,8 @@
         userAnswers = {};
         wrongPracticeIds.clear();
         saveAnswers(currentSubjectKey);
+        bookmarkPracticeAnswers = {};
+        saveBookmarkPracticeAnswers(currentSubjectKey);
         if (isFolderSummary) {
           summaryQuestionsCache.sort((a, b) => a.seqId - b.seqId);
           currentQuestions = [...summaryQuestionsCache];
@@ -2689,6 +3666,48 @@
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+    }
+
+    // Xáo trộn các câu hỏi cần chú ý trong trang Lưu ý
+    function shuffleBookmarkQuestions() {
+      const bmQs = getBookmarkedQuestions();
+      if (bmQs.length === 0) {
+        showToast('Chưa có câu hỏi cần chú ý nào để xáo trộn', 'info');
+        return;
+      }
+      isBookmarkShuffled = true;
+      const answeredList = bmQs.filter(q => getQuestionAnswer(q) !== undefined);
+      const unansweredList = bmQs.filter(q => getQuestionAnswer(q) === undefined);
+
+      const shuffledAnswered = shuffleArray(answeredList);
+      const shuffledUnanswered = shuffleArray(unansweredList);
+
+      shuffledBookmarkQuestions = [...shuffledAnswered, ...shuffledUnanswered];
+      renderQuestionsList();
+      updateToolbarUI();
+
+      if (shuffledAnswered.length > 0 && shuffledUnanswered.length > 0) {
+        const firstUnansweredId = shuffledUnanswered[0].id;
+        setTimeout(() => {
+          const targetEl = document.getElementById('q_' + firstUnansweredId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 200);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      showToast('Đã xáo trộn các câu cần chú ý', 'shuffle');
+    }
+
+    // Khôi phục thứ tự tự nhiên ban đầu của câu hỏi cần chú ý
+    function resetBookmarkQuestionOrder() {
+      isBookmarkShuffled = false;
+      shuffledBookmarkQuestions = null;
+      renderQuestionsList();
+      updateToolbarUI();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast('Đã khôi phục thứ tự ban đầu', 'sort');
     }
 
     // =========================================
@@ -2948,7 +3967,9 @@
 
       let questions = currentQuestions;
 
-      if (!isExamMode && showWrongOnly) {
+      if (!isExamMode && showBookmarkOnly) {
+        questions = getBookmarkedQuestions();
+      } else if (!isExamMode && showWrongOnly) {
         questions = getWrongQuestions();
       }
 
@@ -2966,31 +3987,115 @@
         });
       }
 
-      // Nếu đang bật chế độ lọc "Câu làm sai", hiển thị banner hướng dẫn và thao tác nhanh
+      // Nếu đang lọc câu cần lưu ý trong một môn
+      if (!isExamMode && showBookmarkOnly) {
+        const bmQs = getBookmarkedQuestions();
+        const bannerDiv = document.createElement('div');
+        bannerDiv.className = 'bookmark-filter-banner';
+        bannerDiv.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="material-symbols-rounded filled" style="color: #f59e0b; font-size: 26px;">star</span>
+              <div>
+                <div style="font-weight: 700; color: #92400e; font-size: 0.95rem;">Đang luyện tập ${bmQs.length} câu cần chú ý ⭐</div>
+                <div style="font-size: 0.82rem; color: #b45309; margin-top: 2px;">Nếu làm sai, câu hỏi sẽ tự động được thêm vào câu sai của môn này.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              ${bmQs.length > 0 ? `
+              <button class="btn-pill btn-pill-danger" onclick="resetAllBookmarkAnswers()">
+                <span class="material-symbols-rounded">restart_alt</span> Làm lại (${bmQs.length})
+              </button>
+              <button class="btn-pill btn-pill-outline" onclick="shuffleBookmarkQuestions()">
+                <span class="material-symbols-rounded">shuffle</span> Xáo trộn
+              </button>
+              ` : ''}
+              <button class="btn-pill btn-pill-outline" onclick="exitBookmarkMode()">
+                <span class="material-symbols-rounded">format_list_bulleted</span> Tất cả câu hỏi
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(bannerDiv);
+
+        if (bmQs.length === 0) {
+          const emptyDiv = document.createElement('div');
+          emptyDiv.style.cssText = 'text-align: center; padding: 40px 20px; background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius-md); margin-top: 12px;';
+          emptyDiv.innerHTML = `
+            <span class="material-symbols-rounded" style="font-size: 48px; color: #f59e0b;">star</span>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #92400e; margin-top: 10px;">Chưa có câu hỏi nào được đánh dấu sao!</div>
+            <div style="font-size: 0.88rem; color: #b45309; margin-top: 4px;">Bấm nút ngôi sao ⭐ bên cạnh câu hỏi để lưu vào danh sách cần lưu ý.</div>
+            <button class="btn-pill btn-pill-primary" style="margin-top: 16px;" onclick="exitBookmarkMode()">
+              <span class="material-symbols-rounded">list</span> Xem toàn bộ câu hỏi
+            </button>
+          `;
+          container.appendChild(emptyDiv);
+          return;
+        }
+      }
+
+      // Nếu đang trong chế độ luyện tập toàn bộ câu cần chú ý
+      if (!isExamMode && isBookmarkPracticeMode) {
+        const bmQs = currentQuestions;
+        const bannerDiv = document.createElement('div');
+        bannerDiv.className = 'bookmark-filter-banner';
+        bannerDiv.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="material-symbols-rounded filled" style="color: #f59e0b; font-size: 26px;">star</span>
+              <div>
+                <div style="font-weight: 700; color: #92400e; font-size: 0.95rem;">Luyện tập ${bmQs.length} câu hỏi cần chú ý ⭐</div>
+                <div style="font-size: 0.82rem; color: #b45309; margin-top: 2px;">Nếu làm sai, câu hỏi sẽ tự động được thêm vào danh sách câu sai của môn tương ứng.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              ${bmQs.length > 0 ? `
+              <button class="btn-pill btn-pill-danger" onclick="resetAllBookmarkAnswers()">
+                <span class="material-symbols-rounded">restart_alt</span> Làm lại (${bmQs.length})
+              </button>
+              <button class="btn-pill btn-pill-outline" onclick="shuffleBookmarkQuestions()">
+                <span class="material-symbols-rounded">shuffle</span> Xáo trộn
+              </button>
+              ` : ''}
+              <button class="btn-pill btn-pill-outline" onclick="exitBookmarkMode()">
+                <span class="material-symbols-rounded">format_list_bulleted</span> Tất cả câu hỏi
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(bannerDiv);
+
+        if (bmQs.length === 0) {
+          const emptyDiv = document.createElement('div');
+          emptyDiv.style.cssText = 'text-align: center; padding: 40px 20px; background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius-md); margin-top: 12px;';
+          emptyDiv.innerHTML = `
+            <span class="material-symbols-rounded" style="font-size: 48px; color: #f59e0b;">star</span>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #92400e; margin-top: 10px;">Chưa có câu hỏi nào được đánh dấu sao!</div>
+            <div style="font-size: 0.88rem; color: #b45309; margin-top: 4px;">Bấm nút ngôi sao ⭐ bên cạnh câu hỏi khi làm bài để lưu vào danh sách cần lưu ý.</div>
+            <button class="btn-pill btn-pill-primary" style="margin-top: 16px;" onclick="exitBookmarkMode()">
+              <span class="material-symbols-rounded">list</span> Tất cả câu hỏi
+            </button>
+          `;
+          container.appendChild(emptyDiv);
+          return;
+        }
+      }
+
+      // Nếu đang bật chế độ lọc "Câu làm sai", hiển thị banner hướng dẫn
       if (!isExamMode && showWrongOnly) {
         const wrongQs = getWrongQuestions();
         const bannerDiv = document.createElement('div');
         bannerDiv.className = 'wrong-filter-banner';
 
-        const hasUnansweredPractice = wrongQs.some(q => userAnswers[q.id] === undefined && wrongPracticeIds.has(q.id));
-        const subtitleText = hasUnansweredPractice
-          ? 'Đang mở lại các câu làm sai để luyện tập. Hãy chọn đáp án chính xác cho từng câu!'
-          : 'Bấm "Làm lại câu sai" để xóa đáp án các câu này và luyện tập lại cho đến khi sửa đúng.';
-
         bannerDiv.innerHTML = `
           <div class="wrong-banner-content">
             <span class="material-symbols-rounded" style="color: #dc2626; font-size: 26px;">error</span>
             <div>
-              <div style="font-weight: 700; color: #991b1b; font-size: 0.95rem;">Đang lọc ${wrongQs.length} câu làm sai</div>
-              <div style="font-size: 0.82rem; color: #b91c1c; margin-top: 2px;">${subtitleText}</div>
+              <div style="font-weight: 700; color: #991b1b; font-size: 0.95rem;">Đang luyện tập ${wrongQs.length} câu làm sai</div>
+              <div style="font-size: 0.82rem; color: #b91c1c; margin-top: 2px;">Các câu làm sai đã tự động xoá đáp án để bạn luyện tập lại. Khi làm đúng, câu đó sẽ tự động được gỡ khỏi danh sách câu sai.</div>
             </div>
           </div>
           <div class="wrong-banner-actions">
-            ${wrongQs.length > 0 ? `
-            <button class="btn-pill btn-pill-danger" onclick="resetAllWrongAnswers()">
-              <span class="material-symbols-rounded">replay</span> Làm lại câu sai (${wrongQs.length})
-            </button>
-            ` : ''}
             <button class="btn-pill btn-pill-outline" onclick="toggleWrongOnlyFilter()">
               <span class="material-symbols-rounded">close</span> Xem tất cả câu
             </button>
@@ -3042,6 +4147,15 @@
         const subTag = q._subTitle ? `<span class="q-orig-tag" style="background: #e0e7ff; color: #3730a3; border-color: #c7d2fe;" title="Phân môn">${escapeHtml(q._subTitle)}</span>` : '';
         const practiceTag = isPracticing ? `<span class="q-orig-tag" style="background: #fef2f2; color: #b91c1c; border-color: #fecaca; font-weight: 600;" title="Đang làm lại">Luyện tập lại</span>` : '';
 
+        const qKey = getQuestionKey(q);
+        const isMarked = isQuestionBookmarked(q);
+        const bookmarkBtnHtml = `
+          <button class="btn-bookmark-q ${isMarked ? 'marked' : ''}" data-qkey="${qKey}" onclick="toggleBookmarkQuestion('${qKey}', event)" title="${isMarked ? 'Bỏ đánh dấu câu này' : 'Đánh dấu câu cần chú ý'}">
+            <span class="material-symbols-rounded ${isMarked ? 'filled' : ''}">star</span>
+            <span class="bookmark-btn-label">${isMarked ? 'Đã lưu' : 'Lưu ý'}</span>
+          </button>
+        `;
+
         cardHeader.innerHTML = `
           <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
             <span class="q-number-badge">${qNumberText}</span>
@@ -3049,11 +4163,12 @@
             ${origTag}
             ${practiceTag}
           </div>
-          ${!isExamMode ? `
           <div style="display: flex; align-items: center; gap: 6px;">
+            ${bookmarkBtnHtml}
+            ${!isExamMode ? `
             <button class="btn-reset-single-q" id="reset_btn_${q.id}" onclick="resetQuestion(${q.id})"><span class="material-symbols-rounded" style="font-size: 14px; vertical-align: -2px;">replay</span> Làm lại</button>
+            ` : ''}
           </div>
-          ` : ''}
         `;
 
         if (isAnswered && !isExamMode) {
@@ -3141,16 +4256,46 @@
 
       if (getQuestionAnswer(q) !== undefined) return;
 
-      setQuestionAnswer(q, selectedIdx);
+      if (isInBookmarkView()) {
+        const qKey = getQuestionKey(q);
+        const origId = q._origId || q.id;
+        bookmarkPracticeAnswers[q.id] = selectedIdx;
+        if (qKey) bookmarkPracticeAnswers[qKey] = selectedIdx;
+        if (origId) bookmarkPracticeAnswers[origId] = selectedIdx;
+        saveBookmarkPracticeAnswers();
 
-      // Nếu câu này đang được luyện tập lại từ danh sách câu sai
-      if (wrongPracticeIds.has(questionId) || (q.qKey && wrongPracticeIds.has(q.qKey))) {
-        wrongPracticeIds.delete(questionId);
-        if (q.qKey) wrongPracticeIds.delete(q.qKey);
-      }
+        // Đồng bộ câu sai nếu làm sai trong lúc luyện tập lưu ý
+        if (selectedIdx === q.correctIndex) {
+          wrongPracticeIds.delete(questionId);
+          if (q.qKey) wrongPracticeIds.delete(q.qKey);
+          if (q._origId) wrongPracticeIds.delete(q._origId);
+          removeQuestionFromWrongEverywhere(q);
+        } else {
+          wrongPracticeIds.add(questionId);
+          if (q.qKey) wrongPracticeIds.add(q.qKey);
+          if (q._origId) wrongPracticeIds.add(q._origId);
+          addQuestionToWrongEverywhere(q);
+        }
+      } else {
+        setQuestionAnswer(q, selectedIdx);
 
-      if (!isExamMode) {
-        saveAnswers(currentSubjectKey);
+        // Nếu làm đúng, tự động bỏ ra khỏi danh sách câu sai ở mọi nơi (localStorage & state)
+        // Nếu làm sai, thêm vào danh sách câu sai của môn đó
+        if (!isExamMode) {
+          syncQuestionAnswerEverywhere(q, selectedIdx);
+          if (selectedIdx === q.correctIndex) {
+            wrongPracticeIds.delete(questionId);
+            if (q.qKey) wrongPracticeIds.delete(q.qKey);
+            if (q._origId) wrongPracticeIds.delete(q._origId);
+            removeQuestionFromWrongEverywhere(q);
+          } else {
+            wrongPracticeIds.add(questionId);
+            if (q.qKey) wrongPracticeIds.add(q.qKey);
+            if (q._origId) wrongPracticeIds.add(q._origId);
+            addQuestionToWrongEverywhere(q);
+          }
+          saveAnswers(currentSubjectKey);
+        }
       }
 
       const qCard = document.getElementById('q_' + questionId);
@@ -3176,7 +4321,7 @@
               optDiv.insertAdjacentHTML('beforeend', '<div class="opt-trailing-icon"><span class="material-symbols-rounded filled" style="color: #16a34a; font-size: 22px;">check_circle</span></div>');
               const pTag = qCard.querySelector('.q-card-header .q-orig-tag[title="Đang làm lại"]');
               if (pTag) {
-                pTag.outerHTML = '<span class="q-orig-tag q-corrected-tag" style="background: #dcfce7; color: #15803d; border-color: #86efac; font-weight: 700;">Đã sửa đúng ✓</span>';
+                pTag.outerHTML = '<span class="q-orig-tag q-corrected-tag" style="background: #dcfce7; color: #15803d; border-color: #86efac; font-weight: 700;">Đã sửa đúng ✓ (Đã bỏ khỏi câu sai)</span>';
               }
             } else {
               optDiv.classList.add('wrong');
@@ -3210,18 +4355,27 @@
       const questionsPool = isFolderSummary ? summaryQuestionsCache : (ALL_SUBJECTS[currentSubjectKey]?.questions || currentQuestions);
       const q = questionsPool.find(item => item.id === questionId);
 
-      if (showWrongOnly && q) {
-        wrongPracticeIds.add(questionId);
-        if (q.qKey) wrongPracticeIds.add(q.qKey);
-      }
-
-      if (q) {
-        deleteQuestionAnswer(q);
+      if (isInBookmarkView()) {
+        const qKey = q ? getQuestionKey(q) : null;
+        const origId = q ? (q._origId || q.id) : questionId;
+        bookmarkPracticeAnswers[questionId] = null;
+        if (qKey) bookmarkPracticeAnswers[qKey] = null;
+        if (origId) bookmarkPracticeAnswers[origId] = null;
+        saveBookmarkPracticeAnswers();
       } else {
-        delete userAnswers[questionId];
-      }
+        if (showWrongOnly && q) {
+          wrongPracticeIds.add(questionId);
+          if (q.qKey) wrongPracticeIds.add(q.qKey);
+        }
 
-      saveAnswers(currentSubjectKey);
+        if (q) {
+          deleteQuestionAnswer(q);
+        } else {
+          delete userAnswers[questionId];
+        }
+
+        saveAnswers(currentSubjectKey);
+      }
       updateToolbarUI();
       updateProgressStats();
 
@@ -3441,6 +4595,7 @@
     // Lifecycle handlers to eliminate cache and stale state
     window.addEventListener('pageshow', (event) => {
       loadCustomSubjects();
+      loadBookmarks();
       renderMenuScreen();
       syncSubjectsFromApi();
     });
@@ -3461,10 +4616,16 @@
         renderMenuScreen();
         syncSubjectsFromApi();
       }
+      if (e.key && (e.key.startsWith('bookmarks_') || e.key === 'bookmarked_questions')) {
+        loadBookmarks();
+        updateMenuBookmarkBadge();
+        updateToolbarUI();
+      }
     });
 
     document.addEventListener('DOMContentLoaded', () => {
       loadCustomSubjects();
+      loadBookmarks();
       renderMenuScreen();
       syncSubjectsFromApi();
 
@@ -3481,7 +4642,10 @@
         const subParam = urlParams.get('subject') || urlParams.get('mon');
         const folderParam = urlParams.get('folder');
         const summaryParam = urlParams.get('summary');
-        if (folderParam && (summaryParam === '1' || summaryParam === 'true')) {
+        const bookmarksParam = urlParams.get('bookmarks');
+        if (bookmarksParam === '1' || bookmarksParam === 'true') {
+          openBookmarksPracticeScreen(folderParam, false);
+        } else if (folderParam && (summaryParam === '1' || summaryParam === 'true')) {
           selectFolderSummary(folderParam, false);
         } else if (subParam && ALL_SUBJECTS[subParam]) {
           selectSubject(subParam, folderParam, false);
@@ -3496,7 +4660,10 @@
       const folderParam = urlParams.get('folder');
       const subParam = urlParams.get('subject') || urlParams.get('mon');
       const summaryParam = urlParams.get('summary');
-      if (folderParam && (summaryParam === '1' || summaryParam === 'true')) {
+      const bookmarksParam = urlParams.get('bookmarks');
+      if (bookmarksParam === '1' || bookmarksParam === 'true') {
+        openBookmarksPracticeScreen(folderParam, false);
+      } else if (folderParam && (summaryParam === '1' || summaryParam === 'true')) {
         selectFolderSummary(folderParam, false);
       } else if (subParam && ALL_SUBJECTS[subParam]) {
         selectSubject(subParam, folderParam, false);

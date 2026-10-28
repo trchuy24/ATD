@@ -1,0 +1,6438 @@
+[
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 1,
+    "question": "Khoảng cách xung của DME ở chế độ X là?",
+    "correctAnswer": "12µs",
+    "options": [
+      {
+        "label": "a",
+        "text": "12µs"
+      },
+      {
+        "label": "b",
+        "text": "18µs"
+      },
+      {
+        "label": "c",
+        "text": "24µs"
+      },
+      {
+        "label": "d",
+        "text": "20µs"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 2,
+    "question": "Thời gian giữ chậm của DME ở chế độ X là?",
+    "correctAnswer": "50µs",
+    "options": [
+      {
+        "label": "a",
+        "text": "50µs"
+      },
+      {
+        "label": "b",
+        "text": "56µs"
+      },
+      {
+        "label": "c",
+        "text": "60µs"
+      },
+      {
+        "label": "d",
+        "text": "190µs"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 3,
+    "question": "Dải tần số hoạt động của DME theo quy định ICAO?",
+    "correctAnswer": "(960 – 1215)MHz",
+    "options": [
+      {
+        "label": "a",
+        "text": "(900 – 960)MHz"
+      },
+      {
+        "label": "b",
+        "text": "(960 – 1215)MHz"
+      },
+      {
+        "label": "c",
+        "text": "(1215 – 1310)MHz"
+      },
+      {
+        "label": "d",
+        "text": "(1216 – 1335)MHz"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 5,
+    "question": "Tổng số kênh của DME trong chế độ X là:",
+    "correctAnswer": "126",
+    "options": [
+      {
+        "label": "a",
+        "text": "64"
+      },
+      {
+        "label": "b",
+        "text": "126"
+      },
+      {
+        "label": "c",
+        "text": "252"
+      },
+      {
+        "label": "d",
+        "text": "63"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 6,
+    "question": "Độ sai lệch tần số giữa xung hỏi và xung trả lời là:",
+    "correctAnswer": "63MHz",
+    "options": [
+      {
+        "label": "a",
+        "text": "60MHz"
+      },
+      {
+        "label": "b",
+        "text": "61MHz"
+      },
+      {
+        "label": "c",
+        "text": "62MHz"
+      },
+      {
+        "label": "d",
+        "text": "63MHz"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 7,
+    "question": "DME có khoảng cách tần số giữa các kênh kế cận nhau là:",
+    "correctAnswer": "1MHz",
+    "options": [
+      {
+        "label": "a",
+        "text": "1MHz"
+      },
+      {
+        "label": "b",
+        "text": "2MHz"
+      },
+      {
+        "label": "c",
+        "text": "3MHz"
+      },
+      {
+        "label": "d",
+        "text": "4MHz"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 8,
+    "question": "Hiệu suất trả lời của bộ phát đáp DME/N tối thiểu phải là:",
+    "correctAnswer": "70%",
+    "options": [
+      {
+        "label": "a",
+        "text": "50%"
+      },
+      {
+        "label": "b",
+        "text": "70%"
+      },
+      {
+        "label": "c",
+        "text": "80%"
+      },
+      {
+        "label": "d",
+        "text": "90%"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 9,
+    "question": "Theo tiêu chuẩn ICAO, tốc độ phát tối thiểu của DME/N phải đạt được:",
+    "correctAnswer": "700ppps",
+    "options": [
+      {
+        "label": "a",
+        "text": "600ppps"
+      },
+      {
+        "label": "b",
+        "text": "700ppps"
+      },
+      {
+        "label": "c",
+        "text": "2700ppps"
+      },
+      {
+        "label": "d",
+        "text": "5000ppps"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 10,
+    "question": "Khi thiết bị DME phục vụ cho tiếp cận chính xác, hạ cánh thì sai số cự ly tổng cộng của toàn bộ hệ thống không được vượt quá?",
+    "correctAnswer": "0,20 NM",
+    "options": [
+      {
+        "label": "a",
+        "text": "0,10 NM"
+      },
+      {
+        "label": "b",
+        "text": "0,20 NM"
+      },
+      {
+        "label": "c",
+        "text": "0,25 NM"
+      },
+      {
+        "label": "d",
+        "text": "0,30 NM"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 12,
+    "question": "Hệ thống DME trên mặt đất và trên tàu bay dùng để?",
+    "correctAnswer": "Giúp tàu bay xác định khoảng cách đến 1 trạm mặt đất",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp tàu bay xác định khoảng cách đến 1 trạm mặt đất"
+      },
+      {
+        "label": "b",
+        "text": "Giúp tàu bay xác định hướng đến 1 trạm mặt đất"
+      },
+      {
+        "label": "c",
+        "text": "Giúp tàu bay xác định trục đường băng và góc đáp thích hợp"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 14,
+    "question": "Hãy cho biết công thức xác định khoảng cách của DME? Trong đó: c là vận tốc ánh sáng, t là khoảng thời gian từ lúc phát xung hỏi cho đến khi nhận được xung trả lời, τ là thời gian giữ chậm.",
+    "correctAnswer": "D = c.(t - τ)/2",
+    "options": [
+      {
+        "label": "a",
+        "text": "D = c.t/2"
+      },
+      {
+        "label": "b",
+        "text": "D = c.τ/2"
+      },
+      {
+        "label": "c",
+        "text": "D = c.(t + τ)/2"
+      },
+      {
+        "label": "d",
+        "text": "D = c.(t - τ)/2"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 18,
+    "question": "Hãy cho biết thứ tự ưu tiên của các xung trong quá trình phát của DME?",
+    "correctAnswer": "1: xung nhận dạng, 2: xung trả lời, 3: xung giả ngẫu nhiên squitter",
+    "options": [
+      {
+        "label": "a",
+        "text": "1: xung nhận dạng, 2: xung trả lời, 3: xung giả ngẫu nhiên squitter"
+      },
+      {
+        "label": "b",
+        "text": "1: xung trả lời, 2: xung nhận dạng, 3: xung giả ngẫu nhiên squitter"
+      },
+      {
+        "label": "c",
+        "text": "1: xung nhận dạng, 2: xung hỏi, 3: xung giả ngẫu nhiên squitter"
+      },
+      {
+        "label": "d",
+        "text": "1: xung trả lời, 2: xung nhận dạng, 3: xung hỏi"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 21,
+    "question": "Khi thiết bị DME ở trạng thái bão hòa thì tần số lặp lại xung PRF sẽ tự động giảm xuống còn bao nhiêu cặp xung/giây (ppps)?",
+    "correctAnswer": "30 ppps",
+    "options": [
+      {
+        "label": "a",
+        "text": "20 ppps"
+      },
+      {
+        "label": "b",
+        "text": "30 ppps"
+      },
+      {
+        "label": "c",
+        "text": "50 ppps"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 22,
+    "question": "Tốc độ phát tín hiệu nhận dạng (ident rate) của thiết bị DME:",
+    "correctAnswer": "1350 xung/giây (pulse per second)",
+    "options": [
+      {
+        "label": "a",
+        "text": "700 cặp xung/giây (pulse pair per second)"
+      },
+      {
+        "label": "b",
+        "text": "1350 xung/giây (pulse per second)"
+      },
+      {
+        "label": "c",
+        "text": "400Hz"
+      },
+      {
+        "label": "d",
+        "text": "1020Hz"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 28,
+    "question": "DME2020 FERNAU cấu hình 100W có tốc độ phát tối đa là:",
+    "correctAnswer": "5000ppps",
+    "options": [
+      {
+        "label": "a",
+        "text": "680ppps"
+      },
+      {
+        "label": "b",
+        "text": "1400ppps"
+      },
+      {
+        "label": "c",
+        "text": "2700ppps"
+      },
+      {
+        "label": "d",
+        "text": "5000ppps"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 29,
+    "question": "Xét trong điều kiện lý tưởng, ở tốc độ phát 5000ppps DME 2020 FERNAU có thể trả lời cho bao nhiêu tàu bay?",
+    "correctAnswer": "200",
+    "options": [
+      {
+        "label": "a",
+        "text": "100"
+      },
+      {
+        "label": "b",
+        "text": "200"
+      },
+      {
+        "label": "c",
+        "text": "300"
+      },
+      {
+        "label": "d",
+        "text": "500"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 30,
+    "question": "Chức năng bộ giám sát của DME Selex 1118A là?",
+    "correctAnswer": "Kích hỏi máy phát đáp, giám sát (đánh giá các tham số trả lời)",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giám sát (đánh giá các tham số trả lời), chuyển đổi/tắt máy"
+      },
+      {
+        "label": "b",
+        "text": "Giám sát (đánh giá các tham số trả lời), chuyển đổi/tắt máy, hiển thị trạng thái thiết bị"
+      },
+      {
+        "label": "c",
+        "text": "Kích hỏi máy phát đáp, giám sát (đánh giá các tham số trả lời)"
+      },
+      {
+        "label": "d",
+        "text": "Kích hỏi máy phát đáp, giám sát (đánh giá các tham số trả lời), chuyển đổi/tắt máy"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 31,
+    "question": "DME Selex 1118A cấu hình 100W có tốc độ phát tối đa là:",
+    "correctAnswer": "5400ppps",
+    "options": [
+      {
+        "label": "a",
+        "text": "700ppps"
+      },
+      {
+        "label": "b",
+        "text": "2700ppps"
+      },
+      {
+        "label": "c",
+        "text": "5000ppps"
+      },
+      {
+        "label": "d",
+        "text": "5400ppps"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_mon_dme",
+    "subjectName": "Môn 7: DME",
+    "originalId": 32,
+    "question": "Hãy cho biết 2 thông số sơ cấp liên quan đến việc tính toán khoảng cách của DME 2020 FERNAU được giám sát và theo dõi bởi phần cứng?",
+    "correctAnswer": "Khoảng cách xung, thời gian giữ chậm",
+    "options": [
+      {
+        "label": "a",
+        "text": "Công suất phát, hiệu suất trả lời"
+      },
+      {
+        "label": "b",
+        "text": "Công suất phát, tần số trả lời"
+      },
+      {
+        "label": "c",
+        "text": "Khoảng cách xung, thời gian giữ chậm"
+      },
+      {
+        "label": "d",
+        "text": "Độ rộng xung, tần số trả lời"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m10_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 10: Thiết bị trên tàu bay",
+    "originalId": 3,
+    "question": "Hệ thống kiểm soát bay tự động FMS bao gồm mấy chức năng:",
+    "correctAnswer": "5.",
+    "options": [
+      {
+        "label": "a",
+        "text": "3."
+      },
+      {
+        "label": "b",
+        "text": "4."
+      },
+      {
+        "label": "c",
+        "text": "5."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m10_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 10: Thiết bị trên tàu bay",
+    "originalId": 22,
+    "question": "Hệ thống hướng dẫn bay điện tử hiển thị thông tin trên mấy màn hình hiển thị bay điện tử:",
+    "correctAnswer": "4.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2."
+      },
+      {
+        "label": "b",
+        "text": "4."
+      },
+      {
+        "label": "c",
+        "text": "6."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 1,
+    "question": "Các chức năng chính của hệ thống đèn tín hiệu hàng không là gì?",
+    "correctAnswer": "Một trong 03 ý trên đều đúng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Là hệ thống trợ giúp bằng mắt giúp cho phi công thực hiện CHC và di chuyển trên mặt đất."
+      },
+      {
+        "label": "b",
+        "text": "Có thiết kế thay đổi cường độ chiếu sáng."
+      },
+      {
+        "label": "c",
+        "text": "Có các cấu hình để phân biệt Cấp sân bay."
+      },
+      {
+        "label": "d",
+        "text": "Một trong 03 ý trên đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 2,
+    "question": "Hệ thống đèn tín hiệu hàng không có tác dụng cung cấp các thông tin nào cho phi công?",
+    "correctAnswer": "Cả 03 ý trên đều đúng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Để tiếp cận chính xác"
+      },
+      {
+        "label": "b",
+        "text": "Có tầm nhìn tốt để CHC"
+      },
+      {
+        "label": "c",
+        "text": "Để dễ dàng di chuyển trên các đường lăn, đường CHC."
+      },
+      {
+        "label": "d",
+        "text": "Cả 03 ý trên đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 4,
+    "question": "Phụ ước nào sau đây nói về các hệ thống đèn tín hiệu hàng không?",
+    "correctAnswer": "ICAO ANNEX 14",
+    "options": [
+      {
+        "label": "a",
+        "text": "ICAO ANNEX 9"
+      },
+      {
+        "label": "b",
+        "text": "ICAO ANNEX 10"
+      },
+      {
+        "label": "c",
+        "text": "ICAO ANNEX 14"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 5,
+    "question": "Theo tiêu chuẩn ICAO, cấu hình hệ thống đèn nào không thuộc cấu hình hệ thống đèn tiếp cận chính xác (Precision Approach Lighting) CAT II ?",
+    "correctAnswer": "Hệ thống tiếp cận giản đơn 420m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Hệ thống đèn PAPI, đèn Stopbar, đèn Lead – on."
+      },
+      {
+        "label": "b",
+        "text": "Hệ thống đèn tiếp cận tim, tiếp cận trước thềm (Side row barrette)."
+      },
+      {
+        "label": "c",
+        "text": "Hệ thống đèn lề, tim, chạm bánh, thềm CHC và hệ thống biển báo hiệu."
+      },
+      {
+        "label": "d",
+        "text": "Hệ thống tiếp cận giản đơn 420m."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 6,
+    "question": "Theo tiêu chuẩn ICAO, cấu hình đèn CAT I thời gian cho phép gián đoạn cấp nguồn cho hệ thống đèn tín hiệu của tất cả các mạch là bao lâu?",
+    "correctAnswer": "15 giây",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 giây"
+      },
+      {
+        "label": "b",
+        "text": "10 giây"
+      },
+      {
+        "label": "c",
+        "text": "15 giây"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 7,
+    "question": "Theo tiêu chuẩn ICAO, cấu hình đèn CAT II thời gian cho phép gián đoạn cấp nguồn cho hệ thống đèn tín hiệu của những mạch đèn chính là bao lâu?",
+    "correctAnswer": "1 giây",
+    "options": [
+      {
+        "label": "a",
+        "text": "15 giây"
+      },
+      {
+        "label": "b",
+        "text": "10 giây"
+      },
+      {
+        "label": "c",
+        "text": "1 giây"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 8,
+    "question": "Theo tiêu chuẩn ICAO, hệ thống đèn tiếp cận giản đơn (Simple Approach) có mấy loại?",
+    "correctAnswer": "Loại nguồn sáng đơn và loại barrette",
+    "options": [
+      {
+        "label": "a",
+        "text": "Loại nguồn sáng đơn và loại barrette"
+      },
+      {
+        "label": "b",
+        "text": "Loại Calvert"
+      },
+      {
+        "label": "c",
+        "text": "Cả 1 và 2"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 13,
+    "question": "Trong trường hợp nào sau đây người lái đã điều chỉnh máy bay hạ cánh góc theo góc quá thấp của hệ thống đèn PAPI gồm 4 bộ đèn?",
+    "correctAnswer": "Người lái nhìn thấy bốn đèn màu đỏ.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Người lái nhìn thấy bốn đèn màu đỏ."
+      },
+      {
+        "label": "b",
+        "text": "Người lái nhìn thấy ba đèn màu trắng, một đèn màu đỏ."
+      },
+      {
+        "label": "c",
+        "text": "Người lái nhìn thấy 2 đèn trắng, 2 đèn đỏ"
+      },
+      {
+        "label": "d",
+        "text": "Người lái nhìn thấy một đèn màu trắng, ba đèn màu đỏ."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 15,
+    "question": "Khoảng cách ngang giữa các hộp đèn PAPI liền nhau là:",
+    "correctAnswer": "9 m±1m",
+    "options": [
+      {
+        "label": "a",
+        "text": "10m"
+      },
+      {
+        "label": "b",
+        "text": "15 m"
+      },
+      {
+        "label": "c",
+        "text": "9 m±1m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 16,
+    "question": "Đèn PAPI (đèn D) theo tiêu chuẩn ICAO cách vạch lề đường cất hạ cánh?",
+    "correctAnswer": "15m ±1m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "15m ±1m."
+      },
+      {
+        "label": "b",
+        "text": "12m."
+      },
+      {
+        "label": "c",
+        "text": "42m."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 17,
+    "question": "Tổ hợp đèn PAPI sân bay mà bạn quản lý gồm có",
+    "correctAnswer": "4 hộp đèn",
+    "options": [
+      {
+        "label": "a",
+        "text": "2 hộp đèn"
+      },
+      {
+        "label": "b",
+        "text": "8 hộp đèn"
+      },
+      {
+        "label": "c",
+        "text": "6 hộp đèn"
+      },
+      {
+        "label": "d",
+        "text": "4 hộp đèn"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 18,
+    "question": "Chiều dài hệ thống đèn tiếp cận giản đơn dài?",
+    "correctAnswer": "420m",
+    "options": [
+      {
+        "label": "a",
+        "text": "300m."
+      },
+      {
+        "label": "b",
+        "text": "900m."
+      },
+      {
+        "label": "c",
+        "text": "600m."
+      },
+      {
+        "label": "d",
+        "text": "420m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 19,
+    "question": "Chiều dài hệ thống đèn tiếp cận tiêu chuẩn CAT I, II, III là bao nhiêu mét?",
+    "correctAnswer": "900m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "420m."
+      },
+      {
+        "label": "b",
+        "text": "900m."
+      },
+      {
+        "label": "c",
+        "text": "600m."
+      },
+      {
+        "label": "d",
+        "text": "300m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 22,
+    "question": "Theo khuyến cáo của ICAO, hệ thống tiếp cận CAT I cần đấu nối làm mấy mạch?",
+    "correctAnswer": "02 mạch.",
+    "options": [
+      {
+        "label": "a",
+        "text": "01 mạch."
+      },
+      {
+        "label": "b",
+        "text": "02 mạch."
+      },
+      {
+        "label": "c",
+        "text": "04 mạch chẵn, lẻ."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 25,
+    "question": "Đèn lề đường CHC có nửa bên màu trắng và nửa bên màu vàng được lắp ở vị trí nào?",
+    "correctAnswer": "Trong khoảng 600m đến cuối đường CHC.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vị trí giới hạn hai đầu đường hạ cánh."
+      },
+      {
+        "label": "b",
+        "text": "Ở giữa đường CHC"
+      },
+      {
+        "label": "c",
+        "text": "Trong khoảng 600m đến cuối đường CHC."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 29,
+    "question": "Đèn tim đường CHC có hai màu đỏ/trắng được lắp ở vị trí nào?",
+    "correctAnswer": "Trong khoảng 900m kể từ thềm đường CHC",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vị trí giới hạn hai đầu đường băng"
+      },
+      {
+        "label": "b",
+        "text": "Trong khoảng 900m kể từ thềm đường CHC"
+      },
+      {
+        "label": "c",
+        "text": "Trong khoảng 600m kể từ giữa đường CHC"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 31,
+    "question": "Các biến áp cách ly có tỉ số vòng dây của cuộn sơ cấp và thứ cấp là:",
+    "correctAnswer": "1:1",
+    "options": [
+      {
+        "label": "a",
+        "text": "1:1"
+      },
+      {
+        "label": "b",
+        "text": "1:2"
+      },
+      {
+        "label": "c",
+        "text": "2:1"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m5_dan_duong_tren_mat_dat_df",
+    "subjectName": "Môn 5: Hệ thống dẫn đường trên mặt đất (DF)",
+    "originalId": 32,
+    "question": "Theo tiêu chuẩn ICAO, điện áp thử cho biến áp cách ly là bao nhiêu?",
+    "correctAnswer": "Là 5000VDC",
+    "options": [
+      {
+        "label": "a",
+        "text": "Là 5000VDC"
+      },
+      {
+        "label": "b",
+        "text": "Là 2000VDC"
+      },
+      {
+        "label": "c",
+        "text": "Là 1000VDC"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 3,
+    "question": "Đài LOC là một đài mà khi người quan sát đứng đối diện với đài từ đầu tiếp cận của đường CHC thì Độ sâu điều chế sóng mang vô tuyến bởi âm tần 150 Hz so với độ sâu điều chế sóng mang vô tuyến bởi âm tần 90 Hz sẽ:",
+    "correctAnswer": "Vượt trội về bên tay phải.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vượt trội về bên tay phải."
+      },
+      {
+        "label": "b",
+        "text": "Vượt trội về bên tay trái."
+      },
+      {
+        "label": "c",
+        "text": "Bằng nhau."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 4,
+    "question": "Đài LOC là một đài mà khi người quan sát đứng đối diện với đài từ đầu tiếp cận của đường CHC thì độ sâu điều chế sóng mang vô tuyến bởi âm tần 90 Hz so với độ sâu điều chế sóng mang vô tuyến bởi âm tần 150 Hz sẽ:",
+    "correctAnswer": "Vượt trội về bên tay trái.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vượt trội về bên tay phải."
+      },
+      {
+        "label": "b",
+        "text": "Vượt trội về bên tay trái."
+      },
+      {
+        "label": "c",
+        "text": "Bằng nhau."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 5,
+    "question": "Để đảm bảo đủ tín hiệu cho tàu bay hoạt động có hiệu quả trong phân khu vùng phủ sóng ILS (GP và LOC), vùng phủ sóng của đài LOC phải mở rộng từ tâm hệ thống ăng ten LOC đến cự ly:",
+    "correctAnswer": "46,3 km trong ± 10° từ đường hướng phía trước.",
+    "options": [
+      {
+        "label": "a",
+        "text": "46,3 km trong ± 10° từ đường hướng phía trước."
+      },
+      {
+        "label": "b",
+        "text": "31,5 km trong ± 10° từ đường hướng phía trước."
+      },
+      {
+        "label": "c",
+        "text": "18,5 km trong ± 10° từ đường hướng phía trước."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 6,
+    "question": "Để đảm bảo đủ tín hiệu cho tàu bay hoạt động có hiệu quả trong phân khu vùng phủ sóng ILS (GP và LOC), vùng phủ sóng của đài LOC phải mở rộng từ tâm hệ thống ăng ten LOC đến cự ly:",
+    "correctAnswer": "31,5 km trong phạm vi giữa 10° và 35° từ đường hướng phía trước.",
+    "options": [
+      {
+        "label": "a",
+        "text": "46,3 km trong phạm vi giữa 10° và 35° từ đường hướng phía trước."
+      },
+      {
+        "label": "b",
+        "text": "31,5 km trong phạm vi giữa 10° và 35° từ đường hướng phía trước."
+      },
+      {
+        "label": "c",
+        "text": "18,5 km trong phạm vi giữa 10° và 35° từ đường hướng phía trước."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 7,
+    "question": "Để đảm bảo đủ tín hiệu cho một thiết bị cụ thể trên tàu bay hoạt động có hiệu quả trong phân khu vùng phủ sóng của GP và LOC, vùng phủ sóng của đài LOC phải mở rộng từ tâm hệ thống ăng ten LOC đến cự ly:",
+    "correctAnswer": "18,5 km bên ngoài + 35° hoặc - 35° nếu được phủ sóng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "46,3 km bên ngoài + 35° hoặc - 35° nếu được phủ sóng."
+      },
+      {
+        "label": "b",
+        "text": "31,5 km bên ngoài + 35° hoặc - 35° nếu được phủ sóng."
+      },
+      {
+        "label": "c",
+        "text": "18,5 km bên ngoài + 35° hoặc - 35° nếu được phủ sóng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 8,
+    "question": "Đối với ILS Cat 1 dung sai tần số âm tần điều chế (đài LOC) phải là:",
+    "correctAnswer": "90 Hz và 150 Hz ± 2,5%.",
+    "options": [
+      {
+        "label": "a",
+        "text": "90 Hz và 150 Hz ± 2,5%."
+      },
+      {
+        "label": "b",
+        "text": "90 Hz và 150 Hz ± 1,5%."
+      },
+      {
+        "label": "c",
+        "text": "90 Hz và 150 Hz ± 1%."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 9,
+    "question": "Đài LOC hoạt động trong dải tần số:",
+    "correctAnswer": "108 MHz – 111,975 MHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "108 MHz – 111,975 MHz."
+      },
+      {
+        "label": "b",
+        "text": "328,6 MHz – 335,4 MHz."
+      },
+      {
+        "label": "c",
+        "text": "108 MHz – 112 MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 10,
+    "question": "Âm tần sử dụng để phát tín hiệu nhận dạng đài LOC là:",
+    "correctAnswer": "1020 Hz ± 50 Hz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "3400 Hz ± 50 Hz."
+      },
+      {
+        "label": "b",
+        "text": "400 Hz ± 50 Hz."
+      },
+      {
+        "label": "c",
+        "text": "1020 Hz ± 50 Hz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 11,
+    "question": "Thiết bị đài GP hệ thống ILS theo ICAO khuyến cáo nên có khả năng điều chỉnh góc đường trượt:",
+    "correctAnswer": "Từ 2° đến 4°.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Từ 2° đến 4°."
+      },
+      {
+        "label": "b",
+        "text": "Từ 3° đến 4°."
+      },
+      {
+        "label": "c",
+        "text": "Từ 2° đến 3°."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 12,
+    "question": "Góc đường trượt đài GP hệ thống theo ICAO khuyến cáo nên:",
+    "correctAnswer": "3°.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2°."
+      },
+      {
+        "label": "b",
+        "text": "4°."
+      },
+      {
+        "label": "c",
+        "text": "3°."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 13,
+    "question": "Băng tần hoạt động của đài GP thuộc hệ thống ILS:",
+    "correctAnswer": "Từ 328,6MHz đến 335,4MHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Từ 328,6MHz đến 335,4MHz."
+      },
+      {
+        "label": "b",
+        "text": "Từ 328,6KHz đến 335,4KHz."
+      },
+      {
+        "label": "c",
+        "text": "Từ 328MHz đến 335MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 14,
+    "question": "Đài GP phải cung cấp tín hiệu đủ để cho phép thiết bị trên tàu bay khai thác thoả mãn:",
+    "correctAnswer": "Trong phân khu 8° phương vị về mỗi một phía tâm đường trượt GP đến cự ly ít nhất 18,5 km lên đến 1,75 góc θ danh định và xuống đến 0,45 góc θ danh định trên đường nằm ngang hoặc đến góc thấp hơn, 0,30 θ.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trong phân khu 18° phương vị về mỗi một phía tâm đường trượt GP đến cự ly ít nhất 18,5 km lên đến 1,75 góc θ danh định và xuống đến 0,45 góc θ danh định trên đường nằm ngang hoặc đến góc thấp hơn, 0,30 θ."
+      },
+      {
+        "label": "b",
+        "text": "Trong phân khu 8° phương vị về mỗi một phía tâm đường trượt GP đến cự ly ít nhất 18,5 km lên đến 1,75 góc θ danh định và xuống đến 0,45 góc θ danh định trên đường nằm ngang hoặc đến góc thấp hơn, 0,30 θ."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 16,
+    "question": "Course Sector là:",
+    "correctAnswer": "Một phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất mà tại đó DDM = 0,155.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Một phân khu trong mặt phẳng đứng chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất mà tại đó DDM = 0,175."
+      },
+      {
+        "label": "b",
+        "text": "Một phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất mà tại đó DDM = 0,155."
+      },
+      {
+        "label": "c",
+        "text": "Một phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất mà tại đó DDM = 0."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 17,
+    "question": "Displacement sensitivity (localizer) là:",
+    "correctAnswer": "Tỷ số DDM đo được đối với sai lệch về 2 bên tương ứng so với đường quy chiếu thích hợp.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tỷ số DDM đo được đối với sai lệch về 2 bên tương ứng so với đường quy chiếu thích hợp."
+      },
+      {
+        "label": "b",
+        "text": "Tỷ số DDM đo được trên tâm đường CHC."
+      },
+      {
+        "label": "c",
+        "text": "Tỷ số DDM đo được đối với sai lệch hướng tại lề đường CHC."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 18,
+    "question": "Course line là:",
+    "correctAnswer": "Quỹ tích các điểm gần đường tâm đường CHC nhất trong mặt phẳng ngang tại đó DDM = 0.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quỹ tích các điểm gần đường CHC nhất."
+      },
+      {
+        "label": "b",
+        "text": "Quỹ tích các điểm gần đường tâm đường CHC nhất trong mặt phẳng ngang tại đó DDM = 0."
+      },
+      {
+        "label": "c",
+        "text": "Quỹ tích các điểm gần đường tâm đường CHC nhất trong mặt phẳng đứng tại đó DDM = 0."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 20,
+    "question": "Half course sector là:",
+    "correctAnswer": "Phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất tạo đó DDM = 0,0775.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất tại đó DDM = 0,155."
+      },
+      {
+        "label": "b",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất tạo đó DDM = 0,0775."
+      },
+      {
+        "label": "c",
+        "text": "Phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất tạo đó DDM = 0,0775."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 21,
+    "question": "Half ILS Glide path sector là:",
+    "correctAnswer": "Phân khu trong mặt phẳng đứng chứa đường trượt đài GP/ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt GP nhất tại đó DDM = 0,0875.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường trượt đài GP/ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt GP nhất tại đó DDM = 0,0875."
+      },
+      {
+        "label": "b",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường trượt đài GP/ ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt GP nhất tại đó DDM = 0,175."
+      },
+      {
+        "label": "c",
+        "text": "Phân khu trong mặt phẳng ngang chứa đường trượt đài GP/ ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt GP nhất tại đó DDM = 0,0875."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 22,
+    "question": "ILS Glide path là:",
+    "correctAnswer": "Quỹ tích các điểm trong mặt phẳng đứng chứa đường tâm đường CHC tại đó DDM = 0, các quỹ tích đó ở gần mặt phẳng ngang nhất.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quỹ tích các điểm trong mặt phẳng đứng chứa đường tâm đường CHC tại đó DDM = 0, các quỹ tích đó ở gần mặt phẳng ngang nhất."
+      },
+      {
+        "label": "b",
+        "text": "Quỹ tích các điểm trong mặt phẳng đứng chứa đường tâm đường CHC tại đó DDM là 0DDM"
+      },
+      {
+        "label": "c",
+        "text": "Quỹ tích các điểm trong mặt phẳng ngang chứa đường tâm đường CHC tại đó DDM là 0DDM"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 24,
+    "question": "ILS Glide path sector là:",
+    "correctAnswer": "Phân khu trong mặt phẳng đứng chứa đường trượt ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt glide path nhất tại đó DDM = 0,175.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phân khu trong mặt phẳng ngang chứa đường trượt ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt glide path nhất tại đó DDM = 0,175."
+      },
+      {
+        "label": "b",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường trượt ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt glide path nhất tại đó DDM = 0,175."
+      },
+      {
+        "label": "c",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường trượt ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt nhất tại đó DDM = 0,0875."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 28,
+    "question": "Phát xạ từ hệ thống ăng ten đài LOC sẽ tạo ra một giản đồ từ trường tổng hợp được:",
+    "correctAnswer": "Điều chế biên độ bởi âm tần 150 Hz và 90 Hz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Điều chế biên độ bởi âm tần 150 Hz và 90 Hz."
+      },
+      {
+        "label": "b",
+        "text": "Điều chế tần số bởi âm tần 150 Hz và 90 Hz."
+      },
+      {
+        "label": "c",
+        "text": "Điều chế pha bởi âm tần 150 Hz và 90 Hz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 30,
+    "question": "Máy thu trên tàu bay sử dụng hiệu ứng (capture effect) để thu tín hiệu dẫn đường của hệ thống nào sau đây?",
+    "correctAnswer": "ILS 2 tần số.",
+    "options": [
+      {
+        "label": "a",
+        "text": "NDB."
+      },
+      {
+        "label": "b",
+        "text": "ILS 2 tần số."
+      },
+      {
+        "label": "c",
+        "text": "ILS 1 tần số."
+      },
+      {
+        "label": "d",
+        "text": "DME."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 33,
+    "question": "Trường phát xạ không gian của một hệ thống ILS có độ sâu điều chế âm tần 90 Hz vượt trội hơn so với độ sâu điều chế âm tần 150 Hz thì sự khác biệt độ sâu điều chế DDM sẽ như thế nào?",
+    "correctAnswer": "DDM < 0.",
+    "options": [
+      {
+        "label": "a",
+        "text": "DDM < 0."
+      },
+      {
+        "label": "b",
+        "text": "DDM > 0."
+      },
+      {
+        "label": "c",
+        "text": "DDM = 0."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 34,
+    "question": "Ưu điểm chính của hệ thống ILS 2 tần số so với ILS 1 tần số là:",
+    "correctAnswer": "Giúp tăng độ an toàn của hệ thống và được dùng ở các nơi có nhiều chướng ngại vật xung quanh.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tăng tầm phủ sóng."
+      },
+      {
+        "label": "b",
+        "text": "Giúp tăng độ an toàn của hệ thống và được dùng ở các nơi có nhiều chướng ngại vật xung quanh."
+      },
+      {
+        "label": "c",
+        "text": "Giúp tàu bay cất cánh chính xác hơn."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_m8_ils",
+    "subjectName": "Môn 8: Hệ thống dẫn đường trên mặt đất – ILS",
+    "originalId": 35,
+    "question": "Hệ thống ILS có thể thực hiện điều chế để tạo ra tín hiệu CSB và SBO theo cách nào?",
+    "correctAnswer": "Cả a) và b).",
+    "options": [
+      {
+        "label": "a",
+        "text": "Cộng và trừ các âm tần 90Hz và 150Hz để tạo ra âm tần (90+150)Hz và (90-150)Hz, sau đó điều chế biên độ các tín hiệu này với sóng mang."
+      },
+      {
+        "label": "b",
+        "text": "Điều chế riêng biệt từng âm tần 90 Hz và 150 Hz với sóng mang, sau đó sử dụng cầu lai quay pha 900 (900 – Hybrid) để tạo ra các tín hiệu cần thiết."
+      },
+      {
+        "label": "c",
+        "text": "Cả a) và b)."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_1_thoai",
+    "subjectName": "Môn 1: Thoại",
+    "originalId": 2,
+    "question": "Dải tần số hoạt động của thông tin liên lạc VHF:",
+    "correctAnswer": "118 – 137 MHz",
+    "options": [
+      {
+        "label": "a",
+        "text": "2.8 – 22 MHz"
+      },
+      {
+        "label": "b",
+        "text": "118 – 137 MHz"
+      },
+      {
+        "label": "c",
+        "text": "3 – 30 GHz"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai"
+      }
+    ],
+    "explanation": "Theo phân bổ tần số hàng không dân dụng quốc tế của ICAO, băng tần VHF dành cho liên lạc thoại không - địa nằm trong dải 118.000 – 136.975 MHz (thường gọi tắt là 118 – 137 MHz)."
+  },
+  {
+    "subjectId": "cns_p2_mon_1_thoai",
+    "subjectName": "Môn 1: Thoại",
+    "originalId": 11,
+    "question": "Hệ thống liên lạc anten VHF hàng không thường có trở kháng (Impedance) là bao nhiêu:",
+    "correctAnswer": "50 Ohm",
+    "options": [
+      {
+        "label": "a",
+        "text": "25 Ohm"
+      },
+      {
+        "label": "b",
+        "text": "35 Ohm"
+      },
+      {
+        "label": "c",
+        "text": "50 Ohm"
+      },
+      {
+        "label": "d",
+        "text": "100 Ohm"
+      }
+    ],
+    "explanation": "50 Ohm là chuẩn trở kháng phối hợp tiêu chuẩn quốc tế cho hầu hết các thiết bị vi ba, vô tuyến RF, cáp truyền dẫn đồng trục và anten trong ngành hàng không."
+  },
+  {
+    "subjectId": "cns_p2_mon_1_thoai",
+    "subjectName": "Môn 1: Thoại",
+    "originalId": 16,
+    "question": "Công thức đơn giản ước tính tầm nhìn vô tuyến là:",
+    "correctAnswer": "D ≈ √(2Rh)",
+    "options": [
+      {
+        "label": "a",
+        "text": "D ≈ √(2Rh)"
+      },
+      {
+        "label": "b",
+        "text": "D ≈ √(5Rh)"
+      },
+      {
+        "label": "c",
+        "text": "D ≈ √(7Rh)"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng"
+      }
+    ],
+    "explanation": "Theo hình học tiếp tuyến với hình cầu Trái Đất, khoảng cách từ độ cao h đến đường chân trời hình học xấp xỉ bằng $D \\approx \\sqrt{2Rh}$ (với $R$ là bán kính Trái Đất)."
+  },
+  {
+    "subjectId": "cns_p2_mon_1_thoai",
+    "subjectName": "Môn 1: Thoại",
+    "originalId": 17,
+    "question": "Với R= 6371 km là bán kính trái đất, công thức ước tính tầm nhìn vô tuyến rút gọn là?",
+    "correctAnswer": "D ≈ 3.57√h",
+    "options": [
+      {
+        "label": "a",
+        "text": "D ≈ 3.57√h"
+      },
+      {
+        "label": "b",
+        "text": "D ≈ 5.57√h"
+      },
+      {
+        "label": "c",
+        "text": "D ≈ 5.77√h"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng"
+      }
+    ],
+    "explanation": "Thay $R = 6371\\text{ km}$ vào công thức $D = \\sqrt{2Rh}$, khi $h$ tính bằng mét và $D$ tính bằng kilômét: $\\sqrt{2 \\times 6371 \\times 10^{-3}} \\approx 3.57$, ta có công thức $D \\approx 3.57\\sqrt{h}$."
+  },
+  {
+    "subjectId": "cns_p2_mon_1_thoai",
+    "subjectName": "Môn 1: Thoại",
+    "originalId": 18,
+    "question": "Với R= 6371 km là bán kính trái đất, và có tính đến hệ số khúc xạ khí quyển K, công thức ước tính tầm nhìn vô tuyến rút gọn là:",
+    "correctAnswer": "D ≈ 4.12√h",
+    "options": [
+      {
+        "label": "a",
+        "text": "D ≈ 4.12√h"
+      },
+      {
+        "label": "b",
+        "text": "D ≈ 4.42√h"
+      },
+      {
+        "label": "c",
+        "text": "D ≈ 1.12√h"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng"
+      }
+    ],
+    "explanation": "Khí quyển chuẩn có hệ số khúc xạ $k = 4/3$ làm cong đường đi của sóng theo bề mặt Trái Đất. Bán kính tương đương là $kR$, khi đó hệ số rút gọn trở thành $\\sqrt{2 \\times \\frac{4}{3} \\times 6371 \\times 10^{-3}} \\approx 4.12$, cho công thức $D \\approx 4.12\\sqrt{h}$."
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 2,
+    "question": "Độ chính xác dẫn đường của RNP 1 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 1 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 10 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 3,
+    "question": "Độ chính xác dẫn đường của RNP 4 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 4 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 5 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 4,
+    "question": "Độ chính xác dẫn đường của B-RNAV 5 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 5 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 5 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 5,
+    "question": "Độ chính xác dẫn đường của RNAV 10 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 10 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 5 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 10 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 6,
+    "question": "Độ chính xác dẫn đường của RNP 2 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 2 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 10 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 7,
+    "question": "Khi tiếp cận chính xác (approach), độ chính xác dẫn đường của RNP APCH có phạm vi là bao nhiêu:",
+    "correctAnswer": "Từ ± 2 NM xuống đến ± 0.3 NM tùy giai đoạn.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "Từ ± 2 NM xuống đến ± 0.3 NM tùy giai đoạn."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 11,
+    "question": "RNP có độ chính xác, tổng sai lỗi toàn bộ hệ thống (TSE) trong 95% thời gian bay phải:",
+    "correctAnswer": "≤ 1xRNP.",
+    "options": [
+      {
+        "label": "a",
+        "text": "≤ 0,5xRNP."
+      },
+      {
+        "label": "b",
+        "text": "≤ 1xRNP."
+      },
+      {
+        "label": "c",
+        "text": "≤ 2xRNP."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 12,
+    "question": "RNP 1 có độ chính xác:",
+    "correctAnswer": "95% thời gian bay giữ trong giới hạn ± 1 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "95% thời gian bay giữ trong giới hạn ± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "95% thời gian bay giữ trong giới hạn ± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "95% thời gian bay giữ trong giới hạn ± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 13,
+    "question": "RNP 4 có độ chính xác:",
+    "correctAnswer": "95% thời gian bay giữ trong giới hạn ± 4 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "95% thời gian bay giữ trong giới hạn ± 2 NM."
+      },
+      {
+        "label": "b",
+        "text": "95% thời gian bay giữ trong giới hạn ± 4 NM."
+      },
+      {
+        "label": "c",
+        "text": "95% thời gian bay giữ trong giới hạn ± 8 NM."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 14,
+    "question": "Tính toàn vẹn của RNP là:",
+    "correctAnswer": "Khả năng tự phát hiện lỗi và cảnh báo kịp thời tàu bay có đang đáp ứng 1xRNP.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Khả năng tự phát hiện lỗi và cảnh báo kịp thời tàu bay có đang đáp ứng 1xRNP."
+      },
+      {
+        "label": "b",
+        "text": "Vị trí thực của tàu bay trong bán kính 2xRNP."
+      },
+      {
+        "label": "c",
+        "text": "Khả năng tự phát hiện lỗi và cảnh báo kịp thời tàu bay có đang đáp ứng 2xRNP."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 15,
+    "question": "Tính liên tục của RNP là:",
+    "correctAnswer": "Xác suất mất tín hiệu dẫn đường phải nhỏ hơn 10-5 trong thời gian bay.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Xác suất mất tín hiệu dẫn đường phải nhỏ hơn 10-5 trong thời gian bay."
+      },
+      {
+        "label": "b",
+        "text": "Xác suất không mất tín hiệu dẫn đường phải nhỏ hơn 10-4 trong thời gian bay."
+      },
+      {
+        "label": "c",
+        "text": "Xác suất mất tín hiệu dẫn đường phải lớn hơn 10-4 trong thời gian bay"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_3_dan_duong_dua_vao_tinh_nang_thiet_bi_tren_tau_bay",
+    "subjectName": "Môn 3: Dẫn đường dựa vào tính năng thiết bị trên tàu bay (PBN/RNAV/RNP)",
+    "originalId": 21,
+    "question": "Dẫn đường PBN cho phép một tàu bay bay theo một đường bay tối ưu giữa 2 điểm dựa trên:",
+    "correctAnswer": "3D: Kinh độ, vĩ độ, cao độ.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2D: Kinh độ, vĩ độ."
+      },
+      {
+        "label": "b",
+        "text": "3D: Kinh độ, vĩ độ, cao độ."
+      },
+      {
+        "label": "c",
+        "text": "5D: Thời gian, kinh độ, vĩ độ, cao độ, hình ảnh."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 1,
+    "question": "Dải tần số làm việc của các đài NDB nằm trong khoảng:",
+    "correctAnswer": "190 KHz – 535 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "20 KHz – 290 KHz."
+      },
+      {
+        "label": "b",
+        "text": "190 KHz – 1750 KHz."
+      },
+      {
+        "label": "c",
+        "text": "190 KHz – 535 KHz."
+      },
+      {
+        "label": "d",
+        "text": "190 MHz – 526,5 MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 2,
+    "question": "Theo khuyến cáo trong ICAO, tần số 2 đài Locator (đài gần, đài xa) phù trợ cho hệ thống ILS phải cách nhau:",
+    "correctAnswer": "15 KHz – 25 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "1 KHz – 10 KHz."
+      },
+      {
+        "label": "b",
+        "text": "10 KHz – 20 KHz."
+      },
+      {
+        "label": "c",
+        "text": "15 KHz – 25 KHz."
+      },
+      {
+        "label": "d",
+        "text": "20 KHz – 50 KHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 3,
+    "question": "Theo tiêu chuẩn ICAO, hệ thống giám sát của đài NDB sẽ chuyển/tắt máy khi:",
+    "correctAnswer": "Công suất giảm 3dB, mất Ident, bộ giám sát – monitor hỏng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Công suất giảm 3dB, độ sâu điều chế giảm 4dB, mất Ident."
+      },
+      {
+        "label": "b",
+        "text": "Công suất giảm 4dB, độ sâu điều chế giảm 3dB, mất Ident."
+      },
+      {
+        "label": "c",
+        "text": "Công suất giảm 3dB, mất Ident, bộ giám sát – monitor hỏng."
+      },
+      {
+        "label": "d",
+        "text": "Công suất giảm 4dB, mất Ident, bộ giám sát – monitor hỏng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 4,
+    "question": "Theo tiêu chuẩn ICAO, số lượng ký tự trong tín hiệu nhận dạng ident của NDB:",
+    "correctAnswer": "2 hoặc 3 ký tự.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2 ký tự."
+      },
+      {
+        "label": "b",
+        "text": "2 hoặc 3 ký tự."
+      },
+      {
+        "label": "c",
+        "text": "3 ký tự."
+      },
+      {
+        "label": "d",
+        "text": "Từ 1 đến 4 ký tự."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 5,
+    "question": "Tốc độ phát tín hiệu nhận dạng của các đài NDB là:",
+    "correctAnswer": "7 từ/phút.",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 từ/phút."
+      },
+      {
+        "label": "b",
+        "text": "6 từ/phút."
+      },
+      {
+        "label": "c",
+        "text": "7 từ/phút."
+      },
+      {
+        "label": "d",
+        "text": "8 từ/phút."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 8,
+    "question": "Theo quy định của ICAO, quan hệ thời gian giữa Dot và Dash trong tín hiệu nhận dạng đài NDB như thế nào là đúng?",
+    "correctAnswer": "tdash = 3tdot",
+    "options": [
+      {
+        "label": "a",
+        "text": "tdash = tdot"
+      },
+      {
+        "label": "b",
+        "text": "tdash = 2tdot"
+      },
+      {
+        "label": "c",
+        "text": "tdash = 3tdot"
+      },
+      {
+        "label": "d",
+        "text": "tdash = 4tdot"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 9,
+    "question": "Độ sâu điều chế tín hiệu nhận dạng của đài NDB theo tiêu chuẩn ICAO là:",
+    "correctAnswer": "95%.",
+    "options": [
+      {
+        "label": "a",
+        "text": "80%."
+      },
+      {
+        "label": "b",
+        "text": "90%."
+      },
+      {
+        "label": "c",
+        "text": "95%."
+      },
+      {
+        "label": "d",
+        "text": "100%."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 10,
+    "question": "Theo tiêu chuẩn ICAO, để tạo ra vùng phủ sóng danh định theo yêu cầu thì công suất bức xạ không vượt quá giá trị cần thiết một khoảng:",
+    "correctAnswer": "2 dB.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2 dB."
+      },
+      {
+        "label": "b",
+        "text": "3 dB."
+      },
+      {
+        "label": "c",
+        "text": "4 dB."
+      },
+      {
+        "label": "d",
+        "text": "5 dB."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 11,
+    "question": "Khoảng cách tần số tối thiểu của 2 đài NDB đặt lân cận để tránh can nhiễu theo TCCS của Cục Hàng không phải là:",
+    "correctAnswer": "6 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 KHz."
+      },
+      {
+        "label": "b",
+        "text": "6 KHz."
+      },
+      {
+        "label": "c",
+        "text": "10 KHz."
+      },
+      {
+        "label": "d",
+        "text": "15 KHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 12,
+    "question": "Để nâng cao tầm phủ sóng, dải tần số hoạt động của đài NDB ở khu vực biển và hải đảo phải nằm trong khoảng:",
+    "correctAnswer": "190 KHz – 300 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "190 KHz – 300 KHz."
+      },
+      {
+        "label": "b",
+        "text": "190 KHz – 535 KHz."
+      },
+      {
+        "label": "c",
+        "text": "300 KHz – 535 KHz."
+      },
+      {
+        "label": "d",
+        "text": "300 KHz – 526,5 KHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 13,
+    "question": "Để nâng cao tầm phủ sóng, dải tần số hoạt động của đài NDB ở khu vực đất liền phải nằm trong khoảng:",
+    "correctAnswer": "300 KHz – 535 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "300 KHz – 535 KHz."
+      },
+      {
+        "label": "b",
+        "text": "190 KHz – 625,5 KHz."
+      },
+      {
+        "label": "c",
+        "text": "300 KHz – 526,5 KHz."
+      },
+      {
+        "label": "d",
+        "text": "300 KHz – 635,5 KHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 14,
+    "question": "Theo tiêu chuẩn ICAO, sai số tần số cho phép của tín hiệu nhận dạng Ident 1020 Hz và 400 Hz sẽ phải là:",
+    "correctAnswer": "± 50 Hz và ± 25 Hz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 25 Hz và ± 20 Hz."
+      },
+      {
+        "label": "b",
+        "text": "± 25 Hz và ± 25 Hz."
+      },
+      {
+        "label": "c",
+        "text": "± 50 Hz và ± 20 Hz."
+      },
+      {
+        "label": "d",
+        "text": "± 50 Hz và ± 25 Hz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 15,
+    "question": "Khi NDB được đặt tại vị trí đài chỉ chuẩn giữa thì sai lệch vị trí đặt anten so với tâm đường cất hạ cánh kéo dài phải nhỏ hơn:",
+    "correctAnswer": "± 1 m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 0,5 m."
+      },
+      {
+        "label": "b",
+        "text": "± 1 m."
+      },
+      {
+        "label": "c",
+        "text": "± 5 m."
+      },
+      {
+        "label": "d",
+        "text": "± 10 m."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 16,
+    "question": "Khi NDB được đặt tại vị trí đài chỉ chuẩn ngoài thì sai lệch vị trí đặt anten so với tâm đường cất hạ cánh kéo dài phải nhỏ hơn:",
+    "correctAnswer": "± 10 m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 m."
+      },
+      {
+        "label": "b",
+        "text": "± 5 m."
+      },
+      {
+        "label": "c",
+        "text": "± 10 m."
+      },
+      {
+        "label": "d",
+        "text": "± 15 m."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 17,
+    "question": "Theo TCCS của Cục Hàng không, thời gian chuyển mạch hệ thống cấp nguồn của đài NDB khi phục vụ tiếp cận hạ cánh không chính xác:",
+    "correctAnswer": "15 giây.",
+    "options": [
+      {
+        "label": "a",
+        "text": "8 giây."
+      },
+      {
+        "label": "b",
+        "text": "10 giây."
+      },
+      {
+        "label": "c",
+        "text": "15 giây."
+      },
+      {
+        "label": "d",
+        "text": "20 giây."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 20,
+    "question": "Thiết bị dẫn đường NDB có chức năng:",
+    "correctAnswer": "Cung cấp thông tin về góc giữa hướng mũi máy bay và đường thẳng nối từ máy bay đến 1 trạm thiết bị trên mặt đất.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp máy bay xác định trục đường băng và góc đáp thích hợp."
+      },
+      {
+        "label": "b",
+        "text": "Cung cấp thông tin về khoảng cách từ máy bay đến 1 trạm thiết bị trên mặt đất."
+      },
+      {
+        "label": "c",
+        "text": "Cung cấp thông tin về góc giữa hướng mũi máy bay và đường thẳng nối từ máy bay đến 1 trạm thiết bị trên mặt đất."
+      },
+      {
+        "label": "d",
+        "text": "Cả a) và b) đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 21,
+    "question": "Khi một thiết bị NDB được sử dụng làm đài điểm cho 1 sân bay, nó có nhiệm vụ:",
+    "correctAnswer": "Giúp cho máy bay xác định được hướng bay về sân bay sau đó hạ cánh bằng mắt.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp cho máy bay xác định được trục đường băng hạ cánh."
+      },
+      {
+        "label": "b",
+        "text": "Giúp cho máy bay xác định được hướng bay về sân bay sau đó hạ cánh bằng mắt."
+      },
+      {
+        "label": "c",
+        "text": "Giúp máy bay bay đúng không lộ."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 28,
+    "question": "Trở kháng phi-đơ sử dụng cho đài NDB là:",
+    "correctAnswer": "50Ω",
+    "options": [
+      {
+        "label": "a",
+        "text": "75Ω"
+      },
+      {
+        "label": "b",
+        "text": "50Ω"
+      },
+      {
+        "label": "c",
+        "text": "100Ω"
+      },
+      {
+        "label": "d",
+        "text": "Cả a và b."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 29,
+    "question": "Chu kỳ phát tín hiệu nhận dạng (ident) của thiết bị NDB:",
+    "correctAnswer": "8 giây.",
+    "options": [
+      {
+        "label": "a",
+        "text": "7 giây."
+      },
+      {
+        "label": "b",
+        "text": "7 từ/phút."
+      },
+      {
+        "label": "c",
+        "text": "8 giây."
+      },
+      {
+        "label": "d",
+        "text": "8 từ/phút."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 30,
+    "question": "Các khối khoá âm tần (tone keyer) tạo ra:",
+    "correctAnswer": "Sóng âm tần 1020 Hz hoặc 400 Hz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Sóng âm tần 1020 Hz hoặc 400 Hz."
+      },
+      {
+        "label": "b",
+        "text": "Tần số radio (trong dải từ 190KHz đến 526,5Khz)."
+      },
+      {
+        "label": "c",
+        "text": "Cả a) và b) ở trên."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 33,
+    "question": "Số lượng tia của hệ thống Ground plane của anten Polestar A NDB Nautel là:",
+    "correctAnswer": "6.",
+    "options": [
+      {
+        "label": "a",
+        "text": "12."
+      },
+      {
+        "label": "b",
+        "text": "18."
+      },
+      {
+        "label": "c",
+        "text": "6."
+      },
+      {
+        "label": "d",
+        "text": "3."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 34,
+    "question": "Số lượng tia của hệ thống Ground plane của anten Polestar B NDB Nautel là:",
+    "correctAnswer": "18.",
+    "options": [
+      {
+        "label": "a",
+        "text": "12."
+      },
+      {
+        "label": "b",
+        "text": "16."
+      },
+      {
+        "label": "c",
+        "text": "18."
+      },
+      {
+        "label": "d",
+        "text": "6."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_4_ndb",
+    "subjectName": "Môn 4: Hệ thống trên mặt đất – NDB",
+    "originalId": 35,
+    "question": "Khoảng điều chỉnh tự động của ATU đài ND500II là:",
+    "correctAnswer": "10% của tổng số cảm kháng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "10% của tổng số cảm kháng."
+      },
+      {
+        "label": "b",
+        "text": "20% của tổng số cảm kháng."
+      },
+      {
+        "label": "c",
+        "text": "50% của tổng số cảm kháng."
+      },
+      {
+        "label": "d",
+        "text": "90% của tổng số cảm kháng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 6,
+    "question": "Dải tần số làm việc của các đài VOR là:",
+    "correctAnswer": "(108-118) MHz",
+    "options": [
+      {
+        "label": "a",
+        "text": "(112-1020) Hz"
+      },
+      {
+        "label": "b",
+        "text": "(108-118) MHz"
+      },
+      {
+        "label": "c",
+        "text": "(112-126) MHz"
+      },
+      {
+        "label": "d",
+        "text": "(962-1650) Mhz"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 7,
+    "question": "Theo tiêu chuẩn của ICAO, tầm phủ của đài VOR phải đạt được trong góc ngẩng đến:",
+    "correctAnswer": "40°",
+    "options": [
+      {
+        "label": "a",
+        "text": "30°"
+      },
+      {
+        "label": "b",
+        "text": "40°"
+      },
+      {
+        "label": "c",
+        "text": "45°"
+      },
+      {
+        "label": "d",
+        "text": "60°"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 8,
+    "question": "Tầm phủ sóng của đài VOR sử dụng cho mục đích phù trợ tiếp cận hạ cánh – landing là:",
+    "correctAnswer": "100 NM",
+    "options": [
+      {
+        "label": "a",
+        "text": "Dưới 100 NM"
+      },
+      {
+        "label": "b",
+        "text": "100 NM"
+      },
+      {
+        "label": "c",
+        "text": "200 NM"
+      },
+      {
+        "label": "d",
+        "text": "500 NM"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 9,
+    "question": "Tầm phủ sóng của đài VOR sử dụng cho mục đích là đài điểm trong chế độ dẫn đường enroute là:",
+    "correctAnswer": "200 NM",
+    "options": [
+      {
+        "label": "a",
+        "text": "Dưới 100 NM"
+      },
+      {
+        "label": "b",
+        "text": "100 NM"
+      },
+      {
+        "label": "c",
+        "text": "200 NM"
+      },
+      {
+        "label": "d",
+        "text": "500 NM"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 11,
+    "question": "Theo tiêu chuẩn ICAO, số lượng ký tự trong tín hiệu nhận dạng của đài VOR:",
+    "correctAnswer": "2 hoặc 3 ký tự",
+    "options": [
+      {
+        "label": "a",
+        "text": "2 ký tự"
+      },
+      {
+        "label": "b",
+        "text": "2 hoặc 3 ký tự"
+      },
+      {
+        "label": "c",
+        "text": "3 ký tự"
+      },
+      {
+        "label": "d",
+        "text": "từ 1 đến 4 ký tự"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 12,
+    "question": "Theo tiêu chuẩn ICAO, đài VOR sẽ chuyển máy hoặc tắt máy khi sai số về góc phương vị vượt quá:",
+    "correctAnswer": "± 1°",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1°"
+      },
+      {
+        "label": "b",
+        "text": "± 2°"
+      },
+      {
+        "label": "c",
+        "text": "± 3°"
+      },
+      {
+        "label": "d",
+        "text": "± 4°"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 13,
+    "question": "Theo tiêu chuẩn ICAO, sai số về phương vị do đài VOR cung cấp trong khu vực góc ngẩng danh định không được vượt quá:",
+    "correctAnswer": "± 2°",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1°"
+      },
+      {
+        "label": "b",
+        "text": "± 2°"
+      },
+      {
+        "label": "c",
+        "text": "± 3°"
+      },
+      {
+        "label": "d",
+        "text": "± 4°"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 14,
+    "question": "Vị trí đặt đài CVOR đòi hỏi mặt phản xạ xung quanh đài:",
+    "correctAnswer": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 12m",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 10m"
+      },
+      {
+        "label": "b",
+        "text": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 10m"
+      },
+      {
+        "label": "c",
+        "text": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao > 12m"
+      },
+      {
+        "label": "d",
+        "text": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 12m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 15,
+    "question": "Vị trí đặt đài DVOR đòi hỏi mặt phản xạ xung quanh đài:",
+    "correctAnswer": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 12m",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 10m"
+      },
+      {
+        "label": "b",
+        "text": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 10m"
+      },
+      {
+        "label": "c",
+        "text": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 12m"
+      },
+      {
+        "label": "d",
+        "text": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 12m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 17,
+    "question": "Tốc độ phát tín hiệu nhận dạng của các đài VOR là:",
+    "correctAnswer": "7 ident/phút",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 ident/phút"
+      },
+      {
+        "label": "b",
+        "text": "6 ident/phút"
+      },
+      {
+        "label": "c",
+        "text": "7 ident/phút"
+      },
+      {
+        "label": "d",
+        "text": "8 ident/phút"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 23,
+    "question": "Các hệ thống VOR sử dụng phân cách tần số giữa các kênh là 100 kHz, thì độ ổn định tần số theo TCCS của Cục hàng không Việt Nam sẽ phải là:",
+    "correctAnswer": "0.005%",
+    "options": [
+      {
+        "label": "a",
+        "text": "0.0005%"
+      },
+      {
+        "label": "b",
+        "text": "0.01%"
+      },
+      {
+        "label": "c",
+        "text": "0.005%"
+      },
+      {
+        "label": "d",
+        "text": "0.1%"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 24,
+    "question": "Theo TCCS của Cục hàng không Việt Nam, thời gian chuyển mạch hệ thống cấp nguồn cho đài VOR phục vụ tiếp cận hạ cánh phải nhỏ hơn:",
+    "correctAnswer": "15 giây",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 giây"
+      },
+      {
+        "label": "b",
+        "text": "15 giây"
+      },
+      {
+        "label": "c",
+        "text": "30 giây"
+      },
+      {
+        "label": "d",
+        "text": "60 giây"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 32,
+    "question": "Trong hệ thống DVOR, tín hiệu Sideband được điều chế biên độ ở mức bao nhiêu phần trăm?",
+    "correctAnswer": "100%",
+    "options": [
+      {
+        "label": "a",
+        "text": "30%"
+      },
+      {
+        "label": "b",
+        "text": "50%"
+      },
+      {
+        "label": "c",
+        "text": "70%"
+      },
+      {
+        "label": "d",
+        "text": "100%"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 33,
+    "question": "Theo khuyến cáo của ICAO, đối với thiết bị VOR, độ dịch tần (Deviation) ở góc giữa 0-5 độ phải là bao nhiêu?",
+    "correctAnswer": "16 ± 1",
+    "options": [
+      {
+        "label": "a",
+        "text": "15 ± 1"
+      },
+      {
+        "label": "b",
+        "text": "16 ± 1"
+      },
+      {
+        "label": "c",
+        "text": "17 ± 1"
+      },
+      {
+        "label": "d",
+        "text": "18 ± 1"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 35,
+    "question": "Theo khuyến cáo của ICAO, dung sai tín hiệu tại đài VOR là bao nhiêu độ?",
+    "correctAnswer": "2°",
+    "options": [
+      {
+        "label": "a",
+        "text": "1°"
+      },
+      {
+        "label": "b",
+        "text": "2°"
+      },
+      {
+        "label": "c",
+        "text": "3°"
+      },
+      {
+        "label": "d",
+        "text": "4°"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 36,
+    "question": "Theo khuyến cáo của ICAO, trong tầm phủ của đài VOR cường độ trường trong không gian phải đạt bao nhiêu?",
+    "correctAnswer": "90µV/m",
+    "options": [
+      {
+        "label": "a",
+        "text": "80µV/m"
+      },
+      {
+        "label": "b",
+        "text": "90µV/m"
+      },
+      {
+        "label": "c",
+        "text": "97µV/m"
+      },
+      {
+        "label": "d",
+        "text": "107µV/m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 37,
+    "question": "Theo khuyến cáo của ICAO, trong tầm phủ của đài VOR cường độ trường trong không gian phải đạt bao nhiêu?",
+    "correctAnswer": "107dBW/m2",
+    "options": [
+      {
+        "label": "a",
+        "text": "100dBW/m2"
+      },
+      {
+        "label": "b",
+        "text": "107dBW/m2"
+      },
+      {
+        "label": "c",
+        "text": "109dBW/m2"
+      },
+      {
+        "label": "d",
+        "text": "110dBW/m2"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 39,
+    "question": "Giản đồ cực anten của CVOR là:",
+    "correctAnswer": "Quay với tốc độ 30 vòng/giây",
+    "options": [
+      {
+        "label": "a",
+        "text": "Luôn hướng về phía máy bay"
+      },
+      {
+        "label": "b",
+        "text": "Giống như hình số 8"
+      },
+      {
+        "label": "c",
+        "text": "Là một búp nhọn"
+      },
+      {
+        "label": "d",
+        "text": "Quay với tốc độ 30 vòng/giây"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_p2_mon_6_vor",
+    "subjectName": "Môn 6: Hệ thống dẫn đường trên mặt đất – VOR",
+    "originalId": 40,
+    "question": "Theo khuyến cáo của ICAO, độ sâu điều chế của tần số Carrier được quan sát tại bất kỳ góc ngẩng lên đến 5º có giới hạn là bao nhiêu?",
+    "correctAnswer": "Từ 28% đến 32%",
+    "options": [
+      {
+        "label": "a",
+        "text": "Từ 25% đến 30%"
+      },
+      {
+        "label": "b",
+        "text": "Từ 28% đến 32%"
+      },
+      {
+        "label": "c",
+        "text": "Từ 80% đến 100%"
+      },
+      {
+        "label": "d",
+        "text": "Từ 30% đến 32%"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 2,
+    "question": "Dải tần số hoạt động của thông tin liên lạc VHF:",
+    "correctAnswer": "118 – 137 MHz",
+    "options": [
+      {
+        "label": "a",
+        "text": "2.8 – 22 MHz"
+      },
+      {
+        "label": "b",
+        "text": "118 – 137 MHz"
+      },
+      {
+        "label": "c",
+        "text": "3 – 30 GHz"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 11,
+    "question": "Hệ thống liên lạc anten VHF hàng không thường có trở kháng (Impedance) là bao nhiêu:",
+    "correctAnswer": "50 Ohm",
+    "options": [
+      {
+        "label": "a",
+        "text": "25 Ohm"
+      },
+      {
+        "label": "b",
+        "text": "35 Ohm"
+      },
+      {
+        "label": "c",
+        "text": "50 Ohm"
+      },
+      {
+        "label": "d",
+        "text": "100 Ohm"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 16,
+    "question": "Công thức đơn giản ước tính tầm nhìn vô tuyến là:",
+    "correctAnswer": "D ≈ √(2Rh)",
+    "options": [
+      {
+        "label": "a",
+        "text": "D ≈ √(2Rh)"
+      },
+      {
+        "label": "b",
+        "text": "D ≈ √(5Rh)"
+      },
+      {
+        "label": "c",
+        "text": "D ≈ √(7Rh)"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 17,
+    "question": "Với R= 6371 km là bán kính trái đất, công thức ước tính tầm nhìn vô tuyến rút gọn là?",
+    "correctAnswer": "D ≈ 3.57√h",
+    "options": [
+      {
+        "label": "a",
+        "text": "D ≈ 3.57√h"
+      },
+      {
+        "label": "b",
+        "text": "D ≈ 5.57√h"
+      },
+      {
+        "label": "c",
+        "text": "D ≈ 5.77√h"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 18,
+    "question": "Với R= 6371 km là bán kính trái đất, và có tính đến hệ số khúc xạ khí quyển K, công thức ước tính tầm nhìn vô tuyến rút gọn là:",
+    "correctAnswer": "D ≈ 4.12√h",
+    "options": [
+      {
+        "label": "a",
+        "text": "D ≈ 4.12√h"
+      },
+      {
+        "label": "b",
+        "text": "D ≈ 4.42√h"
+      },
+      {
+        "label": "c",
+        "text": "D ≈ 1.12√h"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 57,
+    "question": "Độ chính xác dẫn đường của RNP 1 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 1 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 10 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 58,
+    "question": "Độ chính xác dẫn đường của RNP 4 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 4 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 5 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 59,
+    "question": "Độ chính xác dẫn đường của B-RNAV 5 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 5 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 5 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 60,
+    "question": "Độ chính xác dẫn đường của RNAV 10 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 10 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 5 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 10 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 61,
+    "question": "Độ chính xác dẫn đường của RNP 2 trong 95% thời gian bay có phạm vi là bao nhiêu:",
+    "correctAnswer": "± 2 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "± 10 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 62,
+    "question": "Khi tiếp cận chính xác (approach), độ chính xác dẫn đường của RNP APCH có phạm vi là bao nhiêu:",
+    "correctAnswer": "Từ ± 2 NM xuống đến ± 0.3 NM tùy giai đoạn.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "Từ ± 2 NM xuống đến ± 0.3 NM tùy giai đoạn."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 66,
+    "question": "RNP có độ chính xác, tổng sai lỗi toàn bộ hệ thống (TSE) trong 95% thời gian bay phải:",
+    "correctAnswer": "≤ 1xRNP.",
+    "options": [
+      {
+        "label": "a",
+        "text": "≤ 0,5xRNP."
+      },
+      {
+        "label": "b",
+        "text": "≤ 1xRNP."
+      },
+      {
+        "label": "c",
+        "text": "≤ 2xRNP."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 67,
+    "question": "RNP 1 có độ chính xác:",
+    "correctAnswer": "95% thời gian bay giữ trong giới hạn ± 1 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "95% thời gian bay giữ trong giới hạn ± 1 NM."
+      },
+      {
+        "label": "b",
+        "text": "95% thời gian bay giữ trong giới hạn ± 2 NM."
+      },
+      {
+        "label": "c",
+        "text": "95% thời gian bay giữ trong giới hạn ± 4 NM."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 68,
+    "question": "RNP 4 có độ chính xác:",
+    "correctAnswer": "95% thời gian bay giữ trong giới hạn ± 4 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "95% thời gian bay giữ trong giới hạn ± 2 NM."
+      },
+      {
+        "label": "b",
+        "text": "95% thời gian bay giữ trong giới hạn ± 4 NM."
+      },
+      {
+        "label": "c",
+        "text": "95% thời gian bay giữ trong giới hạn ± 8 NM."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 69,
+    "question": "Tính toàn vẹn của RNP là:",
+    "correctAnswer": "Khả năng tự phát hiện lỗi và cảnh báo kịp thời tàu bay có đang đáp ứng 1xRNP.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Khả năng tự phát hiện lỗi và cảnh báo kịp thời tàu bay có đang đáp ứng 1xRNP."
+      },
+      {
+        "label": "b",
+        "text": "Vị trí thực của tàu bay trong bán kính 2xRNP."
+      },
+      {
+        "label": "c",
+        "text": "Khả năng tự phát hiện lỗi và cảnh báo kịp thời tàu bay có đang đáp ứng 2xRNP."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 70,
+    "question": "Tính liên tục của RNP là: Xác suất mất tín hiệu dẫn đường phải nhỏ hơn 10-5 trong thời gian bay.",
+    "correctAnswer": "Xác suất không mất tín hiệu dẫn đường phải nhỏ hơn 10-4 trong thời gian bay.",
+    "options": [
+      {
+        "label": "b",
+        "text": "Xác suất không mất tín hiệu dẫn đường phải nhỏ hơn 10-4 trong thời gian bay."
+      },
+      {
+        "label": "c",
+        "text": "Xác suất mất tín hiệu  dẫn đường phải lớn hơn 10-4 trong thời gian bay"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 76,
+    "question": "Dẫn đường PBN cho phép một tàu bay bay theo một đường bay tối ưu giữa 2 điểm dựa trên: 2D: Kinh độ, vĩ độ.",
+    "correctAnswer": "3D: Kinh độ, vĩ độ, cao độ.",
+    "options": [
+      {
+        "label": "b",
+        "text": "3D: Kinh độ, vĩ độ, cao độ."
+      },
+      {
+        "label": "c",
+        "text": "5D: Thời gian, kinh độ, vĩ độ, cao độ, hình ảnh."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 86,
+    "question": "Dải tần số làm việc của các đài NDB nằm trong khoảng:",
+    "correctAnswer": "190 KHz – 535 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "20 KHz – 290 KHz."
+      },
+      {
+        "label": "b",
+        "text": "190 KHz – 1750 KHz."
+      },
+      {
+        "label": "c",
+        "text": "190 KHz – 535 KHz."
+      },
+      {
+        "label": "d",
+        "text": "190 MHz – 526,5 MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 87,
+    "question": "Theo khuyến cáo trong ICAO, tần số 2 đài Locator (đài gần, đài xa) phù trợ cho hệ thống ILS phải cách nhau:",
+    "correctAnswer": "15 KHz – 25 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "1 KHz – 10 KHz."
+      },
+      {
+        "label": "b",
+        "text": "10 KHz – 20 KHz."
+      },
+      {
+        "label": "c",
+        "text": "15 KHz – 25 KHz."
+      },
+      {
+        "label": "d",
+        "text": "20 KHz – 50 KHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 88,
+    "question": "Theo tiêu chuẩn ICAO, hệ thống giám sát của đài NDB sẽ chuyển/tắt máy khi:",
+    "correctAnswer": "Công suất giảm 3dB, mất Ident, bộ giám sát – monitor hỏng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Công suất giảm 3dB, độ sâu điều chế giảm 4dB, mất Ident."
+      },
+      {
+        "label": "b",
+        "text": "Công suất giảm 4dB, độ sâu điều chế giảm 3dB, mất Ident."
+      },
+      {
+        "label": "c",
+        "text": "Công suất giảm 3dB, mất Ident, bộ giám sát – monitor hỏng."
+      },
+      {
+        "label": "d",
+        "text": "Công suất giảm 4dB, mất Ident, bộ giám sát – monitor hỏng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 89,
+    "question": "Theo tiêu chuẩn ICAO, số lượng ký tự trong tín hiệu nhận dạng ident của NDB:",
+    "correctAnswer": "2 hoặc 3 ký tự.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2 ký tự."
+      },
+      {
+        "label": "b",
+        "text": "2 hoặc 3 ký tự."
+      },
+      {
+        "label": "c",
+        "text": "3 ký tự."
+      },
+      {
+        "label": "d",
+        "text": "Từ 1 đến 4 ký tự."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 90,
+    "question": "Tốc độ phát tín hiệu nhận dạng của các đài NDB là:",
+    "correctAnswer": "7 từ/phút.",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 từ/phút."
+      },
+      {
+        "label": "b",
+        "text": "6 từ/phút."
+      },
+      {
+        "label": "c",
+        "text": "7 từ/phút."
+      },
+      {
+        "label": "d",
+        "text": "8 từ/phút."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 93,
+    "question": "Theo quy định của ICAO, quan hệ thời gian giữa Dot và Dash trong tín hiệu nhận dạng đài NDB như thế nào là đúng?",
+    "correctAnswer": "tdash = 3tdot",
+    "options": [
+      {
+        "label": "a",
+        "text": "tdash = tdot"
+      },
+      {
+        "label": "b",
+        "text": "tdash = 2tdot"
+      },
+      {
+        "label": "c",
+        "text": "tdash = 3tdot"
+      },
+      {
+        "label": "d",
+        "text": "tdash = 4tdot"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 94,
+    "question": "Độ sâu điều chế tín hiệu nhận dạng của đài NDB theo tiêu chuẩn ICAO là:",
+    "correctAnswer": "95%.",
+    "options": [
+      {
+        "label": "a",
+        "text": "80%."
+      },
+      {
+        "label": "b",
+        "text": "90%."
+      },
+      {
+        "label": "c",
+        "text": "95%."
+      },
+      {
+        "label": "d",
+        "text": "100%."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 95,
+    "question": "Theo tiêu chuẩn ICAO, để tạo ra vùng phủ sóng danh định theo yêu cầu thì công suất bức xạ không vượt quá giá trị cần thiết một khoảng:",
+    "correctAnswer": "2 dB.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2 dB."
+      },
+      {
+        "label": "b",
+        "text": "3 dB."
+      },
+      {
+        "label": "c",
+        "text": "4 dB."
+      },
+      {
+        "label": "d",
+        "text": "5 dB."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 96,
+    "question": "Khoảng cách tần số tối thiểu của 2 đài NDB đặt lân cận để tránh can nhiễu theo TCCS của Cục Hàng không phải là:",
+    "correctAnswer": "6 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 KHz."
+      },
+      {
+        "label": "b",
+        "text": "6 KHz."
+      },
+      {
+        "label": "c",
+        "text": "10 KHz."
+      },
+      {
+        "label": "d",
+        "text": "15 KHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 97,
+    "question": "Để nâng cao tầm phủ sóng, dải tần số hoạt động của đài NDB ở khu vực biển và hải đảo phải nằm trong khoảng:",
+    "correctAnswer": "190 KHz – 300 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "190 KHz – 300 KHz."
+      },
+      {
+        "label": "b",
+        "text": "190 KHz – 535 KHz."
+      },
+      {
+        "label": "c",
+        "text": "300 KHz – 535 KHz."
+      },
+      {
+        "label": "d",
+        "text": "300 KHz – 526,5 KHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 98,
+    "question": "Để nâng cao tầm phủ sóng, dải tần số hoạt động của đài NDB ở khu vực đất liền phải nằm trong khoảng:",
+    "correctAnswer": "300 KHz – 535 KHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "300 KHz – 535 KHz."
+      },
+      {
+        "label": "b",
+        "text": "190 KHz – 625,5 KHz."
+      },
+      {
+        "label": "c",
+        "text": "300 KHz – 526,5 KHz."
+      },
+      {
+        "label": "d",
+        "text": "300 KHz – 635,5 KHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 99,
+    "question": "Theo tiêu chuẩn ICAO, sai số tần số cho phép của tín hiệu nhận dạng Ident 1020 Hz và 400 Hz sẽ phải là:",
+    "correctAnswer": "± 50 Hz và ± 25 Hz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 25 Hz và ± 20 Hz."
+      },
+      {
+        "label": "b",
+        "text": "± 25 Hz và ± 25 Hz."
+      },
+      {
+        "label": "c",
+        "text": "± 50 Hz và ± 20 Hz."
+      },
+      {
+        "label": "d",
+        "text": "± 50 Hz và ± 25 Hz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 100,
+    "question": "Khi NDB được đặt tại vị trí đài chỉ chuẩn giữa thì sai lệch vị trí đặt anten so với tâm đường cất hạ cánh kéo dài phải nhỏ hơn:",
+    "correctAnswer": "± 1 m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 0,5 m."
+      },
+      {
+        "label": "b",
+        "text": "± 1 m."
+      },
+      {
+        "label": "c",
+        "text": "± 5 m."
+      },
+      {
+        "label": "d",
+        "text": "± 10 m."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 101,
+    "question": "Khi NDB được đặt tại vị trí đài chỉ chuẩn ngoài thì sai lệch vị trí đặt anten so với tâm đường cất hạ cánh kéo dài phải nhỏ hơn:",
+    "correctAnswer": "± 10 m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1 m."
+      },
+      {
+        "label": "b",
+        "text": "± 5 m."
+      },
+      {
+        "label": "c",
+        "text": "± 10 m."
+      },
+      {
+        "label": "d",
+        "text": "± 15 m."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 102,
+    "question": "Theo TCCS của Cục Hàng không, thời gian chuyển mạch hệ thống cấp nguồn của đài NDB khi phục vụ tiếp cận hạ cánh không chính xác:",
+    "correctAnswer": "15 giây.",
+    "options": [
+      {
+        "label": "a",
+        "text": "8 giây."
+      },
+      {
+        "label": "b",
+        "text": "10 giây."
+      },
+      {
+        "label": "c",
+        "text": "15 giây."
+      },
+      {
+        "label": "d",
+        "text": "20 giây."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 105,
+    "question": "Thiết bị dẫn đường NDB có chức năng:",
+    "correctAnswer": "Cung cấp thông tin về góc giữa hướng mũi máy bay và đường thẳng nối từ máy bay đến 1 trạm thiết bị trên mặt đất.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp máy bay xác định trục đường băng và góc đáp thích hợp."
+      },
+      {
+        "label": "b",
+        "text": "Cung cấp thông tin về khoảng cách từ máy bay đến 1 trạm thiết bị trên mặt đất."
+      },
+      {
+        "label": "c",
+        "text": "Cung cấp thông tin về góc giữa hướng mũi máy bay và đường thẳng nối từ máy bay đến 1 trạm thiết bị trên mặt đất."
+      },
+      {
+        "label": "d",
+        "text": "Cả a) và b) đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 106,
+    "question": "Khi một thiết bị NDB được sử dụng làm đài điểm cho 1 sân bay, nó có nhiệm vụ:",
+    "correctAnswer": "Giúp cho máy bay xác định được hướng bay về sân bay sau đó hạ cánh bằng mắt.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp cho máy bay xác định được trục đường băng hạ cánh."
+      },
+      {
+        "label": "b",
+        "text": "Giúp cho máy bay xác định được hướng bay về sân bay sau đó hạ cánh bằng mắt."
+      },
+      {
+        "label": "c",
+        "text": "Giúp máy bay bay đúng không lộ."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 113,
+    "question": "Trở kháng phi-đơ sử dụng cho đài NDB là:",
+    "correctAnswer": "50Ω",
+    "options": [
+      {
+        "label": "a",
+        "text": "75Ω"
+      },
+      {
+        "label": "b",
+        "text": "50Ω"
+      },
+      {
+        "label": "c",
+        "text": "100Ω"
+      },
+      {
+        "label": "d",
+        "text": "Cả a và b."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 114,
+    "question": "Chu kỳ phát tín hiệu nhận dạng (ident) của thiết bị NDB:",
+    "correctAnswer": "8 giây.",
+    "options": [
+      {
+        "label": "a",
+        "text": "7 giây."
+      },
+      {
+        "label": "b",
+        "text": "7 từ/phút."
+      },
+      {
+        "label": "c",
+        "text": "8 giây."
+      },
+      {
+        "label": "d",
+        "text": "8 từ/phút."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 115,
+    "question": "Các khối khoá âm tần (tone keyer) tạo ra:",
+    "correctAnswer": "Sóng âm tần 1020 Hz hoặc 400 Hz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Sóng âm tần 1020 Hz hoặc 400 Hz."
+      },
+      {
+        "label": "b",
+        "text": "Tần số radio (trong dải từ 190KHz đến 526,5Khz)."
+      },
+      {
+        "label": "c",
+        "text": "Cả a) và b) ở trên."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 118,
+    "question": "Số lượng tia của hệ thống Ground plane của anten Polestar A NDB Nautel là:",
+    "correctAnswer": "6.",
+    "options": [
+      {
+        "label": "a",
+        "text": "12."
+      },
+      {
+        "label": "b",
+        "text": "18."
+      },
+      {
+        "label": "c",
+        "text": "6."
+      },
+      {
+        "label": "d",
+        "text": "3."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 119,
+    "question": "Số lượng tia của hệ thống Ground plane của anten Polestar B NDB Nautel là:",
+    "correctAnswer": "18.",
+    "options": [
+      {
+        "label": "a",
+        "text": "12."
+      },
+      {
+        "label": "b",
+        "text": "16."
+      },
+      {
+        "label": "c",
+        "text": "18."
+      },
+      {
+        "label": "d",
+        "text": "6."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 120,
+    "question": "Khoảng điều chỉnh tự động của ATU đài ND500II là:",
+    "correctAnswer": "10% của tổng số cảm kháng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "10% của tổng số cảm kháng."
+      },
+      {
+        "label": "b",
+        "text": "20% của tổng số cảm kháng."
+      },
+      {
+        "label": "c",
+        "text": "50% của tổng số cảm kháng."
+      },
+      {
+        "label": "d",
+        "text": "90% của tổng số cảm kháng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 121,
+    "question": "Các chức năng chính của hệ thống đèn tín hiệu hàng không là gì?",
+    "correctAnswer": "Một trong 03 ý trên đều đúng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Là hệ thống trợ giúp bằng mắt giúp cho phi công thực hiện CHC và di chuyển trên mặt đất."
+      },
+      {
+        "label": "b",
+        "text": "Có thiết kế thay đổi cường độ chiếu sáng."
+      },
+      {
+        "label": "c",
+        "text": "Có các cấu hình để phân biệt Cấp sân bay."
+      },
+      {
+        "label": "d",
+        "text": "Một trong 03 ý trên đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 122,
+    "question": "Hệ thống đèn tín hiệu hàng không có tác dụng cung cấp các thông tin nào cho phi công?",
+    "correctAnswer": "Cả 03 ý trên đều đúng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Để tiếp cận chính xác"
+      },
+      {
+        "label": "b",
+        "text": "Có tầm nhìn tốt để CHC"
+      },
+      {
+        "label": "c",
+        "text": "Để dễ dàng di chuyển trên các đường lăn, đường CHC."
+      },
+      {
+        "label": "d",
+        "text": "Cả 03 ý trên đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 124,
+    "question": "Phụ ước nào sau đây nói về các hệ thống đèn tín hiệu hàng không?",
+    "correctAnswer": "ICAO ANNEX 14",
+    "options": [
+      {
+        "label": "a",
+        "text": "ICAO ANNEX 9"
+      },
+      {
+        "label": "b",
+        "text": "ICAO ANNEX 10"
+      },
+      {
+        "label": "c",
+        "text": "ICAO ANNEX 14"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 125,
+    "question": "Theo tiêu chuẩn ICAO, cấu hình hệ thống đèn nào không thuộc cấu hình hệ thống đèn tiếp cận chính xác (Precision Approach Lighting) CAT II ?",
+    "correctAnswer": "Hệ thống tiếp cận giản đơn 420m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Hệ thống đèn PAPI, đèn Stopbar, đèn Lead – on."
+      },
+      {
+        "label": "b",
+        "text": "Hệ thống đèn tiếp cận tim, tiếp cận trước thềm (Side row barrette)."
+      },
+      {
+        "label": "c",
+        "text": "Hệ thống đèn lề, tim, chạm bánh, thềm CHC và hệ thống biển báo hiệu."
+      },
+      {
+        "label": "d",
+        "text": "Hệ thống tiếp cận giản đơn 420m."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 126,
+    "question": "Theo tiêu chuẩn ICAO, cấu hình đèn CAT I thời gian cho phép gián đoạn cấp nguồn cho hệ thống đèn tín hiệu của tất cả các mạch là bao lâu?",
+    "correctAnswer": "15 giây",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 giây"
+      },
+      {
+        "label": "b",
+        "text": "10 giây"
+      },
+      {
+        "label": "c",
+        "text": "15 giây"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 127,
+    "question": "Theo tiêu chuẩn ICAO, cấu hình đèn CAT II thời gian cho phép gián đoạn cấp nguồn cho hệ thống đèn tín hiệu của những mạch đèn chính là bao lâu?",
+    "correctAnswer": "1 giây",
+    "options": [
+      {
+        "label": "a",
+        "text": "15 giây"
+      },
+      {
+        "label": "b",
+        "text": "10 giây"
+      },
+      {
+        "label": "c",
+        "text": "1 giây"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 128,
+    "question": "Theo tiêu chuẩn ICAO, hệ thống đèn tiếp cận giản đơn (Simple Approach) có mấy loại?",
+    "correctAnswer": "Loại nguồn sáng đơn và loại barrette",
+    "options": [
+      {
+        "label": "a",
+        "text": "Loại nguồn sáng đơn và loại barrette"
+      },
+      {
+        "label": "b",
+        "text": "Loại Calvert"
+      },
+      {
+        "label": "c",
+        "text": "Cả 1 và 2"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 133,
+    "question": "Trong trường hợp nào sau đây người lái đã điều chỉnh máy bay hạ cánh góc theo góc quá thấp của hệ thống đèn PAPI gồm 4 bộ đèn?",
+    "correctAnswer": "Người lái nhìn thấy bốn đèn màu đỏ.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Người lái nhìn thấy bốn đèn màu đỏ."
+      },
+      {
+        "label": "b",
+        "text": "Người lái nhìn thấy ba đèn màu trắng, một đèn màu đỏ."
+      },
+      {
+        "label": "c",
+        "text": "Người lái nhìn thấy 2 đèn trắng, 2 đèn đỏ"
+      },
+      {
+        "label": "d",
+        "text": "Người lái nhìn thấy một đèn màu trắng, ba đèn màu đỏ."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 135,
+    "question": "Khoảng cách ngang giữa các hộp đèn PAPI liền nhau là:",
+    "correctAnswer": "9 m±1m",
+    "options": [
+      {
+        "label": "a",
+        "text": "10m"
+      },
+      {
+        "label": "b",
+        "text": "15 m"
+      },
+      {
+        "label": "c",
+        "text": "9 m±1m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 136,
+    "question": "Đèn PAPI (đèn",
+    "correctAnswer": "15m ±1m.",
+    "options": [
+      {
+        "label": "d",
+        "text": "theo tiêu chuẩn ICAO cách vạch lề đường cất hạ cánh?"
+      },
+      {
+        "label": "a",
+        "text": "15m ±1m."
+      },
+      {
+        "label": "b",
+        "text": "12m."
+      },
+      {
+        "label": "c",
+        "text": "42m."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 137,
+    "question": "Tổ hợp đèn PAPI sân bay mà bạn quản lý gồm có",
+    "correctAnswer": "4 hộp đèn",
+    "options": [
+      {
+        "label": "a",
+        "text": "2 hộp đèn"
+      },
+      {
+        "label": "b",
+        "text": "8 hộp đèn"
+      },
+      {
+        "label": "c",
+        "text": "6 hộp đèn"
+      },
+      {
+        "label": "d",
+        "text": "4 hộp đèn"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 138,
+    "question": "Chiều dài hệ thống đèn tiếp cận giản đơn dài?",
+    "correctAnswer": "420m",
+    "options": [
+      {
+        "label": "a",
+        "text": "300m."
+      },
+      {
+        "label": "b",
+        "text": "900m."
+      },
+      {
+        "label": "c",
+        "text": "600m."
+      },
+      {
+        "label": "d",
+        "text": "420m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 139,
+    "question": "Chiều dài hệ thống đèn tiếp cận tiêu chuẩn CAT I, II, III là bao nhiêu mét?",
+    "correctAnswer": "900m.",
+    "options": [
+      {
+        "label": "a",
+        "text": "420m."
+      },
+      {
+        "label": "b",
+        "text": "900m."
+      },
+      {
+        "label": "c",
+        "text": "600m."
+      },
+      {
+        "label": "d",
+        "text": "300m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 142,
+    "question": "Theo khuyến cáo của ICAO, hệ thống tiếp cận CAT I cần đấu nối làm mấy mạch?",
+    "correctAnswer": "02 mạch.",
+    "options": [
+      {
+        "label": "a",
+        "text": "01 mạch."
+      },
+      {
+        "label": "b",
+        "text": "02 mạch."
+      },
+      {
+        "label": "c",
+        "text": "04 mạch chẵn, lẻ."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 145,
+    "question": "Đèn lề đường CHC có nửa bên màu trắng và nửa bên màu vàng được lắp ở vị trí nào?",
+    "correctAnswer": "Trong khoảng 600m đến cuối đường CHC.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vị trí giới hạn hai đầu đường hạ cánh."
+      },
+      {
+        "label": "b",
+        "text": "Ở giữa đường CHC"
+      },
+      {
+        "label": "c",
+        "text": "Trong khoảng 600m đến cuối đường CHC."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 149,
+    "question": "Đèn tim đường CHC có hai màu đỏ/trắng được lắp ở vị trí nào?",
+    "correctAnswer": "Trong khoảng 900m kể từ thềm đường CHC",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vị trí giới hạn hai đầu đường băng"
+      },
+      {
+        "label": "b",
+        "text": "Trong khoảng 900m kể từ thềm đường CHC"
+      },
+      {
+        "label": "c",
+        "text": "Trong khoảng 600m kể từ giữa đường CHC"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 151,
+    "question": "Các biến áp cách ly có tỉ số vòng dây của cuộn sơ cấp và thứ cấp là:",
+    "correctAnswer": "1:1",
+    "options": [
+      {
+        "label": "a",
+        "text": "1:1"
+      },
+      {
+        "label": "b",
+        "text": "1:2"
+      },
+      {
+        "label": "c",
+        "text": "2:1"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 152,
+    "question": "Theo tiêu chuẩn ICAO, điện áp thử cho biến áp cách ly là bao nhiêu?",
+    "correctAnswer": "Là 5000VDC",
+    "options": [
+      {
+        "label": "a",
+        "text": "Là 5000VDC"
+      },
+      {
+        "label": "b",
+        "text": "Là 2000VDC"
+      },
+      {
+        "label": "c",
+        "text": "Là 1000VDC"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 161,
+    "question": "Dải tần số làm việc của các đài VOR là:",
+    "correctAnswer": "(108-118) MHz",
+    "options": [
+      {
+        "label": "a",
+        "text": "(112-1020) Hz"
+      },
+      {
+        "label": "b",
+        "text": "(108-118) MHz"
+      },
+      {
+        "label": "c",
+        "text": "(112-126) MHz"
+      },
+      {
+        "label": "d",
+        "text": "(962-1650) Mhz"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 162,
+    "question": "Theo tiêu chuẩn của ICAO, tầm phủ của đài VOR phải đạt được trong góc ngẩng đến:",
+    "correctAnswer": "40°",
+    "options": [
+      {
+        "label": "a",
+        "text": "30°"
+      },
+      {
+        "label": "b",
+        "text": "40°"
+      },
+      {
+        "label": "c",
+        "text": "45°"
+      },
+      {
+        "label": "d",
+        "text": "60°"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 163,
+    "question": "Tầm phủ sóng của đài VOR sử dụng cho mục đích phù trợ tiếp cận hạ cánh – landing là:",
+    "correctAnswer": "100 NM",
+    "options": [
+      {
+        "label": "a",
+        "text": "Dưới 100 NM"
+      },
+      {
+        "label": "b",
+        "text": "100 NM"
+      },
+      {
+        "label": "c",
+        "text": "200 NM"
+      },
+      {
+        "label": "d",
+        "text": "500 NM"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 164,
+    "question": "Tầm phủ sóng của đài VOR sử dụng cho mục đích là đài điểm trong chế độ dẫn đường – enroute là:",
+    "correctAnswer": "200 NM",
+    "options": [
+      {
+        "label": "a",
+        "text": "Dưới 100 NM"
+      },
+      {
+        "label": "b",
+        "text": "100 NM"
+      },
+      {
+        "label": "c",
+        "text": "200 NM"
+      },
+      {
+        "label": "d",
+        "text": "500 NM"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 166,
+    "question": "Theo tiêu chuẩn ICAO, số lượng ký tự trong tín hiệu nhận dạng của đài VOR:",
+    "correctAnswer": "2 hoặc 3 ký tự",
+    "options": [
+      {
+        "label": "a",
+        "text": "2 ký tự"
+      },
+      {
+        "label": "b",
+        "text": "2 hoặc 3 ký tự"
+      },
+      {
+        "label": "c",
+        "text": "3 ký tự"
+      },
+      {
+        "label": "d",
+        "text": "từ 1 đến 4 ký tự"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 167,
+    "question": "Theo tiêu chuẩn ICAO, đài VOR sẽ chuyển máy hoặc tắt máy khi sai số về góc phương vị vượt quá:",
+    "correctAnswer": "± 1°",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1°"
+      },
+      {
+        "label": "b",
+        "text": "± 2°"
+      },
+      {
+        "label": "c",
+        "text": "± 3°"
+      },
+      {
+        "label": "d",
+        "text": "± 4°"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 168,
+    "question": "Theo tiêu chuẩn ICAO, sai số về phương vị do đài VOR cung cấp trong khu vực góc ngẩng danh định không được vượt quá:",
+    "correctAnswer": "± 2°",
+    "options": [
+      {
+        "label": "a",
+        "text": "± 1°"
+      },
+      {
+        "label": "b",
+        "text": "± 2°"
+      },
+      {
+        "label": "c",
+        "text": "± 3°"
+      },
+      {
+        "label": "d",
+        "text": "± 4°"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 169,
+    "question": "Vị trí đặt đài CVOR đòi hỏi mặt phản xạ xung quanh đài:",
+    "correctAnswer": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 12m",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 10m"
+      },
+      {
+        "label": "b",
+        "text": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 10m"
+      },
+      {
+        "label": "c",
+        "text": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 12m"
+      },
+      {
+        "label": "d",
+        "text": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 12m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 170,
+    "question": "Vị trí đặt đài DVOR đòi hỏi mặt phản xạ xung quanh đài:",
+    "correctAnswer": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 12m",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 10m"
+      },
+      {
+        "label": "b",
+        "text": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 10m"
+      },
+      {
+        "label": "c",
+        "text": "Trong khu vực có bán kính từ tâm đài 300m không có chướng ngại vật có độ cao ≥ 12m"
+      },
+      {
+        "label": "d",
+        "text": "Trong khu vực có bán kính từ tâm đài 600m không có chướng ngại vật có độ cao ≥ 12m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 172,
+    "question": "Tốc độ phát tín hiệu nhận dạng của các đài VOR là:",
+    "correctAnswer": "7 ident/phút",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 ident/phút"
+      },
+      {
+        "label": "b",
+        "text": "6 ident/phút"
+      },
+      {
+        "label": "c",
+        "text": "7 ident/phút"
+      },
+      {
+        "label": "d",
+        "text": "8 ident/phút"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 178,
+    "question": "Các hệ thống VOR sử dụng phân cách tần số giữa các kênh là 100 kHz, thì độ ổn định tần số theo TCCS của Cục hàng không Việt Nam sẽ phải là:",
+    "correctAnswer": "0.005%",
+    "options": [
+      {
+        "label": "a",
+        "text": "0.0005%"
+      },
+      {
+        "label": "b",
+        "text": "0.01%"
+      },
+      {
+        "label": "c",
+        "text": "0.005%"
+      },
+      {
+        "label": "d",
+        "text": "0.1%"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 179,
+    "question": "Theo TCCS của Cục hàng không Việt Nam, thời gian chuyển mạch hệ thống cấp nguồn cho đài VOR phục vụ tiếp cận hạ cánh phải nhỏ hơn:",
+    "correctAnswer": "15 giây",
+    "options": [
+      {
+        "label": "a",
+        "text": "5 giây"
+      },
+      {
+        "label": "b",
+        "text": "15 giây"
+      },
+      {
+        "label": "c",
+        "text": "30 giây"
+      },
+      {
+        "label": "d",
+        "text": "60 giây"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 187,
+    "question": "Trong hệ thống DVOR, tín hiệu Sideband được điều chế biên độ ở mức bao nhiêu phần trăm?",
+    "correctAnswer": "100%",
+    "options": [
+      {
+        "label": "a",
+        "text": "30%"
+      },
+      {
+        "label": "b",
+        "text": "50%"
+      },
+      {
+        "label": "c",
+        "text": "70%"
+      },
+      {
+        "label": "d",
+        "text": "100%"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 188,
+    "question": "Theo khuyến cáo của ICAO, đối với thiết bị VOR, độ dịch tần (Deviation) ở góc giữa 0-5 độ phải là bao nhiêu?",
+    "correctAnswer": "16± 1",
+    "options": [
+      {
+        "label": "a",
+        "text": "15± 1"
+      },
+      {
+        "label": "b",
+        "text": "16± 1"
+      },
+      {
+        "label": "c",
+        "text": "17± 1"
+      },
+      {
+        "label": "d",
+        "text": "18± 1"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 190,
+    "question": "Theo khuyến cáo của ICAO, dung sai tín hiệu tại đài VOR là bao nhiêu độ?",
+    "correctAnswer": "2°",
+    "options": [
+      {
+        "label": "a",
+        "text": "1°"
+      },
+      {
+        "label": "b",
+        "text": "2°"
+      },
+      {
+        "label": "c",
+        "text": "3°"
+      },
+      {
+        "label": "d",
+        "text": "4°"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 191,
+    "question": "Theo khuyến cáo của ICAO, trong tầm phủ của đài VOR cường độ trường trong không gian phải đạt bao nhiêu?",
+    "correctAnswer": "90µV/m",
+    "options": [
+      {
+        "label": "a",
+        "text": "80µV/m"
+      },
+      {
+        "label": "b",
+        "text": "90µV/m"
+      },
+      {
+        "label": "c",
+        "text": "97µV/m"
+      },
+      {
+        "label": "d",
+        "text": "107µV/m"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 192,
+    "question": "Theo khuyến cáo của ICAO, trong tầm phủ của đài VOR cường độ trường trong không gian phải đạt bao nhiêu?",
+    "correctAnswer": "107dBW/m2",
+    "options": [
+      {
+        "label": "a",
+        "text": "100dBW/m2"
+      },
+      {
+        "label": "b",
+        "text": "107dBW/m2"
+      },
+      {
+        "label": "c",
+        "text": "109dBW/m2"
+      },
+      {
+        "label": "d",
+        "text": "110dBW/m2"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 194,
+    "question": "Giản đồ cực anten của CVOR là:",
+    "correctAnswer": "Quay với tốc độ 30 vòng/giây",
+    "options": [
+      {
+        "label": "a",
+        "text": "Luôn hướng về phía máy bay"
+      },
+      {
+        "label": "b",
+        "text": "Giống như hình số 8"
+      },
+      {
+        "label": "c",
+        "text": "Là một búp nhọn"
+      },
+      {
+        "label": "d",
+        "text": "Quay với tốc độ 30 vòng/giây"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 195,
+    "question": "Theo khuyến cáo của ICAO, độ sâu điều chế của tần số Carrier được quan sát tại bất kỳ góc ngẩng lên đến 5° có giới hạn là bao nhiêu?",
+    "correctAnswer": "Từ 28% đến 32%",
+    "options": [
+      {
+        "label": "a",
+        "text": "Từ 25% đến 30%"
+      },
+      {
+        "label": "b",
+        "text": "Từ 28% đến 32%"
+      },
+      {
+        "label": "c",
+        "text": "Từ 80% đến 100%"
+      },
+      {
+        "label": "d",
+        "text": "Từ 30% đến 32%"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 198,
+    "question": "Đài LOC là một đài mà khi người quan sát đứng đối diện với đài từ đầu tiếp cận của đường CHC thì Độ sâu điều chế sóng mang vô tuyến bởi âm tần 150 Hz so với độ sâu điều chế sóng mang vô tuyến bởi âm tần 90 Hz sẽ:",
+    "correctAnswer": "Vượt trội về bên tay phải.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vượt trội về bên tay phải."
+      },
+      {
+        "label": "b",
+        "text": "Vượt trội về bên tay trái."
+      },
+      {
+        "label": "c",
+        "text": "Bằng nhau."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 199,
+    "question": "Đài LOC là một đài mà khi người quan sát đứng đối diện với đài từ đầu tiếp cận của đường CHC thì độ sâu điều chế sóng mang vô tuyến bởi âm tần 90 Hz so với độ sâu điều chế sóng mang vô tuyến bởi âm tần 150 Hz sẽ:",
+    "correctAnswer": "Vượt trội về bên tay trái.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vượt trội về bên tay phải."
+      },
+      {
+        "label": "b",
+        "text": "Vượt trội về bên tay trái."
+      },
+      {
+        "label": "c",
+        "text": "Bằng nhau."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 200,
+    "question": "Để đảm bảo đủ tín hiệu cho tàu bay hoạt động có hiệu quả trong phân khu vùng phủ sóng ILS (GP và LOC), vùng phủ sóng của đài LOC phải mở rộng từ tâm hệ thống ăng ten LOC đến cự ly:",
+    "correctAnswer": "46,3 km trong ± 10° từ đường hướng phía trước.",
+    "options": [
+      {
+        "label": "a",
+        "text": "46,3 km trong ± 10° từ đường hướng phía trước."
+      },
+      {
+        "label": "b",
+        "text": "31,5 km trong ± 10° từ đường hướng phía trước."
+      },
+      {
+        "label": "c",
+        "text": "18,5 km trong ± 10° từ đường hướng phía trước."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 201,
+    "question": "Để đảm bảo đủ tín hiệu cho tàu bay hoạt động có hiệu quả trong phân khu vùng phủ sóng ILS (GP và LOC), vùng phủ sóng của đài LOC phải mở rộng từ tâm hệ thống ăng ten LOC đến cự ly:",
+    "correctAnswer": "31,5 km trong phạm vi giữa 10° và 35° từ đường hướng phía trước.",
+    "options": [
+      {
+        "label": "a",
+        "text": "46,3 km trong phạm vi giữa 10° và 35° từ đường hướng phía trước."
+      },
+      {
+        "label": "b",
+        "text": "31,5 km trong phạm vi giữa 10° và 35° từ đường hướng phía trước."
+      },
+      {
+        "label": "c",
+        "text": "18,5 km trong phạm vi giữa 10° và 35° từ đường hướng phía trước."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 202,
+    "question": "Để đảm bảo đủ tín hiệu cho một thiết bị cụ thể trên tàu bay hoạt động có hiệu quả trong phân khu vùng phủ sóng của GP và LOC, vùng phủ sóng của đài LOC phải mở rộng từ tâm hệ thống ăng ten LOC đến cự ly:",
+    "correctAnswer": "18,5 km bên ngoài + 35° hoặc - 35° nếu được phủ sóng.",
+    "options": [
+      {
+        "label": "a",
+        "text": "46,3 km bên ngoài + 35° hoặc - 35° nếu được phủ sóng."
+      },
+      {
+        "label": "b",
+        "text": "31,5 km bên ngoài + 35° hoặc - 35° nếu được phủ sóng."
+      },
+      {
+        "label": "c",
+        "text": "18,5 km bên ngoài + 35° hoặc - 35° nếu được phủ sóng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 203,
+    "question": "Đối với ILS Cat 1 dung sai tần số âm tần điều chế (đài LOC) phải là:",
+    "correctAnswer": "90 Hz và 150 Hz ± 2,5%.",
+    "options": [
+      {
+        "label": "a",
+        "text": "90 Hz và 150 Hz ± 2,5%."
+      },
+      {
+        "label": "b",
+        "text": "90 Hz và 150 Hz ± 1,5%."
+      },
+      {
+        "label": "c",
+        "text": "90 Hz và 150 Hz ± 1%."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 204,
+    "question": "Đài LOC hoạt động trong dải tần số:",
+    "correctAnswer": "108 MHz – 111,975 MHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "108 MHz – 111,975 MHz."
+      },
+      {
+        "label": "b",
+        "text": "328,6 MHz – 335,4 MHz."
+      },
+      {
+        "label": "c",
+        "text": "108 MHz – 112 MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 205,
+    "question": "Âm tần sử dụng để phát tín hiệu nhận dạng đài LOC là:",
+    "correctAnswer": "1020 Hz ± 50 Hz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "3400 Hz ± 50 Hz."
+      },
+      {
+        "label": "b",
+        "text": "400 Hz ± 50 Hz."
+      },
+      {
+        "label": "c",
+        "text": "1020 Hz ± 50 Hz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 206,
+    "question": "Thiết bị đài GP hệ thống ILS theo ICAO khuyến cáo nên có khả năng điều chỉnh góc đường trượt:",
+    "correctAnswer": "Từ 2° đến 4°.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Từ 2° đến 4°."
+      },
+      {
+        "label": "b",
+        "text": "Từ 3° đến 4°."
+      },
+      {
+        "label": "c",
+        "text": "Từ 2° đến 3°."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 207,
+    "question": "Góc đường trượt đài GP hệ thống theo ICAO khuyến cáo nên:",
+    "correctAnswer": "3°.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2°."
+      },
+      {
+        "label": "b",
+        "text": "4°."
+      },
+      {
+        "label": "c",
+        "text": "3°."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 208,
+    "question": "Băng tần hoạt động của đài GP thuộc hệ thống ILS:",
+    "correctAnswer": "Từ 328,6MHz đến 335,4MHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Từ 328,6MHz đến 335,4MHz."
+      },
+      {
+        "label": "b",
+        "text": "Từ 328,6KHz đến 335,4KHz."
+      },
+      {
+        "label": "c",
+        "text": "Từ 328MHz đến 335MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 209,
+    "question": "Đài GP phải cung cấp tín hiệu đủ để cho phép thiết bị trên tàu bay khai thác thoả mãn:",
+    "correctAnswer": "Trong phân khu 8° phương vị về mỗi một phía tâm đường trượt GP đến cự ly ít nhất 18,5 km lên đến 1,75 góc θ danh định và xuống đến 0,45 góc θ danh định trên đường nằm ngang hoặc đến góc thấp hơn, 0,30 θ.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trong phân khu 18° phương vị về mỗi một phía tâm đường trượt GP đến cự ly ít nhất 18,5 km lên đến 1,75 góc θ danh định và xuống đến 0,45 góc θ danh định trên đường nằm ngang hoặc đến góc thấp hơn, 0,30 θ."
+      },
+      {
+        "label": "b",
+        "text": "Trong phân khu 8° phương vị về mỗi một phía tâm đường trượt GP đến cự ly ít nhất 18,5 km lên đến 1,75 góc θ danh định và xuống đến 0,45 góc θ danh định trên đường nằm ngang hoặc đến góc thấp hơn, 0,30 θ."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 211,
+    "question": "Course Sector là:",
+    "correctAnswer": "Một phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất mà tại đó DDM = 0,155.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Một phân khu trong mặt phẳng đứng chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất mà tại đó DDM = 0,175."
+      },
+      {
+        "label": "b",
+        "text": "Một phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất mà tại đó DDM = 0,155."
+      },
+      {
+        "label": "c",
+        "text": "Một phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất mà tại đó DDM = 0."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 212,
+    "question": "Displacement sensitivity (localizer) là:",
+    "correctAnswer": "Tỷ số DDM đo được đối với sai lệch về 2 bên tương ứng so với đường quy chiếu thích hợp.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tỷ số DDM đo được đối với sai lệch về 2 bên tương ứng so với đường quy chiếu thích hợp."
+      },
+      {
+        "label": "b",
+        "text": "Tỷ số DDM đo được trên tâm đường CHC."
+      },
+      {
+        "label": "c",
+        "text": "Tỷ số DDM đo được đối với sai lệch hướng tại lề đường CHC."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 213,
+    "question": "Course line là:",
+    "correctAnswer": "Quỹ tích các điểm gần đường tâm đường CHC nhất trong mặt phẳng ngang tại đó DDM = 0.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quỹ tích các điểm gần đường CHC nhất."
+      },
+      {
+        "label": "b",
+        "text": "Quỹ tích các điểm gần đường tâm đường CHC nhất trong mặt phẳng ngang tại đó DDM = 0."
+      },
+      {
+        "label": "c",
+        "text": "Quỹ tích các điểm gần đường tâm đường CHC nhất trong mặt phẳng đứng tại đó DDM = 0."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 215,
+    "question": "Half course sector là:",
+    "correctAnswer": "Phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất tạo đó DDM = 0,0775.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất tại đó DDM = 0,155."
+      },
+      {
+        "label": "b",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất tạo đó DDM = 0,0775."
+      },
+      {
+        "label": "c",
+        "text": "Phân khu trong mặt phẳng ngang chứa đường hướng và bị giới hạn bởi quỹ tích các điểm gần đường hướng nhất tạo đó DDM = 0,0775."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 216,
+    "question": "Half ILS Glide path sector là:",
+    "correctAnswer": "Phân khu trong mặt phẳng đứng chứa đường trượt đài GP/ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt GP nhất tại đó DDM = 0,0875.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường trượt đài GP/ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt GP nhất tại đó DDM = 0,0875."
+      },
+      {
+        "label": "b",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường trượt đài GP/ ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt GP nhất tại đó DDM = 0,175."
+      },
+      {
+        "label": "c",
+        "text": "Phân khu trong mặt phẳng ngang chứa đường trượt đài GP/ ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt GP nhất tại đó DDM = 0,0875."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 217,
+    "question": "ILS Glide path là:",
+    "correctAnswer": "Quỹ tích các điểm trong mặt phẳng đứng chứa đường tâm đường CHC tại đó DDM = 0, các quỹ tích đó ở gần mặt phẳng ngang nhất.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quỹ tích các điểm trong mặt phẳng đứng chứa đường tâm đường CHC tại đó DDM = 0, các quỹ tích đó ở gần mặt phẳng ngang nhất."
+      },
+      {
+        "label": "b",
+        "text": "Quỹ tích các điểm trong mặt phẳng đứng chứa đường tâm đường CHC tại đó DDM là 0DDM"
+      },
+      {
+        "label": "c",
+        "text": "Quỹ tích các điểm trong mặt phẳng ngang chứa đường tâm đường CHC tại đó DDM là 0DDM"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 219,
+    "question": "ILS Glide path sector là:",
+    "correctAnswer": "Phân khu trong mặt phẳng đứng chứa đường trượt ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt glide path nhất tại đó DDM = 0,175.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phân khu trong mặt phẳng ngang chứa đường trượt ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt glide path nhất tại đó DDM = 0,175."
+      },
+      {
+        "label": "b",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường trượt ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt glide path nhất tại đó DDM = 0,175."
+      },
+      {
+        "label": "c",
+        "text": "Phân khu trong mặt phẳng đứng chứa đường trượt ILS và bị giới hạn bởi quỹ tích các điểm gần đường trượt nhất tại đó DDM = 0,0875."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 223,
+    "question": "Phát xạ từ hệ thống ăng ten đài LOC sẽ tạo ra một giản đồ từ trường tổng hợp được:",
+    "correctAnswer": "Điều chế biên độ bởi âm tần 150 Hz và 90 Hz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Điều chế biên độ bởi âm tần 150 Hz và 90 Hz."
+      },
+      {
+        "label": "b",
+        "text": "Điều chế tần số bởi âm tần 150 Hz và 90 Hz."
+      },
+      {
+        "label": "c",
+        "text": "Điều chế pha bởi âm tần 150 Hz và 90 Hz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 225,
+    "question": "Máy thu trên tàu bay sử dụng hiệu ứng (capture effect) để thu tín hiệu dẫn đường của hệ thống nào sau đây?",
+    "correctAnswer": "ILS 2 tần số.",
+    "options": [
+      {
+        "label": "a",
+        "text": "NDB."
+      },
+      {
+        "label": "b",
+        "text": "ILS 2 tần số."
+      },
+      {
+        "label": "c",
+        "text": "ILS 1 tần số."
+      },
+      {
+        "label": "d",
+        "text": "DME."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 228,
+    "question": "Trường phát xạ không gian của một hệ thống ILS có độ sâu điều chế âm tần 90 Hz vượt trội hơn so với độ sâu điều chế âm tần 150 Hz thì sự khác biệt độ sâu điều chế DDM sẽ như thế nào?",
+    "correctAnswer": "DDM < 0.",
+    "options": [
+      {
+        "label": "a",
+        "text": "DDM < 0."
+      },
+      {
+        "label": "b",
+        "text": "DDM > 0."
+      },
+      {
+        "label": "c",
+        "text": "DDM = 0."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 229,
+    "question": "Ưu điểm chính của hệ thống ILS 2 tần số so với ILS 1 tần số là:",
+    "correctAnswer": "Giúp tăng độ an toàn của hệ thống và được dùng ở các nơi có nhiều chướng ngại vật xung quanh.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tăng tầm phủ sóng."
+      },
+      {
+        "label": "b",
+        "text": "Giúp tăng độ an toàn của hệ thống và được dùng ở các nơi có nhiều chướng ngại vật xung quanh."
+      },
+      {
+        "label": "c",
+        "text": "Giúp tàu bay cất cánh chính xác hơn."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 230,
+    "question": "Hệ thống ILS có thể thực hiện điều chế để tạo ra tín hiệu CSB và SBO theo cách nào?",
+    "correctAnswer": "Cả a) và b).",
+    "options": [
+      {
+        "label": "a",
+        "text": "Cộng và trừ các âm tần 90Hz và 150Hz để tạo ra âm tần (90+150)Hz và (90-150)Hz, sau đó điều chế biên độ các tín hiệu này với sóng mang."
+      },
+      {
+        "label": "b",
+        "text": "Điều chế riêng biệt từng âm tần 90 Hz và 150 Hz với sóng mang, sau đó sử dụng cầu lai quay pha 900 (900 – Hybrid) để tạo ra các tín hiệu cần thiết."
+      },
+      {
+        "label": "c",
+        "text": "Cả a) và b)."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 231,
+    "question": "Khoảng cách xung của DME ở chế độ X là?",
+    "correctAnswer": "12s.",
+    "options": [
+      {
+        "label": "a",
+        "text": "12s."
+      },
+      {
+        "label": "b",
+        "text": "18s."
+      },
+      {
+        "label": "c",
+        "text": "24s."
+      },
+      {
+        "label": "d",
+        "text": "20s."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 232,
+    "question": "Thời gian giữ chậm của DME ở chế độ X là?",
+    "correctAnswer": "50s.",
+    "options": [
+      {
+        "label": "a",
+        "text": "50s."
+      },
+      {
+        "label": "b",
+        "text": "56s."
+      },
+      {
+        "label": "c",
+        "text": "60s."
+      },
+      {
+        "label": "d",
+        "text": "190s."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 233,
+    "question": "Dải tần số hoạt động của DME theo quy định ICAO?",
+    "correctAnswer": "(960 – 1215)MHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "(900 – 960)MHz."
+      },
+      {
+        "label": "b",
+        "text": "(960 – 1215)MHz."
+      },
+      {
+        "label": "c",
+        "text": "(1215 – 1310)MHz."
+      },
+      {
+        "label": "d",
+        "text": "(1216 – 1335)MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 235,
+    "question": "Tổng số kênh của DME trong chế độ X là:",
+    "correctAnswer": "126.",
+    "options": [
+      {
+        "label": "a",
+        "text": "64."
+      },
+      {
+        "label": "b",
+        "text": "126."
+      },
+      {
+        "label": "c",
+        "text": "252."
+      },
+      {
+        "label": "d",
+        "text": "63."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 236,
+    "question": "Độ sai lệch tần số giữa xung hỏi và xung trả lời là:",
+    "correctAnswer": "63MHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "60MHz."
+      },
+      {
+        "label": "b",
+        "text": "61MHz."
+      },
+      {
+        "label": "c",
+        "text": "62MHz."
+      },
+      {
+        "label": "d",
+        "text": "63MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 237,
+    "question": "DME có khoảng cách tần số giữa các kênh kế cận nhau là:",
+    "correctAnswer": "1MHz.",
+    "options": [
+      {
+        "label": "a",
+        "text": "1MHz."
+      },
+      {
+        "label": "b",
+        "text": "2MHz."
+      },
+      {
+        "label": "c",
+        "text": "3MHz."
+      },
+      {
+        "label": "d",
+        "text": "4MHz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 238,
+    "question": "Hiệu suất trả lời của bộ phát đáp DME/N tối thiểu phải là:",
+    "correctAnswer": "70%.",
+    "options": [
+      {
+        "label": "a",
+        "text": "50%."
+      },
+      {
+        "label": "b",
+        "text": "70%."
+      },
+      {
+        "label": "c",
+        "text": "80%."
+      },
+      {
+        "label": "d",
+        "text": "90%."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 239,
+    "question": "Theo tiêu chuẩn ICAO, tốc độ phát tối thiểu của DME/N phải đạt được:",
+    "correctAnswer": "700ppps.",
+    "options": [
+      {
+        "label": "a",
+        "text": "600ppps."
+      },
+      {
+        "label": "b",
+        "text": "700ppps."
+      },
+      {
+        "label": "c",
+        "text": "2700ppps."
+      },
+      {
+        "label": "d",
+        "text": "5000ppps."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 240,
+    "question": "Khi thiết bị DME phục vụ cho tiếp cận chính xác, hạ cánh thì sai số cự ly tổng cộng của toàn bộ hệ thống không được vượt quá?",
+    "correctAnswer": "0,20 NM.",
+    "options": [
+      {
+        "label": "a",
+        "text": "0,10 NM."
+      },
+      {
+        "label": "b",
+        "text": "0,20 NM."
+      },
+      {
+        "label": "c",
+        "text": "0,25 NM."
+      },
+      {
+        "label": "d",
+        "text": "0,30 NM."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 242,
+    "question": "Hệ thống DME trên mặt đất và trên tàu bay dùng để?",
+    "correctAnswer": "Giúp tàu bay xác định khoảng cách đến 1 trạm mặt đất.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp tàu bay xác định khoảng cách đến 1 trạm mặt đất."
+      },
+      {
+        "label": "b",
+        "text": "Giúp tàu bay xác định hướng đến 1 trạm mặt đất."
+      },
+      {
+        "label": "c",
+        "text": "Giúp tàu bay xác định trục đường băng và góc đáp thích hợp."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều đúng."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 244,
+    "question": "Hãy cho biết công thức xác định khoảng cách của DME? (Trong đó: c là vận tốc ánh sáng, t là khoảng thời gian từ lúc phát xung hỏi cho đến khi nhận được xung trả lời,  là thời gian giữ chậm.)",
+    "correctAnswer": "D = c.(t - )/2.",
+    "options": [
+      {
+        "label": "a",
+        "text": "D = c.t/2."
+      },
+      {
+        "label": "b",
+        "text": "D = c./2."
+      },
+      {
+        "label": "c",
+        "text": "D = c.(t + )/2."
+      },
+      {
+        "label": "d",
+        "text": "D = c.(t - )/2."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 248,
+    "question": "Hãy cho biết thứ tự ưu tiên của các xung trong quá trình phát của DME?",
+    "correctAnswer": "1: xung nhận dạng, 2: xung trả lời, 3: xung giả ngẫu nhiên squitter.",
+    "options": [
+      {
+        "label": "a",
+        "text": "1: xung nhận dạng, 2: xung trả lời, 3: xung giả ngẫu nhiên squitter."
+      },
+      {
+        "label": "b",
+        "text": "1: xung trả lời, 2: xung nhận dạng, 3: xung giả ngẫu nhiên squitter."
+      },
+      {
+        "label": "c",
+        "text": "1: xung nhận dạng, 2: xung hỏi, 3: xung giả ngẫu nhiên squitter."
+      },
+      {
+        "label": "d",
+        "text": "1: xung trả lời, 2: xung nhận dạng, 3: xung hỏi."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 251,
+    "question": "Khi thiết bị DME ở trạng thái bão hòa thì tần số lặp lại xung PRF sẽ tự động giảm xuống còn bao nhiêu cặp xung/giây (ppps)?",
+    "correctAnswer": "30 ppps.",
+    "options": [
+      {
+        "label": "a",
+        "text": "20 ppps."
+      },
+      {
+        "label": "b",
+        "text": "30 ppps."
+      },
+      {
+        "label": "c",
+        "text": "50 ppps."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 252,
+    "question": "Tốc độ phát tín hiệu nhận dạng (ident rate) của thiết bị DME:",
+    "correctAnswer": "1350 xung/giây (pulse per second).",
+    "options": [
+      {
+        "label": "a",
+        "text": "700 cặp xung/giây (pulse pair per second)."
+      },
+      {
+        "label": "b",
+        "text": "1350 xung/giây (pulse per second)."
+      },
+      {
+        "label": "c",
+        "text": "400Hz."
+      },
+      {
+        "label": "d",
+        "text": "1020Hz."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 258,
+    "question": "DME2020 FERNAU cấu hình 100W có tốc độ phát tối đa là:",
+    "correctAnswer": "5000ppps.",
+    "options": [
+      {
+        "label": "a",
+        "text": "680ppps."
+      },
+      {
+        "label": "b",
+        "text": "1400ppps."
+      },
+      {
+        "label": "c",
+        "text": "2700ppps."
+      },
+      {
+        "label": "d",
+        "text": "5000ppps."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 259,
+    "question": "Xét trong điều kiện lý tưởng, ở tốc độ phát 5000ppps DME 2020 FERNAU có thể trả lời cho bao nhiêu tàu bay?",
+    "correctAnswer": "200.",
+    "options": [
+      {
+        "label": "a",
+        "text": "100."
+      },
+      {
+        "label": "b",
+        "text": "200."
+      },
+      {
+        "label": "c",
+        "text": "300."
+      },
+      {
+        "label": "d",
+        "text": "500."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 260,
+    "question": "Chức năng bộ giám sát của DME Selex 1118A là?",
+    "correctAnswer": "Kích hỏi máy phát đáp, giám sát (đánh giá các tham số trả lời).",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giám sát (đánh giá các tham số trả lời), chuyển đổi/tắt máy."
+      },
+      {
+        "label": "b",
+        "text": "Giám sát (đánh giá các tham số trả lời), chuyển đổi/tắt máy, hiển thị trạng thái thiết bị."
+      },
+      {
+        "label": "c",
+        "text": "Kích hỏi máy phát đáp, giám sát (đánh giá các tham số trả lời)."
+      },
+      {
+        "label": "d",
+        "text": "Kích hỏi máy phát đáp, giám sát (đánh giá các tham số trả lời), chuyển đổi/tắt máy."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 261,
+    "question": "DME Selex 1118A cấu hình 100W có tốc độ phát tối đa là:",
+    "correctAnswer": "5400ppps.",
+    "options": [
+      {
+        "label": "a",
+        "text": "700ppps."
+      },
+      {
+        "label": "b",
+        "text": "2700ppps."
+      },
+      {
+        "label": "c",
+        "text": "5000ppps."
+      },
+      {
+        "label": "d",
+        "text": "5400ppps."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 262,
+    "question": "Hãy cho biết 2 thông số sơ cấp liên quan đến việc tính toán khoảng cách của DME 2020 FERNAU được giám sát và theo dõi bởi phần cứng?",
+    "correctAnswer": "Khoảng cách xung, thời gian giữ chậm.",
+    "options": [
+      {
+        "label": "a",
+        "text": "Công suất phát, hiệu suất trả lời."
+      },
+      {
+        "label": "b",
+        "text": "Công suất phát, tần số trả lời."
+      },
+      {
+        "label": "c",
+        "text": "Khoảng cách xung, thời gian giữ chậm."
+      },
+      {
+        "label": "d",
+        "text": "Độ rộng xung, tần số trả lời."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 265,
+    "question": "Hệ thống định vị toàn cầu GPS được cấu thành bởi thành phần nào sau đây:",
+    "correctAnswer": "Tất cả 03 thành phần trên",
+    "options": [
+      {
+        "label": "a",
+        "text": "Thành phần trong không gian"
+      },
+      {
+        "label": "b",
+        "text": "Thành phần kiểm soát"
+      },
+      {
+        "label": "c",
+        "text": "Thành phần sử dụng"
+      },
+      {
+        "label": "d",
+        "text": "Tất cả 03 thành phần trên"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 266,
+    "question": "Thành phần trong không gian của hệ thống định vị toàn cầu GPS bao gồm ít nhất:",
+    "correctAnswer": "24 vệ tinh trong 6 quỹ đạo",
+    "options": [
+      {
+        "label": "a",
+        "text": "12 vệ tinh trong 1 quỹ đạo"
+      },
+      {
+        "label": "b",
+        "text": "24 vệ tinh trong 3 quỹ đạo"
+      },
+      {
+        "label": "c",
+        "text": "24 vệ tinh trong 6 quỹ đạo"
+      },
+      {
+        "label": "d",
+        "text": "48 vệ tinh trong 8 quỹ đạo"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 268,
+    "question": "Cần thu ít nhất bao nhiêu quả vệ tinh để xác định vị trí 3D bằng GPS:",
+    "correctAnswer": "4",
+    "options": [
+      {
+        "label": "a",
+        "text": "1"
+      },
+      {
+        "label": "b",
+        "text": "2"
+      },
+      {
+        "label": "c",
+        "text": "4"
+      },
+      {
+        "label": "d",
+        "text": "6"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 269,
+    "question": "Thành phần trong không gian của hệ thống vệ tinh dẫn đường quỹ đạo toàn cầu của Liên Bang Nga (GLONASS) bao gồm ít nhất:",
+    "correctAnswer": "24 vệ tinh trong 3 quỹ đạo",
+    "options": [
+      {
+        "label": "a",
+        "text": "12 vệ tinh trong 1 quỹ đạo"
+      },
+      {
+        "label": "b",
+        "text": "24 vệ tinh trong 3 quỹ đạo"
+      },
+      {
+        "label": "c",
+        "text": "24 vệ tinh trong 6 quỹ đạo"
+      },
+      {
+        "label": "d",
+        "text": "48 vệ tinh trong 8 quỹ đạo"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 274,
+    "question": "Các vệ tinh GPS bay vòng quanh trái đất theo một quỹ đạo rất chính xác bao nhiêu lần trong một ngày:",
+    "correctAnswer": "2",
+    "options": [
+      {
+        "label": "a",
+        "text": "1"
+      },
+      {
+        "label": "b",
+        "text": "2"
+      },
+      {
+        "label": "c",
+        "text": "3"
+      },
+      {
+        "label": "d",
+        "text": "4"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 279,
+    "question": "Quỹ đạo của vệ tinh GLONASS là gì?",
+    "correctAnswer": "mặt phẳng quỹ đạo có độ nghiên 64.8 độ, chu kỳ vệ tinh 11 giờ 15 phút",
+    "options": [
+      {
+        "label": "a",
+        "text": "quỹ đạo địa tĩnh"
+      },
+      {
+        "label": "b",
+        "text": "mặt phẳng quỹ đạo có độ nghiên 55 độ, chu kỳ vệ tinh 11 giờ 58 phút"
+      },
+      {
+        "label": "c",
+        "text": "mặt phẳng quỹ đạo có độ nghiên 55 độ, chu kỳ vệ tinh 11 giờ 15 phút"
+      },
+      {
+        "label": "d",
+        "text": "mặt phẳng quỹ đạo có độ nghiên 64.8 độ, chu kỳ vệ tinh 11 giờ 15 phút"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 280,
+    "question": "Quỹ đạo của vệ tinh GPS là gì?",
+    "correctAnswer": "mặt phẳng quỹ đạo có độ nghiên 55 độ, chu kỳ vệ tinh 11 giờ 58 phút",
+    "options": [
+      {
+        "label": "a",
+        "text": "quỹ đạo địa tĩnh"
+      },
+      {
+        "label": "b",
+        "text": "mặt phẳng quỹ đạo có độ nghiên 55 độ, chu kỳ vệ tinh 11 giờ 58 phút"
+      },
+      {
+        "label": "c",
+        "text": "mặt phẳng quỹ đạo có độ nghiên 55 độ, chu kỳ vệ tinh 11 giờ 15 phút"
+      },
+      {
+        "label": "d",
+        "text": "mặt phẳng quỹ đạo có độ nghiên 64.8 độ, chu kỳ vệ tinh 11 giờ 15 phút"
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 282,
+    "question": "Số vệ tinh hiện đang khai thác của chòm sao vệ tinh GPS là:",
+    "correctAnswer": "31.",
+    "options": [
+      {
+        "label": "a",
+        "text": "15."
+      },
+      {
+        "label": "b",
+        "text": "24."
+      },
+      {
+        "label": "c",
+        "text": "31."
+      },
+      {
+        "label": "d",
+        "text": "40."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 283,
+    "question": "Yêu cầu tối thiểu về số lượng vệ tinh hoạt động trong chòm sao vệ tinh GPS là:",
+    "correctAnswer": "24.",
+    "options": [
+      {
+        "label": "a",
+        "text": "15."
+      },
+      {
+        "label": "b",
+        "text": "24."
+      },
+      {
+        "label": "c",
+        "text": "31."
+      },
+      {
+        "label": "d",
+        "text": "40."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 284,
+    "question": "Số mặt phẳng quỹ đạo vệ tinh của chòm sao vệ tinh GPS là:",
+    "correctAnswer": "6.",
+    "options": [
+      {
+        "label": "a",
+        "text": "3."
+      },
+      {
+        "label": "b",
+        "text": "4."
+      },
+      {
+        "label": "c",
+        "text": "5."
+      },
+      {
+        "label": "d",
+        "text": "6."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 286,
+    "question": "Trên thực tế với sự sai lệch về thời gian giữa các vệ tinh và máy thu, để xác định được vị trí của mình, số lượng vệ tinh tối thiểu mà máy thu cần phải thu được tín hiệu từ đó là:",
+    "correctAnswer": "4.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2."
+      },
+      {
+        "label": "b",
+        "text": "3."
+      },
+      {
+        "label": "c",
+        "text": "4."
+      },
+      {
+        "label": "d",
+        "text": "5."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 295,
+    "question": "Số mặt phẳng quỹ đạo vệ tinh của chòm sao vệ tinh GALILEO là:",
+    "correctAnswer": "3.",
+    "options": [
+      {
+        "label": "a",
+        "text": "3."
+      },
+      {
+        "label": "b",
+        "text": "4."
+      },
+      {
+        "label": "c",
+        "text": "5."
+      },
+      {
+        "label": "d",
+        "text": "6."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 296,
+    "question": "Theo kế hoạch, số vệ tinh để đạt được khả năng khai thác đầy đủ (gồm cả dự phòng) của chòm sao vệ tinh GALILEO là:",
+    "correctAnswer": "30.",
+    "options": [
+      {
+        "label": "a",
+        "text": "15."
+      },
+      {
+        "label": "b",
+        "text": "24."
+      },
+      {
+        "label": "c",
+        "text": "30."
+      },
+      {
+        "label": "d",
+        "text": "40."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 297,
+    "question": "Để đạt được khả năng khai thác đầy đủ, số lượng vệ tinh hoạt động (active satellites) trong chòm sao vệ tinh GALILEO là:",
+    "correctAnswer": "24.",
+    "options": [
+      {
+        "label": "a",
+        "text": "15."
+      },
+      {
+        "label": "b",
+        "text": "24."
+      },
+      {
+        "label": "c",
+        "text": "31."
+      },
+      {
+        "label": "d",
+        "text": "40."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 303,
+    "question": "Độ cao quỹ đạo vệ tinh GALILEO là:",
+    "correctAnswer": "23.222 km.",
+    "options": [
+      {
+        "label": "a",
+        "text": "23.222 km."
+      },
+      {
+        "label": "b",
+        "text": "20.200 km."
+      },
+      {
+        "label": "c",
+        "text": "19.130 km."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả đều sai."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 307,
+    "question": "Hệ thống kiểm soát bay tự động FMS bao gồm mấy chức năng:",
+    "correctAnswer": "5.",
+    "options": [
+      {
+        "label": "a",
+        "text": "3."
+      },
+      {
+        "label": "b",
+        "text": "4."
+      },
+      {
+        "label": "c",
+        "text": "5."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 326,
+    "question": "Hệ thống hướng dẫn bay điện tử hiển thị thông tin trên mấy màn hình hiển thị bay điện tử:",
+    "correctAnswer": "4.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2."
+      },
+      {
+        "label": "b",
+        "text": "4."
+      },
+      {
+        "label": "c",
+        "text": "6."
+      }
+    ],
+    "explanation": ""
+  },
+  {
+    "subjectId": "cns_tong_hop_thi",
+    "subjectName": "CNS - Tổng hợp thi",
+    "originalId": 343,
+    "question": "Câu 21  Hệ thống dẫn đường quán tính gồm mấy loại?",
+    "correctAnswer": "2.",
+    "options": [
+      {
+        "label": "a",
+        "text": "2."
+      },
+      {
+        "label": "b",
+        "text": "3."
+      },
+      {
+        "label": "c",
+        "text": "4."
+      },
+      {
+        "label": "d",
+        "text": "5."
+      }
+    ],
+    "explanation": ""
+  }
+]
