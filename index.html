@@ -96,9 +96,7 @@
       font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
     }
 
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -429,7 +427,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
     }
 
     .bbar-btn.active-blue {
@@ -1631,10 +1629,7 @@
       white-space: normal;
     }
 
-    img,
-    svg,
-    video,
-    canvas {
+    img, svg, video, canvas {
       max-width: 100% !important;
       height: auto !important;
     }
@@ -1646,8 +1641,7 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    pre,
-    code {
+    pre, code {
       max-width: 100% !important;
       white-space: pre-wrap !important;
       word-break: break-word !important;
@@ -1725,8 +1719,7 @@
     <!-- SCREEN 2: DANH SÁCH CÂU HỎI CUỘN -->
     <div id="questionsScreen">
       <!-- Header: Tiêu đề nhỏ, ngắn gọn, bỏ số lượng câu hỏi -->
-      <div class="questions-screen-header"
-        style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+      <div class="questions-screen-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
         <h1 id="currentSubjectName" class="questions-screen-title" style="margin: 0;">Môn học</h1>
         <div id="currentSubjectStats" class="questions-progress-badge" style="display: none;"></div>
       </div>
@@ -1734,8 +1727,7 @@
       <!-- Ô tìm kiếm câu hỏi đưa lên sát ngay sau tên môn -->
       <div class="search-input-wrap questions-search-wrap">
         <span class="material-symbols-rounded search-icon">search</span>
-        <input type="text" id="searchBox" class="search-pill-input" placeholder="Tìm kiếm câu hỏi..."
-          autocomplete="off">
+        <input type="text" id="searchBox" class="search-pill-input" placeholder="Tìm kiếm câu hỏi..." autocomplete="off">
       </div>
 
 
@@ -1813,13 +1805,11 @@
           <span class="material-symbols-rounded">format_list_bulleted</span>
           <span class="bbar-label">Tất cả</span>
         </button>
-        <button id="bbarBtnBookmarkReset" class="bbar-btn" onclick="resetAllBookmarkAnswers()"
-          title="Làm lại các câu cần chú ý">
+        <button id="bbarBtnBookmarkReset" class="bbar-btn" onclick="resetAllBookmarkAnswers()" title="Làm lại các câu cần chú ý">
           <span class="material-symbols-rounded">restart_alt</span>
           <span class="bbar-label">Làm lại</span>
         </button>
-        <button id="bbarBtnBookmarkShuffle" class="bbar-btn" onclick="shuffleBookmarkQuestions()"
-          title="Xáo trộn câu cần chú ý">
+        <button id="bbarBtnBookmarkShuffle" class="bbar-btn" onclick="shuffleBookmarkQuestions()" title="Xáo trộn câu cần chú ý">
           <span class="material-symbols-rounded">shuffle</span>
           <span class="bbar-label">Xáo trộn</span>
         </button>
@@ -1827,8 +1817,7 @@
 
       <!-- Trong chế độ thi thử: Nút nộp / xem kết quả thi -->
       <div id="bbarExamGroup" class="bbar-single-group" style="display: none;">
-        <button class="bbar-single-btn" style="background: #16a34a;" onclick="showExamResultModal()"
-          title="Xem kết quả thi thử">
+        <button class="bbar-single-btn" style="background: #16a34a;" onclick="showExamResultModal()" title="Xem kết quả thi thử">
           <span class="material-symbols-rounded">fact_check</span>
           <span>Xem kết quả thi thử</span>
         </button>
@@ -1911,20 +1900,17 @@
   <div id="customConfirmModal" class="modal-overlay">
     <div class="modal-card" style="max-width: 420px;">
       <div style="display: flex; align-items: flex-start; gap: 14px;">
-        <div id="confirmModalIcon"
-          style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #fee2e2; color: #dc2626;">
+        <div id="confirmModalIcon" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #fee2e2; color: #dc2626;">
           <span class="material-symbols-rounded" style="font-size: 26px;">delete_sweep</span>
         </div>
         <div style="flex: 1; min-width: 0;">
           <div class="modal-title" id="confirmModalTitle" style="font-size: 1.15rem; margin-bottom: 6px;">Xác nhận</div>
-          <div class="modal-desc" id="confirmModalDesc"
-            style="color: var(--text-main); font-size: 0.92rem; line-height: 1.5;"></div>
+          <div class="modal-desc" id="confirmModalDesc" style="color: var(--text-main); font-size: 0.92rem; line-height: 1.5;"></div>
         </div>
       </div>
       <div class="modal-actions" style="margin-top: 8px;">
         <button type="button" id="confirmModalCancelBtn" class="modal-btn modal-btn-cancel">Hủy</button>
-        <button type="button" id="confirmModalOkBtn" class="modal-btn modal-btn-primary"
-          style="background: #dc2626; color: #fff;">Xác nhận</button>
+        <button type="button" id="confirmModalOkBtn" class="modal-btn modal-btn-primary" style="background: #dc2626; color: #fff;">Xác nhận</button>
       </div>
     </div>
   </div>
@@ -1994,7 +1980,7 @@
                   }
                 }
               }
-            } catch (err) { }
+            } catch (err) {}
           }
         }
 
@@ -2010,13 +1996,13 @@
                 }
               }
             }
-          } catch (err) { }
+          } catch (err) {}
         }
 
         // Đảm bảo đồng bộ ngược lại vào storage
         try {
           localStorage.setItem(BOOKMARKS_STORAGE_KEY, JSON.stringify(bookmarkedQuestions));
-        } catch (e) { }
+        } catch (e) {}
       } catch (e) {
         console.warn('Lỗi loadBookmarks:', e);
       }
@@ -2036,7 +2022,7 @@
           }
         }
         localStorage.setItem(getSubjectBookmarksKey(subKey), JSON.stringify(subBookmarks));
-      } catch (e) { }
+      } catch (e) {}
     }
 
     function saveBookmarks(syncSubjects = true) {
@@ -2076,7 +2062,7 @@
       try {
         const key = isFolderSummary ? ('bookmark_practice_summary_' + currentFolderId) : ('bookmark_practice_' + subKey);
         localStorage.setItem(key, JSON.stringify(bookmarkPracticeAnswers));
-      } catch (e) { }
+      } catch (e) {}
     }
 
     function isQuestionBookmarked(q) {
@@ -2835,7 +2821,7 @@
           const ansMap = normalizeSubjectAnswersMap(str ? JSON.parse(str) : {}, sub);
           ansMap[String(origId)] = selectedIdx;
           localStorage.setItem(key, JSON.stringify(ansMap));
-        } catch (e) { }
+        } catch (e) {}
       });
 
       const parentFolder = currentFolderId || (origSubId && ALL_SUBJECTS[origSubId]?.parentId) || null;
@@ -2847,7 +2833,7 @@
           const sumMap = normalizeSummaryAnswersMap(sumStr ? JSON.parse(sumStr) : {}, children);
           sumMap[qKey] = selectedIdx;
           localStorage.setItem(sumKey, JSON.stringify(sumMap));
-        } catch (e) { }
+        } catch (e) {}
       }
     }
 
@@ -2879,7 +2865,7 @@
             delete ansMap[q.id];
             localStorage.setItem(key, JSON.stringify(ansMap));
           }
-        } catch (e) { }
+        } catch (e) {}
       });
 
       if (isFolderSummary && currentFolderId) {
@@ -2893,7 +2879,7 @@
             delete sumMap[q.id];
             localStorage.setItem(sumKey, JSON.stringify(sumMap));
           }
-        } catch (e) { }
+        } catch (e) {}
       }
     }
 
@@ -2917,7 +2903,7 @@
             list = list.filter(id => id != origId && id != q.id && id !== qKey);
             localStorage.setItem(key, JSON.stringify(list));
           }
-        } catch (e) { }
+        } catch (e) {}
       });
 
       if (isFolderSummary && currentFolderId) {
@@ -2929,7 +2915,7 @@
             sumList = sumList.filter(id => id != origId && id != q.id && id !== qKey);
             localStorage.setItem(sumKey, JSON.stringify(sumList));
           }
-        } catch (e) { }
+        } catch (e) {}
       }
     }
 
@@ -2953,7 +2939,7 @@
             if (v !== undefined && !list.includes(v)) list.push(v);
           });
           localStorage.setItem(key, JSON.stringify(list));
-        } catch (e) { }
+        } catch (e) {}
       });
 
       if (isFolderSummary && currentFolderId) {
@@ -2965,7 +2951,7 @@
             if (v !== undefined && !sumList.includes(v)) sumList.push(v);
           });
           localStorage.setItem(sumKey, JSON.stringify(sumList));
-        } catch (e) { }
+        } catch (e) {}
       }
     }
 
@@ -3019,7 +3005,7 @@
         if (!raw) return null;
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      } catch (e) { }
+      } catch (e) {}
       return null;
     }
 
@@ -3027,7 +3013,7 @@
       if (!subKey || !Array.isArray(questions) || questions.length === 0) return;
       try {
         localStorage.setItem('q_cache_' + subKey, JSON.stringify(questions));
-      } catch (e) { }
+      } catch (e) {}
     }
 
     function clearQuestionsLocalCache() {
@@ -3040,7 +3026,7 @@
           if (k && k.startsWith('q_cache_')) keysToRemove.push(k);
         }
         keysToRemove.forEach(k => localStorage.removeItem(k));
-      } catch (e) { }
+      } catch (e) {}
     }
 
     function mapSubjectQuestions(subKey, qs) {
