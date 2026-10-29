@@ -56,20 +56,23 @@ module.exports = async function handler(req, res) {
     let questions;
 
     if (parentSubjectID) {
-      // Lấy danh sách thứ tự môn con theo trường order trong collection subjects
-      const childSubs = await db.collection('subjects')
-        .find({ parentId: parentSubjectID })
-        .sort({ order: 1 })
-        .toArray();
+      // Tải song song danh sách môn con và danh sách câu hỏi để giảm một nửa thời gian chờ DB
+      const [childSubs, rawQuestions] = await Promise.all([
+        db.collection('subjects')
+          .find({ parentId: parentSubjectID }, { projection: { _id: 0, id: 1, order: 1 } })
+          .sort({ order: 1 })
+          .toArray(),
+        questionsColl
+          .find(filter, { projection: { _id: 0 } })
+          .toArray()
+      ]);
+
       const subOrderMap = {};
       childSubs.forEach((s, idx) => {
         subOrderMap[s.id] = (s.order !== undefined && s.order !== null) ? Number(s.order) : (idx + 1);
       });
 
-      questions = await questionsColl
-        .find(filter, { projection: { _id: 0 } })
-        .toArray();
-
+      questions = rawQuestions;
       questions.sort((a, b) => {
         const orderA = subOrderMap[a.subjectId] ?? 999;
         const orderB = subOrderMap[b.subjectId] ?? 999;

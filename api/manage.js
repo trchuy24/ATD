@@ -1,4 +1,4 @@
-const { getDb } = require('../lib/mongodb');
+const { getDb, clearCache } = require('../lib/mongodb');
 
 // In-memory rate limiting for brute-force protection: max 3 failed attempts, 2-minute lockout
 const MAX_FAILED_ATTEMPTS = 3;
@@ -231,6 +231,9 @@ module.exports = async function handler(req, res) {
 
   const subjectsColl = db.collection('subjects');
   const questionsColl = db.collection('questions');
+
+  // Xóa bộ nhớ đệm API mỗi khi có thao tác quản trị thay đổi dữ liệu
+  clearCache();
 
   try {
     // ACTION 1: UPLOAD SUBJECT

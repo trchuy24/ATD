@@ -6,6 +6,10 @@ const url = require('url');
 const subjectsHandler = require('./api/subjects');
 const questionsHandler = require('./api/questions');
 const manageHandler = require('./api/manage');
+const { getDb } = require('./lib/mongodb');
+
+// Khởi tạo sẵn kết nối MongoDB khi bật server để truy vấn đầu tiên không bị trễ
+getDb().catch(() => {});
 
 const PORT = process.env.PORT || 3030;
 const PUBLIC_DIR = __dirname;
@@ -86,6 +90,14 @@ const server = http.createServer(async (req, res) => {
   }
 
   let filePath = path.join(PUBLIC_DIR, safePath);
+
+  // If browser requests root favicon or apple-touch-icon, resolve from /icons/
+  if (!fs.existsSync(filePath)) {
+    const iconCandidate = path.join(PUBLIC_DIR, 'icons', path.basename(safePath));
+    if (fs.existsSync(iconCandidate)) {
+      filePath = iconCandidate;
+    }
+  }
 
   // If path doesn't have an extension, try appending .html (cleanUrls)
   if (!path.extname(filePath) && fs.existsSync(filePath + '.html')) {

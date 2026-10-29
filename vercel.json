@@ -1,5 +1,12 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/icons/favicon.ico" },
+    { "source": "/favicon.svg", "destination": "/icons/favicon.svg" },
+    { "source": "/apple-touch-icon.png", "destination": "/icons/apple-touch-icon.png" },
+    { "source": "/apple-touch-icon-precomposed.png", "destination": "/icons/apple-touch-icon-precomposed.png" },
+    { "source": "/apple-touch-icon-:size.png", "destination": "/icons/apple-touch-icon-:size.png" }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",

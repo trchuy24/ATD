@@ -27,10 +27,10 @@ module.exports = async function handler(req, res) {
   res.setHeader('Vercel-CDN-Cache-Control', 'no-store');
 
   try {
+    const subjectId = req.query?.id || req.query?.subject;
+
     const db = await getDb();
     const subjectsColl = db.collection('subjects');
-
-    const subjectId = req.query?.id || req.query?.subject;
 
     if (subjectId) {
       const subject = await subjectsColl.findOne(
